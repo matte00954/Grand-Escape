@@ -6,21 +6,39 @@ public class MouseLook : MonoBehaviour
 {
     
     public float mouseSensitivity = 100f; //Default mouse sensitivity value. Can be changed otherwise in Inspector.
+    public float fovForZoom = 20;
 
     public Transform playerBody; //The player's model object.
+    public Camera camera;
 
-    float xRotation = 0f; 
+    float xRotation = 0f;
+    float defaultFov;
+
+    bool isZoomed;
 
     // Start is called before the first frame update
     void Start()
     {
         //This locks the mouse cursor to the game screen and hides it.
         Cursor.lockState = CursorLockMode.Locked;
+        defaultFov = camera.fieldOfView;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Mouse1) && !isZoomed)
+        {
+            camera.fieldOfView = fovForZoom;
+            isZoomed = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Mouse1) && isZoomed)
+        {
+            camera.fieldOfView = defaultFov;
+            isZoomed = false;
+        }
+            
+
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 

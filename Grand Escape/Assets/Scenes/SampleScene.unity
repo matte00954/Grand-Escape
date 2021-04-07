@@ -532,7 +532,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 100
+  fovForZoom: 20
   playerBody: {fileID: 741439748}
+  camera: {fileID: 963194227}
 --- !u!1 &1193473112
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,17 +23,15 @@ public class PlayerShooting : MonoBehaviour
     void Update()
     {
         Vector3 point = playerCamera.ScreenToWorldPoint(Input.mousePosition);
-        //kanske ej behövs
 
         Vector3 direction = player.transform.position - point;
-        //kanske ej behövs
 
         playerAim = playerCamera.ScreenPointToRay(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.DrawRay(point, direction, Color.red);
-            Debug.Log("Shot");
+            //Debug.DrawRay(point, direction, Color.red);
+            //Debug.Log("Shot");
             Instantiate(ammo, point, Quaternion.identity);
             //Instantiate(ammo, , Quaternion.identity);
 
@@ -41,7 +39,7 @@ public class PlayerShooting : MonoBehaviour
             {
                 Transform objectHit = shootHit.transform;
                 //Vector3 impact = playerAim.GetPoint(0.1f);
-                Debug.Log("Hit Object: " + objectHit);
+                //Debug.Log("Hit Object: " + objectHit);
             }
 
         }

@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 283429833}
   m_Layer: 7
   m_Name: Environment
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 340933383}
   m_Layer: 7
   m_Name: Groundbox
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 741439750}
   m_Layer: 0
   m_Name: First Person Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -414,6 +414,7 @@ MonoBehaviour:
   controller: {fileID: 741439747}
   speed: 12
   gravity: -19.62
+  jumpHeight: 3
   groundCheck: {fileID: 2116548754}
   groundDistance: 0.4
   groundMask:
@@ -546,7 +547,7 @@ GameObject:
   - component: {fileID: 1193473113}
   m_Layer: 7
   m_Name: Obstacle1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -739,7 +740,7 @@ GameObject:
   - component: {fileID: 1501222534}
   m_Layer: 7
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

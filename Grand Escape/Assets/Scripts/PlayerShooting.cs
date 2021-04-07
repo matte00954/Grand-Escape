@@ -30,13 +30,20 @@ public class PlayerShooting : MonoBehaviour
 
         playerAim = playerCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (Input.GetMouseButtonDown(0) && Physics.Raycast(playerAim, out shootHit))
+        if (Input.GetMouseButtonDown(0))
         {
-            Transform objectHit = shootHit.transform;
-            Vector3 impact = playerAim.GetPoint(0.1f);
-            Instantiate(ammo, new Vector3(impact.x,impact.z,impact.z), Quaternion.identity);
-            Debug.Log(objectHit);
+            Debug.DrawRay(point, direction, Color.red);
             Debug.Log("Shot");
+            Instantiate(ammo, point, Quaternion.identity);
+            //Instantiate(ammo, , Quaternion.identity);
+
+            if (Physics.Raycast(playerAim, out shootHit))
+            {
+                Transform objectHit = shootHit.transform;
+                //Vector3 impact = playerAim.GetPoint(0.1f);
+                Debug.Log("Hit Object: " + objectHit);
+            }
+
         }
     }
 }

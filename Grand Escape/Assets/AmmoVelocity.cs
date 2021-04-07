@@ -4,22 +4,15 @@ using UnityEngine;
 
 public class AmmoVelocity : MonoBehaviour
 {
-
-    private Vector3 direction;
-
-    private Transform cameraTransform;
-
     public LayerMask terrainMask; //Ground mask / terrain mask
     public LayerMask enemyMask;
-
     public Transform bulletHasHitCheck;
 
+    private Vector3 direction;
+    private Transform cameraTransform;
+
     public float bulletCollisionDetectionDistance = 0.4f;
-
-    //public Collider bulletCollider;
-
     public float speed;
-
     public float bulletDoesNotHitTimer;
 
     // Start is called before the first frame update
@@ -40,7 +33,7 @@ public class AmmoVelocity : MonoBehaviour
         bool hasHitObject = Physics.CheckSphere(bulletHasHitCheck.position, bulletCollisionDetectionDistance, terrainMask);
         bool hasHitEnemy = Physics.CheckSphere(bulletHasHitCheck.position, bulletCollisionDetectionDistance, enemyMask);
 
-        if(hasHitObject || hasHitEnemy)
+        if(hasHitObject || hasHitEnemy) //Ett problem är att denna körs flera gånger, kommer ej på en bra lösning för tillfället
         {
             Debug.Log("Bullet has impacted");
             StartCoroutine(TimeToDestroy(0.1f));

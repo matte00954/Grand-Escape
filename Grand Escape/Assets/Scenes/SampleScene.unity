@@ -434,7 +434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 963194227}
   ammo: {fileID: 7794666079471084343, guid: 462fc8266fda16242a106e1b7bd6bce3, type: 3}
-  ammoCapacity: 0
+  ammoCapacity: 3
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

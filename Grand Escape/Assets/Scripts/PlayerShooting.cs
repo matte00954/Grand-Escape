@@ -8,15 +8,20 @@ public class PlayerShooting : MonoBehaviour
     public Camera playerCamera;
     public GameObject ammo;
 
-    public int ammoCapacity;
-
     private GameObject player;
     private RaycastHit shootHit;
     private Ray playerAim;
 
+    public int ammoCapacity; //hur många skott i vapnet
+
+    private bool isReloading;
+    private int currentAmmo; //skott som är laddade
+
     private void Awake()
     {
+        isReloading = false;
         player = this.gameObject;
+        currentAmmo = ammoCapacity;
     }
 
     // Update is called once per frame
@@ -28,20 +33,40 @@ public class PlayerShooting : MonoBehaviour
 
         playerAim = playerCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && currentAmmo > 0)
         {
-            //Debug.DrawRay(point, direction, Color.red);
-            //Debug.Log("Shot");
+            currentAmmo--;
+            Debug.Log("Current ammo: " + currentAmmo);
+            Debug.Log("Shot");
             Instantiate(ammo, point, Quaternion.identity);
-            //Instantiate(ammo, , Quaternion.identity);
-
             if (Physics.Raycast(playerAim, out shootHit))
             {
                 Transform objectHit = shootHit.transform;
-                //Vector3 impact = playerAim.GetPoint(0.1f);
+
                 //Debug.Log("Hit Object: " + objectHit);
             }
-
+            //Debug.DrawRay(point, direction, Color.red); //denna funkar ej
         }
+
+
+        if (Input.GetKeyDown("r") && !isReloading && currentAmmo == 0)
+        {
+            isReloading = true;
+            Debug.Log("Reloading...");
+            StartCoroutine(Reloading());
+        }
+    }
+
+    IEnumerator Reloading()
+    {
+        Debug.Log("3");
+        yield return new WaitForSeconds(1f);
+        Debug.Log("2");
+        yield return new WaitForSeconds(1f);
+        Debug.Log("1");
+        yield return new WaitForSeconds(1f);
+        Debug.Log("Reloaded");
+        currentAmmo = ammoCapacity;
+        isReloading = false;
     }
 }

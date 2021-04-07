@@ -12,8 +12,37 @@ public class PlayerVariables : MonoBehaviour
     public int healthBoostAmount;
     public int ammoBoxAmount;
 
-    private int healthPoints;
-    private int currentAmmo;
+    [HideInInspector]
+    public int healthPoints;
+    public int currentAmmo;
+
+    public int GetCurrentAmmo()
+    {
+        return currentAmmo;
+    }
+
+    public int SetCurrentAmmo(int sizeOfFullClipFromWeapon)
+    {
+        //parametern är alltså vad vapnet som laddas om har för max kapacitet
+        if(currentAmmo - sizeOfFullClipFromWeapon > 0) // kollar att man kan ladda hela clippet
+        {
+            Debug.Log("Loading full clip");
+            currentAmmo -= sizeOfFullClipFromWeapon;
+            return sizeOfFullClipFromWeapon; //du får fullt clip
+        }
+        else //du kan inte få fullt klipp men du har några kulor kvar
+        {
+            Debug.Log("Part of the clip is loaded");
+            int ammoAmountToReturn = currentAmmo; //sparar mängden ammo som du laddar clippet med och skickar tillbaka detta
+            currentAmmo = 0; //du laddar resten av all ammo du har
+            return ammoAmountToReturn; //returnerar resten av all ammo som är kvar, som laddas in
+        }
+    }
+
+    public int GetCurrentHealthPoints()
+    {
+        return healthPoints;
+    }
 
     private void Awake()
     {
@@ -54,7 +83,7 @@ public class PlayerVariables : MonoBehaviour
         if (Input.GetKeyDown("g")) //TEST
         {
             Debug.Log("HP is " + healthPoints);
-            Debug.Log("HP is " + currentAmmo);
+            Debug.Log("Ammo is " + currentAmmo);
         }
 
         if (Input.GetKeyDown("k")) //TEST

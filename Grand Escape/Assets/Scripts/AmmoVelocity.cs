@@ -36,13 +36,13 @@ public class AmmoVelocity : MonoBehaviour
         bool hasHitObject = Physics.CheckSphere(bulletHasHitCheck.position, bulletCollisionDetectionDistance, terrainMask);
         bool hasHitEnemy = Physics.CheckSphere(bulletHasHitCheck.position, bulletCollisionDetectionDistance, enemyMask);
 
-        if (!hasHitAnything)
+        if (!hasHitAnything) //ser till att det under inte körs flera gånger
         {
-            if (hasHitObject) //Ett problem är att denna körs flera gånger, kommer ej på en bra lösning för tillfället
+            if (hasHitObject)
             {
                 Debug.Log("Bullet has impacted terrain");
                 hasHitAnything = true;
-                StartCoroutine(TimeToDestroy(0.1f));
+                StartCoroutine(TimeToDestroy(0.05f));
             }
             if (hasHitEnemy)
             {

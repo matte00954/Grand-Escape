@@ -7,6 +7,7 @@ public class PlayerShooting : MonoBehaviour
     [Header("Gameobjects")]
     public Camera playerCamera;
     public GameObject ammo;
+    public PlayerVariables playerVariables;
 
     //private GameObject player; //kanske behövs i framtiden?
     private RaycastHit shootHit;
@@ -16,14 +17,17 @@ public class PlayerShooting : MonoBehaviour
     public int ammoCapacity; //hur många skott i vapnet
 
     private bool isReloading;
-    private int currentAmmo; //skott som är laddade
+    private int currentAmmoLoaded; //skott som är laddade
+    private int totalAmmoToReloadWith;
 
     private void Awake()
     {
         isReloading = false;
+        currentAmmoLoaded = ammoCapacity;
+
         //player = this.gameObject; //ta inte bort, om den behövs i framtiden
-        currentAmmo = ammoCapacity;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -34,10 +38,11 @@ public class PlayerShooting : MonoBehaviour
 
         playerAim = playerCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (Input.GetMouseButtonDown(0) && currentAmmo > 0)
+        if (Input.GetMouseButtonDown(0) && currentAmmoLoaded > 0)
         {
-            currentAmmo--;
-            Debug.Log("Current ammo: " + currentAmmo);
+            currentAmmoLoaded--;
+            Debug.Log("Loaded: " + currentAmmoLoaded);
+            Debug.Log("Total Ammo: " + playerVariables.GetCurrentAmmo());
             Debug.Log("Shot");
             Instantiate(ammo, point, Quaternion.identity);
             if (Physics.Raycast(playerAim, out shootHit))
@@ -49,12 +54,22 @@ public class PlayerShooting : MonoBehaviour
             //Debug.DrawRay(point, direction, Color.red); //denna funkar ej
         }
 
-
-        if (Input.GetKeyDown("r") && !isReloading && currentAmmo == 0)
+        if (Input.GetKeyDown("r") && !isReloading)
         {
-            isReloading = true;
-            Debug.Log("Reloading...");
-            StartCoroutine(Reloading());
+            if (currentAmmoLoaded == 0 && playerVariables.GetCurrentAmmo() > 0)
+            {
+                isReloading = true;
+                Debug.Log("Reloading...");
+                StartCoroutine(Reloading());
+            }
+            else if (playerVariables.GetCurrentAmmo() == 0)
+            {
+                Debug.Log("No ammo left");
+            }
+            else if (playerVariables.GetCurrentAmmo() < 0)
+            {
+                Debug.Log("ERROR: CURRENT AMMO IS LOWER THAN ZERO");
+            }
         }
     }
 
@@ -62,7 +77,7 @@ public class PlayerShooting : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         Debug.Log("Reloaded");
-        currentAmmo = ammoCapacity;
+        currentAmmoLoaded = playerVariables.SetCurrentAmmo(ammoCapacity);
         isReloading = false;
     }
 }

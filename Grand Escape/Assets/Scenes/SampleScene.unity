@@ -588,7 +588,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 963194227}
   ammo: {fileID: 7794666079471084343, guid: 462fc8266fda16242a106e1b7bd6bce3, type: 3}
-  ammoCapacity: 1
+  playerVariables: {fileID: 741439751}
+  ammoCapacity: 3
 --- !u!114 &741439751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,9 +603,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthPoints: 100
-  maxAmmo: 100
+  maxAmmo: 20
   healthBoostAmount: 25
   ammoBoxAmount: 25
+  healthPoints: 0
+  currentAmmo: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

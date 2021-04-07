@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller; //Reference to the player's CharacterController component.
     public float speed = 12f; //Player's movement speed.
     public float gravity = -9.81f; //Gravity increase rate.
+    public float jumpHeight = 3f;
 
     public Transform groundCheck; //The groundCheck object.
     public float groundDistance = 0.4f; //The radius of the CheckSphere for 'groundCheck'.
@@ -35,7 +36,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         //Equivalent to updating the player's position (position += ...), but with CharacterController. 
-        controller.Move(move * speed * Time.deltaTime); 
+        controller.Move(move * speed * Time.deltaTime);
+
+        //Jump
+        if (Input.GetButtonDown("Jump") && isGrounded)
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
 
         //This builds up the downward velocity vector with gravity.
         velocity.y += gravity * Time.deltaTime;

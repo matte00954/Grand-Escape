@@ -6,24 +6,37 @@ public class PlayerShooting : MonoBehaviour
 {
 
     public Camera playerCamera;
+    public GameObject ammo;
 
-    RaycastHit hit;
+    public int ammoCapacity;
 
-    Ray ray;
+    private GameObject player;
+    private RaycastHit shootHit;
+    private Ray playerAim;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        hit;
-        ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        player = this.gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Physics.Raycast(ray, out hit))
+        Vector3 point = playerCamera.ScreenToWorldPoint(Input.mousePosition);
+        //kanske ej behövs
+
+        Vector3 direction = player.transform.position - point;
+        //kanske ej behövs
+
+        playerAim = playerCamera.ScreenPointToRay(Input.mousePosition);
+
+        if (Input.GetMouseButtonDown(0) && Physics.Raycast(playerAim, out shootHit))
         {
-            Transform objectHit = hit.transform;
+            Transform objectHit = shootHit.transform;
+            Vector3 impact = playerAim.GetPoint(0.1f);
+            Instantiate(ammo, new Vector3(impact.x,impact.z,impact.z), Quaternion.identity);
+            Debug.Log(objectHit);
+            Debug.Log("Shot");
         }
     }
 }

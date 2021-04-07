@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 741439748}
   - component: {fileID: 741439747}
   - component: {fileID: 741439749}
+  - component: {fileID: 741439750}
   m_Layer: 0
   m_Name: First Person Player
   m_TagString: Untagged
@@ -418,6 +419,21 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &741439750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741439746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c8154ff93a675b4686fc5209f6ed5be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 963194227}
+  ammo: {fileID: 7794666079471084343, guid: 462fc8266fda16242a106e1b7bd6bce3, type: 3}
+  ammoCapacity: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

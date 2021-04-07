@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Health boost
+  - Ammo boost
   layers:
   - Default
   - TransparentFX

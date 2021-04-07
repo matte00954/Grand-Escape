@@ -939,8 +939,9 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 64
+  maxSeeingDistance: 10
   rotationSpeedMultiplier: 5
-  ammo: {fileID: 7794666079471084343, guid: 462fc8266fda16242a106e1b7bd6bce3, type: 3}
+  ammo: {fileID: 8998045601171542492, guid: 963f5201924bfb04dacfe1358adc28d9, type: 3}
 --- !u!1 &1884279418
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,7 +955,7 @@ GameObject:
   - component: {fileID: 1884279421}
   - component: {fileID: 1884279420}
   m_Layer: 8
-  m_Name: EnemyGun
+  m_Name: EnemyNose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -968,7 +969,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884279418}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 1}
   m_LocalScale: {x: 0.2, y: 0.8, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1847048889}

@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-
+    [Header("Gameobjects")]
     public Camera playerCamera;
     public GameObject ammo;
 
-    private GameObject player;
+    //private GameObject player; //kanske behövs i framtiden?
     private RaycastHit shootHit;
     private Ray playerAim;
 
+    [Header("Ammo")]
     public int ammoCapacity; //hur många skott i vapnet
 
     private bool isReloading;
@@ -20,7 +21,7 @@ public class PlayerShooting : MonoBehaviour
     private void Awake()
     {
         isReloading = false;
-        player = this.gameObject;
+        //player = this.gameObject; //ta inte bort, om den behövs i framtiden
         currentAmmo = ammoCapacity;
     }
 
@@ -29,7 +30,7 @@ public class PlayerShooting : MonoBehaviour
     {
         Vector3 point = playerCamera.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector3 direction = player.transform.position - point;
+        //Vector3 direction = player.transform.position - point; //används inte just nu, men kanske behövs i framtiden
 
         playerAim = playerCamera.ScreenPointToRay(Input.mousePosition);
 
@@ -59,12 +60,7 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator Reloading()
     {
-        Debug.Log("3");
-        yield return new WaitForSeconds(1f);
-        Debug.Log("2");
-        yield return new WaitForSeconds(1f);
-        Debug.Log("1");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         Debug.Log("Reloaded");
         currentAmmo = ammoCapacity;
         isReloading = false;

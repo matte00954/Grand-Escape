@@ -53,6 +53,19 @@ public class PlayerVariables : MonoBehaviour
         }
     }
 
+    private void UsingStamina(int staminaToBeUsed)
+    {
+        staminaToBeUsed -= currentStamina;
+        uiManager.Stamina(GetCurrentStamina());
+    }
+
+    private void GainingStamina(int staminaToBeGained)
+    {
+        staminaToBeGained += currentStamina;
+        uiManager.Stamina(GetCurrentStamina());
+    }
+
+
     public void ApplyDamage(int damageToBeApplied)
     {
         Debug.Log("Player took :" + damageToBeApplied + " damage");
@@ -66,6 +79,7 @@ public class PlayerVariables : MonoBehaviour
         currentAmmo = maxAmmo;
         currentStamina = maxStamina;
         uiManager.HealthPoints(GetCurrentHealthPoints());
+        uiManager.Stamina(GetCurrentStamina());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -97,7 +111,6 @@ public class PlayerVariables : MonoBehaviour
             currentAmmo = maxAmmo;
         }
     }
-
     private void Update()
     {
         if (Input.GetKeyDown("g")) //TEST

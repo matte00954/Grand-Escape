@@ -8,6 +8,7 @@ public class UiManager : MonoBehaviour
     public Text ammoLeft;
     public Text weaponStatus;
     public Text currentHP;
+    public Text currentStamina;
 
     public void WeaponStatus(string s)
     {
@@ -22,5 +23,10 @@ public class UiManager : MonoBehaviour
     public void HealthPoints(int i)
     {
         currentHP.text = i.ToString();
+    }
+
+    public void Stamina(int i)
+    {
+        currentStamina.text = i.ToString();
     }
 }

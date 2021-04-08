@@ -118,6 +118,7 @@ MonoBehaviour:
     m_Bits: 256
   bulletHasHitCheck: {fileID: 734761492637824856}
   bulletCollisionDetectionDistance: 0.4
+  timeUntilBulletDestroyed: 0.1
   speed: 100
   bulletDoesNotHitTimer: 10
 --- !u!54 &5592313624258484325

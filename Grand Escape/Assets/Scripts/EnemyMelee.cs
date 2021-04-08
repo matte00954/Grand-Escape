@@ -84,13 +84,15 @@ public class EnemyMelee : MonoBehaviour
 
     private void ChasePlayer()
     {
+        Vector3 distanceToPlayerPoint = transform.position - playerTransform.position;
         agent.speed = attackSpeed;
-        agent.SetDestination(playerTransform.position);
-    }
-
-    private void AttackPlayer()
-    {
-
+        if (distanceToPlayerPoint.magnitude < 2f)
+        {
+            agent.SetDestination(transform.position);
+            transform.LookAt(playerTransform);
+        }
+        else
+            agent.SetDestination(playerTransform.position);
     }
 
     private void OnDrawGizmosSelected()

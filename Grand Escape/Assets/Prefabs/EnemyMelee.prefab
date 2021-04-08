@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8928756233092268297}
   - component: {fileID: 8928756233092268294}
   - component: {fileID: 8928756233092268295}
+  - component: {fileID: -6471416605708566468}
   - component: {fileID: 6121907533333242313}
   m_Layer: 8
   m_Name: EnemyMelee
@@ -99,6 +100,33 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &-6471416605708566468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8928756233092268292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4039c23a5507ca4fa07e6b8d580ad60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 6121907533333242313}
+  playerTransform: {fileID: 0}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 128
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 20
+  timeBetweenPatrol: 3
+  patrolSpeed: 11
+  sightRange: 30
+  attackSpeed: 15
+  playerInSightRange: 0
 --- !u!195 &6121907533333242313
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -107,11 +135,11 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8928756233092268292}
   m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5000001
+  m_AgentTypeID: -1372625422
+  m_Radius: 1
   m_Speed: 11
   m_Acceleration: 12
-  avoidancePriority: 50
+  avoidancePriority: 30
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1

@@ -11,19 +11,38 @@ public class EnemyMelee : MonoBehaviour
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
+    float patrolTimer;
+    public float timeBetweenPatrol;
+    public float patrolSpeed;
 
     //Attacking
     public float sightRange;
+    public float attackSpeed;
     public bool playerInSightRange;
 
     private void Awake()
     {
-        playerTransform = GameObject.Find("").transform;
+        playerTransform = GameObject.Find("First Person Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        patrolTimer = timeBetweenPatrol;
     }
 
     private void Update()
     {
+        //if (agent.velocity.magnitude < 0.15f)
+        //{
+        //    Debug.Log("Character stuck");
+        //    agent.enabled = false;
+        //    agent.enabled = true;
+        //    Debug.Log("navmesh re enabled");
+        //    // navmesh agent will start moving again
+        //}
+
+        if (!(patrolTimer >= timeBetweenPatrol))
+        {
+            patrolTimer += Time.deltaTime;
+        }
+
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerMask);
 
@@ -35,11 +54,18 @@ public class EnemyMelee : MonoBehaviour
 
     private void Patroling()
     {
-        if (!walkPointSet)
+        if (!walkPointSet && patrolTimer >= timeBetweenPatrol)
+        {
             SearchWalkPoint();
+            patrolTimer = 0f;
+        }
 
         if (walkPointSet)
+        {
+            agent.speed = patrolSpeed;
             agent.SetDestination(walkPoint);
+            walkPointSet = false;
+        }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
@@ -50,21 +76,31 @@ public class EnemyMelee : MonoBehaviour
 
     private void SearchWalkPoint()
     {
+        Debug.Log("Started Search");
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        RaycastHit raycastHit;
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, groundMask))
+        if (Physics.Raycast(walkPoint + Vector3.up * 5f, -transform.up, out raycastHit, 20f, groundMask))
         {
+            walkPoint.y = raycastHit.point.y;
+            Debug.Log("Raycast Hit: " + raycastHit.point);
             walkPointSet = true;
         }
     }
 
     private void ChasePlayer()
     {
+        agent.speed = attackSpeed;
         agent.SetDestination(playerTransform.position);
+    }
+
+    private void AttackPlayer()
+    {
+
     }
 
     private void OnDrawGizmosSelected()

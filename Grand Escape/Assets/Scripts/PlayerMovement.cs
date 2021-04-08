@@ -13,6 +13,15 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f; //The radius of the CheckSphere for 'groundCheck'.
     public LayerMask groundMask;
 
+    [Header("Slow motion dash")]
+    public float slowMotionTime;
+    public float dodgeTimer;
+    public float dodgeAmountOfTime;
+
+    public float slowMotionAmountMultiplier;
+
+    private bool sideWayDashAvailable = true;
+
     Vector3 velocity; //This vector is used for storing added gravity every frame, building up downward velocity.
     bool isGrounded;
 
@@ -47,5 +56,31 @@ public class PlayerMovement : MonoBehaviour
 
         //This updates the player's position with the downward velocity. This is multiplied by deltaTime again for the formula of real gravitation.
         controller.Move(velocity * Time.deltaTime);
+
+
+        if (sideWayDashAvailable)
+        {
+            if (Input.GetKeyDown("q"))
+            {
+                controller.Move(move * 500 * Time.deltaTime);
+                StartCoroutine(SlowMotion());
+            }
+
+            if (Input.GetKeyDown("e"))
+            {
+                controller.Move(-move * 500 * Time.deltaTime);
+                StartCoroutine(SlowMotion());
+            }
+        }
+    }
+
+
+
+
+    private IEnumerator SlowMotion()
+    {
+        Time.timeScale = slowMotionAmountMultiplier;
+        yield return new WaitForSeconds(slowMotionTime * slowMotionAmountMultiplier);
+        Time.timeScale = 1f; //återställer till vanlig tid
     }
 }

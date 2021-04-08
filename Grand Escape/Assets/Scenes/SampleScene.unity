@@ -942,6 +942,10 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 128
+  slowMotionTime: 2.5
+  dodgeTimer: 0
+  dodgeAmountOfTime: 0
+  slowMotionAmountMultiplier: 0.1
 --- !u!114 &741439750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,7 +961,7 @@ MonoBehaviour:
   playerCamera: {fileID: 963194227}
   ammo: {fileID: 7794666079471084343, guid: 462fc8266fda16242a106e1b7bd6bce3, type: 3}
   playerVariables: {fileID: 741439751}
-  ammoCapacity: 1
+  ammoCapacity: 5
 --- !u!114 &741439751
 MonoBehaviour:
   m_ObjectHideFlags: 0

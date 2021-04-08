@@ -1101,9 +1101,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   slowMotionTime: 1
-  dodgeAmountOfTime: 0.7
+  dodgeAmountOfTime: 0.6
   dodgeSpeedMultiplier: 3
-  slowMotionAmountMultiplier: 0.5
+  slowMotionDelay: 0.1
+  slowMotionAmountMultiplier: 0.3
 --- !u!114 &741439750
 MonoBehaviour:
   m_ObjectHideFlags: 0

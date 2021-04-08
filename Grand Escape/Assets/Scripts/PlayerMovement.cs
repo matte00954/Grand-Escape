@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float dodgeTimer = 0f;
     public float dodgeAmountOfTime = 0.7f;
     public float dodgeSpeedMultiplier = 3f;
+    public float slowMotionDelay = 0.25f;
     public float slowMotionAmountMultiplier;
     private bool isDodging = false;
 
@@ -94,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator SlowMotion()
     {
+        yield return new WaitForSeconds(slowMotionDelay);
         Time.timeScale = slowMotionAmountMultiplier;
         yield return new WaitForSeconds(slowMotionTime * slowMotionAmountMultiplier);
         Time.timeScale = 1f; //återställer till vanlig tid

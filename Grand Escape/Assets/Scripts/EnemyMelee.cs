@@ -29,14 +29,6 @@ public class EnemyMelee : MonoBehaviour
 
     private void Update()
     {
-        //if (agent.velocity.magnitude < 0.15f)
-        //{
-        //    Debug.Log("Character stuck");
-        //    agent.enabled = false;
-        //    agent.enabled = true;
-        //    Debug.Log("navmesh re enabled");
-        //    // navmesh agent will start moving again
-        //}
 
         if (!(patrolTimer >= timeBetweenPatrol))
         {

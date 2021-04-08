@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 634332870}
   - component: {fileID: 634332869}
   - component: {fileID: 634332868}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Arena Wall 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +557,7 @@ GameObject:
   - component: {fileID: 643450043}
   - component: {fileID: 643450042}
   - component: {fileID: 643450041}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Arena Wall 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,8 +842,6 @@ MonoBehaviour:
   maxAmmo: 20
   healthBoostAmount: 25
   ammoBoxAmount: 25
-  healthPoints: 0
-  currentAmmo: 0
 --- !u!1001 &762145868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -865,15 +863,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8928756233092268296, guid: 7d10eaaf36071b246b1e101992f70656, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.4
+      value: -25.44
       objectReference: {fileID: 0}
     - target: {fileID: 8928756233092268296, guid: 7d10eaaf36071b246b1e101992f70656, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9
+      value: 6.98
       objectReference: {fileID: 0}
     - target: {fileID: 8928756233092268296, guid: 7d10eaaf36071b246b1e101992f70656, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -40.4
+      value: -16.67
       objectReference: {fileID: 0}
     - target: {fileID: 8928756233092268296, guid: 7d10eaaf36071b246b1e101992f70656, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1113,7 +1111,7 @@ GameObject:
   - component: {fileID: 1033970868}
   - component: {fileID: 1033970867}
   - component: {fileID: 1033970866}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Arena Wall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1498,7 +1496,7 @@ GameObject:
   - component: {fileID: 1486536873}
   - component: {fileID: 1486536872}
   - component: {fileID: 1486536871}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Arena Wall 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

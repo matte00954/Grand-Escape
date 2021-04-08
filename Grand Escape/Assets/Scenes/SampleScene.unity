@@ -942,10 +942,10 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 128
-  slowMotionTime: 2.5
-  dodgeTimer: 0
-  dodgeAmountOfTime: 0
-  slowMotionAmountMultiplier: 0.1
+  slowMotionTime: 1
+  dodgeAmountOfTime: 0.7
+  dodgeSpeedMultiplier: 3
+  slowMotionAmountMultiplier: 0.5
 --- !u!114 &741439750
 MonoBehaviour:
   m_ObjectHideFlags: 0

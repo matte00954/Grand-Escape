@@ -14,41 +14,75 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
 
     [Header("Slow motion dash")]
-    public float slowMotionTime;
-    public float dodgeTimer;
-    public float dodgeAmountOfTime;
-
+    private Vector3 dodgeDirection;
+    public float slowMotionTime = 1f;
+    private float dodgeTimer = 0f;
+    public float dodgeAmountOfTime = 0.7f;
+    public float dodgeSpeedMultiplier = 3f;
     public float slowMotionAmountMultiplier;
+    private bool isDodging = false;
 
-    private bool sideWayDashAvailable = true;
 
-    Vector3 velocity; //This vector is used for storing added gravity every frame, building up downward velocity.
+
+    Vector3 velocity; //This vector is used for storing added gravity every frame, building up downward velocity
     bool isGrounded;
 
     // Update is called once per frame
     void Update()
     {
+        //Checks if player is grounded and resets gravity velocity if true
+        CheckGround();
+
+        //WASD Input
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+        Vector3 move = transform.right * x + transform.forward * z;
+
+        //Dodge activation
+        if (!isDodging && isGrounded && Input.GetKeyDown(KeyCode.F))
+        {
+            isDodging = true;
+            dodgeDirection = move;
+            dodgeTimer = 0f;
+            StartCoroutine(SlowMotion());
+        }
+        
+        //Applying WASD- or Dodge-movement based on 'Dodge'-state
+        if (!isDodging)
+            controller.Move(move * speed * Time.deltaTime);
+        else if (isDodging && dodgeTimer < dodgeAmountOfTime)
+            ApplyDodge();
+        else
+            isDodging = false;
+
+        //Apply gravity and jump velocity
+        ApplyYAxisVelocity();
+    }
+
+    private void CheckGround()
+    {
         //CheckSphere creates an overlap-check in the form of a sphere at a [1]position, with a [2]radius, that only detects objects(with collider) assigned with a specific [3]layer.
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         //Reset gravity force when the character is grounded. This prevents gravity buildup.
-        if (isGrounded && velocity.y < 0) 
-        {
+        if (isGrounded && velocity.y < 0)
             velocity.y = -2f;
-        }
+    }
 
-        float x = Input.GetAxis("Horizontal"); //Horizontal: "D" returns 1, "A" returns -1. Moving sideways left/right.
-        float z = Input.GetAxis("Vertical"); //Vertical: "W" returns 1, "S" returns -1. Moving forward/backward.
+    private void ApplyDodge()
+    {
+        if (Time.timeScale < 1f)
+            controller.Move(dodgeDirection * speed * dodgeSpeedMultiplier * slowMotionAmountMultiplier * Time.deltaTime);
+        else
+            controller.Move(dodgeDirection * speed * dodgeSpeedMultiplier * Time.deltaTime);
 
-        //This is how we update the player's movement.
-        //Creates a vector that decides the direction of the player's movement on X and Z axis. Moving sideways left means transform.right(1) multiplied by 'x'(-1) is -1. Vector is then (-1, 0, 0).
-        Vector3 move = transform.right * x + transform.forward * z;
+        dodgeTimer += Time.deltaTime;
+    }
 
-        //Equivalent to updating the player's position (position += ...), but with CharacterController. 
-        controller.Move(move * speed * Time.deltaTime);
-
+    private void ApplyYAxisVelocity()
+    {
         //Jump
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded && !isDodging)
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
 
         //This builds up the downward velocity vector with gravity.
@@ -56,26 +90,7 @@ public class PlayerMovement : MonoBehaviour
 
         //This updates the player's position with the downward velocity. This is multiplied by deltaTime again for the formula of real gravitation.
         controller.Move(velocity * Time.deltaTime);
-
-
-        if (sideWayDashAvailable)
-        {
-            if (Input.GetKeyDown("q"))
-            {
-                controller.Move(move * 500 * Time.deltaTime);
-                StartCoroutine(SlowMotion());
-            }
-
-            if (Input.GetKeyDown("e"))
-            {
-                controller.Move(-move * 500 * Time.deltaTime);
-                StartCoroutine(SlowMotion());
-            }
-        }
     }
-
-
-
 
     private IEnumerator SlowMotion()
     {

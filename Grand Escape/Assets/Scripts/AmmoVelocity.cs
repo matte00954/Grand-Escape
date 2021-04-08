@@ -13,6 +13,7 @@ public class AmmoVelocity : MonoBehaviour
     private bool hasHitAnything;
 
     public float bulletCollisionDetectionDistance = 0.4f;
+    public float timeUntilBulletDestroyed = 0.05f;
     public float speed;
     public float bulletDoesNotHitTimer;
 
@@ -42,13 +43,13 @@ public class AmmoVelocity : MonoBehaviour
             {
                 Debug.Log("Bullet has impacted terrain");
                 hasHitAnything = true;
-                StartCoroutine(TimeToDestroy(0.05f));
+                StartCoroutine(TimeToDestroy(timeUntilBulletDestroyed));
             }
             if (hasHitEnemy)
             {
                 Debug.Log("Bullet has impacted enemy");
                 hasHitAnything = true;
-                StartCoroutine(TimeToDestroy(0.05f));
+                StartCoroutine(TimeToDestroy(timeUntilBulletDestroyed));
             }
             //vi kan behöva fixa en OnTriggerEnter funktion här i framtiden, för att hantera när/hur fiender blir träffade av dessa kulor
         }

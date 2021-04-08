@@ -5,34 +5,33 @@ using UnityEngine;
 public class EnemyVariables : MonoBehaviour
 {
 
-    //private Rigidbody thisEnemyRigidbody;
-
     private int healthPoints = 100;
-    
+
     //Dessa bör nog vara i en annan klass i framtiden
-    private float resistanceMeele = 0;
-    private float resistanceRanged = 0;
+    //private float resistanceMeele = 0;
+
+    //private float resistanceRanged = 0;
 
     //OBS TEMPORÄR KOD, måste förbättras detta bör finnas i typ en klass som förvara dessa typer av värden
     private float damageFromBullets = 100;
     private float damageFromSword = 100;
 
     //OBS TEMPORÄR KOD, måste förbättras
-    [Header("TEST Variabler")]
-    public bool isSniper;
-    public bool isMeele;
+    //[Header("TEST Variabler")]
+    //public bool isSniper;
+    //public bool isMeele;
 
     private void Awake()
     {
 
-        if (isSniper)
+        /*if (isSniper)
         {
             resistanceRanged = 0.5f;
         }
         if (isMeele)
         {
             resistanceMeele = 0.5f;
-        }
+        }*/
     }
 
     // Update is called once per frame

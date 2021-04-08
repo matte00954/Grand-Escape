@@ -8,6 +8,7 @@ public class PlayerShooting : MonoBehaviour
     public Camera playerCamera;
     public GameObject ammo;
     public PlayerVariables playerVariables;
+    public UiManager uiManager;
 
     //private GameObject player; //kanske behövs i framtiden?
     private RaycastHit shootHit;
@@ -25,6 +26,8 @@ public class PlayerShooting : MonoBehaviour
         isReloading = false;
         currentAmmoLoaded = ammoCapacity;
 
+        uiManager.AmmoStatus(playerVariables.GetCurrentTotalAmmo());
+        uiManager.WeaponStatus("LOADED");
         //player = this.gameObject; //ta inte bort, om den behövs i framtiden
     }
 
@@ -41,9 +44,7 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && currentAmmoLoaded > 0)
         {
             currentAmmoLoaded--;
-            Debug.Log("Loaded: " + currentAmmoLoaded);
-            Debug.Log("Total Ammo: " + playerVariables.GetCurrentAmmo());
-            Debug.Log("Shot");
+            uiManager.WeaponStatus("Empty");
             Instantiate(ammo, point, Quaternion.identity);
             if (Physics.Raycast(playerAim, out shootHit))
             {
@@ -56,17 +57,17 @@ public class PlayerShooting : MonoBehaviour
 
         if (Input.GetKeyDown("r") && !isReloading)
         {
-            if (currentAmmoLoaded == 0 && playerVariables.GetCurrentAmmo() > 0)
+            uiManager.AmmoStatus(playerVariables.GetCurrentTotalAmmo());
+            if (currentAmmoLoaded == 0 && playerVariables.GetCurrentTotalAmmo() > 0)
             {
                 isReloading = true;
-                Debug.Log("Reloading...");
                 StartCoroutine(Reloading());
             }
-            else if (playerVariables.GetCurrentAmmo() == 0)
+            else if (playerVariables.GetCurrentTotalAmmo() == 0)
             {
                 Debug.Log("No ammo left");
             }
-            else if (playerVariables.GetCurrentAmmo() < 0)
+            else if (playerVariables.GetCurrentTotalAmmo() < 0)
             {
                 Debug.Log("ERROR: CURRENT AMMO IS LOWER THAN ZERO");
             }
@@ -75,8 +76,9 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator Reloading()
     {
+        uiManager.WeaponStatus("Reloading...");
         yield return new WaitForSeconds(3f);
-        Debug.Log("Reloaded");
+        uiManager.WeaponStatus("Reloaded");
         currentAmmoLoaded = playerVariables.SetCurrentAmmo(ammoCapacity);
         isReloading = false;
     }

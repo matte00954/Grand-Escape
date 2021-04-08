@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PlayerVariables : MonoBehaviour
 {
+
+    public UiManager uiManager;
+
     [Header("Max Variables")]
     public int maxHealthPoints;
     public int maxAmmo;
+    public int maxStamina;
 
     [Header("Pickup Amount")]
     public int healthBoostAmount;
@@ -14,8 +18,19 @@ public class PlayerVariables : MonoBehaviour
 
     private int healthPoints;
     private int currentAmmo;
+    private int currentStamina;
 
-    public int GetCurrentAmmo()
+    public int GetCurrentStamina()
+    {
+        return currentStamina;
+    }
+
+    public int GetCurrentHealthPoints()
+    {
+        return healthPoints;
+    }
+
+    public int GetCurrentTotalAmmo()
     {
         return currentAmmo;
     }
@@ -41,18 +56,16 @@ public class PlayerVariables : MonoBehaviour
     public void ApplyDamage(int damageToBeApplied)
     {
         Debug.Log("Player took :" + damageToBeApplied + " damage");
+        uiManager.HealthPoints(GetCurrentHealthPoints());
         healthPoints -= damageToBeApplied;
-    }
-
-    public int GetCurrentHealthPoints()
-    {
-        return healthPoints;
     }
 
     private void Awake()
     {
         healthPoints = maxHealthPoints;
         currentAmmo = maxAmmo;
+        currentStamina = maxStamina;
+        uiManager.HealthPoints(GetCurrentHealthPoints());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -61,12 +74,14 @@ public class PlayerVariables : MonoBehaviour
         {
             healthPoints += healthBoostAmount;
             Destroy(other.gameObject);
+            uiManager.HealthPoints(GetCurrentHealthPoints());
             Debug.Log("HP restored by " + healthBoostAmount);
         }
         if (other.gameObject.CompareTag("Ammo boost") && currentAmmo < maxAmmo)
         {
             currentAmmo += ammoBoxAmount;
             Destroy(other.gameObject);
+            uiManager.AmmoStatus(GetCurrentTotalAmmo());
             Debug.Log("Ammo restored by " + ammoBoxAmount);
         }
 

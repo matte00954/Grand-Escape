@@ -1580,6 +1580,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486536869}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1527428187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8928756233092268292, guid: 7d10eaaf36071b246b1e101992f70656, type: 3}
+  m_PrefabInstance: {fileID: 762145868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1527428194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527428187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d401e9cab7014c04d892673a6c3cdb61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSniper: 0
+  isMeele: 0
 --- !u!1 &1847048885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1673,7 +1692,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847048885}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: -10}
+  m_LocalPosition: {x: -32, y: 6, z: -7.3}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1884279419}

@@ -25,9 +25,6 @@ public class EnemyVariables : MonoBehaviour
     private void Awake()
     {
 
-        //thisEnemyRigidbody = this.gameObject.GetComponent<Rigidbody>();
-        
-
         if (isSniper)
         {
             resistanceRanged = 0.5f;
@@ -48,14 +45,6 @@ public class EnemyVariables : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        /*if (thisEnemyRigidbody.
-        {
-            ApplyDamage(damageFromBullets * resistanceRanged);
-        }
-        if (Physics.CheckCapsule(thisEnemyTransform.position, bulletCollisionDetectionRadius, PlayerSword))
-        {
-            ApplyDamage(damageFromBullets * resistanceMeele);
-        }*/
     }
 
     private void OnTriggerEnter(Collider other)
@@ -69,18 +58,6 @@ public class EnemyVariables : MonoBehaviour
             ApplyDamage(damageFromSword);
         }
     }
-
-    /*private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.Equals(PlayerBulletPrefab))
-        {
-            ApplyDamage(damageFromBullets * resistanceRanged);
-        }
-        if (other.gameObject.Equals(PlayerSword))
-        {
-            ApplyDamage(damageFromSword * resistanceMeele);
-        }
-    }*/
 
     private void ApplyDamage(float damage)
     {

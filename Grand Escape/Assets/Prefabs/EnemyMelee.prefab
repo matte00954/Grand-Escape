@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8928756233092268295}
   - component: {fileID: -6471416605708566468}
   - component: {fileID: 6121907533333242313}
+  - component: {fileID: 6127365881722283673}
   m_Layer: 8
   m_Name: EnemyMelee
   m_TagString: Untagged
@@ -149,6 +150,20 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6127365881722283673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8928756233092268292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d401e9cab7014c04d892673a6c3cdb61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSniper: 0
+  isMeele: 0
 --- !u!1 &8928756233946378804
 GameObject:
   m_ObjectHideFlags: 0

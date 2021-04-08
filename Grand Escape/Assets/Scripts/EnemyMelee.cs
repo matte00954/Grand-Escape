@@ -68,7 +68,6 @@ public class EnemyMelee : MonoBehaviour
 
     private void SearchWalkPoint()
     {
-        Debug.Log("Started Search");
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
@@ -79,7 +78,6 @@ public class EnemyMelee : MonoBehaviour
         if (Physics.Raycast(walkPoint + Vector3.up * 5f, -transform.up, out raycastHit, 20f, groundMask))
         {
             walkPoint.y = raycastHit.point.y;
-            Debug.Log("Raycast Hit: " + raycastHit.point);
             walkPointSet = true;
         }
     }

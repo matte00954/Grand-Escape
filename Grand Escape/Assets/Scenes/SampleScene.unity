@@ -1134,7 +1134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1e16fd9da138048ad58081277dcd30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 1771174257}
   maxHealthPoints: 100
   maxAmmo: 100
   maxStamina: 100
@@ -2197,7 +2197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoLeft: {fileID: 523129126}
   weaponStatus: {fileID: 1824976559}
-  currentHP: {fileID: 0}
+  currentHP: {fileID: 121647845}
 --- !u!1 &1824976557
 GameObject:
   m_ObjectHideFlags: 0

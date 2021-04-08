@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class EnemyVariables : MonoBehaviour
 {
-    [Header("Bullet detection")]
-    public GameObject PlayerBulletPrefab;
-    public GameObject PlayerSword;
 
-    private Rigidbody thisEnemyRigidbody;
-    public float bulletCollisionDetectionRadius = 0.4f;
+    //private Rigidbody thisEnemyRigidbody;
 
     private int healthPoints = 100;
     
-
     //Dessa bör nog vara i en annan klass i framtiden
     private float resistanceMeele = 0;
     private float resistanceRanged = 0;
@@ -30,7 +25,7 @@ public class EnemyVariables : MonoBehaviour
     private void Awake()
     {
 
-        thisEnemyRigidbody = this.gameObject.GetComponent<Rigidbody>();
+        //thisEnemyRigidbody = this.gameObject.GetComponent<Rigidbody>();
         
 
         if (isSniper)
@@ -65,17 +60,17 @@ public class EnemyVariables : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.Equals(PlayerBulletPrefab))
+        if (other.gameObject.CompareTag("PlayerBullets"))
         {
-            ApplyDamage(damageFromBullets * resistanceRanged);
+            ApplyDamage(damageFromBullets);
         }
-        if (other.gameObject.Equals(PlayerSword))
+        if (other.gameObject.CompareTag("PlayerMeele"))
         {
-            ApplyDamage(damageFromSword * resistanceMeele);
+            ApplyDamage(damageFromSword);
         }
     }
 
-    private void OnCollisionEnter(Collision other)
+    /*private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.Equals(PlayerBulletPrefab))
         {
@@ -85,7 +80,7 @@ public class EnemyVariables : MonoBehaviour
         {
             ApplyDamage(damageFromSword * resistanceMeele);
         }
-    }
+    }*/
 
     private void ApplyDamage(float damage)
     {

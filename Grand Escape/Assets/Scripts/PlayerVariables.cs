@@ -38,6 +38,11 @@ public class PlayerVariables : MonoBehaviour
         }
     }
 
+    public void ApplyDamage(int damageToBeApplied)
+    {
+        damageToBeApplied -= healthPoints;
+    }
+
     public int GetCurrentHealthPoints()
     {
         return healthPoints;
@@ -91,6 +96,11 @@ public class PlayerVariables : MonoBehaviour
 
             healthPoints -= 10;
             currentAmmo -= 10;
+        }
+
+        if(healthPoints <= 0)
+        {
+            Debug.Log("PLAYER HAS DIED");
         }
     }
 }

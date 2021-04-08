@@ -9,10 +9,11 @@ public class DamageArea : MonoBehaviour
     private float timer;
     bool readyToHit;
 
-    // Start is called before the first frame update
-    void Start()
+    public PlayerVariables playerVariables;
+
+    private void Awake()
     {
-        
+        playerVariables = GameObject.Find("First Person Player").GetComponent<PlayerVariables>();
     }
 
     // Update is called once per frame
@@ -28,6 +29,7 @@ public class DamageArea : MonoBehaviour
         {
             Debug.Log("Melee hit on player");
             timer = 0f;
+            playerVariables.ApplyDamage(50); 
         }
     }
 }

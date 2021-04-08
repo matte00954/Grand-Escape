@@ -40,7 +40,8 @@ public class PlayerVariables : MonoBehaviour
 
     public void ApplyDamage(int damageToBeApplied)
     {
-        damageToBeApplied -= healthPoints;
+        Debug.Log("Player took :" + damageToBeApplied + " damage");
+        healthPoints -= damageToBeApplied;
     }
 
     public int GetCurrentHealthPoints()

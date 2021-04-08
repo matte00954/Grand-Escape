@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Health boost
   - Ammo boost
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Player
   - Ground
   - Enemy
-  - 
-  - 
+  - PlayerBullets
+  - PlayerSword
   - 
   - 
   - 

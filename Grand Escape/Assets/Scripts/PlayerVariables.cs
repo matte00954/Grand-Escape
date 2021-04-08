@@ -12,9 +12,8 @@ public class PlayerVariables : MonoBehaviour
     public int healthBoostAmount;
     public int ammoBoxAmount;
 
-    [HideInInspector]
-    public int healthPoints;
-    public int currentAmmo;
+    private int healthPoints;
+    private int currentAmmo;
 
     public int GetCurrentAmmo()
     {
@@ -88,7 +87,7 @@ public class PlayerVariables : MonoBehaviour
 
         if (Input.GetKeyDown("k")) //TEST
         {
-            Debug.Log("Removing 10 of each");
+            Debug.Log("TEST: Removing 10HP/AMMO of each");
 
             healthPoints -= 10;
             currentAmmo -= 10;

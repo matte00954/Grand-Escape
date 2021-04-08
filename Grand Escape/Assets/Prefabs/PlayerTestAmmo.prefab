@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5182433223078295261}
   - component: {fileID: 2875565198689799015}
   - component: {fileID: -8965539588871930641}
-  m_Layer: 0
-  m_Name: TestAmmo
+  m_Layer: 9
+  m_Name: PlayerTestAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

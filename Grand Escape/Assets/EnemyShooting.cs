@@ -5,17 +5,16 @@ using UnityEngine;
 public class EnemyShooting : MonoBehaviour
 {
     public EnemyMovement enemyMovement;
+
     public GameObject gun;
+
     public GameObject barrelEnd;
+
     public GameObject enemyAmmo;
 
     public float enemyRange;
-    public float fireCooldown;
 
     private float rotationSpeedMultiplier;
-    private float fireCooldownTimer;
-
-    private RaycastHit raycastHit;
 
     // Start is called before the first frame update
     void Start()
@@ -29,16 +28,6 @@ public class EnemyShooting : MonoBehaviour
 
         if (enemyMovement.GetTarget().transform)
         {
-
-        }
-
-        if (fireCooldownTimer < fireCooldown)
-            fireCooldownTimer += Time.deltaTime;
-
-        if (Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.forward, out raycastHit, enemyRange, 6) && fireCooldownTimer >= fireCooldown)
-        {
-            fireCooldownTimer = 0;
-            Instantiate(enemyAmmo, barrelEnd.transform.position, Quaternion.identity);
 
         }
     }
@@ -58,12 +47,6 @@ public class EnemyShooting : MonoBehaviour
 
     private void ShootWithGun()
     {
-        Instantiate(enemyAmmo, barrelEnd.transform);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(barrelEnd.transform.position, barrelEnd.transform.forward);
+        Instantiate(enemyAmmo,barrelEnd.transform);
     }
 }

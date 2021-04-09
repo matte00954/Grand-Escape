@@ -113,7 +113,7 @@ MonoBehaviour:
   terrainMask:
     serializedVersion: 2
     m_Bits: 128
-  targetMask:
+  enemyMask:
     serializedVersion: 2
     m_Bits: 256
   bulletHasHitCheck: {fileID: 734761492637824856}
@@ -121,7 +121,6 @@ MonoBehaviour:
   timeUntilBulletDestroyed: 0.1
   speed: 100
   bulletDoesNotHitTimer: 10
-  damage: 100
 --- !u!54 &5592313624258484325
 Rigidbody:
   m_ObjectHideFlags: 0

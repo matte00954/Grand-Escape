@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public float staminaUsedForSprint;
     public float staminaUsedForDodge;
     public float staminaUsedTimeSlow;
+    public float staminaUsedForJump;
 
     [Header("Ground")]
     public Transform groundCheck; //The groundCheck object.
@@ -125,8 +126,11 @@ public class PlayerMovement : MonoBehaviour
     private void ApplyYAxisVelocity()
     {
         //Jump
-        if (Input.GetButtonDown("Jump") && isGrounded && !isDodging)
+        if (Input.GetButtonDown("Jump") && isGrounded && !isDodging && playerVariables.GetCurrentStamina() > staminaUsedForJump)
+        {
+            playerVariables.StaminaToBeUsed(staminaUsedForJump);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
 
         //This builds up the downward velocity vector with gravity.
         velocity.y += gravity * Time.deltaTime;

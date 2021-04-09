@@ -771,9 +771,10 @@ MonoBehaviour:
   gravity: -19.62
   jumpHeight: 3
   sprintSpeed: 24
-  staminaUsedForSprint: 0.1
-  staminaUsedForDodge: 10
-  staminaUsedTimeSlow: 10
+  staminaUsedForSprint: 0.5
+  staminaUsedForDodge: 20
+  staminaUsedTimeSlow: 20
+  staminaUsedForJump: 10
   groundCheck: {fileID: 2116548754}
   groundDistance: 0.4
   groundMask:

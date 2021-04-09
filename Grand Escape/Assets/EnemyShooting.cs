@@ -8,18 +8,28 @@ public class EnemyShooting : MonoBehaviour
 
     public GameObject gun;
 
+    public GameObject barrelEnd;
+
+    public GameObject enemyAmmo;
+
+    public float enemyRange;
+
     private float rotationSpeedMultiplier;
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
         GunVerticalPositioning();
+
+        if (enemyMovement.GetTarget().transform)
+        {
+
+        }
     }
 
     private void GunVerticalPositioning()
@@ -30,7 +40,13 @@ public class EnemyShooting : MonoBehaviour
 
         gun.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeedMultiplier);*/
 
-        //gun.transform.LookAt(enemyMovement.GetTarget().transform);
-        gun.transform.Rotate(Vector3.right * -90);
+        gun.transform.LookAt(enemyMovement.GetTarget().transform);
+
+        gun.transform.Rotate(Vector3.right * 90);
+    }
+
+    private void ShootWithGun()
+    {
+        Instantiate(enemyAmmo,barrelEnd.transform);
     }
 }

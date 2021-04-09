@@ -9,8 +9,6 @@ public class AmmoVelocity : MonoBehaviour
     public Transform bulletHasHitCheck;
 
     private Vector3 direction;
-    private Transform startTransform;
-    private bool hasHitAnything;
 
     public float bulletCollisionDetectionDistance = 0.4f;
     public float timeUntilBulletDestroyed = 0.05f;
@@ -22,8 +20,6 @@ public class AmmoVelocity : MonoBehaviour
     void Start()
     {
         direction = transform.forward;
-
-        hasHitAnything = false;
 
         StartCoroutine(TimeToDestroy(bulletDoesNotHitTimer));
     }

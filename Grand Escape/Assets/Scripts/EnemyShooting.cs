@@ -48,7 +48,6 @@ public class EnemyShooting : MonoBehaviour
 
         if (Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.forward, enemyRange, LayerMask.GetMask("Player")) && reloadTimer >= reloadTimeInSeconds)
         {
-            Debug.Log("Found player, and ready to shoot.");
             reloadTimer = 0;
             Instantiate(enemyAmmo, barrelEnd.transform.position, barrelEnd.transform.rotation);
         }

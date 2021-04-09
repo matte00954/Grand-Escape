@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Time slow activation
-        if (!isDodging && isGrounded && Input.GetKeyDown(KeyCode.C) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlow)
+        if (Input.GetKeyDown(KeyCode.C) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlow)
         {
             playerVariables.StaminaToBeUsed(staminaUsedTimeSlow);
             StartCoroutine(SlowMotion());

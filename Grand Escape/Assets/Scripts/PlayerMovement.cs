@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement")]
     public CharacterController controller; //Reference to the player's CharacterController component.
-    public float speed = 12f; //Player's movement speed.
+    public float speed = 10f; //Player's default movement speed.
+    public float currentSpeed; //Player's current movement speed.
     public float gravity = -9.81f; //Gravity increase rate.
     public float jumpHeight = 3f;
+    public float sprintSpeed = 18f;
 
+    [Header("Stamina")]
+    public int staminaUsedSprint;
+    public int staminaUsedDodge;
+    public int staminaUsedTimeSlow;
+
+    [Header("Ground")]
     public Transform groundCheck; //The groundCheck object.
     public float groundDistance = 0.4f; //The radius of the CheckSphere for 'groundCheck'.
     public LayerMask groundMask;
@@ -22,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     public float slowMotionDelay = 0.25f;
     public float slowMotionAmountMultiplier;
     private bool isDodging = false;
+
+    public PlayerVariables playerVariables;
 
 
 
@@ -39,22 +50,33 @@ public class PlayerMovement : MonoBehaviour
         float z = Input.GetAxis("Vertical");
         Vector3 move = transform.right * x + transform.forward * z;
 
-        //Dodge activation
-        if (!isDodging && isGrounded && Input.GetKeyDown(KeyCode.F))
+
+        if (/*playerVariables.GetCurrentStamina() <= 100*/true) //Alla funktioner här under ska använda stamina
         {
-            isDodging = true;
-            dodgeDirection = move;
-            dodgeTimer = 0f;
-            StartCoroutine(SlowMotion());
+            if (!isDodging && isGrounded && Input.GetKey(KeyCode.LeftShift)) //Sprint
+            {
+                Sprint();
+            }
+            else
+                currentSpeed = speed;
+
+            //Dodge activation
+            if (!isDodging && isGrounded && Input.GetKeyDown(KeyCode.F))
+            {
+                isDodging = true;
+                dodgeDirection = move;
+                dodgeTimer = 0f;
+                StartCoroutine(SlowMotion());
+            }
+
+            //Applying WASD- or Dodge-movement based on 'Dodge'-state
+            if (!isDodging)
+                controller.Move(move * currentSpeed * Time.deltaTime);
+            else if (isDodging && dodgeTimer < dodgeAmountOfTime)
+                ApplyDodge();
+            else
+                isDodging = false;
         }
-        
-        //Applying WASD- or Dodge-movement based on 'Dodge'-state
-        if (!isDodging)
-            controller.Move(move * speed * Time.deltaTime);
-        else if (isDodging && dodgeTimer < dodgeAmountOfTime)
-            ApplyDodge();
-        else
-            isDodging = false;
 
         //Apply gravity and jump velocity
         ApplyYAxisVelocity();
@@ -73,11 +95,17 @@ public class PlayerMovement : MonoBehaviour
     private void ApplyDodge()
     {
         if (Time.timeScale < 1f)
-            controller.Move((dodgeDirection * speed * dodgeSpeedMultiplier) * slowMotionAmountMultiplier * Time.deltaTime);
+            controller.Move((dodgeDirection * currentSpeed * dodgeSpeedMultiplier) * slowMotionAmountMultiplier * Time.deltaTime);
         else
-            controller.Move(dodgeDirection * speed * dodgeSpeedMultiplier * Time.deltaTime);
+            controller.Move(dodgeDirection * currentSpeed * dodgeSpeedMultiplier * Time.deltaTime);
 
         dodgeTimer += Time.deltaTime;
+    }
+
+    private void Sprint() 
+    {
+        currentSpeed = sprintSpeed;
+        playerVariables.StaminaToBeUsed();
     }
 
     private void ApplyYAxisVelocity()

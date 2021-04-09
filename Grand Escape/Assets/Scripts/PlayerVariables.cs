@@ -7,6 +7,13 @@ public class PlayerVariables : MonoBehaviour
 
     public UiManager uiManager;
 
+    [Header("Variables")]
+    public float secondsBeforeStaminaRegen = 1f;
+    public int staminaToBeGainedPerTick = 5;
+
+    public int secondsBeforeStaminaLoss;
+    public int staminaToBeLostPerTickOfSprint = 5;
+
     [Header("Max Variables")]
     public int maxHealthPoints;
     public int maxAmmo;
@@ -19,6 +26,8 @@ public class PlayerVariables : MonoBehaviour
     private int healthPoints;
     private int currentAmmo;
     private int currentStamina;
+
+
 
     public int GetCurrentStamina()
     {
@@ -53,24 +62,11 @@ public class PlayerVariables : MonoBehaviour
         }
     }
 
-    private void UsingStamina(int staminaToBeUsed)
-    {
-        staminaToBeUsed -= currentStamina;
-        uiManager.Stamina(GetCurrentStamina());
-    }
-
-    private void GainingStamina(int staminaToBeGained)
-    {
-        staminaToBeGained += currentStamina;
-        uiManager.Stamina(GetCurrentStamina());
-    }
-
-
     public void ApplyDamage(int damageToBeApplied)
     {
         Debug.Log("Player took :" + damageToBeApplied + " damage");
         healthPoints -= damageToBeApplied;
-        uiManager.HealthPoints(GetCurrentHealthPoints());
+        uiManager.HealthPoints(healthPoints);
     }
 
     private void Awake()
@@ -78,8 +74,10 @@ public class PlayerVariables : MonoBehaviour
         healthPoints = maxHealthPoints;
         currentAmmo = maxAmmo;
         currentStamina = maxStamina;
-        uiManager.HealthPoints(GetCurrentHealthPoints());
-        uiManager.Stamina(GetCurrentStamina());
+
+        uiManager.HealthPoints(healthPoints);
+        uiManager.Stamina(currentStamina);
+        uiManager.AmmoStatus(currentAmmo);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -95,6 +93,10 @@ public class PlayerVariables : MonoBehaviour
         {
             currentAmmo += ammoBoxAmount;
             Destroy(other.gameObject);
+            if(currentAmmo > maxAmmo)
+            {
+                currentAmmo = maxAmmo;
+            }
             uiManager.AmmoStatus(GetCurrentTotalAmmo());
             Debug.Log("Ammo restored by " + ammoBoxAmount);
         }
@@ -131,5 +133,30 @@ public class PlayerVariables : MonoBehaviour
         {
             Debug.Log("PLAYER HAS DIED");
         }
+
+        if(currentStamina <= maxStamina)
+        {
+            StartCoroutine(StaminaGain(staminaToBeGainedPerTick));
+        }
+    }
+
+    public void StaminaToBeUsed()
+    {
+        StartCoroutine(StaminaLoss(staminaToBeLostPerTickOfSprint));
+    }
+
+    public IEnumerator StaminaGain(int staminaToBeGained) //är public ifall att det behövs
+    {
+        yield return new WaitForSeconds(secondsBeforeStaminaRegen); //efter x sekunder så får man stamina
+        currentStamina += staminaToBeGainedPerTick;
+        uiManager.Stamina(currentStamina);
+    }
+
+    public IEnumerator StaminaLoss(int staminaToBeUsed)
+    {
+        yield return new WaitForSeconds(secondsBeforeStaminaLoss); //efter x sekunder förlorar man stamina
+        currentStamina -= staminaToBeLostPerTickOfSprint;
+        uiManager.Stamina(currentStamina);
     }
 }
+

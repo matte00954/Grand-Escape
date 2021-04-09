@@ -8,7 +8,7 @@ TagManager:
   - Health boost
   - Ammo boost
   - PlayerBullets
-  - PlayerMeele
+  - PlayerMelee
   layers:
   - Default
   - TransparentFX

@@ -135,6 +135,7 @@ public class PlayerVariables : MonoBehaviour
         if(currentStamina < maxStamina)
         {
             StartCoroutine(StaminaRegen(currentStamina));
+            uiManager.Stamina((int)currentStamina);
         }
 
         /*if (currentStamina <= 0)

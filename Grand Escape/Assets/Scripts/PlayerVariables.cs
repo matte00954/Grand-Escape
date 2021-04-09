@@ -7,17 +7,14 @@ public class PlayerVariables : MonoBehaviour
 
     public UiManager uiManager;
 
-    [Header("Variables")]
-    public float secondsBeforeStaminaRegen = 1f;
-    public int staminaToBeGainedPerTick = 5;
-
-    public int secondsBeforeStaminaLoss;
-    public int staminaToBeLostPerTickOfSprint = 5;
+    [Header("Stamina")]
+    public int staminaRegenPerTick;
+    public float timeUntilStaminaRegen;
 
     [Header("Max Variables")]
     public int maxHealthPoints;
     public int maxAmmo;
-    public int maxStamina;
+    public float maxStamina;
 
     [Header("Pickup Amount")]
     public int healthBoostAmount;
@@ -25,11 +22,11 @@ public class PlayerVariables : MonoBehaviour
 
     private int healthPoints;
     private int currentAmmo;
-    private int currentStamina;
+    private float currentStamina;
 
 
 
-    public int GetCurrentStamina()
+    public float GetCurrentStamina()
     {
         return currentStamina;
     }
@@ -76,7 +73,7 @@ public class PlayerVariables : MonoBehaviour
         currentStamina = maxStamina;
 
         uiManager.HealthPoints(healthPoints);
-        uiManager.Stamina(currentStamina);
+        uiManager.Stamina((int)currentStamina);
         uiManager.AmmoStatus(currentAmmo);
     }
 
@@ -133,17 +130,45 @@ public class PlayerVariables : MonoBehaviour
         {
             Debug.Log("PLAYER HAS DIED");
         }
+
+
+        if(currentStamina < maxStamina)
+        {
+            StartCoroutine(StaminaRegen(currentStamina));
+        }
+
+        /*if (currentStamina <= 0)
+        {
+            StaminaToBeGained();
+        }*/
     }
 
-    public void StaminaToBeUsed()
+    public void StaminaToBeUsed(float amount)
     {
-        if(true)
+
+        if (currentStamina - amount >= 0)
         {
-            currentStamina -= staminaToBeLostPerTickOfSprint;
-            uiManager.Stamina(currentStamina);
+            currentStamina -= amount;
+            uiManager.Stamina((int)currentStamina);
+        }
+        else
+            Debug.Log("Out of stamina");
+    }
+    public IEnumerator StaminaRegen(float oldCurrentStamina)
+    {
+
+        yield return new WaitForSeconds(timeUntilStaminaRegen);
+
+        if (oldCurrentStamina == currentStamina)
+        {
+            currentStamina += staminaRegenPerTick;
+            if(currentStamina > maxStamina) //om stamina går över max värdet, blir currentStamina istället max
+            {
+                currentStamina = maxStamina;
+            }
+            uiManager.Stamina((int)currentStamina);
         }
     }
-
 
 
     /*public IEnumerator StaminaGain(int staminaToBeGained) //är public ifall att det behövs

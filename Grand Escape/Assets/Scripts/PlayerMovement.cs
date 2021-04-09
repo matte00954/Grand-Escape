@@ -12,10 +12,12 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 3f;
     public float sprintSpeed = 18f;
 
+    private bool isSprinting = false;
+
     [Header("Stamina")]
-    public int staminaUsedSprint;
-    public int staminaUsedDodge;
-    public int staminaUsedTimeSlow;
+    public float staminaUsedForSprint;
+    public float staminaUsedForDodge;
+    public float staminaUsedTimeSlow;
 
     [Header("Ground")]
     public Transform groundCheck; //The groundCheck object.
@@ -23,14 +25,17 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
 
     [Header("Slow motion dash")]
-    private Vector3 dodgeDirection;
     public float slowMotionTime = 1f;
-    private float dodgeTimer = 0f;
-    public float dodgeAmountOfTime = 0.7f;
-    public float dodgeSpeedMultiplier = 3f;
     public float slowMotionDelay = 0.25f;
     public float slowMotionAmountMultiplier;
+
+    [Header("Dodge")]
+    public float dodgeAmountOfTime = 0.7f;
+    public float dodgeSpeedMultiplier = 3f;
     private bool isDodging = false;
+    private Vector3 dodgeDirection;
+    private float dodgeTimer = 0f;
+
 
     public PlayerVariables playerVariables;
 
@@ -50,32 +55,47 @@ public class PlayerMovement : MonoBehaviour
         float z = Input.GetAxis("Vertical");
         Vector3 move = transform.right * x + transform.forward * z;
 
+        //Applying WASD- or Dodge-movement based on 'Dodge'-state
+        if (!isDodging)
+            controller.Move(move * currentSpeed * Time.deltaTime);
+        else if (isDodging && dodgeTimer < dodgeAmountOfTime)
+            ApplyDodge();
+        else
+            isDodging = false;
 
-        if (playerVariables.GetCurrentStamina() >= 0) //Alla funktioner här under ska använda stamina
+
+        if (!isDodging && isGrounded && Input.GetKey(KeyCode.LeftShift) && playerVariables.GetCurrentStamina() > 1) //Sprint
         {
-            if (!isDodging && isGrounded && Input.GetKey(KeyCode.LeftShift)) //Sprint
-            {
-                Sprint();
-            }
-            else
-                currentSpeed = speed;
+            isSprinting = true;
+        }
+        else
+            isSprinting = false;
 
-            //Dodge activation
-            if (!isDodging && isGrounded && Input.GetKeyDown(KeyCode.F))
-            {
-                isDodging = true;
-                dodgeDirection = move;
-                dodgeTimer = 0f;
-                StartCoroutine(SlowMotion());
-            }
+        //Dodge activation
+        if (!isDodging && isGrounded && Input.GetKeyDown(KeyCode.F) && playerVariables.GetCurrentStamina() > staminaUsedForDodge)
+        {
+            isDodging = true;
+            dodgeDirection = move;
+            playerVariables.StaminaToBeUsed(staminaUsedForDodge);
+            dodgeTimer = 0f;
+            //StartCoroutine(SlowMotion());
+        }
 
-            //Applying WASD- or Dodge-movement based on 'Dodge'-state
-            if (!isDodging)
-                controller.Move(move * currentSpeed * Time.deltaTime);
-            else if (isDodging && dodgeTimer < dodgeAmountOfTime)
-                ApplyDodge();
-            else
-                isDodging = false;
+        //Time slow activation
+        if (!isDodging && isGrounded && Input.GetKeyDown(KeyCode.C) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlow)
+        {
+            playerVariables.StaminaToBeUsed(staminaUsedTimeSlow);
+            StartCoroutine(SlowMotion());
+        }
+
+        if (isSprinting)
+        {
+            currentSpeed = sprintSpeed;
+            playerVariables.StaminaToBeUsed(staminaUsedForSprint);
+        }
+        else
+        {
+            currentSpeed = speed;
         }
 
         //Apply gravity and jump velocity
@@ -100,12 +120,6 @@ public class PlayerMovement : MonoBehaviour
             controller.Move(dodgeDirection * currentSpeed * dodgeSpeedMultiplier * Time.deltaTime);
 
         dodgeTimer += Time.deltaTime;
-    }
-
-    private void Sprint() 
-    {
-        currentSpeed = sprintSpeed;
-        playerVariables.StaminaToBeUsed();
     }
 
     private void ApplyYAxisVelocity()

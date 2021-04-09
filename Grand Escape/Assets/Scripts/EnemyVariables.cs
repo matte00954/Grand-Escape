@@ -58,7 +58,7 @@ public class EnemyVariables : MonoBehaviour
         }
     }
 
-    private void ApplyDamage(float damage)
+    public void ApplyDamage(float damage)
     {
         Debug.Log("Enemy took " + damage + " in damage");
         healthPoints -= (int)damage;

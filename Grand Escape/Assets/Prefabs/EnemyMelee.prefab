@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84600944176d0134baa5e1c6b8aa3508, type: 2}
+  - {fileID: 2100000, guid: 36bce9ab6cae8ce43962938466458044, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -162,8 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d401e9cab7014c04d892673a6c3cdb61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSniper: 0
-  isMeele: 0
 --- !u!1 &8928756233946378804
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +225,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c852af001dae0064e9acaa832f1dadb7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -275,6 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 2
+  playerVariables: {fileID: 0}
 --- !u!54 &8928756233946378810
 Rigidbody:
   m_ObjectHideFlags: 0

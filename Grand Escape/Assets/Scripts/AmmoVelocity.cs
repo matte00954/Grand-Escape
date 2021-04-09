@@ -5,7 +5,7 @@ using UnityEngine;
 public class AmmoVelocity : MonoBehaviour
 {
     public LayerMask terrainMask; //Ground mask / terrain mask
-    public LayerMask targetMask;
+    public LayerMask targetMask; //The target layer the projectile is searching to damage
     public Transform bulletHasHitCheck;
 
     private Vector3 direction;

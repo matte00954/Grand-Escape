@@ -21,19 +21,6 @@ public class AmmoVelocity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        switch (targetMask.value)
-        {
-            case 6: //Target player
-                startTransform = transform;
-                break;
-            case 8: //Target enemy
-                startTransform = GameObject.Find("Main Camera").transform;
-                break;
-            default:
-                Debug.LogError("ERROR: The selected TargetMask " + targetMask.value + ", does not match any cases.");
-                break;
-        }
-
         direction = transform.forward;
 
         hasHitAnything = false;
@@ -45,26 +32,6 @@ public class AmmoVelocity : MonoBehaviour
     void Update()
     {
         transform.position += direction * speed * Time.deltaTime;
-
-        //bool hasHitObject = Physics.CheckSphere(bulletHasHitCheck.position, bulletCollisionDetectionDistance, terrainMask);
-        //bool hasHitTarget = Physics.CheckSphere(bulletHasHitCheck.position, bulletCollisionDetectionDistance, targetMask);
-
-        //if (!hasHitAnything) //ser till att det under inte körs flera gånger
-        //{
-        //    if (hasHitObject)
-        //    {
-        //        Debug.Log("Bullet has impacted terrain");
-        //        hasHitAnything = true;
-        //        StartCoroutine(TimeToDestroy(timeUntilBulletDestroyed));
-        //    }
-        //    if (hasHitTarget)
-        //    {
-        //        Debug.Log("Bullet has impacted target");
-        //        hasHitAnything = true;
-        //        StartCoroutine(TimeToDestroy(timeUntilBulletDestroyed));
-        //    }
-            //vi kan behöva fixa en OnTriggerEnter funktion här i framtiden, för att hantera när/hur fiender blir träffade av dessa kulor
-        //}
     }
 
     private void OnTriggerEnter(Collider other)

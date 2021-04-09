@@ -1093,8 +1093,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 741439747}
   speed: 12
+  currentSpeed: 0
   gravity: -19.62
   jumpHeight: 3
+  sprintSpeed: 24
+  staminaUsedSprint: 10
+  staminaUsedDodge: 0
+  staminaUsedTimeSlow: 0
   groundCheck: {fileID: 2116548754}
   groundDistance: 0.4
   groundMask:
@@ -1105,6 +1110,7 @@ MonoBehaviour:
   dodgeSpeedMultiplier: 3
   slowMotionDelay: 0.1
   slowMotionAmountMultiplier: 0.3
+  playerVariables: {fileID: 741439751}
 --- !u!114 &741439750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1135,6 +1141,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiManager: {fileID: 1771174257}
+  secondsBeforeStaminaRegen: 1
+  staminaToBeGainedPerTick: 5
+  secondsBeforeStaminaLoss: 0
+  staminaToBeLostPerTickOfSprint: 5
   maxHealthPoints: 100
   maxAmmo: 100
   maxStamina: 100

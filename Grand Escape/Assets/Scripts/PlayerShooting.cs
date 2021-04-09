@@ -46,7 +46,7 @@ public class PlayerShooting : MonoBehaviour
             currentAmmoLoaded--;
             uiManager.WeaponStatus("Empty");
             Instantiate(ammo, point, Quaternion.identity);
-            if (Physics.Raycast(playerAim, out shootHit))
+            if (Physics.Raycast(playerAim, out shootHit)) //tror att detta ej används
             {
                 Transform objectHit = shootHit.transform;
 
@@ -69,7 +69,7 @@ public class PlayerShooting : MonoBehaviour
             }
             else if (playerVariables.GetCurrentTotalAmmo() < 0)
             {
-                Debug.Log("ERROR: CURRENT AMMO IS LOWER THAN ZERO");
+                Debug.LogError("ERROR: CURRENT AMMO IS LOWER THAN ZERO");
             }
         }
     }

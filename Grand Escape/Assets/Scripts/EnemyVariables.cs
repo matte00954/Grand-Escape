@@ -52,7 +52,7 @@ public class EnemyVariables : MonoBehaviour
         {
             ApplyDamage(damageFromBullets);
         }
-        if (other.gameObject.CompareTag("PlayerMeele"))
+        if (other.gameObject.CompareTag("PlayerMelee"))
         {
             ApplyDamage(damageFromSword);
         }

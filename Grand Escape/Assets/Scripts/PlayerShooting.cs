@@ -45,7 +45,7 @@ public class PlayerShooting : MonoBehaviour
         {
             currentAmmoLoaded--;
             uiManager.WeaponStatus("Empty");
-            Instantiate(ammo, point, Quaternion.identity);
+            Instantiate(ammo, point, playerCamera.transform.rotation);
             if (Physics.Raycast(playerAim, out shootHit)) //tror att detta ej används
             {
                 Transform objectHit = shootHit.transform;

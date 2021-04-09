@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8965539588871930641}
   - component: {fileID: 5592313624258484325}
   m_Layer: 9
-  m_Name: PlayerTestAmmo
+  m_Name: EnemyTestAmmo
   m_TagString: PlayerBullets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e493bdc1929588849b4d3d47f9c88ad7, type: 2}
+  - {fileID: 2100000, guid: 678cc2dfd18a40042bf6ac708bcf58ea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

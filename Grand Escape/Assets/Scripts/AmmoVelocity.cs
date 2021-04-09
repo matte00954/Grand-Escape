@@ -34,7 +34,7 @@ public class AmmoVelocity : MonoBehaviour
                 break;
         }
 
-        direction = startTransform.forward;
+        direction = transform.forward;
 
         hasHitAnything = false;
 
@@ -90,6 +90,8 @@ public class AmmoVelocity : MonoBehaviour
             case 11:
                 Debug.Log("Bullet has impacted wall");
                 StartCoroutine(TimeToDestroy(timeUntilBulletDestroyed));
+                break;
+            case 0:
                 break;
             default:
                 Debug.LogError("ERROR: Bullet could not find the appropriate layer from the hit target. Returned layer nr is: " + other.gameObject.layer);

@@ -25,7 +25,7 @@ public class DamageArea : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == 6 && timer >= cooldown)
+        if (other.gameObject.layer == 6 && timer >= cooldown) //Other-layer must be the playerobject's layer
         {
             Debug.Log("Melee hit on player");
             timer = 0f;

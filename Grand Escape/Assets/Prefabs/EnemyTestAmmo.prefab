@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8965539588871930641}
   - component: {fileID: 5592313624258484325}
   m_Layer: 9
-  m_Name: PlayerTestAmmo
+  m_Name: EnemyTestAmmo
   m_TagString: PlayerBullets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e493bdc1929588849b4d3d47f9c88ad7, type: 2}
+  - {fileID: 2100000, guid: 2c694844239566543aeea8d43de19ce9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,13 +115,13 @@ MonoBehaviour:
     m_Bits: 128
   targetMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 64
   bulletHasHitCheck: {fileID: 734761492637824856}
   bulletCollisionDetectionDistance: 0.4
   timeUntilBulletDestroyed: 0.1
   speed: 100
   bulletDoesNotHitTimer: 10
-  damage: 100
+  damage: 50
 --- !u!54 &5592313624258484325
 Rigidbody:
   m_ObjectHideFlags: 0

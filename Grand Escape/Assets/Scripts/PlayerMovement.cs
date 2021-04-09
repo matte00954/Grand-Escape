@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
 
-        if (/*playerVariables.GetCurrentStamina() <= 100*/true) //Alla funktioner här under ska använda stamina
+        if (playerVariables.GetCurrentStamina() >= 0) //Alla funktioner här under ska använda stamina
         {
             if (!isDodging && isGrounded && Input.GetKey(KeyCode.LeftShift)) //Sprint
             {

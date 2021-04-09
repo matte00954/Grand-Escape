@@ -133,30 +133,31 @@ public class PlayerVariables : MonoBehaviour
         {
             Debug.Log("PLAYER HAS DIED");
         }
-
-        if(currentStamina <= maxStamina)
-        {
-            StartCoroutine(StaminaGain(staminaToBeGainedPerTick));
-        }
     }
 
     public void StaminaToBeUsed()
     {
-        StartCoroutine(StaminaLoss(staminaToBeLostPerTickOfSprint));
+        if(true)
+        {
+            currentStamina -= staminaToBeLostPerTickOfSprint;
+            uiManager.Stamina(currentStamina);
+        }
     }
 
-    public IEnumerator StaminaGain(int staminaToBeGained) //är public ifall att det behövs
+
+
+    /*public IEnumerator StaminaGain(int staminaToBeGained) //är public ifall att det behövs
     {
         yield return new WaitForSeconds(secondsBeforeStaminaRegen); //efter x sekunder så får man stamina
         currentStamina += staminaToBeGainedPerTick;
         uiManager.Stamina(currentStamina);
-    }
+    }*/
 
-    public IEnumerator StaminaLoss(int staminaToBeUsed)
+    /*public IEnumerator StaminaLoss(int staminaToBeUsed)
     {
         yield return new WaitForSeconds(secondsBeforeStaminaLoss); //efter x sekunder förlorar man stamina
         currentStamina -= staminaToBeLostPerTickOfSprint;
         uiManager.Stamina(currentStamina);
-    }
+    }*/
 }
 

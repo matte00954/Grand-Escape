@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7794666079471084343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -115,13 +115,13 @@ MonoBehaviour:
     m_Bits: 128
   targetMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 64
   bulletHasHitCheck: {fileID: 734761492637824856}
   bulletCollisionDetectionDistance: 0.4
   timeUntilBulletDestroyed: 0.1
   speed: 100
   bulletDoesNotHitTimer: 10
-  damage: 100
+  damage: 50
 --- !u!54 &5592313624258484325
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -5,16 +5,15 @@ using UnityEngine;
 public class EnemyShooting : MonoBehaviour
 {
     public EnemyMovement enemyMovement;
-
     public GameObject gun;
-
     public GameObject barrelEnd;
-
     public GameObject enemyAmmo;
 
     public float enemyRange;
+    public float reloadTimeInSeconds;
 
     private float rotationSpeedMultiplier;
+    private float reloadTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -26,10 +25,13 @@ public class EnemyShooting : MonoBehaviour
     {
         GunVerticalPositioning();
 
-        if (enemyMovement.GetTarget().transform)
-        {
+        if (reloadTimer <= reloadTimeInSeconds)
+            reloadTimer += Time.deltaTime;
 
-        }
+        //if (enemyMovement.GetTarget().transform)
+        //{
+
+        //}
     }
 
     private void GunVerticalPositioning()
@@ -43,10 +45,23 @@ public class EnemyShooting : MonoBehaviour
         gun.transform.LookAt(enemyMovement.GetTarget().transform);
 
         gun.transform.Rotate(Vector3.right * 90);
+
+        if (Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.forward, enemyRange, LayerMask.GetMask("Player")) && reloadTimer >= reloadTimeInSeconds)
+        {
+            Debug.Log("Found player, and ready to shoot.");
+            reloadTimer = 0;
+            Instantiate(enemyAmmo, barrelEnd.transform.position, barrelEnd.transform.rotation);
+        }
     }
 
     private void ShootWithGun()
     {
-        Instantiate(enemyAmmo,barrelEnd.transform);
+        Instantiate(enemyAmmo, barrelEnd.transform.position, barrelEnd.transform.rotation);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(barrelEnd.transform.position, barrelEnd.transform.forward * enemyRange);
     }
 }

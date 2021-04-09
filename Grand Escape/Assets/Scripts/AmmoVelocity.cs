@@ -39,14 +39,14 @@ public class AmmoVelocity : MonoBehaviour
         switch (other.gameObject.layer)
         {
             case 6:
-                if (targetMask.value == 6)
+                if (targetMask == LayerMask.GetMask("Player"))
                 {
-                    other.gameObject.GetComponent<PlayerVariables>().ApplyDamage(damage);
+                    other.gameObject.GetComponentInParent<PlayerVariables>().ApplyDamage(damage);
                     StartCoroutine(TimeToDestroy(timeUntilBulletDestroyed));
                 }
                 break;
             case 8:
-                if (targetMask.value == 8)
+                if (targetMask.value == LayerMask.GetMask("Enemy"))
                     other.gameObject.GetComponent<EnemyVariables>().ApplyDamage(damage);
                 StartCoroutine(TimeToDestroy(timeUntilBulletDestroyed));
                 break;

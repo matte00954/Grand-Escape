@@ -26,4 +26,10 @@ public class EnemyMovement : MonoBehaviour
         //gör så att fienden roterar mot spelaren
         //OBS verkar får spelet att lagga? finns det en bättre lösning?
     }
+
+
+    public GameObject GetTarget()
+    {
+        return player;
+    }
 }

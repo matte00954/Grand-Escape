@@ -733,6 +733,7 @@ MonoBehaviour:
   currentSpeed: 0
   gravity: -19.62
   jumpHeight: 3
+  sprintCooldown: 1.5
   sprintSpeed: 24
   staminaUsedForSprint: 0.05
   staminaUsedForDodge: 20

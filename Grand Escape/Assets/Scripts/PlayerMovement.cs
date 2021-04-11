@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float currentSpeed; //Player's current movement speed.
     public float gravity = -9.81f; //Gravity increase rate.
     public float jumpHeight = 3f;
+    public float sprintCooldown;
     public float sprintSpeed = 18f;
 
     private bool isSprinting = false;
@@ -91,6 +92,8 @@ public class PlayerMovement : MonoBehaviour
         if (isSprinting)
         {
             currentSpeed = sprintSpeed;
+            float f = sprintCooldown -= Time.deltaTime;
+            Debug.Log("Sprint : " + sprintCooldown);
             playerVariables.StaminaToBeUsed(staminaUsedForSprint);
         }
         else

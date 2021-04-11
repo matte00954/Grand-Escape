@@ -52,9 +52,9 @@ public class PlayerMovement : MonoBehaviour
         CheckGround();
 
         //WASD Input
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-        Vector3 move = transform.right * x + transform.forward * z;
+        float inputX = Input.GetAxis("Horizontal");
+        float inputZ = Input.GetAxis("Vertical");
+        Vector3 move = transform.right * inputX + transform.forward * inputZ;
 
         //Applying WASD- or Dodge-movement based on 'Dodge'-state
         if (!isDodging)
@@ -64,19 +64,18 @@ public class PlayerMovement : MonoBehaviour
         else
             isDodging = false;
 
-
-        if (!isDodging && isGrounded && Input.GetKey(KeyCode.LeftShift) && playerVariables.GetCurrentStamina() > 1) //Sprint
-        {
+        //Sprint
+        if (!isDodging && isGrounded && Input.GetKey(KeyCode.LeftShift) && playerVariables.GetCurrentStamina() > 1 && inputZ == 1 && inputX == 0)
             isSprinting = true;
-        }
         else
             isSprinting = false;
 
         //Dodge activation
-        if (!isDodging && isGrounded && Input.GetKeyDown(KeyCode.F) && playerVariables.GetCurrentStamina() > staminaUsedForDodge)
+        if (!isDodging && isGrounded && Input.GetKeyDown(KeyCode.F) && playerVariables.GetCurrentStamina() > staminaUsedForDodge && inputX != 0)
         {
             isDodging = true;
-            dodgeDirection = move;
+            dodgeDirection = transform.right * inputX + transform.forward * inputZ * 0.5f;
+
             playerVariables.StaminaToBeUsed(staminaUsedForDodge);
             dodgeTimer = 0f;
             //StartCoroutine(SlowMotion());
@@ -122,6 +121,9 @@ public class PlayerMovement : MonoBehaviour
 
         dodgeTimer += Time.deltaTime;
     }
+
+    public bool IsDodging() { return isDodging; }
+    public bool IsSprinting() { return isSprinting; }
 
     private void ApplyYAxisVelocity()
     {

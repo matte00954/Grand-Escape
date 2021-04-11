@@ -739,6 +739,8 @@ MonoBehaviour:
   staminaUsedForDodge: 20
   staminaUsedTimeSlow: 20
   staminaUsedForJump: 10
+  minStaminaForSprintStart: 0.1
+  ranOutOfStaminaTimer: 3
   groundCheck: {fileID: 2116548754}
   groundDistance: 0.4
   groundMask:

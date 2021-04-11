@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     public float staminaUsedForDodge;
     public float staminaUsedTimeSlow;
     public float staminaUsedForJump;
+    public float ranOutOfStaminaTimer;
+
+    private bool ranOutOfStaminaAndCanNotSprint;
 
     [Header("Ground")]
     public Transform groundCheck; //The groundCheck object.
@@ -46,6 +49,11 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity; //This vector is used for storing added gravity every frame, building up downward velocity
     bool isGrounded;
 
+    private void Awake()
+    {
+        ranOutOfStaminaAndCanNotSprint = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -66,8 +74,11 @@ public class PlayerMovement : MonoBehaviour
             isDodging = false;
 
         //Sprint
-        if (!isDodging && isGrounded && Input.GetKey(KeyCode.LeftShift) && playerVariables.GetCurrentStamina() > 1 && inputZ == 1 && inputX == 0)
+        if (!isDodging && isGrounded && Input.GetKey(KeyCode.LeftShift) && playerVariables.GetCurrentStamina() > 0 &&
+            inputZ == 1 && inputX == 0 && !ranOutOfStaminaAndCanNotSprint)
+        {
             isSprinting = true;
+        }
         else
             isSprinting = false;
 
@@ -92,9 +103,12 @@ public class PlayerMovement : MonoBehaviour
         if (isSprinting)
         {
             currentSpeed = sprintSpeed;
-            float f = sprintCooldown -= Time.deltaTime;
-            Debug.Log("Sprint : " + sprintCooldown);
             playerVariables.StaminaToBeUsed(staminaUsedForSprint);
+
+            if(playerVariables.GetCurrentStamina() < 1f)
+            {
+                StartCoroutine(RanOutOfStamina());
+            }
         }
         else
         {
@@ -150,5 +164,12 @@ public class PlayerMovement : MonoBehaviour
         Time.timeScale = slowMotionAmountMultiplier;
         yield return new WaitForSeconds(slowMotionTime * slowMotionAmountMultiplier);
         Time.timeScale = 1f; //återställer till vanlig tid
+    }
+    private IEnumerator RanOutOfStamina()
+    {
+        ranOutOfStaminaAndCanNotSprint = true;
+        Debug.Log("Player exhausted and can not sprint for " + ranOutOfStaminaTimer + " seconds");
+        yield return new WaitForSeconds(ranOutOfStaminaTimer); //Player gets exhausted and cant sprint for this amount of time
+        ranOutOfStaminaAndCanNotSprint = false;
     }
 }

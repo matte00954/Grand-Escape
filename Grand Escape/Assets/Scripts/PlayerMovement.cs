@@ -4,55 +4,65 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement")]
-    public CharacterController controller; //Reference to the player's CharacterController component.
-    public float speed = 10f; //Player's default movement speed.
-    public float currentSpeed; //Player's current movement speed.
-    public float gravity = -9.81f; //Gravity increase rate.
-    public float jumpHeight = 3f;
-    public float sprintCooldown;
-    public float sprintSpeed = 18f;
 
-    private bool isSprinting = false;
+    [SerializeField] PlayerVariables playerVariables;
+
+    [SerializeField] Transform groundCheck; //The groundCheck object.
+
+    [SerializeField] LayerMask groundMask;
+
+    [SerializeField] float groundDistance = 0.4f; //The radius of the CheckSphere for 'groundCheck'.
+
+    [Header("Controller")]
+    [SerializeField] CharacterController controller; //Reference to the player's CharacterController component.
+
+    [Header("Movement")]
+    [SerializeField] float 
+        speed, 
+        currentSpeed,
+        gravity,
+        jumpHeight,
+        sprintCooldown,
+        sprintSpeed,
+        crouchSpeed;
+
+    //OLD VALUES
+    /*private float speed; //Player's default movement speed.
+    private float currentSpeed; //Player's current movement speed.
+    private float gravity = -9.81f; //Gravity increase rate.
+    private float jumpHeight = 3f;
+    private float sprintCooldown;
+    private float sprintSpeed = 18f;
+    private float crouchSpeed;*/
+    //gravity = -9.81f;
+
 
     [Header("Stamina")]
-    public float staminaUsedForSprint;
-    public float staminaUsedForDodge;
-    public float staminaUsedTimeSlow;
-    public float staminaUsedForJump;
-    public float ranOutOfStaminaTimer;
+    [SerializeField] float 
+        staminaUsedForSprint, 
+        staminaUsedForDodge, 
+        staminaUsedTimeSlow, 
+        staminaUsedForJump, 
+        ranOutOfStaminaTimer;
 
-    private bool ranOutOfStaminaAndCanNotSprint;
+    [Header("Slow motion dash")] [SerializeField] float 
+        slowMotionTime,
+        slowMotionDelay,
+        slowMotionAmountMultiplier;
 
-    [Header("Ground")]
-    public Transform groundCheck; //The groundCheck object.
-    public float groundDistance = 0.4f; //The radius of the CheckSphere for 'groundCheck'.
-    public LayerMask groundMask;
+    [Header("Dodge")] [SerializeField] float 
+        dodgeAmountOfTime,
+        dodgeSpeedMultiplier;
 
-    [Header("Slow motion dash")]
-    public float slowMotionTime = 1f;
-    public float slowMotionDelay = 0.25f;
-    public float slowMotionAmountMultiplier;
+     Vector3 dodgeDirection;
+     Vector3 velocity; //This vector is used for storing added gravity every frame, building up downward velocity
 
-    [Header("Dodge")]
-    public float dodgeAmountOfTime = 0.7f;
-    public float dodgeSpeedMultiplier = 3f;
-    private bool isDodging = false;
-    private Vector3 dodgeDirection;
-    private float dodgeTimer = 0f;
+     bool isSprinting = false;
+     bool ranOutOfStaminaAndCanNotSprint = false;
+     bool isDodging = false;
+     bool isGrounded;
 
-
-    public PlayerVariables playerVariables;
-
-
-
-    Vector3 velocity; //This vector is used for storing added gravity every frame, building up downward velocity
-    bool isGrounded;
-
-    private void Awake()
-    {
-        ranOutOfStaminaAndCanNotSprint = false;
-    }
+     float dodgeTimer = 0f; //Needs to be zero
 
     // Update is called once per frame
     void Update()
@@ -110,16 +120,15 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(RanOutOfStamina());
             }
         }
+        else if (Input.GetKey(KeyCode.Z))
+        {
+            currentSpeed = crouchSpeed;
+            Crouch();
+        }
         else
         {
             currentSpeed = speed;
         }
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Crouch();
-        }
-
 
         //Apply gravity and jump velocity
         ApplyYAxisVelocity();
@@ -127,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Crouch()
     {
-
+        //TODO
     }
 
     private void CheckGround()

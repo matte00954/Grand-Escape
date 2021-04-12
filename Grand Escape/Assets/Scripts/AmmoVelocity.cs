@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class AmmoVelocity : MonoBehaviour
 {
-    public LayerMask terrainMask; //Ground mask / terrain mask
-    public LayerMask targetMask; //The target layer the projectile is searching to damage
-    public Transform bulletHasHitCheck;
+    [SerializeField] LayerMask terrainMask; //Ground mask / terrain mask
+    [SerializeField] LayerMask targetMask; //The target layer the projectile is searching to damage
+    [SerializeField] Transform bulletHasHitCheck;
 
     private Vector3 direction;
 
-    public float bulletCollisionDetectionDistance = 0.4f;
-    public float timeUntilBulletDestroyed = 0.05f;
-    public float speed;
-    public float bulletDoesNotHitTimer;
-    public int damage;
+    [SerializeField] float bulletCollisionDetectionDistance = 0.4f;
+    [SerializeField] float timeUntilBulletDestroyed = 0.05f;
+    [SerializeField] float speed;
+    [SerializeField] float bulletDoesNotHitTimer;
+    [SerializeField] int damage;
 
     // Start is called before the first frame update
     void Start()

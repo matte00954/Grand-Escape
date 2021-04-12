@@ -3,22 +3,24 @@ using UnityEngine.AI;
 
 public class EnemyMelee : MonoBehaviour
 {
-    public NavMeshAgent agent;
-    public Transform playerTransform;
-    public LayerMask groundMask, playerMask;
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] LayerMask groundMask, playerMask;
+    Transform playerTransform;
 
     //Patroling
-    public Vector3 walkPoint;
+    Vector3 walkPoint;
+    [SerializeField] float walkPointRange;
+    [SerializeField] float timeBetweenPatrol;
+    [SerializeField] float patrolSpeed;
+
     bool walkPointSet;
-    public float walkPointRange;
     float patrolTimer;
-    public float timeBetweenPatrol;
-    public float patrolSpeed;
 
     //Attacking
-    public float sightRange;
-    public float attackSpeed;
-    public bool playerInSightRange;
+    [SerializeField] float sightRange;
+    [SerializeField] float attackSpeed;
+    
+    bool playerInSightRange;
 
     private void Awake()
     {

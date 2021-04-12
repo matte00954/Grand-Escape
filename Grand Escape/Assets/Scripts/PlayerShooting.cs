@@ -5,17 +5,17 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour
 {
     [Header("Gameobjects")]
-    public Camera playerCamera;
-    public GameObject ammo;
-    public PlayerVariables playerVariables;
-    public UiManager uiManager;
+    [SerializeField] Camera playerCamera;
+    [SerializeField] GameObject ammo;
+    [SerializeField] PlayerVariables playerVariables;
+    [SerializeField] UiManager uiManager;
 
     //private GameObject player; //kanske behövs i framtiden?
     private RaycastHit shootHit;
     private Ray playerAim;
 
     [Header("Ammo")]
-    public int ammoCapacity; //hur många skott i vapnet
+    [SerializeField] int ammoCapacity; //hur många skott i vapnet
 
     private bool isReloading;
     private int currentAmmoLoaded; //skott som är laddade

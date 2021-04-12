@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    
-    public float mouseSensitivity = 100f; //Default mouse sensitivity value. Can be changed otherwise in Inspector.
-    public float fovForZoom = 20;
+    [SerializeField] Transform playerBody; //The player's model object.
+    [SerializeField] Camera camera;
 
-    public Transform playerBody; //The player's model object.
-    public Camera camera;
+    [SerializeField] float mouseSensitivity = 100f; //Default mouse sensitivity value. Can be changed otherwise in Inspector.
+    [SerializeField] float fovForZoom = 20;
 
     float xRotation = 0f;
     float defaultFov;

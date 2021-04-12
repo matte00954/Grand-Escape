@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemyShooting : MonoBehaviour
 {
-    public EnemyMovement enemyMovement;
-    public GameObject gun;
-    public GameObject barrelEnd;
-    public GameObject enemyAmmo;
+    [SerializeField] EnemyMovement enemyMovement;
+    [SerializeField] GameObject gun;
+    [SerializeField] GameObject barrelEnd;
+    [SerializeField] GameObject enemyAmmo;
 
-    public float enemyRange;
-    public float reloadTimeInSeconds;
+    [SerializeField] float enemyRange;
+    [SerializeField] float reloadTimeInSeconds;
 
     private float rotationSpeedMultiplier;
     private float reloadTimer;

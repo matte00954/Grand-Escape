@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float staminaUsedForJump;
     [SerializeField] float ranOutOfStaminaTimer;
 
-    [Header("Slow motion dash")]
+    [Header("Slow motion")]
     [SerializeField] float slowMotionTime;
     [SerializeField] float slowMotionDelay;
     [SerializeField] float slowMotionAmountMultiplier;

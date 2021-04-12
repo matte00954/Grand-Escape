@@ -26,20 +26,11 @@ public class PlayerVariables : MonoBehaviour
 
 
 
-    public float GetCurrentStamina()
-    {
-        return currentStamina;
-    }
+    public float GetCurrentStamina() { return currentStamina; }
 
-    public int GetCurrentHealthPoints()
-    {
-        return healthPoints;
-    }
+    public int GetCurrentHealthPoints() { return healthPoints; }
 
-    public int GetCurrentTotalAmmo()
-    {
-        return currentAmmo;
-    }
+    public int GetCurrentTotalAmmo() { return currentAmmo; }
 
     public int SetCurrentAmmo(int sizeOfFullClipFromWeapon)
     {

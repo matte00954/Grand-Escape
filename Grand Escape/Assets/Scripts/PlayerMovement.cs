@@ -115,8 +115,19 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = speed;
         }
 
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Crouch();
+        }
+
+
         //Apply gravity and jump velocity
         ApplyYAxisVelocity();
+    }
+
+    private void Crouch()
+    {
+
     }
 
     private void CheckGround()

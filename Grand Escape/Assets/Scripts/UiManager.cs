@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
-    public Text ammoLeft;
-    public Text weaponStatus;
-    public Text currentHP;
-    public Text currentStamina;
+    [SerializeField] Text ammoLeft;
+    [SerializeField] Text weaponStatus;
+    [SerializeField] Text currentHP;
+    [SerializeField] Text currentStamina;
 
     public void WeaponStatus(string s)
     {

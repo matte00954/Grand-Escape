@@ -3,9 +3,9 @@ using System.Collections;
 
 public class CamAnimation : MonoBehaviour
 {
-    public CharacterController playerController;
-    public PlayerMovement playerMovement;
-    public Animation anim; //Empty GameObject's animation component
+    [SerializeField] CharacterController playerController;
+    [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] Animation anim; //Empty GameObject's animation component
 
     private bool isMoving;
 

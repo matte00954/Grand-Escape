@@ -5,11 +5,11 @@ using UnityEngine;
 public class DamageArea : MonoBehaviour
 {
     /*public int damage; //<---- TODO: inflict damage to player health */
-    public float cooldown = 2f;
-    private float timer;
-    bool readyToHit;
+    [SerializeField] PlayerVariables playerVariables;
+    [SerializeField] float cooldown = 2f;
 
-    public PlayerVariables playerVariables;
+    float timer;
+    bool readyToHit;
 
     private void Awake()
     {

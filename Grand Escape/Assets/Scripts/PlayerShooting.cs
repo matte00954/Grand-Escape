@@ -11,8 +11,8 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] UiManager uiManager;
 
     //private GameObject player; //kanske behövs i framtiden?
-    private RaycastHit shootHit;
-    private Ray playerAim;
+    RaycastHit shootHit;
+    Ray playerAim;
 
     [Header("Ammo")]
     [SerializeField] int ammoCapacity; //hur många skott i vapnet

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerMelee : MonoBehaviour
 {
-    public GameObject meeleBox;
-    public float meeleCooldown;
-    public float meeleAttackActive;
-    public float meeleStaminaCost;
+    [SerializeField] GameObject meeleBox;
+    [SerializeField] float meeleCooldown;
+    [SerializeField] float meeleAttackActive;
+    [SerializeField] float meeleStaminaCost;
 
-    private PlayerVariables playerVariables;
+    PlayerVariables playerVariables;
 
     private void Awake()
     {

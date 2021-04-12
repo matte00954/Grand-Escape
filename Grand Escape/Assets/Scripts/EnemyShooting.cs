@@ -12,8 +12,8 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField] float enemyRange;
     [SerializeField] float reloadTimeInSeconds;
 
-    private float rotationSpeedMultiplier;
-    private float reloadTimer;
+    float rotationSpeedMultiplier;
+    float reloadTimer;
 
     // Start is called before the first frame update
     void Start()

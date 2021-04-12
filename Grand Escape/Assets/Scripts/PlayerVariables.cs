@@ -5,26 +5,24 @@ using UnityEngine;
 public class PlayerVariables : MonoBehaviour
 {
 
-    public UiManager uiManager;
+    [SerializeField] UiManager uiManager;
 
     [Header("Stamina")]
-    public int staminaRegenPerTick;
-    public float timeUntilStaminaRegen;
+    [SerializeField] int staminaRegenPerTick;
+    [SerializeField] float timeUntilStaminaRegen;
 
     [Header("Max Variables")]
-    public int maxHealthPoints;
-    public int maxAmmo;
-    public float maxStamina;
+    [SerializeField] int maxHealthPoints;
+    [SerializeField] int maxAmmo;
+    [SerializeField] float maxStamina;
 
     [Header("Pickup Amount")]
-    public int healthBoostAmount;
-    public int ammoBoxAmount;
+    [SerializeField] int healthBoostAmount;
+    [SerializeField] int ammoBoxAmount;
 
-    private int healthPoints;
-    private int currentAmmo;
-    private float currentStamina;
-
-
+    int healthPoints;
+    int currentAmmo;
+    float currentStamina;
 
     public float GetCurrentStamina() { return currentStamina; }
 
@@ -103,47 +101,26 @@ public class PlayerVariables : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown("g")) //TEST
-        {
-            Debug.Log("HP is " + healthPoints);
-            Debug.Log("Ammo is " + currentAmmo);
-        }
-
-        if (Input.GetKeyDown("k")) //TEST
-        {
-            Debug.Log("TEST: Removing 10HP/AMMO of each");
-
-            healthPoints -= 10;
-            currentAmmo -= 10;
-        }
-
         if(healthPoints <= 0)
         {
             Debug.Log("PLAYER HAS DIED");
         }
 
-
-        if(currentStamina < maxStamina)
+        if(currentStamina < maxStamina) //stamina regen start
         {
             StartCoroutine(StaminaRegen(currentStamina));
             uiManager.Stamina((int)currentStamina);
         }
-
-        /*if (currentStamina <= 0)
-        {
-            StaminaToBeGained();
-        }*/
     }
 
-    public void StaminaToBeUsed(float amount)
+    public void StaminaToBeUsed(float amount) //Everything that costs stamina should use this method
     {
-
         if (currentStamina - amount >= 0)
         {
             currentStamina -= amount;
             uiManager.Stamina((int)currentStamina);
         }
-        else
+        else 
             Debug.Log("Out of stamina");
     }
     public IEnumerator StaminaRegen(float oldCurrentStamina)
@@ -161,20 +138,5 @@ public class PlayerVariables : MonoBehaviour
             uiManager.Stamina((int)currentStamina);
         }
     }
-
-
-    /*public IEnumerator StaminaGain(int staminaToBeGained) //är public ifall att det behövs
-    {
-        yield return new WaitForSeconds(secondsBeforeStaminaRegen); //efter x sekunder så får man stamina
-        currentStamina += staminaToBeGainedPerTick;
-        uiManager.Stamina(currentStamina);
-    }*/
-
-    /*public IEnumerator StaminaLoss(int staminaToBeUsed)
-    {
-        yield return new WaitForSeconds(secondsBeforeStaminaLoss); //efter x sekunder förlorar man stamina
-        currentStamina -= staminaToBeLostPerTickOfSprint;
-        uiManager.Stamina(currentStamina);
-    }*/
 }
 

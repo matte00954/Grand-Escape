@@ -915,31 +915,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbffbb62f9c81e41af3e87ed52c696f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerVariables: {fileID: 741439751}
+  groundCheck: {fileID: 2116548754}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 128
+  groundDistance: 0.4
   controller: {fileID: 741439747}
   speed: 12
-  currentSpeed: 0
   gravity: -19.62
   jumpHeight: 3
   sprintCooldown: 1.5
   sprintSpeed: 24
   crouchSpeed: 6
-  heightWhenCrouching: 0
   staminaUsedForSprint: 0.05
   staminaUsedForDodge: 10
   staminaUsedTimeSlow: 20
   staminaUsedForJump: 10
   ranOutOfStaminaTimer: 3
-  groundCheck: {fileID: 2116548754}
-  groundDistance: 0.4
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 128
   slowMotionTime: 1
   slowMotionDelay: 0.15
   slowMotionAmountMultiplier: 0.2
   dodgeAmountOfTime: 0.5
   dodgeSpeedMultiplier: 2.5
-  playerVariables: {fileID: 741439751}
 --- !u!114 &741439750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,6 +968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiManager: {fileID: 1771174257}
+  currentRespawnPoint: {x: 0, y: 100, z: 0}
   staminaRegenPerTick: 2
   timeUntilStaminaRegen: 0.5
   maxHealthPoints: 100
@@ -1217,10 +1216,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b5123f9cc96dd4ea9a491e0955eec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
-  fovForZoom: 20
   playerBody: {fileID: 741439748}
   camera: {fileID: 963194227}
+  mouseSensitivity: 100
+  fovForZoom: 20
 --- !u!1 &1004832891
 GameObject:
   m_ObjectHideFlags: 0

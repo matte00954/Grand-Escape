@@ -7,6 +7,10 @@ public class PlayerVariables : MonoBehaviour
 
     [SerializeField] UiManager uiManager;
 
+    [SerializeField] Vector3 currentRespawnPoint;
+
+    GameObject Player;
+
     [Header("Stamina")]
     [SerializeField] int staminaRegenPerTick;
     [SerializeField] float timeUntilStaminaRegen;
@@ -23,6 +27,19 @@ public class PlayerVariables : MonoBehaviour
     int healthPoints;
     int currentAmmo;
     float currentStamina;
+
+    private void Awake()
+    {
+        Player = this.gameObject;
+        healthPoints = maxHealthPoints;
+        currentAmmo = maxAmmo;
+        currentStamina = maxStamina;
+
+        uiManager.HealthPoints(healthPoints);
+        uiManager.Stamina((int)currentStamina);
+        uiManager.AmmoStatus(currentAmmo);
+    }
+
 
     public float GetCurrentStamina() { return currentStamina; }
 
@@ -55,7 +72,7 @@ public class PlayerVariables : MonoBehaviour
         uiManager.HealthPoints(healthPoints);
     }
 
-    private void Awake()
+    public void ResetAllStats()
     {
         healthPoints = maxHealthPoints;
         currentAmmo = maxAmmo;
@@ -104,6 +121,7 @@ public class PlayerVariables : MonoBehaviour
         if(healthPoints <= 0)
         {
             Debug.Log("PLAYER HAS DIED");
+            PlayerRespawn();
         }
 
         if(currentStamina < maxStamina) //stamina regen start
@@ -111,6 +129,18 @@ public class PlayerVariables : MonoBehaviour
             StartCoroutine(StaminaRegen(currentStamina));
             uiManager.Stamina((int)currentStamina);
         }
+    }
+
+    private void PlayerRespawn()
+    {
+        PlayerMovement pm = GetComponent<PlayerMovement>();
+        pm.TeleportPlayer(currentRespawnPoint);
+        ResetAllStats();
+    }
+
+    private void SetNewRespawnPoint(Vector3 newRespawnPoint) //OBS används ej för tillfället
+    {
+        currentRespawnPoint = newRespawnPoint;
     }
 
     public void StaminaToBeUsed(float amount) //Everything that costs stamina should use this method

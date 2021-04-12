@@ -126,6 +126,14 @@ public class PlayerMovement : MonoBehaviour
         //TODO
     }
 
+    public void TeleportPlayer(Vector3 pos)
+    {
+        controller.enabled = false;
+        Debug.Log("Teleport" + pos);
+        transform.position = pos;
+        controller.enabled = true;
+    }
+
     private void CheckGround()
     {
         //CheckSphere creates an overlap-check in the form of a sphere at a [1]position, with a [2]radius, that only detects objects(with collider) assigned with a specific [3]layer.

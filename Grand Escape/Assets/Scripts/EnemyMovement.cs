@@ -5,11 +5,17 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [Header("Gameobjects")]
-    [SerializeField] GameObject player;
-    [SerializeField] LayerMask playerMask;
+    //[SerializeField] LayerMask playerMask;
 
     [SerializeField] float maxSeeingDistance;
     [SerializeField] float rotationSpeedMultiplier;
+
+    GameObject player;
+
+    private void Awake()
+    {
+        player = GameObject.Find("First Person Player");
+    }
 
     // Update is called once per frame
     void Update()

@@ -49,7 +49,7 @@ public class EnemyShooting : MonoBehaviour
         if (Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.forward, enemyRange, LayerMask.GetMask("Player")) && reloadTimer >= reloadTimeInSeconds)
         {
             reloadTimer = 0;
-            Instantiate(enemyAmmo, barrelEnd.transform.position, barrelEnd.transform.rotation);
+            ShootWithGun();
         }
     }
 

@@ -17,42 +17,28 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] CharacterController controller; //Reference to the player's CharacterController component.
 
     [Header("Movement")]
-    [SerializeField] float 
-        speed, 
-        currentSpeed,
-        gravity,
-        jumpHeight,
-        sprintCooldown,
-        sprintSpeed,
-        crouchSpeed;
-
-    //OLD VALUES
-    /*private float speed; //Player's default movement speed.
-    private float currentSpeed; //Player's current movement speed.
-    private float gravity = -9.81f; //Gravity increase rate.
-    private float jumpHeight = 3f;
-    private float sprintCooldown;
-    private float sprintSpeed = 18f;
-    private float crouchSpeed;*/
-    //gravity = -9.81f;
-
+    [SerializeField] float speed;
+    [SerializeField] float gravity;
+    [SerializeField] float jumpHeight;
+    [SerializeField] float sprintCooldown;
+    [SerializeField] float sprintSpeed;
+    [SerializeField] float crouchSpeed;
 
     [Header("Stamina")]
-    [SerializeField] float 
-        staminaUsedForSprint, 
-        staminaUsedForDodge, 
-        staminaUsedTimeSlow, 
-        staminaUsedForJump, 
-        ranOutOfStaminaTimer;
+    [SerializeField] float staminaUsedForSprint;
+    [SerializeField] float staminaUsedForDodge;
+    [SerializeField] float staminaUsedTimeSlow;
+    [SerializeField] float staminaUsedForJump;
+    [SerializeField] float ranOutOfStaminaTimer;
 
-    [Header("Slow motion dash")] [SerializeField] float 
-        slowMotionTime,
-        slowMotionDelay,
-        slowMotionAmountMultiplier;
+    [Header("Slow motion dash")]
+    [SerializeField] float slowMotionTime;
+    [SerializeField] float slowMotionDelay;
+    [SerializeField] float slowMotionAmountMultiplier;
 
-    [Header("Dodge")] [SerializeField] float 
-        dodgeAmountOfTime,
-        dodgeSpeedMultiplier;
+    [Header("Dodge")]
+    [SerializeField] float dodgeAmountOfTime;
+    [SerializeField] float dodgeSpeedMultiplier;
 
      Vector3 dodgeDirection;
      Vector3 velocity; //This vector is used for storing added gravity every frame, building up downward velocity
@@ -62,7 +48,8 @@ public class PlayerMovement : MonoBehaviour
      bool isDodging = false;
      bool isGrounded;
 
-     float dodgeTimer = 0f; //Needs to be zero
+    float currentSpeed;
+    float dodgeTimer = 0f; //Needs to be zero
 
     // Update is called once per frame
     void Update()

@@ -96,39 +96,47 @@ public class PlayerVariables : MonoBehaviour
         {
             healthPoints += healthBoostAmount;
             Destroy(other.gameObject);
+
+            if (healthPoints > maxHealthPoints)
+            {
+                Debug.Log("HP restored to max");
+                healthPoints = maxHealthPoints;
+            }
+            else
+                Debug.Log("HP restored by " + healthBoostAmount);
+
             uiManager.HealthPoints(healthPoints);
-            Debug.Log("HP restored by " + healthBoostAmount);
         }
         if (other.gameObject.CompareTag("Ammo boost") && currentAmmo < maxAmmo)
         {
             currentAmmo += ammoBoxAmount;
             Destroy(other.gameObject);
-            if(currentAmmo > maxAmmo)
+
+            if (currentAmmo > maxAmmo)
             {
+                Debug.Log("Ammo restored to max");
                 currentAmmo = maxAmmo;
             }
+            else
+                Debug.Log("Ammo restored by " + ammoBoxAmount);
+
             uiManager.AmmoStatus(GetCurrentTotalAmmo());
-            Debug.Log("Ammo restored by " + ammoBoxAmount);
         }
 
         if (other.gameObject.CompareTag("Stamina boost") && currentStamina < maxStamina)
         {
             currentStamina += staminaPickUpRestoreAmount;
             Destroy(other.gameObject);
-            uiManager.HealthPoints((int)currentStamina);
-            Debug.Log("Stamina restored by " + staminaPickUpRestoreAmount);
-        }
 
-        if (healthPoints > maxHealthPoints)
-        {
-            Debug.Log("HP at max!");
-            healthPoints = maxHealthPoints;
-        }
+            if (currentStamina > maxStamina)
+            {
+                Debug.Log("Stamina restored to max");
+                currentStamina = maxStamina;
+            }
+            else
+                Debug.Log("Stamina restored by " + staminaPickUpRestoreAmount);
 
-        if(currentAmmo > maxAmmo)
-        {
-            Debug.Log("Ammo at max!");
-            currentAmmo = maxAmmo;
+            uiManager.Stamina((int)currentStamina);
         }
     }
     private void Update()

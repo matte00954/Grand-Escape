@@ -8,7 +8,10 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] Camera playerCamera;
     [SerializeField] GameObject ammo;
     [SerializeField] PlayerVariables playerVariables;
+    [SerializeField] CharacterController charController;
     [SerializeField] UiManager uiManager;
+
+    Animator animator;
 
     //private GameObject player; //kanske behövs i framtiden?
     RaycastHit shootHit;
@@ -23,6 +26,8 @@ public class PlayerShooting : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
+
         isReloading = false;
         currentAmmoLoaded = ammoCapacity;
 
@@ -31,12 +36,15 @@ public class PlayerShooting : MonoBehaviour
         //player = this.gameObject; //ta inte bort, om den behövs i framtiden
     }
 
-
     // Update is called once per frame
     void Update()
     {
-        Vector3 point = playerCamera.ScreenToWorldPoint(Input.mousePosition);
+        float inputX = Input.GetAxis("Horizontal");
+        float inputZ = Input.GetAxis("Vertical");
 
+        animator.SetBool("Moving", (inputX != 0 && charController.isGrounded || inputZ != 0 && charController.isGrounded));
+
+        Vector3 point = playerCamera.ScreenToWorldPoint(Input.mousePosition);
         //Vector3 direction = player.transform.position - point; //används inte just nu, men kanske behövs i framtiden
 
         playerAim = playerCamera.ScreenPointToRay(Input.mousePosition);

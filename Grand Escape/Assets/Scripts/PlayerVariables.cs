@@ -7,7 +7,8 @@ public class PlayerVariables : MonoBehaviour
 
     [SerializeField] UiManager uiManager;
 
-    [SerializeField] Vector3 currentRespawnPoint;
+    [SerializeField] GameObject respawnPoint;
+    Vector3 currentRespawnPoint;
 
     GameObject Player;
 
@@ -39,6 +40,8 @@ public class PlayerVariables : MonoBehaviour
         healthPoints = maxHealthPoints;
         currentAmmo = maxAmmo;
         currentStamina = maxStamina;
+
+        currentRespawnPoint = respawnPoint.transform.position;
 
         uiManager.HealthPoints(healthPoints);
         uiManager.Stamina((int)currentStamina);

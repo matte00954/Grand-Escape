@@ -1024,7 +1024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiManager: {fileID: 1771174257}
-  currentRespawnPoint: {x: 0, y: 100, z: 0}
+  respawnPoint: {fileID: 1778918720}
   staminaRegenPerTick: 2
   timeUntilStaminaRegen: 0.5
   maxHealthPoints: 100
@@ -1931,7 +1931,11 @@ MonoBehaviour:
   charController: {fileID: 741439747}
   uiManager: {fileID: 1771174257}
   ammoCapacity: 1
+<<<<<<< Updated upstream
   reloadTime: 2
+=======
+  reloadTime: 3
+>>>>>>> Stashed changes
 --- !u!1 &1527428187 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8928756233092268292, guid: 7d10eaaf36071b246b1e101992f70656, type: 3}
@@ -2311,6 +2315,11 @@ MonoBehaviour:
   weaponStatus: {fileID: 1824976559}
   currentHP: {fileID: 121647845}
   currentStamina: {fileID: 1459345371}
+--- !u!1 &1778918720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2101503603728009862, guid: cd811f64f99cce94a959d616e3a36140, type: 3}
+  m_PrefabInstance: {fileID: 2101503604365029318}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1794294533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2aa5c6b39eca2824c939362bbe39c131, type: 3}
@@ -2744,6 +2753,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f69df7b434b6ed4789bb3f16e8e3819, type: 3}
+--- !u!1001 &2101503604365029318
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2101503603728009862, guid: cd811f64f99cce94a959d616e3a36140, type: 3}
+      propertyPath: m_Name
+      value: RespawnPoint (Assign this in inspector)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101503603728009863, guid: cd811f64f99cce94a959d616e3a36140, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101503603728009863, guid: cd811f64f99cce94a959d616e3a36140, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101503603728009863, guid: cd811f64f99cce94a959d616e3a36140, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101503603728009863, guid: cd811f64f99cce94a959d616e3a36140, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101503603728009863, guid: cd811f64f99cce94a959d616e3a36140, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101503603728009863, guid: cd811f64f99cce94a959d616e3a36140, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101503603728009863, guid: cd811f64f99cce94a959d616e3a36140, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101503603728009863, guid: cd811f64f99cce94a959d616e3a36140, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101503603728009863, guid: cd811f64f99cce94a959d616e3a36140, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101503603728009863, guid: cd811f64f99cce94a959d616e3a36140, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101503603728009863, guid: cd811f64f99cce94a959d616e3a36140, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cd811f64f99cce94a959d616e3a36140, type: 3}
 --- !u!4 &3790342324252831001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5427912469581902506, guid: 7cc9719893622734780aae5737fefb0c, type: 3}

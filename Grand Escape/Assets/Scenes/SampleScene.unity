@@ -1931,6 +1931,7 @@ MonoBehaviour:
   charController: {fileID: 741439747}
   uiManager: {fileID: 1771174257}
   ammoCapacity: 1
+  reloadTime: 2
 --- !u!1 &1527428187 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8928756233092268292, guid: 7d10eaaf36071b246b1e101992f70656, type: 3}

@@ -1024,14 +1024,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiManager: {fileID: 1771174257}
-  currentRespawnPoint: {x: 0, y: 100, z: 0}
+  respawnPoint: {fileID: 4421597103845348149}
   staminaRegenPerTick: 2
   timeUntilStaminaRegen: 0.5
   maxHealthPoints: 100
-  maxAmmo: 100
+  maxAmmo: 10
   maxStamina: 100
-  healthBoostAmount: 25
-  ammoBoxAmount: 25
+  healthBoostAmount: 50
+  ammoBoxAmount: 5
   staminaPickUpRestoreAmount: 25
   recentDamageTimer: 0.5
 --- !u!114 &741439752
@@ -2748,6 +2748,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5427912469581902506, guid: 7cc9719893622734780aae5737fefb0c, type: 3}
   m_PrefabInstance: {fileID: 9208121685945900979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4421597103845348148
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6100607409939763406, guid: a708beb6be3c12244891ff399a42f117, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100607409939763406, guid: a708beb6be3c12244891ff399a42f117, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100607409939763406, guid: a708beb6be3c12244891ff399a42f117, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100607409939763406, guid: a708beb6be3c12244891ff399a42f117, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100607409939763406, guid: a708beb6be3c12244891ff399a42f117, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100607409939763406, guid: a708beb6be3c12244891ff399a42f117, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100607409939763406, guid: a708beb6be3c12244891ff399a42f117, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100607409939763406, guid: a708beb6be3c12244891ff399a42f117, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100607409939763406, guid: a708beb6be3c12244891ff399a42f117, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100607409939763406, guid: a708beb6be3c12244891ff399a42f117, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100607409939763406, guid: a708beb6be3c12244891ff399a42f117, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478136434217581486, guid: a708beb6be3c12244891ff399a42f117, type: 3}
+      propertyPath: m_Name
+      value: RespawnPoint
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a708beb6be3c12244891ff399a42f117, type: 3}
+--- !u!1 &4421597103845348149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6478136434217581486, guid: a708beb6be3c12244891ff399a42f117, type: 3}
+  m_PrefabInstance: {fileID: 4421597103845348148}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9208121685945900979
 PrefabInstance:

@@ -47,6 +47,12 @@ public class PlayerVariables : MonoBehaviour
 
     public int GetCurrentTotalAmmo() { return currentAmmo; }
 
+    public float GetMaxStamina() { return maxStamina; }
+
+    public float GetMaxAmmo() { return maxAmmo; }
+
+    public float GetMaxHealth() { return maxHealthPoints; }
+
     public int SetCurrentAmmo(int sizeOfFullClipFromWeapon)
     {
         //parametern är alltså vad vapnet som laddas om har för max kapacitet

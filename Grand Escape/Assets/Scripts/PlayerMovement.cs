@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Stamina")]
     [SerializeField] float staminaUsedForSprint;
     [SerializeField] float staminaUsedForDodge;
-    [SerializeField] float staminaUsedTimeSlow;
+    [SerializeField] float staminaUsedTimeSlowActivation;
     [SerializeField] float staminaUsedForJump;
     [SerializeField] float ranOutOfStaminaTimer;
 
@@ -35,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float slowMotionTime;
     [SerializeField] float slowMotionDelay;
     [SerializeField] float slowMotionAmountMultiplier;
+    [SerializeField] float slowMotionStaminaToBeUsedPerTick;
+    [SerializeField] float slowMotionTick; //för att dra stamina per slowMotionTick
 
     [Header("Dodge")]
     [SerializeField] float dodgeAmountOfTime;
@@ -91,9 +93,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Time slow activation
-        if (Input.GetKeyDown(KeyCode.C) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlow)
+        if (Input.GetKeyDown(KeyCode.C) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlowActivation && Time.timeScale == 1)
         {
-            playerVariables.StaminaToBeUsed(staminaUsedTimeSlow);
+            playerVariables.StaminaToBeUsed(staminaUsedTimeSlowActivation);
             StartCoroutine(SlowMotion());
         }
 
@@ -177,7 +179,20 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(slowMotionDelay);
         Time.timeScale = slowMotionAmountMultiplier;
-        yield return new WaitForSeconds(slowMotionTime * slowMotionAmountMultiplier);
+        while(playerVariables.GetCurrentStamina() > slowMotionStaminaToBeUsedPerTick)
+        {
+            yield return new WaitForSeconds(slowMotionDelay);
+            playerVariables.StaminaToBeUsed(slowMotionStaminaToBeUsedPerTick);
+            if (Input.GetKey(KeyCode.C) || playerVariables.GetCurrentStamina() <= slowMotionStaminaToBeUsedPerTick)
+            {
+                break;
+            }
+        }
+        RestoreTime();
+    }
+
+    private void RestoreTime()
+    {
         Time.timeScale = 1f; //återställer till vanlig tid
     }
     private IEnumerator RanOutOfStamina()

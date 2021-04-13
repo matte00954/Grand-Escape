@@ -49,6 +49,9 @@ public class PlayerMovement : MonoBehaviour
      bool ranOutOfStaminaAndCanNotSprint = false;
      bool isDodging = false;
      bool isGrounded;
+     bool isSlowmotion = false;
+     bool breakSlowMotion = false;
+     //bool isSlowMoKeyPressed; //temp
 
     float currentSpeed;
     float dodgeTimer = 0f; //Needs to be zero
@@ -64,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         float inputZ = Input.GetAxis("Vertical");
         Vector3 move = transform.right * inputX + transform.forward * inputZ;
 
+
         //Applying WASD- or Dodge-movement based on 'Dodge'-state
         if (!isDodging)
             controller.Move(move * currentSpeed * Time.deltaTime);
@@ -71,6 +75,13 @@ public class PlayerMovement : MonoBehaviour
             ApplyDodge();
         else
             isDodging = false;
+
+
+        if (isSlowmotion && Input.GetKeyDown(KeyCode.C))
+        {
+            Debug.Log("Break!!!");
+            breakSlowMotion = true;
+        }
 
         //Sprint
         if (!isDodging && isGrounded && Input.GetKey(KeyCode.LeftShift) && playerVariables.GetCurrentStamina() > 0 &&
@@ -179,14 +190,17 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(slowMotionDelay);
         Time.timeScale = slowMotionAmountMultiplier;
-        while(playerVariables.GetCurrentStamina() > slowMotionStaminaToBeUsedPerTick)
+
+        isSlowmotion = true;
+
+        while (playerVariables.GetCurrentStamina() > slowMotionStaminaToBeUsedPerTick)
         {
-            yield return new WaitForSeconds(slowMotionDelay);
-            playerVariables.StaminaToBeUsed(slowMotionStaminaToBeUsedPerTick);
-            if (Input.GetKey(KeyCode.C) || playerVariables.GetCurrentStamina() <= slowMotionStaminaToBeUsedPerTick)
+            if (breakSlowMotion)
             {
                 break;
             }
+            yield return new WaitForSeconds(slowMotionTick);
+            playerVariables.StaminaToBeUsed(slowMotionStaminaToBeUsedPerTick);
         }
         RestoreTime();
     }
@@ -194,6 +208,8 @@ public class PlayerMovement : MonoBehaviour
     private void RestoreTime()
     {
         Time.timeScale = 1f; //återställer till vanlig tid
+        isSlowmotion = false;
+        breakSlowMotion = false;
     }
     private IEnumerator RanOutOfStamina()
     {

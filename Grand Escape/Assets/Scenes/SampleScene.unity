@@ -941,6 +941,7 @@ MonoBehaviour:
   slowMotionAmountMultiplier: 0.2
   slowMotionStaminaToBeUsedPerTick: 0.5
   slowMotionTick: 0.1
+  exhaustedFromSlowMotionTimer: 0
   dodgeAmountOfTime: 0.5
   dodgeSpeedMultiplier: 2.5
 --- !u!114 &741439751
@@ -964,6 +965,7 @@ MonoBehaviour:
   maxStamina: 100
   healthBoostAmount: 25
   ammoBoxAmount: 25
+  staminaPickUpRestoreAmount: 0
 --- !u!114 &741439752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1634,9 +1636,10 @@ MonoBehaviour:
   playerCamera: {fileID: 963194227}
   ammo: {fileID: 7794666079471084343, guid: 462fc8266fda16242a106e1b7bd6bce3, type: 3}
   playerVariables: {fileID: 741439751}
-  charController: {fileID: 0}
+  charController: {fileID: 741439747}
   uiManager: {fileID: 1771174257}
   ammoCapacity: 1
+  reloadTime: 2
 --- !u!1 &1527428187 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8928756233092268292, guid: 7d10eaaf36071b246b1e101992f70656, type: 3}

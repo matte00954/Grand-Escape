@@ -19,6 +19,7 @@ public class PlayerShooting : MonoBehaviour
 
     [Header("Ammo")]
     [SerializeField] int ammoCapacity; //hur många skott i vapnet
+    [SerializeField] float reloadTime;
 
     private bool isReloading;
     private int currentAmmoLoaded; //skott som är laddade
@@ -63,7 +64,7 @@ public class PlayerShooting : MonoBehaviour
             //Debug.DrawRay(point, direction, Color.red); //denna funkar ej
         }
 
-        if (Input.GetKeyDown("r") && !isReloading)
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading)
         {
             uiManager.AmmoStatus(playerVariables.GetCurrentTotalAmmo());
             if (currentAmmoLoaded == 0 && playerVariables.GetCurrentTotalAmmo() > 0)
@@ -85,8 +86,10 @@ public class PlayerShooting : MonoBehaviour
     IEnumerator Reloading()
     {
         uiManager.WeaponStatus("Reloading...");
-        yield return new WaitForSeconds(3f);
+        animator.SetTrigger("Reload");
+        yield return new WaitForSeconds(reloadTime);
         uiManager.WeaponStatus("Reloaded");
+        animator.SetTrigger("FinishReload");
         currentAmmoLoaded = playerVariables.SetCurrentAmmo(ammoCapacity);
         isReloading = false;
     }

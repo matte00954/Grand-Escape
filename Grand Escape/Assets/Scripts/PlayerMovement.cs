@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Stamina")]
     [SerializeField] float staminaUsedForSprint;
     [SerializeField] float staminaUsedForDodge;
-    [SerializeField] float staminaUsedTimeSlowActivation;
+    [SerializeField] float staminaUsedTimeSlow;
     [SerializeField] float staminaUsedForJump;
     [SerializeField] float ranOutOfStaminaTimer;
 
@@ -35,8 +35,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float slowMotionTime;
     [SerializeField] float slowMotionDelay;
     [SerializeField] float slowMotionAmountMultiplier;
-    [SerializeField] float slowMotionStaminaToBeUsedPerTick;
-    [SerializeField] float slowMotionTick; //för att dra stamina per slowMotionTick
 
     [Header("Dodge")]
     [SerializeField] float dodgeAmountOfTime;
@@ -55,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
 
     float currentSpeed;
     float dodgeTimer = 0f; //Needs to be zero
+    float inputX;
+    float inputZ;
 
     // Update is called once per frame
     void Update()
@@ -63,8 +63,8 @@ public class PlayerMovement : MonoBehaviour
         CheckGround();
 
         //WASD Input
-        float inputX = Input.GetAxis("Horizontal");
-        float inputZ = Input.GetAxis("Vertical");
+        inputX = Input.GetAxis("Horizontal");
+        inputZ = Input.GetAxis("Vertical");
         Vector3 move = transform.right * inputX + transform.forward * inputZ;
 
 
@@ -104,9 +104,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Time slow activation
-        if (Input.GetKeyDown(KeyCode.C) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlowActivation && Time.timeScale == 1)
+        if (Input.GetKeyDown(KeyCode.C) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlow)
         {
-            playerVariables.StaminaToBeUsed(staminaUsedTimeSlowActivation);
+            playerVariables.StaminaToBeUsed(staminaUsedTimeSlow);
             StartCoroutine(SlowMotion());
         }
 
@@ -170,6 +170,8 @@ public class PlayerMovement : MonoBehaviour
     public bool IsDodging() { return isDodging; }
     public bool IsSprinting() { return isSprinting; }
 
+    public bool IsWalking() { return isGrounded && inputX != 0 || isGrounded && inputZ != 0; }
+
     private void ApplyYAxisVelocity()
     {
         //Jump
@@ -207,7 +209,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void RestoreTime()
     {
-        Time.timeScale = 1f; //återställer till vanlig tid
+        Time.timeScale = 1f; //ï¿½terstï¿½ller till vanlig tid
         isSlowmotion = false;
         breakSlowMotion = false;
     }

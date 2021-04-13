@@ -9,6 +9,7 @@ TagManager:
   - Ammo boost
   - PlayerBullets
   - PlayerMelee
+  - Stamina boost
   layers:
   - Default
   - TransparentFX

@@ -25,9 +25,13 @@ public class PlayerVariables : MonoBehaviour
     [SerializeField] int ammoBoxAmount;
     [SerializeField] int staminaPickUpRestoreAmount;
 
+    [Header("Damage Variables")]
+    [SerializeField] float recentDamageTimer;
+
     int healthPoints;
     int currentAmmo;
     float currentStamina;
+    bool takenRecentDamage = false;
 
     private void Awake()
     {
@@ -75,7 +79,11 @@ public class PlayerVariables : MonoBehaviour
     public void ApplyDamage(int damageToBeApplied)
     {
         Debug.Log("Player took :" + damageToBeApplied + " damage");
-        healthPoints -= damageToBeApplied;
+        if (!takenRecentDamage)
+        {
+            healthPoints -= damageToBeApplied;
+            StartCoroutine(ResetTakenRecentDamage());
+        }
         uiManager.HealthPoints(healthPoints);
     }
 
@@ -176,6 +184,14 @@ public class PlayerVariables : MonoBehaviour
         else 
             Debug.Log("Out of stamina");
     }
+
+    private IEnumerator ResetTakenRecentDamage() //To prevent player from taking damage from the same bullet twice and to prevent too fast deaths
+    {
+        takenRecentDamage = true;
+        yield return new WaitForSeconds(recentDamageTimer);
+        takenRecentDamage = false;
+    }
+
     public IEnumerator StaminaRegen(float oldCurrentStamina)
     {
 

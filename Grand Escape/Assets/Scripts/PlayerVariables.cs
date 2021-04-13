@@ -23,6 +23,7 @@ public class PlayerVariables : MonoBehaviour
     [Header("Pickup Amount")]
     [SerializeField] int healthBoostAmount;
     [SerializeField] int ammoBoxAmount;
+    [SerializeField] int staminaPickUpRestoreAmount;
 
     int healthPoints;
     int currentAmmo;
@@ -95,7 +96,7 @@ public class PlayerVariables : MonoBehaviour
         {
             healthPoints += healthBoostAmount;
             Destroy(other.gameObject);
-            uiManager.HealthPoints(GetCurrentHealthPoints());
+            uiManager.HealthPoints(healthPoints);
             Debug.Log("HP restored by " + healthBoostAmount);
         }
         if (other.gameObject.CompareTag("Ammo boost") && currentAmmo < maxAmmo)
@@ -110,7 +111,15 @@ public class PlayerVariables : MonoBehaviour
             Debug.Log("Ammo restored by " + ammoBoxAmount);
         }
 
-        if(healthPoints > maxHealthPoints)
+        if (other.gameObject.CompareTag("Stamina boost") && currentStamina < maxStamina)
+        {
+            currentStamina += staminaPickUpRestoreAmount;
+            Destroy(other.gameObject);
+            uiManager.HealthPoints((int)currentStamina);
+            Debug.Log("Stamina restored by " + staminaPickUpRestoreAmount);
+        }
+
+        if (healthPoints > maxHealthPoints)
         {
             Debug.Log("HP at max!");
             healthPoints = maxHealthPoints;

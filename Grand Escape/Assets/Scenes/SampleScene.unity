@@ -933,14 +933,14 @@ MonoBehaviour:
   crouchSpeed: 6
   staminaUsedForSprint: 0.05
   staminaUsedForDodge: 10
-  staminaUsedTimeSlowActivation: 5
+  staminaUsedTimeSlow: 5
   staminaUsedForJump: 10
   ranOutOfStaminaTimer: 3
   slowMotionTime: 1
   slowMotionDelay: 0.15
   slowMotionAmountMultiplier: 0.2
-  slowMotionStaminaToBeUsedPerTick: 5
-  slowMotionTick: 0.2
+  slowMotionStaminaToBeUsedPerTick: 0.5
+  slowMotionTick: 0.1
   dodgeAmountOfTime: 0.5
   dodgeSpeedMultiplier: 2.5
 --- !u!114 &741439751
@@ -1634,7 +1634,7 @@ MonoBehaviour:
   playerCamera: {fileID: 963194227}
   ammo: {fileID: 7794666079471084343, guid: 462fc8266fda16242a106e1b7bd6bce3, type: 3}
   playerVariables: {fileID: 741439751}
-  charController: {fileID: 741439747}
+  charController: {fileID: 0}
   uiManager: {fileID: 1771174257}
   ammoCapacity: 1
 --- !u!1 &1527428187 stripped

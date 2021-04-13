@@ -35,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float slowMotionTime;
     [SerializeField] float slowMotionDelay;
     [SerializeField] float slowMotionAmountMultiplier;
+    [SerializeField] float slowMotionStaminaToBeUsedPerTick;
+    [SerializeField] float slowMotionTick;
+    [SerializeField] float exhaustedFromSlowMotionTimer;
 
     [Header("Dodge")]
     [SerializeField] float dodgeAmountOfTime;
@@ -43,13 +46,14 @@ public class PlayerMovement : MonoBehaviour
      Vector3 dodgeDirection;
      Vector3 velocity; //This vector is used for storing added gravity every frame, building up downward velocity
 
-     bool isSprinting = false;
-     bool ranOutOfStaminaAndCanNotSprint = false;
-     bool isDodging = false;
-     bool isGrounded;
-     bool isSlowmotion = false;
-     bool breakSlowMotion = false;
-     //bool isSlowMoKeyPressed; //temp
+    bool isSprinting = false;
+    bool ranOutOfStaminaAndCanNotSprint = false;
+    bool isDodging = false;
+    bool isGrounded;
+    bool isSlowmotion = false;
+    bool breakSlowMotion = false;
+
+    bool exhaustedFromSlowMotion = false;
 
     float currentSpeed;
     float dodgeTimer = 0f; //Needs to be zero
@@ -104,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Time slow activation
-        if (Input.GetKeyDown(KeyCode.C) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlow)
+        if (Input.GetKeyDown(KeyCode.C) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlow && !exhaustedFromSlowMotion && !isSlowmotion)
         {
             playerVariables.StaminaToBeUsed(staminaUsedTimeSlow);
             StartCoroutine(SlowMotion());
@@ -117,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
 
             if(playerVariables.GetCurrentStamina() < 1f)
             {
-                StartCoroutine(RanOutOfStamina());
+                StartCoroutine(ExhaustedFromSprinting());
             }
         }
         else if (Input.GetKey(KeyCode.Z))
@@ -191,9 +195,8 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator SlowMotion()
     {
         yield return new WaitForSeconds(slowMotionDelay);
-        Time.timeScale = slowMotionAmountMultiplier;
-
         isSlowmotion = true;
+        Time.timeScale = slowMotionAmountMultiplier;
 
         while (playerVariables.GetCurrentStamina() > slowMotionStaminaToBeUsedPerTick)
         {
@@ -204,6 +207,7 @@ public class PlayerMovement : MonoBehaviour
             yield return new WaitForSeconds(slowMotionTick);
             playerVariables.StaminaToBeUsed(slowMotionStaminaToBeUsedPerTick);
         }
+        StartCoroutine(ExhaustedFromSlowMotion());
         RestoreTime();
     }
 
@@ -213,7 +217,16 @@ public class PlayerMovement : MonoBehaviour
         isSlowmotion = false;
         breakSlowMotion = false;
     }
-    private IEnumerator RanOutOfStamina()
+
+    private IEnumerator ExhaustedFromSlowMotion()
+    {
+        exhaustedFromSlowMotion = true;
+        Debug.Log("Player exhausted and can not slow mo " + exhaustedFromSlowMotionTimer + " seconds");
+        yield return new WaitForSeconds(exhaustedFromSlowMotionTimer); //Player gets exhausted and cant slow mo for this amount of time
+        exhaustedFromSlowMotion = false;
+    }
+
+    private IEnumerator ExhaustedFromSprinting()
     {
         ranOutOfStaminaAndCanNotSprint = true;
         Debug.Log("Player exhausted and can not sprint for " + ranOutOfStaminaTimer + " seconds");

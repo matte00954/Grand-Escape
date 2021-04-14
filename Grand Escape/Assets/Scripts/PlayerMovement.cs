@@ -213,7 +213,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void RestoreTime()
     {
-        Time.timeScale = 1f; //�terst�ller till vanlig tid
+        Time.timeScale = 1f; //returns to normal time
         isSlowmotion = false;
         breakSlowMotion = false;
     }

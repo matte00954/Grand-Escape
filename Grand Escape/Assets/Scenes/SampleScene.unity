@@ -579,7 +579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bba458cdbd8cae94aa0f4e8caeb49f59, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bba458cdbd8cae94aa0f4e8caeb49f59, type: 3}
       propertyPath: m_LocalScale.x
@@ -633,9 +633,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8434100083836121546, guid: bba458cdbd8cae94aa0f4e8caeb49f59, type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
     - target: {fileID: -8295264559419146257, guid: bba458cdbd8cae94aa0f4e8caeb49f59, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -7977776678356118957, guid: bba458cdbd8cae94aa0f4e8caeb49f59, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: -7107353697501838843, guid: bba458cdbd8cae94aa0f4e8caeb49f59, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: -5799593025690371628, guid: bba458cdbd8cae94aa0f4e8caeb49f59, type: 3}
       propertyPath: m_Layer
@@ -685,6 +697,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -1098176865004163999, guid: bba458cdbd8cae94aa0f4e8caeb49f59, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: -822994195205980773, guid: bba458cdbd8cae94aa0f4e8caeb49f59, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -712,6 +728,10 @@ PrefabInstance:
     - target: {fileID: 1249302633240112203, guid: bba458cdbd8cae94aa0f4e8caeb49f59, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3233621678250677337, guid: bba458cdbd8cae94aa0f4e8caeb49f59, type: 3}
+      propertyPath: m_RootOrder
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 4719387670508094501, guid: bba458cdbd8cae94aa0f4e8caeb49f59, type: 3}
       propertyPath: m_Layer
@@ -986,6 +1006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerVariables: {fileID: 741439751}
+  audioManager: {fileID: 1891718169}
   groundCheck: {fileID: 2116548754}
   groundMask:
     serializedVersion: 2
@@ -1322,8 +1343,8 @@ Transform:
   m_Children:
   - {fileID: 827799412}
   - {fileID: 1794294533}
-  - {fileID: 64650475}
   - {fileID: 1484970851}
+  - {fileID: 64650475}
   m_Father: {fileID: 1997976183}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1845,7 +1866,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 963194228}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1484970852
 Camera:
@@ -2455,6 +2476,16 @@ MonoBehaviour:
     volume: 0.3
     pitch: 1
     loop: 1
+  - clip: {fileID: 8300000, guid: 69500cfd43f784b44b165e8c52c727fd, type: 3}
+    name: SlowMoStart
+    volume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 06a21d50e88d5ab499a305c23e82ed5b, type: 3}
+    name: SlowMoFinish
+    volume: 1
+    pitch: 1
+    loop: 0
 --- !u!4 &1891718170
 Transform:
   m_ObjectHideFlags: 0

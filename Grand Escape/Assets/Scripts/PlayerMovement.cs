@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField] PlayerVariables playerVariables;
+    [SerializeField] AudioManager audioManager;
 
     [SerializeField] Transform groundCheck; //The groundCheck object.
 
@@ -200,6 +201,7 @@ public class PlayerMovement : MonoBehaviour
         Time.timeScale = slowMotionAmountMultiplier;
         currentSpeed = slowMotionMovementSpeed;
         Debug.Log("Slow motion active, time scale : " + Time.timeScale);
+        audioManager.Play("SlowMoStart");
 
         while (playerVariables.GetCurrentStamina() > slowMotionStaminaToBeUsedPerTick)
         {
@@ -221,6 +223,7 @@ public class PlayerMovement : MonoBehaviour
         isSlowmotion = false;
         breakSlowMotion = false;
         Debug.Log("Time has restored to : " + Time.timeScale);
+        audioManager.Play("SlowMoFinish");
     }
 
     private IEnumerator ExhaustedFromSlowMotion()

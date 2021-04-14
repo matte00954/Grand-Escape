@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
 
             sound.Source.volume = sound.Volume;
             sound.Source.pitch = sound.Pitch;
+            sound.Source.loop = sound.Loop;
         }
     }
 
@@ -22,5 +23,10 @@ public class AudioManager : MonoBehaviour
     {
         Sound s = Array.Find(sounds, sound => sound.Name == name);
         s.Source.Play();
+    }
+
+    private void Start()
+    {
+        Play("DefaultBGM");
     }
 }

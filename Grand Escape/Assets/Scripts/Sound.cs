@@ -12,6 +12,7 @@ public class Sound
     [SerializeField] float volume;
     [Range(.1f, 3f)]
     [SerializeField] float pitch;
+    [SerializeField] bool loop;
 
     AudioSource source;
 
@@ -44,5 +45,11 @@ public class Sound
     {
         get { return name; }
         set { name = value; }
+    }
+
+    public bool Loop
+    {
+        get { return loop; }
+        set { loop = value; }
     }
 }

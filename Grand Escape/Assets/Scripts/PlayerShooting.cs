@@ -18,9 +18,13 @@ public class PlayerShooting : MonoBehaviour
     RaycastHit shootHit;
     Ray playerAim;
 
-    [Header("Ammo")]
+    [Header("Weapon")]
     [SerializeField] int ammoCapacity; //hur många skott i vapnet
     [SerializeField] float reloadTime;
+
+    [SerializeField] string audioFireName;
+    [SerializeField] string audioStartReloadName;
+    [SerializeField] string audioFinishReloadName;
 
     private bool isReloading;
     private int currentAmmoLoaded; //skott som är laddade
@@ -56,8 +60,10 @@ public class PlayerShooting : MonoBehaviour
             currentAmmoLoaded--;
             uiManager.WeaponStatus("Empty");
             Instantiate(ammo, point, playerCamera.transform.rotation);
+
             animator.SetTrigger("Fire");
-            audioManager.Play("PistolShot");
+            audioManager.Play(audioFireName);
+
             if (Physics.Raycast(playerAim, out shootHit)) //tror att detta ej används
             {
                 Transform objectHit = shootHit.transform;
@@ -90,9 +96,14 @@ public class PlayerShooting : MonoBehaviour
     {
         uiManager.WeaponStatus("Reloading...");
         animator.SetTrigger("Reload");
+        audioManager.Play(audioStartReloadName);
+
         yield return new WaitForSeconds(reloadTime);
+
         uiManager.WeaponStatus("Reloaded");
         animator.SetTrigger("FinishReload");
+        audioManager.Play(audioFinishReloadName);
+
         currentAmmoLoaded = playerVariables.SetCurrentAmmo(ammoCapacity);
         isReloading = false;
     }

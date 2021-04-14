@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float slowMotionStaminaToBeUsedPerTick;
     [SerializeField] float slowMotionTick;
     [SerializeField] float exhaustedFromSlowMotionTimer;
+    [SerializeField] float slowMotionMovementSpeed;
 
     [Header("Dodge")]
     [SerializeField] float dodgeAmountOfTime;
@@ -83,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isSlowmotion && Input.GetKeyDown(KeyCode.C))
         {
-            Debug.Log("Break!!!");
+            Debug.Log("Player wants to stop slow motion");
             breakSlowMotion = true;
         }
 
@@ -146,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
     public void TeleportPlayer(Vector3 pos)
     {
         controller.enabled = false;
-        Debug.Log("Teleport" + pos);
+        Debug.Log("Teleport activated on position " + pos);
         transform.position = pos;
         controller.enabled = true;
     }
@@ -197,6 +198,8 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(slowMotionDelay);
         isSlowmotion = true;
         Time.timeScale = slowMotionAmountMultiplier;
+        currentSpeed = slowMotionMovementSpeed;
+        Debug.Log("Slow motion active, time scale : " + Time.timeScale);
 
         while (playerVariables.GetCurrentStamina() > slowMotionStaminaToBeUsedPerTick)
         {
@@ -213,9 +216,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void RestoreTime()
     {
+        currentSpeed = speed;
         Time.timeScale = 1f; //returns to normal time
         isSlowmotion = false;
         breakSlowMotion = false;
+        Debug.Log("Time has restored to : " + Time.timeScale);
     }
 
     private IEnumerator ExhaustedFromSlowMotion()

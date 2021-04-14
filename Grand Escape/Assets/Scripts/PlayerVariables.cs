@@ -67,13 +67,14 @@ public class PlayerVariables : MonoBehaviour
         //parametern är alltså vad vapnet som laddas om har för max kapacitet
         if(currentAmmo - sizeOfFullClipFromWeapon > 0) // kollar att man kan ladda hela clippet
         {
-            Debug.Log("Loading full clip");
+            //Debug.Log("Loading full clip");
             currentAmmo -= sizeOfFullClipFromWeapon;
             return sizeOfFullClipFromWeapon; //du får fullt clip
         }
         else //du kan inte få fullt klipp men du har några kulor kvar
         {
-            Debug.Log("Part of the clip is loaded");
+            //Debug.Log("Part of the clip is loaded");
+            Debug.LogError("ERROR: SetCurrentAmmo Else statement should not happen (unless weapon is semi-auto)");
             int ammoAmountToReturn = currentAmmo; //sparar mängden ammo som du laddar clippet med och skickar tillbaka detta
             currentAmmo = 0; //du laddar resten av all ammo du har
             return ammoAmountToReturn; //returnerar resten av all ammo som är kvar, som laddas in
@@ -192,6 +193,7 @@ public class PlayerVariables : MonoBehaviour
     private IEnumerator ResetTakenRecentDamage() //To prevent player from taking damage from the same bullet twice and to prevent too fast deaths
     {
         takenRecentDamage = true;
+        Debug.Log("Player immune from damage for " + recentDamageTimer + " seconds");
         yield return new WaitForSeconds(recentDamageTimer);
         takenRecentDamage = false;
     }

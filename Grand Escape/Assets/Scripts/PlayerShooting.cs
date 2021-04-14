@@ -10,6 +10,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] PlayerVariables playerVariables;
     [SerializeField] CharacterController charController;
     [SerializeField] UiManager uiManager;
+    [SerializeField] AudioManager audioManager;
 
     Animator animator;
 
@@ -56,6 +57,7 @@ public class PlayerShooting : MonoBehaviour
             uiManager.WeaponStatus("Empty");
             Instantiate(ammo, point, playerCamera.transform.rotation);
             animator.SetTrigger("Fire");
+            audioManager.Play("PistolShot");
             if (Physics.Raycast(playerAim, out shootHit)) //tror att detta ej används
             {
                 Transform objectHit = shootHit.transform;

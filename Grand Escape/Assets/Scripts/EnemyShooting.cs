@@ -9,6 +9,8 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField] GameObject barrelEnd;
     [SerializeField] GameObject enemyAmmo;
 
+    [SerializeField] LayerMask layerMask;
+
     [SerializeField] float enemyRange;
     [SerializeField] float reloadTimeInSeconds;
 
@@ -44,12 +46,15 @@ public class EnemyShooting : MonoBehaviour
 
         gun.transform.LookAt(enemyMovement.GetTarget().transform);
 
-        gun.transform.Rotate(Vector3.right * 90);
+        RaycastHit hit;
 
-        if (Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.forward, enemyRange, LayerMask.GetMask("Player")) && reloadTimer >= reloadTimeInSeconds)
+        if (Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.forward, out hit, enemyRange, layerMask) && reloadTimer >= reloadTimeInSeconds)
         {
-            reloadTimer = 0;
-            ShootWithGun();
+            if (hit.collider.CompareTag("Player"))
+            {
+                reloadTimer = 0;
+                ShootWithGun();
+            }
         }
     }
 

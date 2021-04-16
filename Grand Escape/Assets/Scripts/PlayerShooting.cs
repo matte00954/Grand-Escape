@@ -13,22 +13,20 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] AudioManager audioManager;
 
     Animator animator;
-
-    //private GameObject player; //kanske behövs i framtiden?
     RaycastHit shootHit;
     Ray playerAim;
 
     [Header("Weapon")]
-    [SerializeField] int ammoCapacity; //hur många skott i vapnet
-    [SerializeField] float reloadTime;
+    [SerializeField] int ammoCapacity; //how many bullets can fit in the gun
+    [SerializeField] float reloadTime; 
 
     [SerializeField] string audioFireName;
     [SerializeField] string audioStartReloadName;
     [SerializeField] string audioFinishReloadName;
 
     private bool isReloading;
-    private int currentAmmoLoaded; //skott som är laddade
-    private int totalAmmoToReloadWith;
+    private int currentAmmoLoaded; //shots that are loaded
+    private int totalAmmoToReloadWith; //all ammo you can load with
 
     private void Awake()
     {
@@ -39,7 +37,6 @@ public class PlayerShooting : MonoBehaviour
 
         uiManager.AmmoStatus(playerVariables.GetCurrentTotalAmmo());
         uiManager.WeaponStatus("LOADED");
-        //player = this.gameObject; //ta inte bort, om den behövs i framtiden
     }
 
     // Update is called once per frame
@@ -51,7 +48,6 @@ public class PlayerShooting : MonoBehaviour
         animator.SetBool("Moving", (inputX != 0 && charController.isGrounded || inputZ != 0 && charController.isGrounded));
 
         Vector3 point = playerCamera.ScreenToWorldPoint(Input.mousePosition);
-        //Vector3 direction = player.transform.position - point; //används inte just nu, men kanske behövs i framtiden
 
         playerAim = playerCamera.ScreenPointToRay(Input.mousePosition);
 
@@ -64,12 +60,12 @@ public class PlayerShooting : MonoBehaviour
             animator.SetTrigger("Fire");
             audioManager.Play(audioFireName);
 
-            if (Physics.Raycast(playerAim, out shootHit)) //tror att detta ej används
+            /*if (Physics.Raycast(playerAim, out shootHit)) //this raycast shooting, will probably not be used
             {
                 Transform objectHit = shootHit.transform;
 
                 //Debug.Log("Hit Object: " + objectHit);
-            }
+            }*/
             //Debug.DrawRay(point, direction, Color.red); //denna funkar ej
         }
 

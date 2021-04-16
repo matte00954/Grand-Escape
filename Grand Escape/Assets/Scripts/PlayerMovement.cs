@@ -45,8 +45,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float dodgeAmountOfTime;
     [SerializeField] float dodgeSpeedMultiplier;
 
-     Vector3 dodgeDirection;
-     Vector3 velocity; //This vector is used for storing added gravity every frame, building up downward velocity
+    Vector3 dodgeDirection;
+    Vector3 velocity; //This vector is used for storing added gravity every frame, building up downward velocity
 
     bool isSprinting = false;
     bool ranOutOfStaminaAndCanNotSprint = false;

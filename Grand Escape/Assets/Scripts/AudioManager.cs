@@ -5,6 +5,10 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] Sound[] sounds;
+    [Range(0.1f, 2f)]
+    [SerializeField] float walkSoundFrequency = 0.7f;
+
+    float walkSoundFrequencyTimer;
 
     void Awake()
     {
@@ -28,5 +32,16 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         Play("DefaultBGM");
+    }
+
+    private void Update()
+    {
+        if (FindObjectOfType<PlayerMovement>().IsWalking() && walkSoundFrequencyTimer >= walkSoundFrequency)
+        {
+            Play("Walk1");
+            walkSoundFrequencyTimer = 0f;
+        }
+        else
+            walkSoundFrequencyTimer += Time.deltaTime;
     }
 }

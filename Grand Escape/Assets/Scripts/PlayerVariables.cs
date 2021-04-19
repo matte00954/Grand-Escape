@@ -19,8 +19,11 @@ public class PlayerVariables : MonoBehaviour
 
     [Header("Max Variables")]
     [SerializeField] int maxHealthPoints;
-    [SerializeField] int maxAmmo;
+    [SerializeField] int maxAmmoReserve;
     [SerializeField] float maxStamina;
+
+    [Header("Start Variables")]
+    [SerializeField] int startAmmoReserve;
 
     [Header("Pickup Amount")]
     [SerializeField] int healthBoostAmount;
@@ -31,7 +34,7 @@ public class PlayerVariables : MonoBehaviour
     [SerializeField] float recentDamageTimer;
 
     int healthPoints;
-    int currentAmmo;
+    int currentAmmoReserve;
     float currentStamina;
     bool takenRecentDamage = false;
 
@@ -39,46 +42,35 @@ public class PlayerVariables : MonoBehaviour
     {
         Player = this.gameObject;
         healthPoints = maxHealthPoints;
-        currentAmmo = maxAmmo;
+        currentAmmoReserve = startAmmoReserve;
         currentStamina = maxStamina;
 
         currentRespawnPoint = respawnPoint.transform.position;
-
-        uiManager.HealthPoints(healthPoints);
-        uiManager.Stamina((int)currentStamina);
-        uiManager.AmmoStatus(currentAmmo);
     }
 
+    private void Start()
+    {
+        ResetAllStats();
+    }
 
     public float GetCurrentStamina() { return currentStamina; }
 
     public int GetCurrentHealthPoints() { return healthPoints; }
 
-    public int GetCurrentTotalAmmo() { return currentAmmo; }
+    public int GetCurrentAmmoReserve() { return currentAmmoReserve; }
 
     public float GetMaxStamina() { return maxStamina; }
 
-    public float GetMaxAmmo() { return maxAmmo; }
+    public float GetMaxAmmoReserve() { return maxAmmoReserve; }
 
     public float GetMaxHealth() { return maxHealthPoints; }
 
-    public int SetCurrentAmmo(int sizeOfFullClipFromWeapon)
+    public void ReduceAmmoReserve(int amountToReduce)
     {
-        //parametern är alltså vad vapnet som laddas om har för max kapacitet
-        if(currentAmmo - sizeOfFullClipFromWeapon > 0) // kollar att man kan ladda hela clippet
-        {
-            //Debug.Log("Loading full clip");
-            currentAmmo -= sizeOfFullClipFromWeapon;
-            return sizeOfFullClipFromWeapon; //du får fullt clip
-        }
-        else //du kan inte få fullt klipp men du har några kulor kvar
-        {
-            //Debug.Log("Part of the clip is loaded");
-            Debug.LogError("ERROR: SetCurrentAmmo Else statement should not happen (unless weapon is semi-auto)");
-            int ammoAmountToReturn = currentAmmo; //sparar mängden ammo som du laddar clippet med och skickar tillbaka detta
-            currentAmmo = 0; //du laddar resten av all ammo du har
-            return ammoAmountToReturn; //returnerar resten av all ammo som är kvar, som laddas in
-        }
+        if(currentAmmoReserve - amountToReduce < 0)
+            currentAmmoReserve = 0;
+        else
+            currentAmmoReserve -= amountToReduce;
     }
 
     public void ApplyDamage(int damageToBeApplied)
@@ -95,12 +87,12 @@ public class PlayerVariables : MonoBehaviour
     public void ResetAllStats()
     {
         healthPoints = maxHealthPoints;
-        currentAmmo = maxAmmo;
+        currentAmmoReserve = startAmmoReserve;
         currentStamina = maxStamina;
 
         uiManager.HealthPoints(healthPoints);
         uiManager.Stamina((int)currentStamina);
-        uiManager.AmmoStatus(currentAmmo);
+        uiManager.AmmoStatus(currentAmmoReserve);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -120,20 +112,20 @@ public class PlayerVariables : MonoBehaviour
 
             uiManager.HealthPoints(healthPoints);
         }
-        if (other.gameObject.CompareTag("Ammo boost") && currentAmmo < maxAmmo)
+        if (other.gameObject.CompareTag("Ammo boost") && currentAmmoReserve < maxAmmoReserve)
         {
-            currentAmmo += ammoBoxAmount;
+            currentAmmoReserve += ammoBoxAmount;
             Destroy(other.gameObject);
 
-            if (currentAmmo > maxAmmo)
+            if (currentAmmoReserve > maxAmmoReserve)
             {
                 Debug.Log("Ammo restored to max");
-                currentAmmo = maxAmmo;
+                currentAmmoReserve = maxAmmoReserve;
             }
             else
                 Debug.Log("Ammo restored by " + ammoBoxAmount);
 
-            uiManager.AmmoStatus(GetCurrentTotalAmmo());
+            uiManager.AmmoStatus(GetCurrentAmmoReserve());
         }
 
         if (other.gameObject.CompareTag("Stamina boost") && currentStamina < maxStamina)
@@ -164,6 +156,13 @@ public class PlayerVariables : MonoBehaviour
         {
             StartCoroutine(StaminaRegen(currentStamina));
             uiManager.Stamina((int)currentStamina);
+        }
+
+        if (healthPoints > 0)
+        {
+            uiManager.HealthPoints(healthPoints);
+            uiManager.Stamina((int)currentStamina);
+            uiManager.AmmoStatus(currentAmmoReserve);
         }
     }
 

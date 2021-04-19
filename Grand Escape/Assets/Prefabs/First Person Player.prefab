@@ -854,8 +854,9 @@ MonoBehaviour:
   staminaRegenPerTick: 2
   timeUntilStaminaRegen: 0.5
   maxHealthPoints: 100
-  maxAmmo: 10
+  maxAmmoReserve: 10
   maxStamina: 100
+  startAmmoReserve: 5
   healthBoostAmount: 50
   ammoBoxAmount: 5
   staminaPickUpRestoreAmount: 25
@@ -3020,13 +3021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c8154ff93a675b4686fc5209f6ed5be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 5625691118095764582}
-  ammo: {fileID: 7794666079471084343, guid: 462fc8266fda16242a106e1b7bd6bce3, type: 3}
-  playerVariables: {fileID: 5625691118318606354}
-  charController: {fileID: 5625691118318606358}
-  uiManager: {fileID: 5625691119449004132}
-  audioManager: {fileID: 0}
-  ammoCapacity: 1
+  bulletPrefab: {fileID: 0}
   reloadTime: 2
   audioFireName: PistolFire
   audioStartReloadName: PistolStartReload

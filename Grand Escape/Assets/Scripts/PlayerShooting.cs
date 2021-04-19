@@ -4,48 +4,58 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    [Header("Ammo")]
-    [SerializeField] GameObject ammo;
+    [SerializeField] GameObject bulletPrefab; //Assign prefab
 
     AudioManager audioManager;
     Camera playerCamera;
     PlayerVariables playerVariables;
     CharacterController charController;
-    UiManager uiManager;
 
     Animator animator;
-    RaycastHit shootHit;
-    Ray playerAim;
 
-    [Header("Weapon")]
-    [SerializeField] int ammoCapacity; //how many bullets can fit in the gun
-    [SerializeField] float reloadTime; 
+    [Header("Weapon Stats")]
+    [SerializeField] float reloadTime;
 
+    [Header("Weapon Sounds")]
     [SerializeField] string audioFireName;
     [SerializeField] string audioStartReloadName;
     [SerializeField] string audioFinishReloadName;
 
     private bool isReloading;
     private int currentAmmoLoaded; //shots that are loaded
-    private int totalAmmoToReloadWith; //all ammo you can load with
 
-    private void Awake()
+    float reloadTimer;
+    int clipCapacity = 1; //bullet clip capacity, 1 by default.
+
+    private void Start()
     {
         playerCamera = GetComponentInParent<Camera>();
 
         playerVariables = GetComponentInParent<PlayerVariables>();
         charController = GetComponentInParent<CharacterController>();
 
-        uiManager = FindObjectOfType<UiManager>();
         audioManager = FindObjectOfType<AudioManager>();
 
         animator = GetComponent<Animator>();
 
         isReloading = false;
-        currentAmmoLoaded = ammoCapacity;
+        currentAmmoLoaded = clipCapacity;
+    }
 
-        uiManager.AmmoStatus(playerVariables.GetCurrentTotalAmmo());
-        uiManager.WeaponStatus("Loaded");
+    private void OnEnable()
+    {
+        
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("OnDisable called");
+        if (isReloading)
+        {
+            Debug.Log("Canceling reload");
+            reloadTimer = 0f;
+            isReloading = false;
+        }
     }
 
     // Update is called once per frame
@@ -63,8 +73,7 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && currentAmmoLoaded > 0)
         {
             currentAmmoLoaded--;
-            uiManager.WeaponStatus("Empty");
-            Instantiate(ammo, point, playerCamera.transform.rotation);
+            Instantiate(bulletPrefab, point, playerCamera.transform.rotation);
 
             animator.SetTrigger("Fire");
             audioManager.Play(audioFireName);
@@ -80,36 +89,40 @@ public class PlayerShooting : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R) && !isReloading)
         {
-            uiManager.AmmoStatus(playerVariables.GetCurrentTotalAmmo());
-            if (currentAmmoLoaded == 0 && playerVariables.GetCurrentTotalAmmo() > 0)
+            if (currentAmmoLoaded < clipCapacity && playerVariables.GetCurrentAmmoReserve() > 0)
             {
                 isReloading = true;
-                StartCoroutine(Reloading());
+                animator.SetTrigger("Reload");
+                audioManager.Play(audioStartReloadName);
             }
-            else if (playerVariables.GetCurrentTotalAmmo() == 0)
-            {
+            else if (playerVariables.GetCurrentAmmoReserve() == 0)
                 Debug.Log("No ammo left");
-            }
-            else if (playerVariables.GetCurrentTotalAmmo() < 0)
-            {
+            else if (playerVariables.GetCurrentAmmoReserve() < 0)
                 Debug.LogError("ERROR: CURRENT AMMO IS LOWER THAN ZERO");
-            }
         }
+
+        if (isReloading)
+            UpdateReload();
     }
 
-    IEnumerator Reloading()
+    private void UpdateReload()
     {
-        uiManager.WeaponStatus("Reloading...");
-        animator.SetTrigger("Reload");
-        audioManager.Play(audioStartReloadName);
+        if (reloadTimer < reloadTime)
+            reloadTimer += Time.deltaTime;
+        else if (reloadTimer >= reloadTime)
+        {
+            animator.SetTrigger("FinishReload");
+            audioManager.Play(audioFinishReloadName);
 
-        yield return new WaitForSeconds(reloadTime);
-
-        uiManager.WeaponStatus("Reloaded");
-        animator.SetTrigger("FinishReload");
-        audioManager.Play(audioFinishReloadName);
-
-        currentAmmoLoaded = playerVariables.SetCurrentAmmo(ammoCapacity);
-        isReloading = false;
+            reloadTimer = 0f;
+            if (playerVariables.GetCurrentAmmoReserve() < clipCapacity)
+                currentAmmoLoaded = playerVariables.GetCurrentAmmoReserve();
+            else
+                currentAmmoLoaded = clipCapacity;
+            
+            playerVariables.ReduceAmmoReserve(clipCapacity);
+            
+            isReloading = false;
+        }
     }
 }

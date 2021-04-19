@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour
 {
+    Animator animator;
     int selectedWeapon = 0;
 
     private void Start()
@@ -50,12 +51,17 @@ public class WeaponHolder : MonoBehaviour
         int index = 0;
         foreach (Transform weaponTransform in transform)
         {
-            if(index == selectedWeapon)
+            if (index == selectedWeapon)
             {
                 weaponTransform.gameObject.SetActive(true);
             }
             else
+            {
+                weaponTransform.gameObject.GetComponent<Animator>().CrossFade("Idle", 0f);
+                weaponTransform.gameObject.GetComponent<Animator>().Update(0f);
+                weaponTransform.gameObject.GetComponent<Animator>().Update(0f);
                 weaponTransform.gameObject.SetActive(false);
+            }
 
             index++;
         }

@@ -7,13 +7,20 @@ public class PlayerMelee : MonoBehaviour
     [SerializeField] GameObject meeleBox;
     [SerializeField] float meeleCooldown;
     [SerializeField] float meeleAttackActive;
-    [SerializeField] float meeleStaminaCost;
+    [SerializeField] float meeleStaminaCost = 5;
+
+    AudioManager audioManager;
 
     PlayerVariables playerVariables;
 
     private void Awake()
     {
         playerVariables = GetComponent<PlayerVariables>();
+    }
+
+    private void Start()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     private bool meeleAttackAvailable = true;
@@ -32,7 +39,9 @@ public class PlayerMelee : MonoBehaviour
 
     private IEnumerator MeeleCooldown()
     {
+        audioManager.Play("DrawSword");
         yield return new WaitForSeconds(meeleAttackActive); //hur länge tills meele boxen försvinner
+        audioManager.Play("SwingSword");
         meeleBox.SetActive(false);
         yield return new WaitForSeconds(meeleCooldown); //hur länge tills meele attack går att göra igen
         meeleAttackAvailable = true;

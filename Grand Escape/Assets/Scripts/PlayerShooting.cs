@@ -11,6 +11,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] CharacterController charController;
     [SerializeField] UiManager uiManager;
     [SerializeField] AudioManager audioManager;
+    [SerializeField] Weapons weapon;
 
     Animator animator;
     RaycastHit shootHit;

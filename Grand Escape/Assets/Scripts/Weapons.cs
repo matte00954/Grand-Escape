@@ -18,4 +18,21 @@ public class Weapons : ScriptableObject
     [SerializeField] float reloadTime; //In seconds
 
     Transform weaponTransform;
+
+    public MeshFilter GetWepMeshFilter() { return weaponMeshFilter; }
+
+    public MeshRenderer GetWepMeshRenderer() { return weaponMeshRenderer; }
+
+    public Sprite GetWepSprite() { return crosshair; }
+
+    public string GetWepName() { return weaponName; }
+
+    public int GetWepDmg() { return weaponDamage; }
+
+    public int GetAmmoCap() { return ammoCapacity; }
+
+    public float GetEffectiveRange() { return effectiveRange; }
+
+    public float GetReloadTime() { return reloadTime; }
+
 }

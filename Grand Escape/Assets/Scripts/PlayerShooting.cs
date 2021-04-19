@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    [Header("Gameobjects")]
-    [SerializeField] Camera playerCamera;
+    [Header("Ammo")]
     [SerializeField] GameObject ammo;
-    [SerializeField] PlayerVariables playerVariables;
-    [SerializeField] CharacterController charController;
-    [SerializeField] UiManager uiManager;
-    [SerializeField] AudioManager audioManager;
-    [SerializeField] Weapons weapon;
+
+    AudioManager audioManager;
+    Camera playerCamera;
+    PlayerVariables playerVariables;
+    CharacterController charController;
+    UiManager uiManager;
 
     Animator animator;
     RaycastHit shootHit;
@@ -31,13 +31,21 @@ public class PlayerShooting : MonoBehaviour
 
     private void Awake()
     {
+        playerCamera = GetComponentInParent<Camera>();
+
+        playerVariables = GetComponentInParent<PlayerVariables>();
+        charController = GetComponentInParent<CharacterController>();
+
+        uiManager = FindObjectOfType<UiManager>();
+        audioManager = FindObjectOfType<AudioManager>();
+
         animator = GetComponent<Animator>();
 
         isReloading = false;
         currentAmmoLoaded = ammoCapacity;
 
         uiManager.AmmoStatus(playerVariables.GetCurrentTotalAmmo());
-        uiManager.WeaponStatus("LOADED");
+        uiManager.WeaponStatus("Loaded");
     }
 
     // Update is called once per frame

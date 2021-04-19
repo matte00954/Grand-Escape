@@ -52,13 +52,10 @@ public class WeaponHolder : MonoBehaviour
         foreach (Transform weaponTransform in transform)
         {
             if (index == selectedWeapon)
-            {
                 weaponTransform.gameObject.SetActive(true);
-            }
             else
             {
                 weaponTransform.gameObject.GetComponent<Animator>().CrossFade("Idle", 0f);
-                weaponTransform.gameObject.GetComponent<Animator>().Update(0f);
                 weaponTransform.gameObject.GetComponent<Animator>().Update(0f);
                 weaponTransform.gameObject.SetActive(false);
             }

@@ -68,7 +68,7 @@ public class PlayerShooting : MonoBehaviour
 
         Vector3 point = playerCamera.ScreenToWorldPoint(Input.mousePosition);
 
-        playerAim = playerCamera.ScreenPointToRay(Input.mousePosition);
+        //playerAim = playerCamera.ScreenPointToRay(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0) && currentAmmoLoaded > 0)
         {

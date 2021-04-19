@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] PlayerVariables playerVariables;
     [SerializeField] AudioManager audioManager;
 
+    [SerializeField] UiManager uiManager;
+
     [SerializeField] Transform groundCheck; //The groundCheck object.
 
     [SerializeField] LayerMask groundMask;
@@ -47,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 dodgeDirection;
     Vector3 velocity; //This vector is used for storing added gravity every frame, building up downward velocity
+
 
     bool isSprinting = false;
     bool ranOutOfStaminaAndCanNotSprint = false;
@@ -230,15 +233,19 @@ public class PlayerMovement : MonoBehaviour
     {
         exhaustedFromSlowMotion = true;
         Debug.Log("Player exhausted and can not slow mo " + exhaustedFromSlowMotionTimer + " seconds");
+        uiManager.SlowMotionExhaustion(exhaustedFromSlowMotion);
         yield return new WaitForSeconds(exhaustedFromSlowMotionTimer); //Player gets exhausted and cant slow mo for this amount of time
         exhaustedFromSlowMotion = false;
+        uiManager.SlowMotionExhaustion(exhaustedFromSlowMotion);
     }
 
     private IEnumerator ExhaustedFromSprinting()
     {
         ranOutOfStaminaAndCanNotSprint = true;
         Debug.Log("Player exhausted and can not sprint for " + ranOutOfStaminaTimer + " seconds");
+        uiManager.SprintExhaustion(ranOutOfStaminaAndCanNotSprint);
         yield return new WaitForSeconds(ranOutOfStaminaTimer); //Player gets exhausted and cant sprint for this amount of time
         ranOutOfStaminaAndCanNotSprint = false;
+        uiManager.SprintExhaustion(ranOutOfStaminaAndCanNotSprint);
     }
 }

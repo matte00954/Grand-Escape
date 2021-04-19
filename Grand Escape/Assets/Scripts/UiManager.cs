@@ -9,6 +9,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] Text weaponStatus;
     [SerializeField] Text currentHP;
     [SerializeField] Text currentStamina;
+    [SerializeField] Text slowMoExhaustion;
+    [SerializeField] Text sprintExhaustion;
 
     public void WeaponStatus(string s)
     {
@@ -28,5 +30,21 @@ public class UiManager : MonoBehaviour
     public void Stamina(int i)
     {
         currentStamina.text = i.ToString();
+    }
+
+    public void SlowMotionExhaustion(bool isExhausted)
+    {
+        if (isExhausted)
+            slowMoExhaustion.gameObject.SetActive(true);
+        else
+            slowMoExhaustion.gameObject.SetActive(false);
+    }
+
+    public void SprintExhaustion(bool isExhausted)
+    {
+        if (isExhausted)
+            sprintExhaustion.gameObject.SetActive(true);
+        else
+            sprintExhaustion.gameObject.SetActive(false);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] string audioFireName;
     [SerializeField] string audioStartReloadName;
     [SerializeField] string audioFinishReloadName;
+
+    [SerializeField] UnityEvent OnReloadStart;
+    [SerializeField] UnityEvent OnReloadFinish;
+    [SerializeField] UnityEvent OnFire;
 
     private bool isReloading;
     private int currentAmmoLoaded; //shots that are loaded
@@ -92,8 +97,9 @@ public class PlayerShooting : MonoBehaviour
             if (currentAmmoLoaded < clipCapacity && playerVariables.GetCurrentAmmoReserve() > 0)
             {
                 isReloading = true;
-                animator.SetTrigger("Reload");
-                audioManager.Play(audioStartReloadName);
+                //animator.SetTrigger("Reload");
+                //audioManager.Play(audioStartReloadName);
+                OnReloadStart.Invoke();
             }
             else if (playerVariables.GetCurrentAmmoReserve() == 0)
                 Debug.Log("No ammo left");

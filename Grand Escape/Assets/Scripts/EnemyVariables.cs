@@ -48,10 +48,6 @@ public class EnemyVariables : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("PlayerBullets"))
-        {
-            ApplyDamage(damageFromBullets);
-        }
         if (other.gameObject.CompareTag("PlayerMelee"))
         {
             ApplyDamage(damageFromSword);

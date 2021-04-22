@@ -7,7 +7,6 @@ public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] GameObject bulletPrefab; //Assign prefab
 
-    AudioManager audioManager;
     Camera playerCamera;
     PlayerVariables playerVariables;
     CharacterController charController;
@@ -16,11 +15,6 @@ public class PlayerShooting : MonoBehaviour
 
     [Header("Weapon Stats")]
     [SerializeField] float reloadTime;
-
-    [Header("Weapon Sounds")]
-    [SerializeField] string audioFireName;
-    [SerializeField] string audioStartReloadName;
-    [SerializeField] string audioFinishReloadName;
 
     [SerializeField] UnityEvent OnReloadStart;
     [SerializeField] UnityEvent OnReloadFinish;
@@ -38,8 +32,6 @@ public class PlayerShooting : MonoBehaviour
 
         playerVariables = GetComponentInParent<PlayerVariables>();
         charController = GetComponentInParent<CharacterController>();
-
-        audioManager = FindObjectOfType<AudioManager>();
 
         animator = GetComponent<Animator>();
 
@@ -80,9 +72,8 @@ public class PlayerShooting : MonoBehaviour
             currentAmmoLoaded--;
             Instantiate(bulletPrefab, point, playerCamera.transform.rotation);
 
-            animator.SetTrigger("Fire");
-            audioManager.Play(audioFireName);
-
+            OnFire.Invoke();
+            
             /*if (Physics.Raycast(playerAim, out shootHit)) //this raycast shooting, will probably not be used
             {
                 Transform objectHit = shootHit.transform;
@@ -117,8 +108,9 @@ public class PlayerShooting : MonoBehaviour
             reloadTimer += Time.deltaTime;
         else if (reloadTimer >= reloadTime)
         {
-            animator.SetTrigger("FinishReload");
-            audioManager.Play(audioFinishReloadName);
+            //animator.SetTrigger("FinishReload");
+            //audioManager.Play(audioFinishReloadName);
+            OnReloadFinish.Invoke();
 
             reloadTimer = 0f;
             if (playerVariables.GetCurrentAmmoReserve() < clipCapacity)

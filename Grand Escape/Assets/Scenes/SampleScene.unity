@@ -1061,6 +1061,14 @@ PrefabInstance:
       propertyPath: playerVariables
       value: 
       objectReference: {fileID: 741439751}
+    - target: {fileID: 8928756233946378807, guid: 7d10eaaf36071b246b1e101992f70656, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1916713
+      objectReference: {fileID: 0}
+    - target: {fileID: 8928756233946378807, guid: 7d10eaaf36071b246b1e101992f70656, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d10eaaf36071b246b1e101992f70656, type: 3}
 --- !u!4 &827799412 stripped
@@ -1472,9 +1480,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7794666079471084343, guid: 462fc8266fda16242a106e1b7bd6bce3, type: 3}
   reloadTime: 1
-  audioFireName: PistolFire
-  audioStartReloadName: PistolStartReload
-  audioFinishReloadName: PistolFinishReload
   OnReloadStart:
     m_PersistentCalls:
       m_Calls: []
@@ -1905,9 +1910,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7794666079471084343, guid: 462fc8266fda16242a106e1b7bd6bce3, type: 3}
   reloadTime: 2
-  audioFireName: PistolFire
-  audioStartReloadName: PistolStartReload
-  audioFinishReloadName: PistolFinishReload
   OnReloadStart:
     m_PersistentCalls:
       m_Calls:
@@ -1964,7 +1966,31 @@ MonoBehaviour:
         m_CallState: 2
   OnFire:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 919132148572388973}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Fire
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1891718169}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PistolFire
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1527428187 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8928756233092268292, guid: 7d10eaaf36071b246b1e101992f70656, type: 3}

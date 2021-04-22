@@ -76,7 +76,6 @@ public class PlayerMovement : MonoBehaviour
         inputZ = Input.GetAxis("Vertical");
         Vector3 move = transform.right * inputX + transform.forward * inputZ;
 
-
         //Applying WASD- or Dodge-movement based on 'Dodge'-state
         if (!isDodging)
             controller.Move(move * currentSpeed * Time.deltaTime);
@@ -85,23 +84,48 @@ public class PlayerMovement : MonoBehaviour
         else
             isDodging = false;
 
-
-        if (isSlowmotion && Input.GetKeyDown(KeyCode.C))
-        {
-            Debug.Log("Player wants to stop slow motion");
-            breakSlowMotion = true;
-        }
-
         //Sprint
+        Sprint();
+
+        //Dodge activation
+        Dodge();
+
+        //Time slow activation
+        TimeSlow();
+
+        //Apply gravity and jump velocity
+        ApplyYAxisVelocity();
+    }
+
+    private void Sprint()
+    {
         if (!isDodging && isGrounded && Input.GetKey(KeyCode.LeftShift) && playerVariables.GetCurrentStamina() > 0 &&
-            inputZ == 1 && inputX == 0 && !ranOutOfStaminaAndCanNotSprint)
+                    inputZ == 1 && inputX == 0 && !ranOutOfStaminaAndCanNotSprint)
         {
             isSprinting = true;
         }
         else
             isSprinting = false;
 
-        //Dodge activation
+        if (isSprinting)
+        {
+            currentSpeed = sprintSpeed;
+            playerVariables.StaminaToBeUsed(staminaUsedForSprint);
+
+            if (playerVariables.GetCurrentStamina() < 1f)
+                StartCoroutine(ExhaustedFromSprinting());
+        }
+        else if (Input.GetKey(KeyCode.Z))
+        {
+            currentSpeed = crouchSpeed;
+            Crouch();
+        }
+        else
+            currentSpeed = speed;
+    }
+
+    private void Dodge()
+    {
         if (!isDodging && isGrounded && Input.GetKeyDown(KeyCode.F) && playerVariables.GetCurrentStamina() > staminaUsedForDodge && inputX != 0)
         {
             isDodging = true;
@@ -111,36 +135,21 @@ public class PlayerMovement : MonoBehaviour
             dodgeTimer = 0f;
             //StartCoroutine(SlowMotion());
         }
+    }
 
-        //Time slow activation
+    private void TimeSlow()
+    {
         if (Input.GetKeyDown(KeyCode.C) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlow && !exhaustedFromSlowMotion && !isSlowmotion)
         {
             playerVariables.StaminaToBeUsed(staminaUsedTimeSlow);
             StartCoroutine(SlowMotion());
         }
 
-        if (isSprinting)
+        if (isSlowmotion && Input.GetKeyDown(KeyCode.C))
         {
-            currentSpeed = sprintSpeed;
-            playerVariables.StaminaToBeUsed(staminaUsedForSprint);
-
-            if(playerVariables.GetCurrentStamina() < 1f)
-            {
-                StartCoroutine(ExhaustedFromSprinting());
-            }
+            Debug.Log("Player wants to stop slow motion");
+            breakSlowMotion = true;
         }
-        else if (Input.GetKey(KeyCode.Z))
-        {
-            currentSpeed = crouchSpeed;
-            Crouch();
-        }
-        else
-        {
-            currentSpeed = speed;
-        }
-
-        //Apply gravity and jump velocity
-        ApplyYAxisVelocity();
     }
 
     private void Crouch()
@@ -229,7 +238,7 @@ public class PlayerMovement : MonoBehaviour
         audioManager.Play("SlowMoFinish");
     }
 
-    private IEnumerator ExhaustedFromSlowMotion()
+    private IEnumerator ExhaustedFromSlowMotion() //Gör om till timer!
     {
         exhaustedFromSlowMotion = true;
         Debug.Log("Player exhausted and can not slow mo " + exhaustedFromSlowMotionTimer + " seconds");
@@ -239,7 +248,7 @@ public class PlayerMovement : MonoBehaviour
         uiManager.SlowMotionExhaustion(exhaustedFromSlowMotion);
     }
 
-    private IEnumerator ExhaustedFromSprinting()
+    private IEnumerator ExhaustedFromSprinting() //Gör om till timer!
     {
         ranOutOfStaminaAndCanNotSprint = true;
         Debug.Log("Player exhausted and can not sprint for " + ranOutOfStaminaTimer + " seconds");

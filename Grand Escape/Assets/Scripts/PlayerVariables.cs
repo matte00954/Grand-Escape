@@ -189,6 +189,7 @@ public class PlayerVariables : MonoBehaviour
             Debug.Log("Out of stamina");
     }
 
+    //Gör om till timer!
     private IEnumerator ResetTakenRecentDamage() //To prevent player from taking damage from the same bullet twice and to prevent too fast deaths
     {
         takenRecentDamage = true;
@@ -197,6 +198,7 @@ public class PlayerVariables : MonoBehaviour
         takenRecentDamage = false;
     }
 
+    //Gör om till timer!
     public IEnumerator StaminaRegen(float oldCurrentStamina)
     {
 

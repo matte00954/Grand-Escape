@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class AmmoVelocity : MonoBehaviour
 {
+    //TODO: Scriptable objects
+
     [SerializeField] LayerMask terrainMask; //Ground mask / terrain mask
     [SerializeField] LayerMask targetMask; //The target layer the projectile is searching to damage
     [SerializeField] Transform bulletHasHitCheck;
+    [SerializeField] Weapons weapons;
 
     private Vector3 direction;
 
@@ -30,7 +33,7 @@ public class AmmoVelocity : MonoBehaviour
         transform.position += direction * speed * Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //Checka bara if sats om t.ex. bullet som ägs av fiende träffar en spelare.
     {
         switch (other.gameObject.layer)
         {
@@ -62,7 +65,7 @@ public class AmmoVelocity : MonoBehaviour
         }
     }
 
-    IEnumerator TimeToDestroy(float timeToDestroy)
+    IEnumerator TimeToDestroy(float timeToDestroy) //Gör om till timer!
     {
         yield return new WaitForSeconds(timeToDestroy); //Om kulan inte träffar något så förstörs den efter 10 sekunder
         Destroy(this.gameObject);

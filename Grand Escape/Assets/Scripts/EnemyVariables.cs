@@ -46,7 +46,7 @@ public class EnemyVariables : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //Bara Dåligt
     {
         if (other.gameObject.CompareTag("PlayerMelee"))
         {

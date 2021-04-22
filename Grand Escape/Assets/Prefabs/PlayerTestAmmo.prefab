@@ -117,6 +117,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   bulletHasHitCheck: {fileID: 734761492637824856}
+  weapons: {fileID: 11400000, guid: 3eb395f5374fb7d48b76f567c0912ad5, type: 2}
   bulletCollisionDetectionDistance: 0.4
   timeUntilBulletDestroyed: 0.1
   speed: 100

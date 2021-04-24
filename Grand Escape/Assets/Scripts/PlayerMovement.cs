@@ -157,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
         //TODO
     }
 
-    public void TeleportPlayer(Vector3 pos)
+    public void TeleportPlayer(Vector3 pos) //This method is here because it needs the controller, playervariables handles player death, this only teleports the player
     {
         controller.enabled = false;
         Debug.Log("Teleport activated on position " + pos);

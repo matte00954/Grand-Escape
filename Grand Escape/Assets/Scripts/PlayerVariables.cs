@@ -7,9 +7,9 @@ public class PlayerVariables : MonoBehaviour
 
     [SerializeField] UiManager uiManager;
 
-    [SerializeField] GameObject respawnPoint;
+    [SerializeField] GameObject spawnPoint;
 
-    Vector3 currentRespawnPoint;
+    Transform currentRespawnPoint;
 
     GameObject Player;
 
@@ -44,12 +44,11 @@ public class PlayerVariables : MonoBehaviour
         healthPoints = maxHealthPoints;
         currentAmmoReserve = startAmmoReserve;
         currentStamina = maxStamina;
-
-        currentRespawnPoint = respawnPoint.transform.position;
     }
 
     private void Start()
     {
+        currentRespawnPoint = spawnPoint.transform;
         ResetAllStats();
     }
 
@@ -143,6 +142,12 @@ public class PlayerVariables : MonoBehaviour
 
             uiManager.Stamina((int)currentStamina);
         }
+
+        if (other.gameObject.CompareTag("Check point"))
+        {
+            SetNewRespawnPoint(other.gameObject);
+            Destroy(other.gameObject);
+        }
     }
     private void Update()
     {
@@ -169,13 +174,17 @@ public class PlayerVariables : MonoBehaviour
     private void PlayerRespawn()
     {
         PlayerMovement pm = GetComponent<PlayerMovement>();
-        pm.TeleportPlayer(currentRespawnPoint);
+
+        pm.TeleportPlayer(currentRespawnPoint.position);
+
         ResetAllStats();
     }
 
-    private void SetNewRespawnPoint(Vector3 newRespawnPoint) //OBS används ej för tillfället
+    public void SetNewRespawnPoint(GameObject newRespawnPoint) 
     {
-        currentRespawnPoint = newRespawnPoint;
+        Debug.Log("Old respawn point " + currentRespawnPoint.transform.position);
+        spawnPoint.GetComponent<MoveRespawnPoint>().SetNewPoint(newRespawnPoint.transform.position);
+        Debug.Log("New respawn point " + currentRespawnPoint.transform.position);
     }
 
     public void StaminaToBeUsed(float amount) //Everything that costs stamina should use this method
@@ -215,4 +224,3 @@ public class PlayerVariables : MonoBehaviour
         }
     }
 }
-

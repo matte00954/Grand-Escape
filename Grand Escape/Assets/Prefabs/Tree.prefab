@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: Tree Data
   m_EditorClassIdentifier: 
   _uniqueID: 330
-  materialHash: 43f90a219a9a87428ac526ee71ffbb8458982400
+  materialHash: 82f22a186b08eb80a15599c4230344ed58982400
   root:
     _uniqueID: 1
     seed: 1234
@@ -1682,7 +1682,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpSpecMap:
-        m_Texture: {fileID: 2800000, guid: 9419ddae6e2e62c48af395613bfa8c12, type: 3}
+        m_Texture: {fileID: 2800000, guid: 790d1a79026ae274491cbcb39fb3bb9b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GlossMap:
@@ -1690,11 +1690,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 6085d1c8628c0b54c85c6bf77ed4020a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 49fd4f457e38c8c499921dbb6bffd981, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TranslucencyMap:
-        m_Texture: {fileID: 2800000, guid: 9016a3ee9894d0f489d249f4db00a9dc, type: 3}
+        m_Texture: {fileID: 2800000, guid: ca21e5b4f2d602a4ebdcf85db12b2385, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -1728,19 +1728,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpSpecMap:
-        m_Texture: {fileID: 2800000, guid: 9419ddae6e2e62c48af395613bfa8c12, type: 3}
+        m_Texture: {fileID: 2800000, guid: 790d1a79026ae274491cbcb39fb3bb9b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 6085d1c8628c0b54c85c6bf77ed4020a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 49fd4f457e38c8c499921dbb6bffd981, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShadowTex:
-        m_Texture: {fileID: 2800000, guid: c9ec3353c8fe9a24c952e6b202d1213d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4a0dcd4d5de53ed4b88330874ef244fb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TranslucencyMap:
-        m_Texture: {fileID: 2800000, guid: 9016a3ee9894d0f489d249f4db00a9dc, type: 3}
+        m_Texture: {fileID: 2800000, guid: ca21e5b4f2d602a4ebdcf85db12b2385, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []

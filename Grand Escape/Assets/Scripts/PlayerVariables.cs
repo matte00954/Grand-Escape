@@ -155,6 +155,11 @@ public class PlayerVariables : MonoBehaviour
         {
             gameManager.GetComponent<SceneSwitch>().ChangeScene();
         }
+
+        if (other.gameObject.CompareTag("Water"))
+        {
+            healthPoints = 0;
+        }
     }
     private void Update()
     {

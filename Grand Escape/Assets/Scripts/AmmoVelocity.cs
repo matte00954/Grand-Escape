@@ -35,33 +35,17 @@ public class AmmoVelocity : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) //Checka bara if sats om t.ex. bullet som ägs av fiende träffar en spelare.
     {
-        switch (other.gameObject.layer)
+        Debug.Log("I hit: " + other.gameObject.tag);
+        if (other.gameObject.tag == "Player")
         {
-            case 6:
-                if (targetMask == LayerMask.GetMask("Player"))
-                {
-                    other.gameObject.GetComponentInParent<PlayerVariables>().ApplyDamage(damage);
-                    StartCoroutine(TimeToDestroy(timeUntilBulletDestroyed));
-                }
-                break;
-            case 8:
-                if (targetMask.value == LayerMask.GetMask("Enemy"))
-                    other.gameObject.GetComponent<EnemyVariables>().ApplyDamage(damage);
-                StartCoroutine(TimeToDestroy(timeUntilBulletDestroyed));
-                break;
-            case 7:
-                Debug.Log("Bullet has impacted ground");
-                StartCoroutine(TimeToDestroy(timeUntilBulletDestroyed));
-                break;
-            case 11:
-                Debug.Log("Bullet has impacted wall");
-                StartCoroutine(TimeToDestroy(timeUntilBulletDestroyed));
-                break;
-            case 0:
-                break;
-            default:
-                Debug.LogError("ERROR: Bullet could not find the appropriate layer from the hit target. Returned layer nr is: " + other.gameObject.layer);
-                break;
+            Debug.Log("Badaboom");
+            other.gameObject.GetComponentInParent<PlayerVariables>().ApplyDamage(damage);
+            StartCoroutine(TimeToDestroy(timeUntilBulletDestroyed));
+        }
+        else if (other.gameObject.tag == "Enemy")
+        {
+            other.gameObject.GetComponent<EnemyVariables>().ApplyDamage(damage);
+            StartCoroutine(TimeToDestroy(timeUntilBulletDestroyed));
         }
     }
 

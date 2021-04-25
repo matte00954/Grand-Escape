@@ -12,6 +12,8 @@ TagManager:
   - Stamina boost
   - Check point
   - Scene end
+  - Enemy
+  - EnemyBullets
   layers:
   - Default
   - TransparentFX
@@ -25,7 +27,7 @@ TagManager:
   - PlayerBullets
   - PlayerSword
   - Wall
-  - 
+  - EnemyBullets
   - 
   - 
   - 

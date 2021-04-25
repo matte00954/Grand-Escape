@@ -16,13 +16,14 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float groundDistance = 0.4f; //The radius of the CheckSphere for 'groundCheck'.
 
-    [Header("Controller")]
-    [SerializeField] CharacterController controller; //Reference to the player's CharacterController component.
+    //[Header("Controller")]
+    CharacterController controller; //Reference to the player's CharacterController component.
 
     [Header("Movement")]
     [SerializeField] float speed;
     [SerializeField] float gravity;
     [SerializeField] float jumpHeight;
+    [SerializeField] float crouchHeight;
     [SerializeField] float sprintCooldown;
     [SerializeField] float sprintSpeed;
     [SerializeField] float crouchSpeed;
@@ -57,20 +58,27 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
     bool isSlowmotion = false;
     bool breakSlowMotion = false;
+    bool isCrouching = false;
 
     bool exhaustedFromSlowMotion = false;
 
     float currentSpeed;
+    float standingHeight;
     float dodgeTimer = 0f; //Needs to be zero
     float inputX;
     float inputZ;
+
+    private void Start()
+    {
+        controller = GetComponent<CharacterController>();
+        standingHeight = controller.height;
+    }
 
     // Update is called once per frame
     void Update()
     {
         //Checks if player is grounded and resets gravity velocity if true
         CheckGround();
-
         //WASD Input
         inputX = Input.GetAxis("Horizontal");
         inputZ = Input.GetAxis("Vertical");
@@ -83,6 +91,9 @@ public class PlayerMovement : MonoBehaviour
             ApplyDodge();
         else
             isDodging = false;
+
+        //Crouch
+        Crouch();
 
         //Sprint
         Sprint();
@@ -99,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Sprint()
     {
-        if (!isDodging && isGrounded && Input.GetKey(KeyCode.LeftShift) && playerVariables.GetCurrentStamina() > 0 &&
+        if (!isDodging && !isCrouching && isGrounded && Input.GetKey(KeyCode.LeftShift) && playerVariables.GetCurrentStamina() > 0 &&
                     inputZ == 1 && inputX == 0 && !ranOutOfStaminaAndCanNotSprint)
         {
             isSprinting = true;
@@ -154,7 +165,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void Crouch()
     {
-        //TODO
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            if (isCrouching)
+            {
+                isCrouching = false;
+                controller.enabled = false;
+                transform.position += new Vector3(0, crouchHeight / 2);
+                controller.enabled = true;
+                controller.height = standingHeight;
+            }
+            else
+            {
+                isCrouching = true;
+                controller.height = crouchHeight;
+                controller.enabled = false;
+                transform.position -= new Vector3(0, crouchHeight / 2);
+                controller.enabled = true;
+            }
+        }
     }
 
     public void TeleportPlayer(Vector3 pos) //This method is here because it needs the controller, playervariables handles player death, this only teleports the player
@@ -193,7 +222,7 @@ public class PlayerMovement : MonoBehaviour
     private void ApplyYAxisVelocity()
     {
         //Jump
-        if (Input.GetButtonDown("Jump") && controller.isGrounded && !isDodging && playerVariables.GetCurrentStamina() > staminaUsedForJump)
+        if (Input.GetButtonDown("Jump") && isGrounded && !isDodging && playerVariables.GetCurrentStamina() > staminaUsedForJump)
         {
             playerVariables.StaminaToBeUsed(staminaUsedForJump);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);

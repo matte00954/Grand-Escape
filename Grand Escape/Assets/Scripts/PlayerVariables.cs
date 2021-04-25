@@ -9,6 +9,8 @@ public class PlayerVariables : MonoBehaviour
 
     [SerializeField] GameObject spawnPoint;
 
+    [SerializeField] GameObject gameManager;
+
     Transform currentRespawnPoint;
 
     GameObject Player;
@@ -147,6 +149,11 @@ public class PlayerVariables : MonoBehaviour
         {
             SetNewRespawnPoint(other.gameObject);
             Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Scene end"))
+        {
+            gameManager.GetComponent<SceneSwitch>().ChangeScene();
         }
     }
     private void Update()

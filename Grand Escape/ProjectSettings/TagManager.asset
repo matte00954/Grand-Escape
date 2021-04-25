@@ -11,6 +11,7 @@ TagManager:
   - PlayerMelee
   - Stamina boost
   - Check point
+  - Scene end
   layers:
   - Default
   - TransparentFX

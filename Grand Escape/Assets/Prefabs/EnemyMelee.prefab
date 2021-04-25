@@ -114,20 +114,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 6121907533333242313}
-  playerTransform: {fileID: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 128
   playerMask:
     serializedVersion: 2
     m_Bits: 64
-  walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 20
   timeBetweenPatrol: 3
   patrolSpeed: 11
   sightRange: 30
   attackSpeed: 15
-  playerInSightRange: 0
 --- !u!195 &6121907533333242313
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -136,7 +133,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8928756233092268292}
   m_Enabled: 1
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 0
   m_Radius: 1
   m_Speed: 11
   m_Acceleration: 12
@@ -272,8 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27d831c31d615b489cf10b282ff62ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 2
   playerVariables: {fileID: 0}
+  cooldown: 2
 --- !u!54 &8928756233946378810
 Rigidbody:
   m_ObjectHideFlags: 0

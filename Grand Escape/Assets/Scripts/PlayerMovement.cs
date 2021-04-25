@@ -126,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dodge()
     {
-        if (!isDodging && isGrounded && Input.GetKeyDown(KeyCode.F) && playerVariables.GetCurrentStamina() > staminaUsedForDodge && inputX != 0)
+        if (!isDodging && controller.isGrounded && Input.GetKeyDown(KeyCode.F) && playerVariables.GetCurrentStamina() > staminaUsedForDodge && inputX != 0)
         {
             isDodging = true;
             dodgeDirection = transform.right * inputX + transform.forward * inputZ * 0.5f;
@@ -171,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         //Reset gravity force when the character is grounded. This prevents gravity buildup.
-        if (isGrounded && velocity.y < 0)
+        if (controller.isGrounded && velocity.y < 0)
             velocity.y = -2f;
     }
 
@@ -188,12 +188,12 @@ public class PlayerMovement : MonoBehaviour
     public bool IsDodging() { return isDodging; }
     public bool IsSprinting() { return isSprinting; }
 
-    public bool IsWalking() { return isGrounded && inputX != 0 || isGrounded && inputZ != 0; }
+    public bool IsWalking() { return controller.isGrounded && inputX != 0 || controller.isGrounded && inputZ != 0; }
 
     private void ApplyYAxisVelocity()
     {
         //Jump
-        if (Input.GetButtonDown("Jump") && isGrounded && !isDodging && playerVariables.GetCurrentStamina() > staminaUsedForJump)
+        if (Input.GetButtonDown("Jump") && controller.isGrounded && !isDodging && playerVariables.GetCurrentStamina() > staminaUsedForJump)
         {
             playerVariables.StaminaToBeUsed(staminaUsedForJump);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);

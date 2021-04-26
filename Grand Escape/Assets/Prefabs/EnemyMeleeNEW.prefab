@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 4362502900959484618}
   - component: {fileID: 7602779343278662781}
   m_Layer: 8
-  m_Name: EnemyMelee 1
+  m_Name: EnemyMeleeNEW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,7 +262,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327207243366514007}
   m_Enabled: 1
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 0
   m_Radius: 1
   m_Speed: 11
   m_Acceleration: 12

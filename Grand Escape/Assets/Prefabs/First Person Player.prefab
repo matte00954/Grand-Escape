@@ -2266,7 +2266,7 @@ GameObject:
   - component: {fileID: 5678491154712510807}
   - component: {fileID: 5678491154712510805}
   m_Layer: 6
-  m_Name: First Person Player 1
+  m_Name: First Person Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2335,17 +2335,16 @@ MonoBehaviour:
   sprintCooldown: 1.5
   sprintSpeed: 24
   crouchSpeed: 6
-  staminaUsedForSprint: 0.1
+  staminaUsedForSprint: 10
   staminaUsedForDodge: 5
   staminaUsedTimeSlow: 2
   staminaUsedForJump: 2
-  ranOutOfStaminaTimer: 3
-  slowMotionTime: 1
-  slowMotionDelay: 0.15
+  sprintExhaustionTime: 3
+  slowMotionDelayTime: 0
   slowMotionAmountMultiplier: 0.2
-  slowMotionStaminaToBeUsedPerTick: 4
-  slowMotionTick: 0.05
-  exhaustedFromSlowMotionTimer: 3
+  slowMotionStaminaToBeUsedPerTick: 1
+  slowMotionTickTime: 0.1
+  slowMotionExhaustionTime: 3
   slowMotionMovementSpeed: 10
   dodgeAmountOfTime: 0.35
   dodgeSpeedMultiplier: 4
@@ -2361,7 +2360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1e16fd9da138048ad58081277dcd30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 4884748120044031724, guid: 757b00d841697c3489ea049a37d13834, type: 3}
   spawnPoint: {fileID: 0}
   gameManager: {fileID: 0}
   staminaRegenPerTick: 2

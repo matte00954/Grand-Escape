@@ -33,15 +33,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float staminaUsedForDodge;
     [SerializeField] float staminaUsedTimeSlow;
     [SerializeField] float staminaUsedForJump;
-    [SerializeField] float ranOutOfStaminaTimer;
+    [SerializeField] float sprintExhaustionTime;
 
     [Header("Slow motion")]
-    [SerializeField] float slowMotionTime;
-    [SerializeField] float slowMotionDelay;
+    [SerializeField] float slowMotionDelayTime; //Remove later
     [SerializeField] float slowMotionAmountMultiplier;
     [SerializeField] float slowMotionStaminaToBeUsedPerTick;
-    [SerializeField] float slowMotionTick;
-    [SerializeField] float exhaustedFromSlowMotionTimer;
+    [SerializeField] float slowMotionTickTime;
+    [SerializeField] float slowMotionExhaustionTime;
     [SerializeField] float slowMotionMovementSpeed;
 
     [Header("Dodge")]
@@ -53,20 +52,22 @@ public class PlayerMovement : MonoBehaviour
 
 
     bool isSprinting = false;
-    bool ranOutOfStaminaAndCanNotSprint = false;
+    bool isExhaustedFromSprinting = false;
     bool isDodging = false;
     bool isGrounded;
     bool isSlowmotion = false;
     bool breakSlowMotion = false;
     bool isCrouching = false;
 
-    bool exhaustedFromSlowMotion = false;
+    bool isExhaustedFromSlowMotion = false;
 
     float currentSpeed;
     float standingHeight;
-    float dodgeTimer = 0f; //Needs to be zero
     float inputX;
     float inputZ;
+
+    //Timers
+    float dodgeTimer, slowMotionExhaustionTimer, slowMotionTickTimer, sprintExhaustionTimer;
 
     private void Start()
     {
@@ -102,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         Dodge();
 
         //Time slow activation
-        TimeSlow();
+        CheckTimeSlow();
 
         //Apply gravity and jump velocity
         ApplyYAxisVelocity();
@@ -110,21 +111,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void Sprint()
     {
-        if (!isDodging && !isCrouching && isGrounded && Input.GetKey(KeyCode.LeftShift) && playerVariables.GetCurrentStamina() > 0 &&
-                    inputZ == 1 && inputX == 0 && !ranOutOfStaminaAndCanNotSprint)
-        {
-            isSprinting = true;
-        }
-        else
-            isSprinting = false;
+        isSprinting = (!isDodging && !isCrouching && isGrounded && Input.GetKey(KeyCode.LeftShift) && playerVariables.GetCurrentStamina() > 0 &&
+                    inputZ == 1 && inputX == 0 && !isExhaustedFromSprinting);
 
         if (isSprinting)
         {
             currentSpeed = sprintSpeed;
-            playerVariables.StaminaToBeUsed(staminaUsedForSprint);
+            playerVariables.StaminaToBeUsed(staminaUsedForSprint * Time.deltaTime);
 
             if (playerVariables.GetCurrentStamina() < 1f)
-                StartCoroutine(ExhaustedFromSprinting());
+            {
+                isExhaustedFromSprinting = true;
+                uiManager.SprintExhaustion(isExhaustedFromSprinting);
+                sprintExhaustionTimer = sprintExhaustionTime;
+            }
         }
         else if (Input.GetKey(KeyCode.Z))
         {
@@ -133,6 +133,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             currentSpeed = speed;
+
+        if (isExhaustedFromSprinting && sprintExhaustionTimer <= 0f)
+        {
+            isExhaustedFromSprinting = false;
+            uiManager.SprintExhaustion(isExhaustedFromSprinting);
+        }
+        else if (isExhaustedFromSprinting && sprintExhaustionTimer > 0f)
+            sprintExhaustionTimer -= Time.unscaledDeltaTime;
     }
 
     private void Dodge()
@@ -144,23 +152,44 @@ public class PlayerMovement : MonoBehaviour
 
             playerVariables.StaminaToBeUsed(staminaUsedForDodge);
             dodgeTimer = 0f;
-            //StartCoroutine(SlowMotion());
         }
     }
 
-    private void TimeSlow()
+    private void CheckTimeSlow()
     {
-        if (Input.GetKeyDown(KeyCode.C) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlow && !exhaustedFromSlowMotion && !isSlowmotion)
+        if (isSlowmotion && Input.GetKeyDown(KeyCode.C) || isSlowmotion && playerVariables.GetCurrentStamina() <= 0f)
         {
-            playerVariables.StaminaToBeUsed(staminaUsedTimeSlow);
-            StartCoroutine(SlowMotion());
+            Debug.Log("Slow motion stops");
+            isSlowmotion = false;
+            isExhaustedFromSlowMotion = true;
+            uiManager.SlowMotionExhaustion(isExhaustedFromSlowMotion);
+            RestoreTime();
         }
 
-        if (isSlowmotion && Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlow && !isExhaustedFromSlowMotion && !isSlowmotion)
         {
-            Debug.Log("Player wants to stop slow motion");
-            breakSlowMotion = true;
+            playerVariables.StaminaToBeUsed(staminaUsedTimeSlow);
+            isSlowmotion = true;
+            Time.timeScale = slowMotionAmountMultiplier;
+            currentSpeed = slowMotionMovementSpeed;
+            Debug.Log("Slow motion active, time scale : " + Time.timeScale);
+            audioManager.Play("SlowMoStart");
+
+            //Reset timers
+            slowMotionTickTimer = slowMotionTickTime;
+            slowMotionExhaustionTimer = slowMotionExhaustionTime;
         }
+
+        if (isExhaustedFromSlowMotion && slowMotionExhaustionTimer <= 0f)
+        {
+            isExhaustedFromSlowMotion = false;
+            uiManager.SlowMotionExhaustion(isExhaustedFromSlowMotion);
+        }
+        else if (isExhaustedFromSlowMotion && slowMotionExhaustionTimer > 0f)
+            slowMotionExhaustionTimer -= Time.deltaTime;
+
+        if (isSlowmotion)
+            UpdateSlowMotion();
     }
 
     private void Crouch()
@@ -235,26 +264,15 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
-    private IEnumerator SlowMotion()
+    private void UpdateSlowMotion()
     {
-        yield return new WaitForSeconds(slowMotionDelay);
-        isSlowmotion = true;
-        Time.timeScale = slowMotionAmountMultiplier;
-        currentSpeed = slowMotionMovementSpeed;
-        Debug.Log("Slow motion active, time scale : " + Time.timeScale);
-        audioManager.Play("SlowMoStart");
-
-        while (playerVariables.GetCurrentStamina() > slowMotionStaminaToBeUsedPerTick)
+        if (slowMotionTickTimer > 0f)
+            slowMotionTickTimer -= Time.unscaledDeltaTime;
+        else if (slowMotionTickTimer <= 0f)
         {
-            if (breakSlowMotion)
-            {
-                break;
-            }
-            yield return new WaitForSeconds(slowMotionTick);
+            slowMotionTickTimer = slowMotionTickTime;
             playerVariables.StaminaToBeUsed(slowMotionStaminaToBeUsedPerTick);
         }
-        StartCoroutine(ExhaustedFromSlowMotion());
-        RestoreTime();
     }
 
     private void RestoreTime()
@@ -265,25 +283,5 @@ public class PlayerMovement : MonoBehaviour
         breakSlowMotion = false;
         Debug.Log("Time has restored to : " + Time.timeScale);
         audioManager.Play("SlowMoFinish");
-    }
-
-    private IEnumerator ExhaustedFromSlowMotion() //Gör om till timer!
-    {
-        exhaustedFromSlowMotion = true;
-        Debug.Log("Player exhausted and can not slow mo " + exhaustedFromSlowMotionTimer + " seconds");
-        uiManager.SlowMotionExhaustion(exhaustedFromSlowMotion);
-        yield return new WaitForSeconds(exhaustedFromSlowMotionTimer); //Player gets exhausted and cant slow mo for this amount of time
-        exhaustedFromSlowMotion = false;
-        uiManager.SlowMotionExhaustion(exhaustedFromSlowMotion);
-    }
-
-    private IEnumerator ExhaustedFromSprinting() //Gör om till timer!
-    {
-        ranOutOfStaminaAndCanNotSprint = true;
-        Debug.Log("Player exhausted and can not sprint for " + ranOutOfStaminaTimer + " seconds");
-        uiManager.SprintExhaustion(ranOutOfStaminaAndCanNotSprint);
-        yield return new WaitForSeconds(ranOutOfStaminaTimer); //Player gets exhausted and cant sprint for this amount of time
-        ranOutOfStaminaAndCanNotSprint = false;
-        uiManager.SprintExhaustion(ranOutOfStaminaAndCanNotSprint);
     }
 }

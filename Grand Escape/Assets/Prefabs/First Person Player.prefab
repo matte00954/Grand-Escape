@@ -2364,7 +2364,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   gameManager: {fileID: 0}
   staminaRegenPerTick: 2
-  timeUntilStaminaRegen: 0.5
+  timerUntilStaminaComparisonCheck: 10
+  timerUntilStaminaRegen: 10
   maxHealthPoints: 100
   maxAmmoReserve: 10
   maxStamina: 100

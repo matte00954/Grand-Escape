@@ -1565,6 +1565,18 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 321427234}
+    - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: isUsingStaminaTimer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: staminaRegenPerTick
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: timeUntilStaminaRegen
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5678491154712510806, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: m_RootOrder
       value: 5

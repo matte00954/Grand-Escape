@@ -32,17 +32,17 @@ public class UiManager : MonoBehaviour
         currentStamina.text = i.ToString();
     }
 
-    public void SlowMotionExhaustion(bool isExhausted)
+    public void SlowMotionExhaustion(bool isExhaustedFromSlowMotion)
     {
-        if (isExhausted)
+        if (isExhaustedFromSlowMotion)
             slowMoExhaustion.gameObject.SetActive(true);
         else
             slowMoExhaustion.gameObject.SetActive(false);
     }
 
-    public void SprintExhaustion(bool isExhausted)
+    public void SprintExhaustion(bool isExhaustedFromSprinting)
     {
-        if (isExhausted)
+        if (isExhaustedFromSprinting)
             sprintExhaustion.gameObject.SetActive(true);
         else
             sprintExhaustion.gameObject.SetActive(false);

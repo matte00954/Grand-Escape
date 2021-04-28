@@ -16,8 +16,10 @@ public class PlayerVariables : MonoBehaviour
     GameObject Player;
 
     [Header("Stamina")]
-    [SerializeField] int staminaRegenPerTick;
-    [SerializeField] float timeUntilStaminaRegen;
+    [SerializeField] float staminaRegenPerTick;
+    [SerializeField] float timerUntilStaminaComparisonCheck; //In frames (done in update)
+    [SerializeField] float timerUntilStaminaRegen; //In frames (done in update)
+
 
     [Header("Max Variables")]
     [SerializeField] int maxHealthPoints;
@@ -33,12 +35,13 @@ public class PlayerVariables : MonoBehaviour
     [SerializeField] int staminaPickUpRestoreAmount;
 
     [Header("Damage Variables")]
-    [SerializeField] float recentDamageTimer;
+    [SerializeField] float recentDamageTimer; //In frames (done in update)
 
     int healthPoints;
     int currentAmmoReserve;
     float currentStamina;
     bool takenRecentDamage = false;
+    bool isUsingStamina = false;
 
     private void Awake()
     {
@@ -80,12 +83,12 @@ public class PlayerVariables : MonoBehaviour
         if (!takenRecentDamage)
         {
             healthPoints -= damageToBeApplied;
-            StartCoroutine(ResetTakenRecentDamage());
+            takenRecentDamage = true;
         }
         uiManager.HealthPoints(healthPoints);
     }
 
-    public void ResetAllStats()
+    public void ResetAllStats() //should work on player death too
     {
         healthPoints = maxHealthPoints;
         currentAmmoReserve = startAmmoReserve;
@@ -94,93 +97,6 @@ public class PlayerVariables : MonoBehaviour
         uiManager.HealthPoints(healthPoints);
         uiManager.Stamina((int)currentStamina);
         uiManager.AmmoStatus(currentAmmoReserve);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Health boost") && healthPoints < maxHealthPoints)
-        {
-            healthPoints += healthBoostAmount;
-            Destroy(other.gameObject);
-
-            if (healthPoints > maxHealthPoints)
-            {
-                Debug.Log("HP restored to max");
-                healthPoints = maxHealthPoints;
-            }
-            else
-                Debug.Log("HP restored by " + healthBoostAmount);
-
-            uiManager.HealthPoints(healthPoints);
-        }
-        if (other.gameObject.CompareTag("Ammo boost") && currentAmmoReserve < maxAmmoReserve)
-        {
-            currentAmmoReserve += ammoBoxAmount;
-            Destroy(other.gameObject);
-
-            if (currentAmmoReserve > maxAmmoReserve)
-            {
-                Debug.Log("Ammo restored to max");
-                currentAmmoReserve = maxAmmoReserve;
-            }
-            else
-                Debug.Log("Ammo restored by " + ammoBoxAmount);
-
-            uiManager.AmmoStatus(GetCurrentAmmoReserve());
-        }
-
-        if (other.gameObject.CompareTag("Stamina boost") && currentStamina < maxStamina)
-        {
-            currentStamina += staminaPickUpRestoreAmount;
-            Destroy(other.gameObject);
-
-            if (currentStamina > maxStamina)
-            {
-                Debug.Log("Stamina restored to max");
-                currentStamina = maxStamina;
-            }
-            else
-                Debug.Log("Stamina restored by " + staminaPickUpRestoreAmount);
-
-            uiManager.Stamina((int)currentStamina);
-        }
-
-        if (other.gameObject.CompareTag("Check point"))
-        {
-            SetNewRespawnPoint(other.gameObject);
-            Destroy(other.gameObject);
-        }
-
-        if (other.gameObject.CompareTag("Scene end"))
-        {
-            gameManager.GetComponent<SceneSwitch>().ChangeScene();
-        }
-
-        if (other.gameObject.CompareTag("Water"))
-        {
-            healthPoints = 0;
-        }
-    }
-    private void Update()
-    {
-        if(healthPoints <= 0)
-        {
-            Debug.Log("PLAYER HAS DIED");
-            PlayerRespawn();
-        }
-
-        if(currentStamina < maxStamina) //stamina regen start
-        {
-            StartCoroutine(StaminaRegen(currentStamina));
-            uiManager.Stamina((int)currentStamina);
-        }
-
-        if (healthPoints > 0)
-        {
-            uiManager.HealthPoints(healthPoints);
-            uiManager.Stamina((int)currentStamina);
-            uiManager.AmmoStatus(currentAmmoReserve);
-        }
     }
 
     private void PlayerRespawn()
@@ -201,38 +117,163 @@ public class PlayerVariables : MonoBehaviour
 
     public void StaminaToBeUsed(float amount) //Everything that costs stamina should use this method
     {
-        if (currentStamina - amount >= 0)
+
+        if (currentStamina >= 0)
         {
             currentStamina -= amount;
-            uiManager.Stamina((int)currentStamina);
         }
         else 
             Debug.Log("Out of stamina");
     }
 
-    //Gör om till timer!
-    private IEnumerator ResetTakenRecentDamage() //To prevent player from taking damage from the same bullet twice and to prevent too fast deaths
+    private void Update()
     {
-        takenRecentDamage = true;
-        Debug.Log("Player immune from damage for " + recentDamageTimer + " seconds");
-        yield return new WaitForSeconds(recentDamageTimer);
-        takenRecentDamage = false;
+        PlayerDeath();
+
+        StaminaRegen();
+
+        UiUpdate();
+
+        RecentDamageTaken();
     }
 
-    //Gör om till timer!
-    public IEnumerator StaminaRegen(float oldCurrentStamina)
+    private void PlayerDeath()
     {
-
-        yield return new WaitForSeconds(timeUntilStaminaRegen);
-
-        if (oldCurrentStamina == currentStamina)
+        if (healthPoints <= 0)
         {
-            currentStamina += staminaRegenPerTick;
-            if(currentStamina > maxStamina) //om stamina går över max värdet, blir currentStamina istället max
+            Debug.Log("PLAYER HAS DIED");
+            PlayerRespawn();
+        }
+    }
+
+    private void RecentDamageTaken()
+    {
+        if (takenRecentDamage)
+        {
+            float timer = recentDamageTimer;
+
+            timer -= Time.deltaTime;
+
+            if (timer >= 0)
             {
+                takenRecentDamage = false;
+                Debug.Log("Player can take damage again");
+            }
+        }
+    }
+
+    private void UiUpdate()
+    {
+        if (healthPoints > 0) //UI does not need to be updated if health is below zero
+        {
+            uiManager.HealthPoints(healthPoints);
+            uiManager.Stamina((int)currentStamina);
+            uiManager.AmmoStatus(currentAmmoReserve);
+        }
+    }
+
+    private void StaminaRegen()
+    {
+        if (currentStamina < maxStamina && Time.timeScale == 1) //stamina regen start, and checks if slow motion is NOT active
+        {
+
+            float firstTimer = timerUntilStaminaComparisonCheck;
+
+            firstTimer -= Time.deltaTime;
+
+            float oldStamina = currentStamina;
+
+            if (firstTimer >= 0)
+            {
+                float secondTimer = timerUntilStaminaRegen;
+                secondTimer -= Time.deltaTime;
+
+                if (secondTimer >= 0 && oldStamina == currentStamina)
+                {
+                    Debug.Log("Stamina is now regenerating");
+                    currentStamina += staminaRegenPerTick;
+                }
+                else
+                    Debug.Log("Stamina != old stamina");
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Pickups(other);
+
+        CheckPointAndEndScene(other);
+
+        PlayerDrown(other);
+    }
+
+    private void CheckPointAndEndScene(Collider other) //For checkpoints and ending scenes
+    {
+        if (other.gameObject.CompareTag("Check point"))
+        {
+            SetNewRespawnPoint(other.gameObject);
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Scene end"))
+        {
+            gameManager.GetComponent<SceneSwitch>().ChangeScene();
+        }
+    }
+
+    private void PlayerDrown(Collider other) //Player should die from touching this collider trigger
+    {
+        if (other.gameObject.CompareTag("Water"))
+        {
+            healthPoints = 0;
+        }
+    }
+
+    private void Pickups(Collider other) //All pickups should be here
+    {
+        if (other.gameObject.CompareTag("Health boost") && healthPoints < maxHealthPoints)
+        {
+            healthPoints += healthBoostAmount;
+            Destroy(other.gameObject);
+
+            if (healthPoints > maxHealthPoints)
+            {
+                Debug.Log("HP restored to max");
+                healthPoints = maxHealthPoints;
+            }
+            else
+                Debug.Log("HP restored by " + healthBoostAmount);
+
+        }
+
+        if (other.gameObject.CompareTag("Ammo boost") && currentAmmoReserve < maxAmmoReserve)
+        {
+            currentAmmoReserve += ammoBoxAmount;
+            Destroy(other.gameObject);
+
+            if (currentAmmoReserve > maxAmmoReserve)
+            {
+                Debug.Log("Ammo restored to max");
+                currentAmmoReserve = maxAmmoReserve;
+            }
+            else
+                Debug.Log("Ammo restored by " + ammoBoxAmount);
+
+        }
+
+        if (other.gameObject.CompareTag("Stamina boost") && currentStamina < maxStamina)
+        {
+            currentStamina += staminaPickUpRestoreAmount;
+            Destroy(other.gameObject);
+
+            if (currentStamina > maxStamina)
+            {
+                Debug.Log("Stamina restored to max");
                 currentStamina = maxStamina;
             }
-            uiManager.Stamina((int)currentStamina);
+            else
+                Debug.Log("Stamina restored by " + staminaPickUpRestoreAmount);
         }
     }
 }

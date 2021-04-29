@@ -41,7 +41,7 @@ public class EnemyVariables : MonoBehaviour
         {
             Debug.Log("Enemy dies");
             //OBS Temporär kod
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
 
     }

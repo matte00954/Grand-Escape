@@ -8,7 +8,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] GameObject bulletPrefab; //Assign prefab
     [SerializeField] Weapons weaponType; //Assign weapon type from Weapons folder
 
-    [SerializeField] float slowMotionReloadSpeedDivider; //TODO NOT USED YET
+    [SerializeField] float slowMotionReloadSpeedDivider = 2;
 
     Camera playerCamera;
     PlayerVariables playerVariables;
@@ -104,9 +104,16 @@ public class PlayerShooting : MonoBehaviour
 
     private void UpdateReload()
     {
-        if (reloadTimer < weaponType.GetReloadTime())
+        float reloadTime = weaponType.GetReloadTime();
+
+        if (Time.timeScale < 1)
+        {
+            reloadTime /= slowMotionReloadSpeedDivider;
+        }
+
+        if (reloadTimer < reloadTime)
             reloadTimer += Time.deltaTime;
-        else if (reloadTimer >= weaponType.GetReloadTime())
+        else if (reloadTimer >= reloadTime)
         {
             //animator.SetTrigger("FinishReload");
             //audioManager.Play(audioFinishReloadName);

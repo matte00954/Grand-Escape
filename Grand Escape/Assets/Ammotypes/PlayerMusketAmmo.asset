@@ -20,5 +20,5 @@ MonoBehaviour:
     m_Bits: 0
   ammoName: PlayerMusketAmmo
   ammoDamage: 100
-  speed: 5
+  speed: 150
   bulletDoesNotHitTimer: 10

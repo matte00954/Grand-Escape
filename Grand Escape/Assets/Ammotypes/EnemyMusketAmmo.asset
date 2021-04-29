@@ -20,5 +20,5 @@ MonoBehaviour:
     m_Bits: 0
   ammoName: EnemyMusketAmmo
   ammoDamage: 40
-  speed: 5
+  speed: 50
   bulletDoesNotHitTimer: 5

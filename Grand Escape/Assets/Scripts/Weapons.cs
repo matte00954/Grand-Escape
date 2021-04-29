@@ -5,17 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Weapons")]
 public class Weapons : ScriptableObject
 {
-    [SerializeField] MeshFilter weaponMeshFilter;
-    [SerializeField] MeshRenderer weaponMeshRenderer;
+    [SerializeField] MeshFilter weaponMeshFilter; //Not sure if needed
+    [SerializeField] MeshRenderer weaponMeshRenderer; //Not sure if needed
     [SerializeField] Sprite crosshair; //crosshair on UI
 
     [SerializeField] string weaponName; //musket/pistol
-
-    [SerializeField] int weaponDamage = 100;
-    [SerializeField] int ammoCapacity; //how many bullets can fit in the gun
-
-    [SerializeField] float effectiveRange; //how long until bullet gets destroyed if it does not hit
+    [SerializeField] int weaponDamage = 100; //Should be 100, unless changed design decision
+    [SerializeField] int ammoCapacity = 1; //how many bullets can fit in the gun, should be 1
     [SerializeField] float reloadTime; //In seconds
+    [SerializeField] bool canZoom = true; //Can you zoom with weapon? default true
 
     Transform weaponTransform;
 
@@ -31,8 +29,8 @@ public class Weapons : ScriptableObject
 
     public int GetAmmoCap() { return ammoCapacity; }
 
-    public float GetEffectiveRange() { return effectiveRange; }
-
     public float GetReloadTime() { return reloadTime; }
+
+    public bool GetCanZoom() { return canZoom; }
 
 }

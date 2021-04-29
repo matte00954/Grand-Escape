@@ -6,16 +6,16 @@ using UnityEngine.Events;
 public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] GameObject bulletPrefab; //Assign prefab
+    [SerializeField] Weapons weaponType; //Assign weapon type from Weapons folder
+
+    [SerializeField] float slowMotionReloadSpeedDivider; //TODO NOT USED YET
 
     Camera playerCamera;
     PlayerVariables playerVariables;
     CharacterController charController;
-
     Animator animator;
 
-    [Header("Weapon Stats")]
-    [SerializeField] float reloadTime;
-
+    [Header("Event System")]
     [SerializeField] UnityEvent OnReloadStart;
     [SerializeField] UnityEvent OnReloadFinish;
     [SerializeField] UnityEvent OnFire;
@@ -104,9 +104,9 @@ public class PlayerShooting : MonoBehaviour
 
     private void UpdateReload()
     {
-        if (reloadTimer < reloadTime)
+        if (reloadTimer < weaponType.GetReloadTime())
             reloadTimer += Time.deltaTime;
-        else if (reloadTimer >= reloadTime)
+        else if (reloadTimer >= weaponType.GetReloadTime())
         {
             //animator.SetTrigger("FinishReload");
             //audioManager.Play(audioFinishReloadName);

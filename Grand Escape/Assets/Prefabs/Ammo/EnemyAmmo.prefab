@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8965539588871930641}
   - component: {fileID: 5592313624258484325}
   m_Layer: 12
-  m_Name: EnemyTestAmmo
+  m_Name: EnemyAmmo
   m_TagString: EnemyBullets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,19 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1931551465ace674aa2a3a2b2cb5a79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainMask:
-    serializedVersion: 2
-    m_Bits: 128
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  bulletHasHitCheck: {fileID: 734761492637824856}
-  weapons: {fileID: 11400000, guid: 3eb395f5374fb7d48b76f567c0912ad5, type: 2}
-  bulletCollisionDetectionDistance: 0.4
-  timeUntilBulletDestroyed: 0.1
-  speed: 100
-  bulletDoesNotHitTimer: 10
-  damage: 50
+  ammo: {fileID: 11400000, guid: 977e463b18c0dc746b9468b06ecfe755, type: 2}
 --- !u!54 &5592313624258484325
 Rigidbody:
   m_ObjectHideFlags: 0

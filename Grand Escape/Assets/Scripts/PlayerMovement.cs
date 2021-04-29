@@ -244,6 +244,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public bool IsDodging() { return isDodging; }
+
     public bool IsSprinting() { return isSprinting; }
 
     public bool IsWalking() { return controller.isGrounded && inputX != 0 || controller.isGrounded && inputZ != 0; }

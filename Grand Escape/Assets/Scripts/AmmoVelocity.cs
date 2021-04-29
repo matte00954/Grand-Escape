@@ -50,6 +50,10 @@ public class AmmoVelocity : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        else if (other.gameObject.tag == "Untagged") //TODO Temporary, might cause issues
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private IEnumerator TimeUntilBulletGetsRemoved() //IEnumerators might be an issue

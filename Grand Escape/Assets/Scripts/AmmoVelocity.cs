@@ -4,33 +4,29 @@ using UnityEngine;
 
 public class AmmoVelocity : MonoBehaviour
 {
-    //TODO: Scriptable objects
+    //All other variables move to AmmoType Scriptable object
 
-    [SerializeField] LayerMask terrainMask; //Ground mask / terrain mask
-    [SerializeField] LayerMask targetMask; //The target layer the projectile is searching to damage
-    [SerializeField] Transform bulletHasHitCheck;
-    [SerializeField] Weapons weapons;
+    [SerializeField] AmmoType ammo;
 
     private Vector3 direction;
 
-    [SerializeField] float bulletCollisionDetectionDistance = 0.4f;
-    [SerializeField] float timeUntilBulletDestroyed = 0.05f;
-    [SerializeField] float speed;
-    [SerializeField] float bulletDoesNotHitTimer;
-    [SerializeField] int damage;
+    bool startTimerToRemoveBullet;
 
     // Start is called before the first frame update
     void Start()
     {
         direction = transform.forward;
+    }
 
-        StartCoroutine(TimeToDestroy(bulletDoesNotHitTimer));
+    private void Awake()
+    {
+        StartCoroutine(TimeUntilBulletGetsRemoved());
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += direction * speed * Time.deltaTime;
+        transform.position += direction * ammo.GetAmmoSpeed() * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other) //Checka bara if sats om t.ex. bullet som ägs av fiende träffar en spelare.
@@ -38,23 +34,27 @@ public class AmmoVelocity : MonoBehaviour
         Debug.Log("I hit: " + other.gameObject.tag);
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Badaboom");
-            other.gameObject.GetComponentInParent<PlayerVariables>().ApplyDamage(damage);
-            StartCoroutine(TimeToDestroy(timeUntilBulletDestroyed));
+            other.gameObject.GetComponentInParent<PlayerVariables>().ApplyDamage(ammo.GetAmmoDamage());
+            Destroy(this.gameObject);
         }
         else if (other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<EnemyVariables>().ApplyDamage(damage);
-            StartCoroutine(TimeToDestroy(timeUntilBulletDestroyed));
+            other.gameObject.GetComponent<EnemyVariables>().ApplyDamage(ammo.GetAmmoDamage());
+            Destroy(this.gameObject);
+        }
+        else if (other.gameObject.tag == "Wall")
+        {
+            Destroy(this.gameObject);
+        }
+        else if (other.gameObject.tag == "Ground")
+        {
+            Destroy(this.gameObject);
         }
     }
 
-    IEnumerator TimeToDestroy(float timeToDestroy) //Gör om till timer!
+    private IEnumerator TimeUntilBulletGetsRemoved() //IEnumerators might be an issue
     {
-        yield return new WaitForSeconds(timeToDestroy); //Om kulan inte träffar något så förstörs den efter 10 sekunder
+        yield return new WaitForSeconds(ammo.GetBulletDoesNotHitTimer());
         Destroy(this.gameObject);
-
-        //TODO
-        //olika vapen bör ha olika timeToDestroy
     }
 }

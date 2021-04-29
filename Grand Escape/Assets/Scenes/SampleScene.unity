@@ -1629,6 +1629,22 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1891718169}
+    - target: {fileID: 5678491155014987990, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: weaponType
+      value: 
+      objectReference: {fileID: 11400000, guid: 3eb395f5374fb7d48b76f567c0912ad5, type: 2}
+    - target: {fileID: 5678491155014987990, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: slowMotionReloadSpeedDivider
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678491156684204016, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: weaponType
+      value: 
+      objectReference: {fileID: 11400000, guid: 47b3f4a5ac30fbf429bf8519c114f9f7, type: 2}
+    - target: {fileID: 5678491156684204016, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: slowMotionReloadSpeedDivider
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5678491156684204016, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: OnFire.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 

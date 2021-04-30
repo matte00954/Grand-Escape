@@ -6,6 +6,26 @@ public class EnemyRespawn : MonoBehaviour
 {
     [SerializeField] GameObject[] enemies;
 
+    GameObject meelePrefab;
+
+    GameObject rangedPrefab;
+
+    Transform[] enemiesTransform;
+
+    private void Start()
+    {
+        enemiesTransform = new Transform[enemies.Length];
+
+        for (int i = 0; i <= enemies.Length - 1; i++)
+        {
+            enemiesTransform[i] = enemies[i].gameObject.transform;
+        }
+
+        //for (int i = 0; i <= enemies.Length - 1; i++)
+        //{
+        //}
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -14,11 +34,21 @@ public class EnemyRespawn : MonoBehaviour
         }
     }
 
+    private void DestroyEnemiesBeforeRespawn()
+    {
+        for (int i = 0; i <= enemies.Length - 1; i++)
+        {
+            enemies[i].SetActive(false);
+        }
+    }
+
     public void RespawnEnemies() //TODO event system???
     {
-        foreach (GameObject enemy in enemies)
+        DestroyEnemiesBeforeRespawn();
+        for (int i = 0; i <= enemies.Length - 1; i++)
         {
-            enemy.SetActive(true);
+
+            enemies[i].SetActive(true);
         }
     }
 }

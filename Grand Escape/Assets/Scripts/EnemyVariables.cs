@@ -5,33 +5,13 @@ using UnityEngine;
 public class EnemyVariables : MonoBehaviour
 {
 
-    int healthPoints = 100;
+    [SerializeField] EnemyType enemyType;
 
-    //Dessa bör nog vara i en annan klass i framtiden
-    //private float resistanceMeele = 0;
+    int healthPoints;
 
-    //private float resistanceRanged = 0;
-
-    //OBS TEMPORÄR KOD, måste förbättras detta bör finnas i typ en klass som förvara dessa typer av värden
-    float damageFromBullets = 100;
-    float damageFromSword = 100;
-
-    //OBS TEMPORÄR KOD, måste förbättras
-    //[Header("TEST Variabler")]
-    //public bool isSniper;
-    //public bool isMeele;
-
-    private void Awake()
+    private void Start()
     {
-
-        /*if (isSniper)
-        {
-            resistanceRanged = 0.5f;
-        }
-        if (isMeele)
-        {
-            resistanceMeele = 0.5f;
-        }*/
+        ResetAllStats();
     }
 
     // Update is called once per frame
@@ -40,17 +20,7 @@ public class EnemyVariables : MonoBehaviour
         if(healthPoints <= 0)
         {
             Debug.Log("Enemy dies");
-            //OBS Temporär kod
-            Destroy(this.gameObject);
-        }
-
-    }
-
-    private void OnTriggerEnter(Collider other) //Bara Dåligt
-    {
-        if (other.gameObject.CompareTag("PlayerMelee"))
-        {
-            ApplyDamage(damageFromSword);
+            this.gameObject.SetActive(false);
         }
     }
 
@@ -60,4 +30,8 @@ public class EnemyVariables : MonoBehaviour
         healthPoints -= (int)damage;
     }
 
+    private void ResetAllStats()
+    {
+        healthPoints = enemyType.GetMaxHealthPoints();
+    }
 }

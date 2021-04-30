@@ -139,11 +139,10 @@ GameObject:
   - component: {fileID: 1327207243366514011}
   - component: {fileID: 1327207243366514010}
   - component: {fileID: 1327207243366514005}
-  - component: {fileID: 1327207243366514004}
   - component: {fileID: 5742818957120240751}
   - component: {fileID: 4429041740061023642}
   - component: {fileID: 4362502900959484618}
-  - component: {fileID: 7602779343278662781}
+  - component: {fileID: 1599197593980073051}
   m_Layer: 8
   m_Name: EnemyMeleeNEW
   m_TagString: Untagged
@@ -216,20 +215,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1327207243366514004
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1327207243366514007}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!114 &5742818957120240751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,15 +273,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d401e9cab7014c04d892673a6c3cdb61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7602779343278662781
-MonoBehaviour:
+  enemyType: {fileID: 11400000, guid: 66fe6223b40945942a4001aee4b67e20, type: 2}
+--- !u!65 &1599197593980073051
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327207243366514007}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d401e9cab7014c04d892673a6c3cdb61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

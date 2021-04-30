@@ -5,8 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Weapons")]
 public class Weapons : ScriptableObject
 {
-    [SerializeField] MeshFilter weaponMeshFilter; //Not sure if needed
-    [SerializeField] MeshRenderer weaponMeshRenderer; //Not sure if needed
+
+    [Header("DO NOT USE")]
+    [SerializeField] MeshFilter weaponMeshFilter; //Not sure if needed, NOT USED
+    [SerializeField] MeshRenderer weaponMeshRenderer; //Not sure if needed, NOT USED
+    Transform weaponTransform; //might not be used
+
     [SerializeField] Sprite crosshair; //crosshair on UI
 
     [SerializeField] string weaponName; //musket/pistol
@@ -15,7 +19,6 @@ public class Weapons : ScriptableObject
     [SerializeField] float reloadTime; //In seconds
     [SerializeField] bool canZoom = true; //Can you zoom with weapon? default true
 
-    Transform weaponTransform;
 
     public MeshFilter GetWepMeshFilter() { return weaponMeshFilter; }
 

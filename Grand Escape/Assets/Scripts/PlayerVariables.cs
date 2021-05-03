@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerVariables : MonoBehaviour
 {
@@ -13,13 +14,10 @@ public class PlayerVariables : MonoBehaviour
 
     Transform currentRespawnPoint;
 
-    GameObject Player;
+    GameObject player;
 
     [Header("Stamina")]
     [SerializeField] float staminaRegenPerTick;
-    [SerializeField] float timerUntilStaminaComparisonCheck; //In frames (done in update)
-    [SerializeField] float timerUntilStaminaRegen; //In frames (done in update)
-
 
     [Header("Max Variables")]
     [SerializeField] int maxHealthPoints;
@@ -34,18 +32,27 @@ public class PlayerVariables : MonoBehaviour
     [SerializeField] int ammoBoxAmount;
     [SerializeField] int staminaPickUpRestoreAmount;
 
-    [Header("Damage Variables")]
-    [SerializeField] float recentDamageTimer; //In frames (done in update)
+    [Header("Timers")]   
+    [SerializeField] float timerUntilRespawnMax;
+    [SerializeField] float timerUntilStaminaComparisonCheckMax; //In frames (done in update)
+    [SerializeField] float timerUntilStaminaRegenMax; //In frames (done in update)
+    [SerializeField] float recentDamageTimerMax; //In frames (done in update)
+
+    float timeUntilRespawn;
+    float timerUntilStaminaComparisonCheck; //In frames (done in update)
+    float timerUntilStaminaRegen; //In frames (done in update)
+    float recentDamageTimer;
 
     int healthPoints;
     int currentAmmoReserve;
     float currentStamina;
     bool takenRecentDamage = false;
-    bool isUsingStamina = false;
+
+    bool isDead = false;
 
     private void Awake()
     {
-        Player = this.gameObject;
+        player = this.gameObject;
         healthPoints = maxHealthPoints;
         currentAmmoReserve = startAmmoReserve;
         currentStamina = maxStamina;
@@ -55,6 +62,13 @@ public class PlayerVariables : MonoBehaviour
     {
         currentRespawnPoint = spawnPoint.transform;
         ResetAllStats();
+        //TODO SÄTT ALLA TIMERS HÄR
+
+
+        timerUntilStaminaRegen = timerUntilStaminaRegenMax;
+        timerUntilStaminaComparisonCheck = timerUntilStaminaComparisonCheckMax;
+
+        recentDamageTimer = recentDamageTimerMax;
     }
 
     public float GetCurrentStamina() { return currentStamina; }
@@ -99,15 +113,6 @@ public class PlayerVariables : MonoBehaviour
         uiManager.AmmoStatus(currentAmmoReserve);
     }
 
-    private void PlayerRespawn()
-    {
-        PlayerMovement pm = GetComponent<PlayerMovement>();
-
-        pm.TeleportPlayer(currentRespawnPoint.position);
-
-        ResetAllStats();
-    }
-
     public void SetNewRespawnPoint(GameObject newRespawnPoint) 
     {
         Debug.Log("Old respawn point " + currentRespawnPoint.transform.position);
@@ -141,35 +146,50 @@ public class PlayerVariables : MonoBehaviour
     {
         if (healthPoints <= 0)
         {
+            isDead = true;
+
+            PlayerMovement pm = GetComponent<PlayerMovement>();
             Debug.Log("PLAYER HAS DIED");
-            PlayerRespawn();
+
+            timeUntilRespawn -= Time.deltaTime;
+
+            pm.SetControllerInactive();
+
+            if (timeUntilRespawn <= 0)
+            {
+                gameManager.GetComponent<EnemyRespawnHandler>().RepsawnAll();
+                pm.TeleportPlayer(currentRespawnPoint.position);
+                ResetAllStats();
+                timeUntilRespawn = timerUntilRespawnMax;
+            }
         }
+    }
+
+    public bool IsPlayerDead()
+    {
+        return isDead;
     }
 
     private void RecentDamageTaken()
     {
         if (takenRecentDamage)
         {
-            float timer = recentDamageTimer;
+            recentDamageTimer -= Time.deltaTime;
 
-            timer -= Time.deltaTime;
-
-            if (timer >= 0)
+            if (recentDamageTimer <= 0)
             {
                 takenRecentDamage = false;
                 Debug.Log("Player can take damage again");
+                recentDamageTimer = recentDamageTimerMax;
             }
         }
     }
 
     private void UiUpdate()
     {
-        if (healthPoints > 0) //UI does not need to be updated if health is below zero
-        {
-            uiManager.HealthPoints(healthPoints);
-            uiManager.Stamina((int)currentStamina);
-            uiManager.AmmoStatus(currentAmmoReserve);
-        }
+        uiManager.HealthPoints(healthPoints);
+        uiManager.Stamina((int)currentStamina);
+        uiManager.AmmoStatus(currentAmmoReserve);
     }
 
     private void StaminaRegen()
@@ -177,24 +197,25 @@ public class PlayerVariables : MonoBehaviour
         if (currentStamina < maxStamina && Time.timeScale == 1) //stamina regen start, and checks if slow motion is NOT active
         {
 
-            float firstTimer = timerUntilStaminaComparisonCheck;
+            timerUntilStaminaComparisonCheck -= Time.deltaTime;
 
-            firstTimer -= Time.deltaTime;
+            //float oldStamina = currentStamina;
 
-            float oldStamina = currentStamina;
-
-            if (firstTimer >= 0)
+            if (timerUntilStaminaComparisonCheck <= 0)
             {
-                float secondTimer = timerUntilStaminaRegen;
-                secondTimer -= Time.deltaTime;
+                timerUntilStaminaRegen -= Time.deltaTime;
 
-                if (secondTimer >= 0 && oldStamina == currentStamina)
+                if (timerUntilStaminaRegen <= 0)
                 {
                     Debug.Log("Stamina is now regenerating");
                     currentStamina += staminaRegenPerTick;
                 }
-                else
-                    Debug.Log("Stamina != old stamina");
+                //else
+                //{
+                //    Debug.Log("Stamina != old stamina");
+                //    timerUntilStaminaRegen = timerUntilStaminaRegenMax;
+                //    timerUntilStaminaComparisonCheck = timerUntilStaminaComparisonCheckMax;
+                //}
             }
         }
     }
@@ -213,7 +234,8 @@ public class PlayerVariables : MonoBehaviour
         if (other.gameObject.CompareTag("Check point"))
         {
             SetNewRespawnPoint(other.gameObject);
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
+            //Destroy(other.gameObject);
         }
 
         if (other.gameObject.CompareTag("Scene end"))

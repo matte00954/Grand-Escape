@@ -3,47 +3,91 @@ using UnityEngine.AI;
 
 public class EnemyMelee : MonoBehaviour
 {
-    [SerializeField] NavMeshAgent agent;
-    [SerializeField] LayerMask groundMask, playerMask;
+    NavMeshAgent agent;
+    [SerializeField] LayerMask groundMask, playerMask, detectionMask;
     Transform playerTransform;
+    [SerializeField] BoxCollider sightCollider;
 
     //Patroling
-    Vector3 walkPoint;
+    [Header("Patrol state")]
+    [SerializeField] bool IsStationary;
     [SerializeField] float walkPointRange;
     [SerializeField] float timeBetweenPatrol;
     [SerializeField] float patrolSpeed;
 
+    Vector3 walkPoint;
     bool walkPointSet;
-    float patrolTimer;
+
+    [Header("Detection")]
+    [SerializeField] float sightRange;
+    [SerializeField] float peripheralRange;
+    [SerializeField] float hearingRange;
+    [SerializeField] bool isDeaf;
+    [SerializeField] bool isBlind;
 
     //Attacking
-    [SerializeField] float sightRange;
-    [SerializeField] float attackSpeed;
+    [Header("Chase state")]
+    [SerializeField] float chasingSpeed;
+    [SerializeField] float maxAttackRange;
+    [SerializeField] float alertBufferTime;
     
-    bool playerInSightRange;
+    bool heardPlayer;
+    bool seesPlayer;
+
+    float patrolTimer, alertTimer = 0f;
 
     private void Awake()
     {
-        playerTransform = GameObject.Find("First Person Player").transform;
+        //playerTransform = GameObject.Find("First Person Player").transform;
         agent = GetComponent<NavMeshAgent>();
         patrolTimer = timeBetweenPatrol;
     }
 
     private void Update()
     {
-
         if (!(patrolTimer >= timeBetweenPatrol))
-        {
             patrolTimer += Time.deltaTime;
+
+        UpdateDetectionRays();
+
+        if (!heardPlayer && !seesPlayer && alertTimer <= 0f) //Patroling state when not detecting player and not in an alerted state
+            Patroling();
+        else if (heardPlayer || seesPlayer) //If enemy either sees or hears the player, it will reset and start the timer for alerted state
+        {
+            alertTimer = alertBufferTime;
+            heardPlayer = false;
+            seesPlayer = false;
         }
 
-        //Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerMask);
-
-        if (!playerInSightRange)
-            Patroling();
-        if (playerInSightRange)
+        if (alertTimer > 0f) //The enemy will chase the player's current position until 'alertTimer' hits 0.
+        {
             ChasePlayer();
+            alertTimer -= Time.deltaTime;
+        }
+    }
+
+    private void UpdateDetectionRays()
+    {
+        playerTransform = FindObjectOfType<PlayerMovement>().transform;
+
+        RaycastHit sightHit;
+        RaycastHit peripheralHit;
+
+        if (!isBlind && Physics.Raycast(transform.position, (playerTransform.position - transform.position).normalized, out peripheralHit, peripheralRange, detectionMask))
+            if (peripheralHit.collider.gameObject.tag == "Player")
+            {
+                Debug.Log("Peri detection");
+                seesPlayer = true;
+                return;
+            }
+
+        if (!isBlind && Physics.Raycast(transform.position, (playerTransform.position - transform.position).normalized, out sightHit, sightRange, detectionMask))
+            if (sightHit.collider.gameObject.tag == "Player" && sightCollider.bounds.Contains(playerTransform.position))
+            {
+                Debug.Log("Sight detection");
+                seesPlayer = true;
+            }
+                
     }
 
     private void Patroling()
@@ -87,7 +131,7 @@ public class EnemyMelee : MonoBehaviour
     private void ChasePlayer()
     {
         Vector3 distanceToPlayerPoint = transform.position - playerTransform.position;
-        agent.speed = attackSpeed;
+        agent.speed = chasingSpeed;
         if (distanceToPlayerPoint.magnitude < 2f)
         {
             agent.SetDestination(transform.position);
@@ -97,9 +141,22 @@ public class EnemyMelee : MonoBehaviour
             agent.SetDestination(playerTransform.position);
     }
 
+    public void ListenForPlayer()
+    {
+        Debug.LogWarning("LFP called");
+        if (Physics.CheckSphere(transform.position, hearingRange, playerMask))
+        {
+            heardPlayer = true;
+            Debug.Log("Enemy heard player");
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.DrawWireSphere(transform.position, hearingRange);
+        Gizmos.DrawRay(transform.position, (playerTransform.position - transform.position).normalized * sightRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(transform.position, (playerTransform.position - transform.position).normalized * peripheralRange);
     }
 }

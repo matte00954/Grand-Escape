@@ -29,7 +29,7 @@ TagManager:
   - PlayerSword
   - Wall
   - EnemyBullets
-  - 
+  - DetectionCollider
   - 
   - 
   - 

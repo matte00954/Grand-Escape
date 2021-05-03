@@ -215,10 +215,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void TeleportPlayer(Vector3 pos) //This method is here because it needs the controller, playervariables handles player death, this only teleports the player
+    public void SetControllerInactive() //Dead state, should not be able to move
     {
         controller.enabled = false;
         currentSpeed = 0;
+    }
+
+    public void TeleportPlayer(Vector3 pos) //Respawn method, this method is here because it needs the controller, playervariables handles player death, this only teleports the player
+    {
         Debug.Log("Teleport activated on position " + pos);
         transform.position = pos;
         controller.enabled = true;

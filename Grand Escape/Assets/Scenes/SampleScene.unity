@@ -414,6 +414,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToSwitchTo: Level 1
   sceneList: []
+--- !u!114 &321427237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321427234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d7039d22552e4f4db42ed860bd55b38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allCheckPoints:
+  - {fileID: 1474515788}
 --- !u!4 &388440384 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5427912469581902506, guid: 7cc9719893622734780aae5737fefb0c, type: 3}
@@ -662,6 +676,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef84076f21d58084887d4085586f3fdb, type: 3}
+--- !u!114 &922620938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5445452364110835998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f5b460b0ba29488b9c3f592ae8a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiManager: {fileID: 1771174257}
+  tutorialText: Press "C" to exit/enter slow motion
 --- !u!4 &963349506 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6580300420740080302, guid: ef84076f21d58084887d4085586f3fdb, type: 3}
@@ -1094,6 +1122,11 @@ CanvasRenderer:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5678491156456081564, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
   m_PrefabInstance: {fileID: 5678491155183384658}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1474515788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5928515166768018078, guid: 3209bf491ca6e724a91534f0f6c6adac, type: 3}
+  m_PrefabInstance: {fileID: 5928515167349450757}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1478517018 stripped
 Transform:
@@ -1686,6 +1719,68 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4884748120044031725, guid: 757b00d841697c3489ea049a37d13834, type: 3}
   m_PrefabInstance: {fileID: 4884748118591715229}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &5445452364110835992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5445452364110835998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 39.1, y: -2.9, z: 17.57}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &5445452364110835994
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5445452364110835998}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &5445452364110835995
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5445452364110835998}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 10, z: 10}
+  m_Center: {x: 0, y: 4, z: 0}
+--- !u!1 &5445452364110835998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5445452364110835992}
+  - component: {fileID: 5445452364110835995}
+  - component: {fileID: 5445452364110835994}
+  - component: {fileID: 922620938}
+  m_Layer: 0
+  m_Name: SlowMotionTutorial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1001 &5678491155183384658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1710,16 +1805,56 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 321427234}
     - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: timeUntilRespawn
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: recentDamageTimer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: isUsingStaminaTimer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: staminaRegenPerTick
-      value: 0.01
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: recentDamageTimerMax
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: timerUntilRespawnMax
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: timeUntilStaminaRegen
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: timerUntilStaminaRegenMax
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: timerUntilStaminaComparisonCheckMax
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 836856738668078748, guid: 39ed1fe7731245a4bb647fdeb77c9f8e, type: 3}
+    - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5678491154712510806, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: m_RootOrder
@@ -1773,6 +1908,14 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1891718169}
+    - target: {fileID: 5678491154712510807, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: dodgeAmountOfTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678491154712510807, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: dodgeSpeedMultiplier
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5678491155014987990, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: weaponType
       value: 
@@ -1868,6 +2011,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3433338016010623814, guid: 3209bf491ca6e724a91534f0f6c6adac, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 321427234}
+    - target: {fileID: 3433338016010623814, guid: 3209bf491ca6e724a91534f0f6c6adac, type: 3}
       propertyPath: enemies.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1877,6 +2024,10 @@ PrefabInstance:
       objectReference: {fileID: 1527428187}
     - target: {fileID: 3433338016010623814, guid: 3209bf491ca6e724a91534f0f6c6adac, type: 3}
       propertyPath: enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 202353446}
+    - target: {fileID: 3433338016010623814, guid: 3209bf491ca6e724a91534f0f6c6adac, type: 3}
+      propertyPath: enemies.Array.data[2]
       value: 
       objectReference: {fileID: 202353446}
     - target: {fileID: 3433338016010623814, guid: 3209bf491ca6e724a91534f0f6c6adac, type: 3}

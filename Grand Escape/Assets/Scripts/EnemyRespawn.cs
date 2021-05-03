@@ -3,10 +3,10 @@ using UnityEngine.Events;
 
 public class EnemyRespawn : MonoBehaviour
 {
-    [Header("Enemies in section to respawn, if player dies")] //All enemies in the previous section that will spawn if player respawns at this location
+    [Header("Enemies in previous section to respawn, if player dies")] //All enemies in the previous section that will spawn if player respawns at this location
     [SerializeField] GameObject[] enemies;
 
-    [SerializeField] UnityEvent PlayerDies;
+    [SerializeField] GameObject gameManager;
 
     //Transform[] enemiesTransform; //Might change system to instasiate instead of set active
 
@@ -43,28 +43,19 @@ public class EnemyRespawn : MonoBehaviour
         //Do not remove
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            RespawnEnemies();
-        }
-    }
+    //private void SetEnemiesInactiveBeforeRespawn() //not used at the moment
+    //{
+    //    for (int i = 0; i <= enemies.Length - 1; i++)
+    //    {
+    //        enemies[i].SetActive(false);
+    //    }
+    //}
 
-    private void SetEnemiesInactiveBeforeRespawn() //not used at the moment
+    public void RespawnEnemies() 
     {
         for (int i = 0; i <= enemies.Length - 1; i++)
         {
-            enemies[i].SetActive(false);
-        }
-    }
-
-    public void RespawnEnemies() //TODO event system???
-    {
-        //SetEnemiesInactiveBeforeRespawn();
-
-        for (int i = 0; i <= enemies.Length - 1; i++)
-        {
+            enemies[i].GetComponent<EnemyVariables>().ResetAllStats();
             enemies[i].SetActive(true);
         }
     }

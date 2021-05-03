@@ -30,7 +30,7 @@ public class EnemyVariables : MonoBehaviour
         healthPoints -= (int)damage;
     }
 
-    private void ResetAllStats()
+    public void ResetAllStats()
     {
         healthPoints = enemyType.GetMaxHealthPoints();
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SlowMotionTutorial : MonoBehaviour
 {
+
     [SerializeField] UiManager uiManager;
 
     [SerializeField] string tutorialText;

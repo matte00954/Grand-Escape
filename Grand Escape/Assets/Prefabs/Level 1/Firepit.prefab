@@ -14,12 +14,12 @@ GameObject:
   - component: {fileID: 3082830948503138677}
   - component: {fileID: 3082830948503138678}
   - component: {fileID: 3082830948503138679}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LogHalf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3082830948503138672
 Transform:
@@ -715,12 +715,12 @@ GameObject:
   - component: {fileID: 3082830949006792426}
   - component: {fileID: 3082830949006792427}
   - component: {fileID: 3082830949006792436}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LogHalf (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3082830949006792437
 Transform:
@@ -1416,12 +1416,12 @@ GameObject:
   - component: {fileID: 3082830949079321971}
   - component: {fileID: 3082830949079321980}
   - component: {fileID: 3082830949079321981}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Firepit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3082830949079321968
 Transform:
@@ -6276,12 +6276,12 @@ GameObject:
   - component: {fileID: 3082830949342583046}
   - component: {fileID: 3082830949342583047}
   - component: {fileID: 3082830949342583040}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WholeLog (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3082830949342583041
 Transform:
@@ -7438,12 +7438,12 @@ GameObject:
   - component: {fileID: 3082830950106992459}
   - component: {fileID: 3082830950106992468}
   - component: {fileID: 3082830950106992469}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WholeLog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3082830950106992470
 Transform:
@@ -8600,12 +8600,12 @@ GameObject:
   - component: {fileID: 3082830950399071769}
   - component: {fileID: 3082830950399071770}
   - component: {fileID: 3082830950399071771}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WholeLog (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3082830950399071844
 Transform:
@@ -9762,12 +9762,12 @@ GameObject:
   - component: {fileID: 3082830950572522640}
   - component: {fileID: 3082830950572522641}
   - component: {fileID: 3082830950572522642}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LogHalf (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3082830950572522643
 Transform:

@@ -17,38 +17,39 @@ public class PlayerVariables : MonoBehaviour
     GameObject player;
 
     [Header("Stamina")]
-    [SerializeField] float staminaRegenPerTick;
+    [SerializeField] float staminaRegenPerTick; //per update tick
 
     [Header("Max Variables")]
     [SerializeField] int maxHealthPoints;
     [SerializeField] int maxAmmoReserve;
     [SerializeField] float maxStamina;
 
-    [Header("Start Variables")]
+    [Header("Start Variables")] //variables that are not max after respawn
     [SerializeField] int startAmmoReserve;
 
-    [Header("Pickup Amount")]
+    [Header("Pickup Amount")] //TODO consistent naming?
     [SerializeField] int healthBoostAmount;
     [SerializeField] int ammoBoxAmount;
     [SerializeField] int staminaPickUpRestoreAmount;
 
-    [Header("Timers")]   
+    [Header("Timers")] //max timers are constant
     [SerializeField] float timerUntilRespawnMax;
     [SerializeField] float timerUntilStaminaComparisonCheckMax; //In frames (done in update)
     [SerializeField] float timerUntilStaminaRegenMax; //In frames (done in update)
     [SerializeField] float recentDamageTimerMax; //In frames (done in update)
 
+    //Timers that changes during runtime
     float timeUntilRespawn;
-    float timerUntilStaminaComparisonCheck; //In frames (done in update)
-    float timerUntilStaminaRegen; //In frames (done in update)
+    float timerUntilStaminaComparisonCheck; 
+    float timerUntilStaminaRegen; 
     float recentDamageTimer;
 
+    //Used during runtime
     int healthPoints;
     int currentAmmoReserve;
     float currentStamina;
     bool takenRecentDamage = false;
-
-    bool isDead = false;
+    bool isDead = false; //Not used at the moment
 
     private void Awake()
     {
@@ -62,12 +63,10 @@ public class PlayerVariables : MonoBehaviour
     {
         currentRespawnPoint = spawnPoint.transform;
         ResetAllStats();
-        //TODO SÄTT ALLA TIMERS HÄR
 
-
+        timeUntilRespawn = timerUntilRespawnMax;
         timerUntilStaminaRegen = timerUntilStaminaRegenMax;
         timerUntilStaminaComparisonCheck = timerUntilStaminaComparisonCheckMax;
-
         recentDamageTimer = recentDamageTimerMax;
     }
 
@@ -170,7 +169,7 @@ public class PlayerVariables : MonoBehaviour
         return isDead;
     }
 
-    private void RecentDamageTaken()
+    private void RecentDamageTaken() //to prevent massive amount of damage during a short period of time
     {
         if (takenRecentDamage)
         {
@@ -199,9 +198,7 @@ public class PlayerVariables : MonoBehaviour
 
             timerUntilStaminaComparisonCheck -= Time.deltaTime;
 
-            //float oldStamina = currentStamina;
-
-            if (timerUntilStaminaComparisonCheck <= 0)
+            if (timerUntilStaminaComparisonCheck <= 0) //may not need two timers here, might add some more checks here, therefore two timers
             {
                 timerUntilStaminaRegen -= Time.deltaTime;
 
@@ -209,13 +206,9 @@ public class PlayerVariables : MonoBehaviour
                 {
                     Debug.Log("Stamina is now regenerating");
                     currentStamina += staminaRegenPerTick;
+                    timerUntilStaminaComparisonCheck = timerUntilStaminaComparisonCheckMax;
+                    timerUntilStaminaRegen = timerUntilStaminaRegenMax;
                 }
-                //else
-                //{
-                //    Debug.Log("Stamina != old stamina");
-                //    timerUntilStaminaRegen = timerUntilStaminaRegenMax;
-                //    timerUntilStaminaComparisonCheck = timerUntilStaminaComparisonCheckMax;
-                //}
             }
         }
     }

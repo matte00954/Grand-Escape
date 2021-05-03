@@ -43,14 +43,6 @@ public class EnemyRespawn : MonoBehaviour
         //Do not remove
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            RespawnEnemies();
-        }
-    }
-
     //private void SetEnemiesInactiveBeforeRespawn() //not used at the moment
     //{
     //    for (int i = 0; i <= enemies.Length - 1; i++)

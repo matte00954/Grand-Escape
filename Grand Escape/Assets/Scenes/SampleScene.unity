@@ -1818,7 +1818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: staminaRegenPerTick
-      value: 0.01
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: recentDamageTimerMax
@@ -1834,11 +1834,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: timerUntilStaminaRegenMax
-      value: 0.2
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: timerUntilStaminaComparisonCheckMax
-      value: 0.5
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
@@ -1908,6 +1908,14 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1891718169}
+    - target: {fileID: 5678491154712510807, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: dodgeAmountOfTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678491154712510807, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: dodgeSpeedMultiplier
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5678491155014987990, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: weaponType
       value: 

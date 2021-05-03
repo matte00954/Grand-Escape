@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class EnemyRespawn : MonoBehaviour
 {
-    [Header("Enemies in next section to respawn, if player dies")] //All enemies in the next section that will spawn if player respawns at this location
+    [Header("Enemies in section to respawn, if player dies")] //All enemies in the previous section that will spawn if player respawns at this location
     [SerializeField] GameObject[] enemies;
 
     [SerializeField] UnityEvent PlayerDies;
@@ -51,7 +51,7 @@ public class EnemyRespawn : MonoBehaviour
         }
     }
 
-    private void SetEnemiesInactiveBeforeRespawn()
+    private void SetEnemiesInactiveBeforeRespawn() //not used at the moment
     {
         for (int i = 0; i <= enemies.Length - 1; i++)
         {
@@ -61,7 +61,7 @@ public class EnemyRespawn : MonoBehaviour
 
     public void RespawnEnemies() //TODO event system???
     {
-        SetEnemiesInactiveBeforeRespawn();
+        //SetEnemiesInactiveBeforeRespawn();
 
         for (int i = 0; i <= enemies.Length - 1; i++)
         {

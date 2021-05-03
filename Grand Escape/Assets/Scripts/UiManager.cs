@@ -11,6 +11,18 @@ public class UiManager : MonoBehaviour
     [SerializeField] Text currentStamina;
     [SerializeField] Text slowMoExhaustion;
     [SerializeField] Text sprintExhaustion;
+    [SerializeField] Text tutorialText;
+
+    public void TutorialText(string s, bool active)
+    {
+        if (active)
+        {
+            tutorialText.text = s;
+            tutorialText.gameObject.SetActive(true);
+        }
+        else
+            tutorialText.gameObject.SetActive(false);
+    }
 
     public void WeaponStatus(string s)
     {

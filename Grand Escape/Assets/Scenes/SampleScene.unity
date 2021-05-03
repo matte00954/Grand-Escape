@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7039d22552e4f4db42ed860bd55b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allRespawnPoints:
+  allCheckPoints:
   - {fileID: 1474515788}
 --- !u!4 &388440384 stripped
 Transform:
@@ -676,6 +676,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef84076f21d58084887d4085586f3fdb, type: 3}
+--- !u!1 &922620937 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5445452363763676153, guid: c496816584f76ed4883c8ad0e5a66cc8, type: 3}
+  m_PrefabInstance: {fileID: 995279591}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &922620938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922620937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f5b460b0ba29488b9c3f592ae8a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &963349506 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6580300420740080302, guid: ef84076f21d58084887d4085586f3fdb, type: 3}

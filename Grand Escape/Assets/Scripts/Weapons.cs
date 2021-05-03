@@ -19,7 +19,6 @@ public class Weapons : ScriptableObject
     [SerializeField] float reloadTime; //In seconds
     [SerializeField] bool canZoom = true; //Can you zoom with weapon? default true
 
-
     public MeshFilter GetWepMeshFilter() { return weaponMeshFilter; }
 
     public MeshRenderer GetWepMeshRenderer() { return weaponMeshRenderer; }

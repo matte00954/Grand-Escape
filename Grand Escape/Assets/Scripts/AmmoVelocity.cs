@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AmmoVelocity : MonoBehaviour
@@ -50,10 +49,10 @@ public class AmmoVelocity : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        else if (other.gameObject.tag == "Untagged") //TODO Temporary, might cause issues
-        {
-            Destroy(this.gameObject);
-        }
+        //else if (other.gameObject.tag == "Untagged") //TODO Temporary, might cause issues
+        //{
+        //    Destroy(this.gameObject);
+        //}
     }
 
     private IEnumerator TimeUntilBulletGetsRemoved() //IEnumerators might be an issue

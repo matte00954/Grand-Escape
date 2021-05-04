@@ -6,12 +6,17 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     [SerializeField] Text ammoLeftText;
-    [SerializeField] Text weaponReloadedText; //Not used at the moment, should tell the player if weapon is reloaded or not
     [SerializeField] Text currentHealthPointsText;
     [SerializeField] Text currentStaminaText;
     [SerializeField] Text slowMotionExhaustionText;
     [SerializeField] Text sprintExhaustionText;
     [SerializeField] Text tutorialText;
+
+    [SerializeField] Image weaponReloadedImage;
+    [SerializeField] Image weaponEmptyImage;
+
+    [SerializeField] Slider healthPointSlider;
+    [SerializeField] Slider staminaPointSlider;
 
     public void TutorialText(string s, bool active)
     {
@@ -24,9 +29,18 @@ public class UiManager : MonoBehaviour
             tutorialText.gameObject.SetActive(false);
     }
 
-    public void WeaponStatus(string s)
+    public void WeaponStatus(bool isReloaded)
     {
-        weaponReloadedText.text = s;
+        weaponReloadedImage.gameObject.SetActive(isReloaded);
+
+        weaponEmptyImage.gameObject.SetActive(!isReloaded);
+
+        //if (isReloaded)
+        //{
+        //    weaponReloadedImage.gameObject.SetActive(true);
+        //}
+        //else
+        //    weaponReloadedImage.gameObject.SetActive(false);
     }
 
     public void AmmoStatus(int i)
@@ -34,14 +48,16 @@ public class UiManager : MonoBehaviour
         ammoLeftText.text = i.ToString();
     }
 
-    public void HealthPoints(int i)
+    public void HealthPoints(int healthPoints)
     {
-        currentHealthPointsText.text = i.ToString();
+        healthPointSlider.value = healthPoints;
+        //currentHealthPointsText.text = i.ToString();
     }
 
-    public void Stamina(int i)
+    public void Stamina(int staminaPoints)
     {
-        currentStaminaText.text = i.ToString();
+        staminaPointSlider.value = staminaPoints;
+        //currentStaminaText.text = i.ToString();
     }
 
     public void SlowMotionExhaustion(bool isExhaustedFromSlowMotion)

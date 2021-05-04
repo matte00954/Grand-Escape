@@ -12,13 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a05cdf0264d7c4384798178ddab683, type: 3}
   m_Name: PlayerMusketAmmo
   m_EditorClassIdentifier: 
-  terrainMask:
-    serializedVersion: 2
-    m_Bits: 0
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 0
   ammoName: PlayerMusketAmmo
   ammoDamage: 100
-  speed: 150
+  speed: 100
   bulletDoesNotHitTimer: 10

@@ -42,7 +42,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.8679245, g: 0.6240743, b: 0.31523672, a: 1}
+  m_Color: {r: 0.9339623, g: 0.8059802, b: 0.48900855, a: 1}
   m_Intensity: 3
   m_Range: 11.24
   m_SpotAngle: 30

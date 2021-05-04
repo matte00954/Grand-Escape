@@ -27,7 +27,7 @@ public class PlayerMelee : MonoBehaviour
     }
 
     //private bool meeleAttackAvailable = true;
-    // Update is called once per frame
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.V) && !meleeIsActive && playerVariables.GetCurrentStamina() > meleeStaminaCost)

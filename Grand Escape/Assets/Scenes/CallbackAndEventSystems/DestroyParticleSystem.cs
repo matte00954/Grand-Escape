@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyParticleSystem : MonoBehaviour
+namespace EventCallbacks
 {
-    [System.Obsolete]
-    private void Awake()
+    public class DestroyParticleSystem : MonoBehaviour
     {
-        Destroy(gameObject, GetComponent<ParticleSystem>().duration);
+        [System.Obsolete]
+        private void Awake()
+        {
+            Destroy(gameObject, GetComponent<ParticleSystem>().duration);
+        }
     }
 }

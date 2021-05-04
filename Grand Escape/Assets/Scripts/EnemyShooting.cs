@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyShooting : MonoBehaviour
 {
-    [SerializeField] EnemyMovement enemyMovement;
     [SerializeField] GameObject gun;
     [SerializeField] GameObject barrelEnd;
     [SerializeField] GameObject enemyAmmo;
+    Transform playerTransform;
 
-    [SerializeField] LayerMask layerMask;
+    [SerializeField] LayerMask aimCollisionMask;
 
     [SerializeField] float enemyRange;
     [SerializeField] float reloadTimeInSeconds;
@@ -17,45 +17,67 @@ public class EnemyShooting : MonoBehaviour
     float rotationSpeedMultiplier;
     float reloadTimer;
 
-    // Start is called before the first frame update
+    bool isAlerted = false;
+
     void Start()
     {
     }
 
-    // Update is called once per frame
     void Update()
     {
-        GunVerticalPositioning();
+        playerTransform = FindObjectOfType<PlayerMovement>().transform;
 
-        if (reloadTimer <= reloadTimeInSeconds)
-            reloadTimer += Time.deltaTime;
+        if (isAlerted)
+        {
+            RotateSelfToTarget();
+            TakeAim();
+            RotateGun();
+        }
+        else if (!isAlerted && gun.transform.rotation != Quaternion.identity)
+            RotateGun();
 
-        //if (enemyMovement.GetTarget().transform)
-        //{
-
-        //}
+        if (reloadTimer > 0f)
+            reloadTimer -= Time.deltaTime;
     }
 
-    private void GunVerticalPositioning()
+    private void RotateGun()
     {
-        /*Vector3 direction = (enemyMovement.GetTarget().transform.position - gun.transform.position).normalized;
+        if (isAlerted)
+        {
+            Vector3 direction = (playerTransform.position - gun.transform.position).normalized;
+            //Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, direction.y, direction.z));
+            gun.transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, direction.y, direction.z)); //Quaternion.Slerp(gun.transform.rotation, lookRotation, Time.deltaTime * rotationSpeedMultiplier);
+            //Debug.Log("Trying to rotate:" + lookRotation);
+            gun.transform.rotation = Quaternion.Euler(gun.transform.eulerAngles.x, transform.eulerAngles.y, 0f);
+        }
+        //else
+        //    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * rotationSpeedMultiplier);
+    }
 
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(0, direction.x, 0));
-
-        gun.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeedMultiplier);*/
-
-        gun.transform.LookAt(enemyMovement.GetTarget().transform);
-
+    private void TakeAim()
+    {
         RaycastHit hit;
 
-        if (Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.forward, out hit, enemyRange, layerMask) && reloadTimer >= reloadTimeInSeconds)
+        if (isAlerted && Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.forward, out hit, enemyRange, aimCollisionMask) && reloadTimer <= 0f)
         {
-            if (hit.collider.CompareTag("Player"))
+            if (hit.collider.gameObject.tag == "Player")
             {
-                reloadTimer = 0;
+                reloadTimer = reloadTimeInSeconds;
                 ShootWithGun();
             }
         }
+    }
+
+    private void RotateSelfToTarget()
+    {
+        Vector3 direction = (playerTransform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeedMultiplier);
+    }
+
+    public void SetAlert(bool isAlerted)
+    {
+        this.isAlerted = isAlerted;
     }
 
     private void ShootWithGun()

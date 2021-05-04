@@ -6,6 +6,7 @@ public class EnemyVariables : MonoBehaviour
 {
 
     [SerializeField] EnemyType enemyType;
+    [SerializeField] ParticleSystem deathParticleEffect;
 
     int healthPoints;
 
@@ -20,6 +21,8 @@ public class EnemyVariables : MonoBehaviour
         if(healthPoints <= 0)
         {
             Debug.Log("Enemy dies");
+            ParticleSystem particleSystem = Instantiate(deathParticleEffect);
+            particleSystem.transform.position = transform.position;
             this.gameObject.SetActive(false);
         }
     }

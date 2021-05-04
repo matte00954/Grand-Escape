@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
-    [SerializeField] Text ammoLeft;
-    [SerializeField] Text weaponStatus;
-    [SerializeField] Text currentHP;
-    [SerializeField] Text currentStamina;
-    [SerializeField] Text slowMoExhaustion;
-    [SerializeField] Text sprintExhaustion;
+    [SerializeField] Text ammoLeftText;
+    [SerializeField] Text weaponReloadedText; //Not used at the moment, should tell the player if weapon is reloaded or not
+    [SerializeField] Text currentHealthPointsText;
+    [SerializeField] Text currentStaminaText;
+    [SerializeField] Text slowMotionExhaustionText;
+    [SerializeField] Text sprintExhaustionText;
     [SerializeField] Text tutorialText;
 
     public void TutorialText(string s, bool active)
@@ -26,37 +26,37 @@ public class UiManager : MonoBehaviour
 
     public void WeaponStatus(string s)
     {
-        weaponStatus.text = s;
+        weaponReloadedText.text = s;
     }
 
     public void AmmoStatus(int i)
     {
-        ammoLeft.text = i.ToString();
+        ammoLeftText.text = i.ToString();
     }
 
     public void HealthPoints(int i)
     {
-        currentHP.text = i.ToString();
+        currentHealthPointsText.text = i.ToString();
     }
 
     public void Stamina(int i)
     {
-        currentStamina.text = i.ToString();
+        currentStaminaText.text = i.ToString();
     }
 
     public void SlowMotionExhaustion(bool isExhaustedFromSlowMotion)
     {
         if (isExhaustedFromSlowMotion)
-            slowMoExhaustion.gameObject.SetActive(true);
+            slowMotionExhaustionText.gameObject.SetActive(true);
         else
-            slowMoExhaustion.gameObject.SetActive(false);
+            slowMotionExhaustionText.gameObject.SetActive(false);
     }
 
     public void SprintExhaustion(bool isExhaustedFromSprinting)
     {
         if (isExhaustedFromSprinting)
-            sprintExhaustion.gameObject.SetActive(true);
+            sprintExhaustionText.gameObject.SetActive(true);
         else
-            sprintExhaustion.gameObject.SetActive(false);
+            sprintExhaustionText.gameObject.SetActive(false);
     }
 }

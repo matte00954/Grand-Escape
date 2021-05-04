@@ -195,7 +195,6 @@ public class PlayerVariables : MonoBehaviour
     {
         if (currentStamina < maxStamina && Time.timeScale == 1) //stamina regen start, and checks if slow motion is NOT active
         {
-
             timerUntilStaminaComparisonCheck -= Time.deltaTime;
 
             if (timerUntilStaminaComparisonCheck <= 0) //may not need two timers here, might add some more checks here, therefore two timers

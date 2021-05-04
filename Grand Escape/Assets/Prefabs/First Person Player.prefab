@@ -1542,8 +1542,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7794666079471084343, guid: 462fc8266fda16242a106e1b7bd6bce3, type: 3}
-  weaponType: {fileID: 0}
-  slowMotionReloadSpeedDivider: 2
+  weaponType: {fileID: 11400000, guid: 3eb395f5374fb7d48b76f567c0912ad5, type: 2}
+  slowMotionReloadSpeedDivider: 5
   OnReloadStart:
     m_PersistentCalls:
       m_Calls: []
@@ -1601,8 +1601,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7794666079471084343, guid: 462fc8266fda16242a106e1b7bd6bce3, type: 3}
-  weaponType: {fileID: 0}
-  slowMotionReloadSpeedDivider: 2
+  weaponType: {fileID: 11400000, guid: 47b3f4a5ac30fbf429bf8519c114f9f7, type: 2}
+  slowMotionReloadSpeedDivider: 5
   OnReloadStart:
     m_PersistentCalls:
       m_Calls:
@@ -1618,7 +1618,7 @@ MonoBehaviour:
           m_StringArgument: Reload
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5867011082258007188, guid: eae677ce2dd650d44b5011df900429b2, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 5
@@ -1633,7 +1633,7 @@ MonoBehaviour:
   OnReloadFinish:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5867011082258007188, guid: eae677ce2dd650d44b5011df900429b2, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 5
@@ -1672,7 +1672,7 @@ MonoBehaviour:
           m_StringArgument: Fire
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: -6471416605708566468, guid: 7d10eaaf36071b246b1e101992f70656, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EnemyMelee, Assembly-CSharp
         m_MethodName: ListenForPlayer
         m_Mode: 1
@@ -2361,7 +2361,9 @@ MonoBehaviour:
   slowMotionExhaustionTime: 3
   slowMotionMovementSpeed: 10
   dodgeAmountOfTime: 0.35
-  dodgeSpeedMultiplier: 4
+  dodgeSpeedMultiplier: 0.6
+  doubleTapSpeed: 0.15
+  dodgeCooldown: 2
 --- !u!114 &5678491154712510805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2375,11 +2377,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiManager: {fileID: 4884748120044031724, guid: 757b00d841697c3489ea049a37d13834, type: 3}
-  spawnPoint: {fileID: 0}
-  gameManager: {fileID: 0}
-  staminaRegenPerTick: 2
-  timerUntilStaminaComparisonCheck: 10
-  timerUntilStaminaRegen: 10
+  spawnPoint: {fileID: 2518962598881575499, guid: a708beb6be3c12244891ff399a42f117, type: 3}
+  gameManager: {fileID: 836856738668078748, guid: 39ed1fe7731245a4bb647fdeb77c9f8e, type: 3}
+  staminaRegenPerTick: 0.05
   maxHealthPoints: 100
   maxAmmoReserve: 10
   maxStamina: 100
@@ -2387,7 +2387,10 @@ MonoBehaviour:
   healthBoostAmount: 50
   ammoBoxAmount: 5
   staminaPickUpRestoreAmount: 25
-  recentDamageTimer: 0.5
+  timerUntilRespawnMax: 3
+  timerUntilStaminaComparisonCheckMax: 0.01
+  timerUntilStaminaRegenMax: 0.01
+  recentDamageTimerMax: 0.6
 --- !u!1 &5678491154870700840
 GameObject:
   m_ObjectHideFlags: 0

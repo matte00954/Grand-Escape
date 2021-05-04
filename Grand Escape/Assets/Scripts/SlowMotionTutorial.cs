@@ -17,22 +17,20 @@ public class SlowMotionTutorial : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            uiManager.TutorialText(tutorialText, true);
-        }
-        else
-        {
-            uiManager.TutorialText("", false);
-        }
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             Time.timeScale = 0.01f;
+            uiManager.TutorialText(tutorialText, true);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            uiManager.TutorialText("", false);
+            this.gameObject.SetActive(false);
         }
     }
 }

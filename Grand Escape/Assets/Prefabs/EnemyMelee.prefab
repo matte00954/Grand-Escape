@@ -242,6 +242,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: {fileID: 11400000, guid: 66fe6223b40945942a4001aee4b67e20, type: 2}
   deathParticleEffect: {fileID: 452656400301951383, guid: 85c149537bf21bb4292f5b991e742a81, type: 3}
+  deathClips:
+  - {fileID: 8300000, guid: 78859c07e9e1b7b49b8a74b034d11db8, type: 3}
+  - {fileID: 8300000, guid: fd770a947c6892e428ee0ed438446b40, type: 3}
+  - {fileID: 8300000, guid: 8d75781c6b7b64743a7ccb30f70cc881, type: 3}
+  - {fileID: 8300000, guid: b961c106090134f45b9a418afb562996, type: 3}
+  - {fileID: 8300000, guid: 1f2bc0fb467c91743a1880144e9551fd, type: 3}
+  - {fileID: 8300000, guid: f6206c92dc680f64c96742f9b9ae8db3, type: 3}
+  - {fileID: 8300000, guid: 6618bdb39cb1909458a133faa7ebb200, type: 3}
 --- !u!65 &7227666580113446646
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -265,7 +273,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2be0409f952cab447839f144f523afa8, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -275,8 +283,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 100
+  MinDistance: 10
+  MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

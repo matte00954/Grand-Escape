@@ -7,15 +7,17 @@ public class EnemyVariables : MonoBehaviour
 
     [SerializeField] EnemyType enemyType;
     [SerializeField] ParticleSystem deathParticleEffect;
+    [SerializeField] AudioClip[] deathClips;
 
     int healthPoints;
+    private AudioSource audioSource;
 
     Vector3 startPosition;
 
     private void Start()
     {
         ResetAllStats();
-
+        audioSource = GetComponent<AudioSource>();
         startPosition = transform.position;
     }
 
@@ -27,6 +29,8 @@ public class EnemyVariables : MonoBehaviour
             Debug.Log("Enemy dies");
             ParticleSystem particleSystem = Instantiate(deathParticleEffect);
             particleSystem.transform.position = transform.position;
+            AudioClip clip = deathClips[Random.Range(0, deathClips.Length)];
+            AudioSource.PlayClipAtPoint(clip, transform.position);
             this.gameObject.SetActive(false);
         }
     }

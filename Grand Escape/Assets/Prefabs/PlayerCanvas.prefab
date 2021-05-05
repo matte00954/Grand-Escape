@@ -1259,9 +1259,9 @@ MonoBehaviour:
   slowMotionExhaustionText: {fileID: 4884748118917216909}
   sprintExhaustionText: {fileID: 4884748120013802255}
   tutorialText: {fileID: 1384942335}
-  weaponReloadedSlider: {fileID: 7864923877763785734}
   healthPointSlider: {fileID: 829302501}
   staminaPointSlider: {fileID: 1838082827}
+  weaponReloadedSlider: {fileID: 7864923877763785734}
 --- !u!1 &5462516964440403375
 GameObject:
   m_ObjectHideFlags: 0

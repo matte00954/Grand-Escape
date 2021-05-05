@@ -71,4 +71,15 @@ public class UiManager : MonoBehaviour
     }
 
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            WeaponStatus(true);
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            WeaponStatus(false);
+        }
+    }
 }

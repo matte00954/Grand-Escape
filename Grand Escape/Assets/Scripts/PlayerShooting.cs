@@ -10,7 +10,7 @@ public class PlayerShooting : MonoBehaviour
 
     [SerializeField] float slowMotionReloadSpeedDivider = 2;
 
-    [SerializeField] UiManager uiManager;
+    UiManager uiManager;
 
     Camera playerCamera;
     PlayerVariables playerVariables;
@@ -41,6 +41,8 @@ public class PlayerShooting : MonoBehaviour
 
         isReloading = false;
         currentAmmoLoaded = clipCapacity;
+
+        uiManager = FindObjectOfType<UiManager>();
     }
 
     private void OnEnable()
@@ -63,6 +65,7 @@ public class PlayerShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         float inputX = Input.GetAxis("Horizontal");
         float inputZ = Input.GetAxis("Vertical");
 
@@ -131,7 +134,7 @@ public class PlayerShooting : MonoBehaviour
             else
                 currentAmmoLoaded = clipCapacity;
 
-            uiManager.WeaponStatus(true);
+           uiManager.WeaponStatus(true);
 
             playerVariables.ReduceAmmoReserve(clipCapacity);
             

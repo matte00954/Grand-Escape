@@ -35,4 +35,12 @@ public class ObjectSpawn : MonoBehaviour
             gameObjects[i].SetActive(false);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            SpawnObjects();
+        }
+    }
 }

@@ -1818,7 +1818,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8143186924384828537, guid: 3209bf491ca6e724a91534f0f6c6adac, type: 3}
       propertyPath: enemies.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3433338016010623814, guid: 3209bf491ca6e724a91534f0f6c6adac, type: 3}
       propertyPath: gameManager
@@ -1862,7 +1862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5614406643149282824, guid: 3209bf491ca6e724a91534f0f6c6adac, type: 3}
       propertyPath: gameObjects.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5928515166768018072, guid: 3209bf491ca6e724a91534f0f6c6adac, type: 3}
       propertyPath: m_RootOrder

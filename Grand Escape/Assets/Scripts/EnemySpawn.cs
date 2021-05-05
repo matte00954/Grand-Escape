@@ -37,4 +37,12 @@ public class EnemySpawn : MonoBehaviour
             enemies[i].SetActive(false);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            SpawnEnemies();
+        }
+    }
 }

@@ -10,6 +10,8 @@ public class PlayerShooting : MonoBehaviour
 
     [SerializeField] float slowMotionReloadSpeedDivider = 2;
 
+    [SerializeField] ParticleSystem gunSmoke; //Assign prefab
+
     UiManager uiManager;
 
     Camera playerCamera;
@@ -23,6 +25,8 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] UnityEvent OnReloadStart;
     [SerializeField] UnityEvent OnReloadFinish;
     [SerializeField] UnityEvent OnFire;
+
+
 
     private bool isReloading;
     private int currentAmmoLoaded; //shots that are loaded
@@ -86,6 +90,8 @@ public class PlayerShooting : MonoBehaviour
             uiManager.WeaponStatus(false);
             Instantiate(bulletPrefab, point, playerCamera.transform.rotation);
 
+            Instantiate(gunSmoke, point, playerCamera.transform.rotation);
+
             OnFire.Invoke();
 
             /*if (Physics.Raycast(playerAim, out shootHit)) //this raycast shooting, will probably not be used
@@ -139,10 +145,10 @@ public class PlayerShooting : MonoBehaviour
             else
                 currentAmmoLoaded = clipCapacity;
 
-           uiManager.WeaponStatus(true);
+            uiManager.WeaponStatus(true);
 
             playerVariables.ReduceAmmoReserve(clipCapacity);
-            
+
             isReloading = false;
         }
     }

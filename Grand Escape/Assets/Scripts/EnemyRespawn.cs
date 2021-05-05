@@ -53,11 +53,14 @@ public class EnemyRespawn : MonoBehaviour
 
     public void RespawnEnemies() 
     {
-        for (int i = 0; i <= enemies.Length - 1; i++)
+        if (this.gameObject.activeSelf)
         {
-            enemies[i].GetComponent<EnemyVariables>().ResetAllStats();
-            enemies[i].GetComponent<EnemyVariables>().ResetPosition();
-            enemies[i].SetActive(true);
+            for (int i = 0; i <= enemies.Length - 1; i++)
+            {
+                enemies[i].GetComponent<EnemyVariables>().ResetAllStats();
+                enemies[i].GetComponent<EnemyVariables>().ResetPosition();
+                enemies[i].SetActive(true);
+            }
         }
     }
 }

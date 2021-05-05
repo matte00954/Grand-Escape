@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5928515166768018075}
   - component: {fileID: 5928515166768018074}
   - component: {fileID: 3433338016010623814}
+  - component: {fileID: -8143186924384828537}
+  - component: {fileID: 5614406643149282824}
   m_Layer: 0
   m_Name: CheckPoint
   m_TagString: Check point
@@ -74,5 +76,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a57de96549cec45bc6b89e86043d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &-8143186924384828537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5928515166768018078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ef844abb33faf4d8a5625d01703c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   enemies: []
-  gameManager: {fileID: 836856738668078748, guid: 39ed1fe7731245a4bb647fdeb77c9f8e, type: 3}
+--- !u!114 &5614406643149282824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5928515166768018078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f5b11cc8cbbb84cbdd77748fefb2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjects: []

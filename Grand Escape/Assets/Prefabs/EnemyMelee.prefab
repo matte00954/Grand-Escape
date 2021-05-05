@@ -197,7 +197,7 @@ MonoBehaviour:
   isDeaf: 0
   isBlind: 0
   chasingSpeed: 20
-  maxAttackRange: 1
+  maxAttackRange: 2
   alertBufferTime: 3
   OnAlertStart:
     m_PersistentCalls:

@@ -216,7 +216,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckTimeSlow()
     {
-        if (isSlowmotion && Input.GetKeyDown(KeyCode.C) || isSlowmotion && playerVariables.GetCurrentStamina() <= 0f)
+        if (isSlowmotion && Input.GetKeyDown(KeyCode.Q) || isSlowmotion && playerVariables.GetCurrentStamina() <= 0f)
         {
             Debug.Log("Slow motion stops");
             isSlowmotion = false;
@@ -225,7 +225,7 @@ public class PlayerMovement : MonoBehaviour
             RestoreTime();
         }
 
-        if (Input.GetKeyDown(KeyCode.C) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlow && !isExhaustedFromSlowMotion && !isSlowmotion)
+        if (Input.GetKeyDown(KeyCode.Q) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlow && !isExhaustedFromSlowMotion && !isSlowmotion)
         {
             playerVariables.StaminaToBeUsed(staminaUsedTimeSlow);
             isSlowmotion = true;

@@ -143,6 +143,12 @@ public class PlayerVariables : MonoBehaviour
 
     private void PlayerDeath()
     {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            healthPoints = -1;
+        }
+
+
         if (healthPoints <= 0)
         {
             isDead = true;
@@ -240,7 +246,7 @@ public class PlayerVariables : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Water"))
         {
-            healthPoints = 0;
+            healthPoints = -1;
         }
     }
 

@@ -6,12 +6,11 @@ public class AmmoVelocity : MonoBehaviour
     //All other variables move to AmmoType Scriptable object
 
     [SerializeField] AmmoType ammo;
+    [SerializeField] LayerMask collisionMask;
 
     private Vector3 direction;
+    float lifeTimer;
 
-    bool startTimerToRemoveBullet;
-
-    // Start is called before the first frame update
     void Start()
     {
         direction = transform.forward;
@@ -19,45 +18,35 @@ public class AmmoVelocity : MonoBehaviour
 
     private void Awake()
     {
-        StartCoroutine(TimeUntilBulletGetsRemoved());
+        lifeTimer = ammo.GetBulletLifetime();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        RayCheck();
         transform.position += direction * ammo.GetAmmoSpeed() * Time.deltaTime;
+
+        lifeTimer -= Time.deltaTime;
+        if (lifeTimer <= 0f)
+            Destroy(this.gameObject);
     }
 
-    private void OnTriggerEnter(Collider other) //Checka bara if sats om t.ex. bullet som ägs av fiende träffar en spelare.
+    private void RayCheck()
     {
-        Debug.Log("I hit: " + other.gameObject.tag);
-        if (other.gameObject.tag == "Player")
+        RaycastHit raycastHit;
+        if (Physics.Raycast(transform.position, direction, out raycastHit, ammo.GetAmmoSpeed() * Time.deltaTime, collisionMask))
         {
-            other.gameObject.GetComponentInParent<PlayerVariables>().ApplyDamage(ammo.GetAmmoDamage());
+            if (raycastHit.collider.gameObject.tag == "Player")
+                raycastHit.collider.gameObject.GetComponentInParent<PlayerVariables>().ApplyDamage(ammo.GetAmmoDamage());
+            else if (raycastHit.collider.gameObject.tag == "Enemy")
+                raycastHit.collider.gameObject.GetComponent<EnemyVariables>().ApplyDamage(ammo.GetAmmoDamage());
+
             Destroy(this.gameObject);
         }
-        else if (other.gameObject.tag == "Enemy")
-        {
-            other.gameObject.GetComponent<EnemyVariables>().ApplyDamage(ammo.GetAmmoDamage());
-            Destroy(this.gameObject);
-        }
-        else if (other.gameObject.tag == "Wall")
-        {
-            Destroy(this.gameObject);
-        }
-        else if (other.gameObject.tag == "Ground")
-        {
-            Destroy(this.gameObject);
-        }
-        //else if (other.gameObject.tag == "Untagged") //TODO Temporary, might cause issues
-        //{
-        //    Destroy(this.gameObject);
-        //}
     }
 
-    private IEnumerator TimeUntilBulletGetsRemoved() //IEnumerators might be an issue
+    private void OnDrawGizmos()
     {
-        yield return new WaitForSeconds(ammo.GetBulletDoesNotHitTimer());
-        Destroy(this.gameObject);
+        Gizmos.DrawRay(transform.position, direction * ammo.GetAmmoSpeed() * Time.deltaTime);
     }
 }

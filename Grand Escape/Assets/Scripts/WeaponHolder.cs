@@ -32,15 +32,12 @@ public class WeaponHolder : MonoBehaviour
                 selectedWeapon--;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) 
-        {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
             selectedWeapon = 0;
-        }
-
         if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
             selectedWeapon = 1;
-        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            selectedWeapon = 2;
 
         if (previousSelectedWep != selectedWeapon)
             SelectWeapon();
@@ -63,4 +60,11 @@ public class WeaponHolder : MonoBehaviour
             index++;
         }
     }
+
+
+    public int GetSelectedWeapon()
+    {
+        return selectedWeapon;
+    }
+
 }

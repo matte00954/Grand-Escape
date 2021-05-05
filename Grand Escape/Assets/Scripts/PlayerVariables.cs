@@ -5,16 +5,14 @@ using UnityEngine.Events;
 
 public class PlayerVariables : MonoBehaviour
 {
-
-    [SerializeField] UiManager uiManager;
+    UiManager uiManager;
 
     [SerializeField] GameObject spawnPoint;
-
-    [SerializeField] GameObject gameManager;
+    
+    GameObject gameManager;
+    GameObject player;
 
     Transform currentRespawnPoint;
-
-    GameObject player;
 
     [Header("Stamina")]
     [SerializeField] float staminaRegenPerTick; //per update tick
@@ -57,6 +55,8 @@ public class PlayerVariables : MonoBehaviour
         healthPoints = maxHealthPoints;
         currentAmmoReserve = startAmmoReserve;
         currentStamina = maxStamina;
+        gameManager = FindObjectOfType<SceneSwitch>().gameObject;
+        uiManager = FindObjectOfType<UiManager>();
     }
 
     private void Start()
@@ -203,7 +203,7 @@ public class PlayerVariables : MonoBehaviour
 
                 if (timerUntilStaminaRegen <= 0)
                 {
-                    Debug.Log("Stamina is now regenerating");
+                    //Debug.Log("Stamina is now regenerating");
                     currentStamina += staminaRegenPerTick;
                     timerUntilStaminaComparisonCheck = timerUntilStaminaComparisonCheckMax;
                     timerUntilStaminaRegen = timerUntilStaminaRegenMax;

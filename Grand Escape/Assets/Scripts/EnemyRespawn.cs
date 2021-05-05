@@ -6,7 +6,7 @@ public class EnemyRespawn : MonoBehaviour
     [Header("Enemies in previous section to respawn, if player dies")] //All enemies in the previous section that will spawn if player respawns at this location
     [SerializeField] GameObject[] enemies;
 
-    [SerializeField] GameObject gameManager;
+    //[SerializeField] GameObject gameManager;
 
     //Transform[] enemiesTransform; //Might change system to instasiate instead of set active
 
@@ -53,10 +53,14 @@ public class EnemyRespawn : MonoBehaviour
 
     public void RespawnEnemies() 
     {
-        for (int i = 0; i <= enemies.Length - 1; i++)
+        if (this.gameObject.activeSelf)
         {
-            enemies[i].GetComponent<EnemyVariables>().ResetAllStats();
-            enemies[i].SetActive(true);
+            for (int i = 0; i <= enemies.Length - 1; i++)
+            {
+                enemies[i].GetComponent<EnemyVariables>().ResetAllStats();
+                enemies[i].GetComponent<EnemyVariables>().ResetPosition();
+                enemies[i].SetActive(true);
+            }
         }
     }
 }

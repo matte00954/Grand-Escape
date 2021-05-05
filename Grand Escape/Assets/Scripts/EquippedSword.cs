@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class EquippedSword : MonoBehaviour
 {
     [SerializeField] private AudioClip[] clips;
+    [SerializeField] BoxCollider swordCollider;
 
     [SerializeField] UnityEvent OnAttack;
 
@@ -26,9 +27,15 @@ public class EquippedSword : MonoBehaviour
         }
     }
 
-    private void Swoosh()
+    private void OnDisable() => swordCollider.enabled = false;
+    private void OnEnable() => swordCollider.enabled = false;
+
+    private void AttackStart()
     {
         AudioClip clip = clips[Random.Range(0, clips.Length)];
         audioSource.PlayOneShot(clip);
+        swordCollider.enabled = true;
     }
+
+    private void AttackEnd() => swordCollider.enabled = false;
 }

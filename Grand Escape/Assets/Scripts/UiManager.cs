@@ -10,11 +10,10 @@ public class UiManager : MonoBehaviour
     [SerializeField] Text sprintExhaustionText;
     [SerializeField] Text tutorialText;
 
-    [SerializeField] Image weaponReloadedImage;
-    [SerializeField] Image weaponEmptyImage;
-
     [SerializeField] Slider healthPointSlider;
     [SerializeField] Slider staminaPointSlider;
+    [SerializeField] Slider weaponReloadedSlider;
+    [SerializeField] Slider dodgeCooldownSlider;
 
     public void TutorialText(string s, bool active)
     {
@@ -29,16 +28,16 @@ public class UiManager : MonoBehaviour
 
     public void WeaponStatus(bool isReloaded)
     {
-        weaponReloadedImage.gameObject.SetActive(isReloaded);
+        if (isReloaded)
+        {
+            weaponReloadedSlider.value = 100f;
+        }
+        else
+            weaponReloadedSlider.value = 0f;
 
-        weaponEmptyImage.gameObject.SetActive(!isReloaded);
 
-        //if (isReloaded)
-        //{
-        //    weaponReloadedImage.gameObject.SetActive(true);
-        //}
-        //else
-        //    weaponReloadedImage.gameObject.SetActive(false);
+        Debug.Log("is reloaded = " + isReloaded);
+        Debug.Log("weapon slider value " + weaponReloadedSlider.value);
     }
 
     public void AmmoStatus(int i)
@@ -54,6 +53,11 @@ public class UiManager : MonoBehaviour
     public void Stamina(int staminaPoints)
     {
         staminaPointSlider.value = staminaPoints;
+    }
+
+    public void DodgeCooldown(float cooldownTimer, float cooldownCapacity) //Value in inspector needs to be the same as value currently assigned in player movement
+    {
+        dodgeCooldownSlider.value = cooldownCapacity - cooldownTimer;
     }
 
     public void SlowMotionExhaustion(bool isExhaustedFromSlowMotion)

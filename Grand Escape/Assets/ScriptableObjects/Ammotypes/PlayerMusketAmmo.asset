@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoName: PlayerMusketAmmo
   ammoDamage: 100
-  speed: 100
-  bulletDoesNotHitTimer: 10
+  speed: 400
+  bulletLifetime: 0.65

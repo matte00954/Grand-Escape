@@ -5,10 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] PlayerVariables playerVariables;
-    [SerializeField] AudioManager audioManager;
-
-    [SerializeField] UiManager uiManager;
+    PlayerVariables playerVariables;
+    AudioManager audioManager;
+    UiManager uiManager;
 
     [SerializeField] Transform groundCheck; //The groundCheck object.
 
@@ -74,9 +73,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        uiManager = FindObjectOfType<UiManager>();
+        audioManager = FindObjectOfType<AudioManager>();
+        playerVariables = GetComponent<PlayerVariables>();
         controller = GetComponent<CharacterController>();
-        standingHeight = controller.height;
 
+        standingHeight = controller.height;
+       
         //To prevent player from dodging at start
         lastTapTimeRight = 0.5f;
         lastTapTimeLeft = 0.5f;
@@ -108,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
         if(dodgeCooldownTimer > 0)
         {
             dodgeCooldownTimer -= Time.deltaTime;
+            uiManager.DodgeCooldown(dodgeCooldownTimer, dodgeCooldown);
         }
 
         if(lastTapTimeRight > 0)
@@ -207,7 +211,7 @@ public class PlayerMovement : MonoBehaviour
     private void ApplyDodge()
     {
         if (Time.timeScale < 1f)
-            controller.Move((dodgeDirection * currentSpeed * dodgeSpeedMultiplier) * slowMotionAmountMultiplier * Time.deltaTime);
+            controller.Move((dodgeDirection * currentSpeed * dodgeSpeedMultiplier) * slowMotionAmountMultiplier * Time.unscaledDeltaTime);
         else
             controller.Move(dodgeDirection * currentSpeed * dodgeSpeedMultiplier * Time.deltaTime);
 
@@ -216,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckTimeSlow()
     {
-        if (isSlowmotion && Input.GetKeyDown(KeyCode.C) || isSlowmotion && playerVariables.GetCurrentStamina() <= 0f)
+        if (isSlowmotion && Input.GetKeyDown(KeyCode.Q) || isSlowmotion && playerVariables.GetCurrentStamina() <= 0f)
         {
             Debug.Log("Slow motion stops");
             isSlowmotion = false;
@@ -225,7 +229,7 @@ public class PlayerMovement : MonoBehaviour
             RestoreTime();
         }
 
-        if (Input.GetKeyDown(KeyCode.C) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlow && !isExhaustedFromSlowMotion && !isSlowmotion)
+        if (Input.GetKeyDown(KeyCode.Q) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlow && !isExhaustedFromSlowMotion && !isSlowmotion)
         {
             playerVariables.StaminaToBeUsed(staminaUsedTimeSlow);
             isSlowmotion = true;

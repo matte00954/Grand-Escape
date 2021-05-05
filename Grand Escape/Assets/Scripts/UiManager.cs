@@ -10,11 +10,9 @@ public class UiManager : MonoBehaviour
     [SerializeField] Text sprintExhaustionText;
     [SerializeField] Text tutorialText;
 
-    [SerializeField] Image weaponReloadedImage;
-    [SerializeField] Image weaponEmptyImage;
-
     [SerializeField] Slider healthPointSlider;
     [SerializeField] Slider staminaPointSlider;
+    [SerializeField] Slider weaponReloadedSlider;
 
     public void TutorialText(string s, bool active)
     {
@@ -29,16 +27,16 @@ public class UiManager : MonoBehaviour
 
     public void WeaponStatus(bool isReloaded)
     {
-        weaponReloadedImage.gameObject.SetActive(isReloaded);
+        if (isReloaded)
+        {
+            weaponReloadedSlider.value = 100;
+        }
+        else
+            weaponReloadedSlider.value = 0;
 
-        weaponEmptyImage.gameObject.SetActive(!isReloaded);
 
-        //if (isReloaded)
-        //{
-        //    weaponReloadedImage.gameObject.SetActive(true);
-        //}
-        //else
-        //    weaponReloadedImage.gameObject.SetActive(false);
+        Debug.Log("is reloaded = " + isReloaded);
+        Debug.Log("weapon slider value " + weaponReloadedSlider.value);
     }
 
     public void AmmoStatus(int i)

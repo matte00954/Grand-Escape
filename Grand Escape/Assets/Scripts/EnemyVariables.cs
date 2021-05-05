@@ -29,7 +29,6 @@ public class EnemyVariables : MonoBehaviour
             particleSystem.transform.position = transform.position;
             this.gameObject.SetActive(false);
         }
-        Debug.Log(startPosition);
     }
 
     public void ApplyDamage(float damage)

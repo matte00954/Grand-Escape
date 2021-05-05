@@ -2762,9 +2762,9 @@ MonoBehaviour:
   slowMotionTickTime: 0.1
   slowMotionExhaustionTime: 3
   slowMotionMovementSpeed: 10
-  dodgeAmountOfTime: 0.3
+  dodgeAmountOfTime: 0.2
   dodgeSpeedMultiplier: 0.6
-  doubleTapSpeed: 0.5
+  doubleTapSpeed: 0.2
   dodgeCooldown: 1
 --- !u!114 &5678491154712510805
 MonoBehaviour:

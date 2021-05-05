@@ -7,6 +7,7 @@ public class DamageArea : MonoBehaviour
     /*public int damage; //<---- TODO: inflict damage to player health */
     [SerializeField] PlayerVariables playerVariables;
     [SerializeField] float cooldown = 2f;
+    [SerializeField] int damage = 40;
 
     float timer;
     bool readyToHit;
@@ -29,7 +30,7 @@ public class DamageArea : MonoBehaviour
         {
             Debug.Log("Melee hit on player");
             timer = 0f;
-            playerVariables.ApplyDamage(50); 
+            playerVariables.ApplyDamage(damage); 
         }
     }
 }

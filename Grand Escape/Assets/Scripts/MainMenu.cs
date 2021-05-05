@@ -9,12 +9,29 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Animator newGameAnim;
     [SerializeField] Animator exitAnim;
     [SerializeField] Animator buttonAnim;
-    private bool settingsOpen = false;
+    private bool settingsOpen;
 
 
     void Start()
     {
         settingsMenu.SetActive(false);
+        settingsOpen = false;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            //buttonAnim.SetTrigger("pressed");
+            if (!settingsOpen)
+            {
+                OpenSettings();
+            }
+            else if (settingsOpen)
+            {
+                CloseSettings();
+            }
+        }
     }
 
     public void StartGame()
@@ -40,12 +57,19 @@ public class MainMenu : MonoBehaviour
     {
         settingsMenu.SetActive(true);
         settingsOpen = true;
+        //Time.timeScale = 0;
     }
 
     public void CloseSettings()
     {
         settingsMenu.SetActive(false);
         settingsOpen = false;
+        //Time.timeScale = 1;
+    }
+
+    public void ReturnToMain()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void QuitGame()

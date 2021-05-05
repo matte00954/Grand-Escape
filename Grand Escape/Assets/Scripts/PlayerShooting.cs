@@ -34,6 +34,11 @@ public class PlayerShooting : MonoBehaviour
     float reloadTimer;
     int clipCapacity = 1; //bullet clip capacity, 1 by default.
 
+    private void Awake()
+    {
+        uiManager = FindObjectOfType<UiManager>();
+    }
+
     private void Start()
     {
         playerCamera = GetComponentInParent<Camera>();
@@ -45,8 +50,6 @@ public class PlayerShooting : MonoBehaviour
 
         isReloading = false;
         currentAmmoLoaded = clipCapacity;
-
-        uiManager = FindObjectOfType<UiManager>();
     }
 
     private void OnEnable()

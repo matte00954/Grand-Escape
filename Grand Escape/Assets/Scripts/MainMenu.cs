@@ -78,14 +78,14 @@ public class MainMenu : MonoBehaviour
     {
         settingsMenu.SetActive(true);
         settingsOpen = true;
-        //Time.timeScale = 0;
+        Time.timeScale = 0.01f;
     }
 
     public void CloseSettings()
     {
         settingsMenu.SetActive(false);
         settingsOpen = false;
-        //Time.timeScale = 1;
+        Time.timeScale = 1;
     }
 
     public void ReturnToMain()

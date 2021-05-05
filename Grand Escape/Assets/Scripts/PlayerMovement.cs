@@ -5,9 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] PlayerVariables playerVariables;
-    [SerializeField] AudioManager audioManager;
-
+    PlayerVariables playerVariables;
+    AudioManager audioManager;
     UiManager uiManager;
 
     [SerializeField] Transform groundCheck; //The groundCheck object.
@@ -75,7 +74,8 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         uiManager = FindObjectOfType<UiManager>();
-
+        audioManager = FindObjectOfType<AudioManager>();
+        playerVariables = GetComponent<PlayerVariables>();
         controller = GetComponent<CharacterController>();
 
         standingHeight = controller.height;

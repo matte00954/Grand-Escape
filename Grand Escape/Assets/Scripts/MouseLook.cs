@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
+    WeaponHolder weaponHolder;
+
     [SerializeField] Transform playerBody; //The player's model object.
     [SerializeField] Camera camera;
 
@@ -15,18 +17,22 @@ public class MouseLook : MonoBehaviour
 
     bool isZoomed;
 
+    bool canZoom;
+
     // Start is called before the first frame update
     void Start()
     {
         //This locks the mouse cursor to the game screen and hides it.
         Cursor.lockState = CursorLockMode.Locked;
         defaultFov = camera.fieldOfView;
+
+        weaponHolder = FindObjectOfType<WeaponHolder>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1) && !isZoomed)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && !isZoomed && weaponHolder.GetSelectedWeapon() == 1) //1 is musket
         {
             camera.fieldOfView = fovForZoom;
             isZoomed = true;
@@ -35,6 +41,11 @@ public class MouseLook : MonoBehaviour
         {
             camera.fieldOfView = defaultFov;
             isZoomed = false;
+        }
+
+        if(weaponHolder.GetSelectedWeapon() != 1) //1 is musket
+        {
+            camera.fieldOfView = defaultFov;
         }
             
 

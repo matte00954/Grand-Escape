@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87a05cdf0264d7c4384798178ddab683, type: 3}
-  m_Name: PlayerMusketAmmo
+  m_Name: PlayerPistolAmmo
   m_EditorClassIdentifier: 
-  ammoName: PlayerMusketAmmo
+  ammoName: PlayerPistolAmmo
   ammoDamage: 100
-  speed: 400
+  speed: 200
   bulletLifetime: 0.65

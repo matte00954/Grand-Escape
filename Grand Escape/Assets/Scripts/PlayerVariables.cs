@@ -203,7 +203,7 @@ public class PlayerVariables : MonoBehaviour
 
                 if (timerUntilStaminaRegen <= 0)
                 {
-                    Debug.Log("Stamina is now regenerating");
+                    //Debug.Log("Stamina is now regenerating");
                     currentStamina += staminaRegenPerTick;
                     timerUntilStaminaComparisonCheck = timerUntilStaminaComparisonCheckMax;
                     timerUntilStaminaRegen = timerUntilStaminaRegenMax;

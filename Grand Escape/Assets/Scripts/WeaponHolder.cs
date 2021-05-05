@@ -60,4 +60,11 @@ public class WeaponHolder : MonoBehaviour
             index++;
         }
     }
+
+
+    public int GetSelectedWeapon()
+    {
+        return selectedWeapon;
+    }
+
 }

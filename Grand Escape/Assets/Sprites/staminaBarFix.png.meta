@@ -1,0 +1,3696 @@
+fileFormatVersion: 2
+guid: 7cd5104e26aba9d4a874425f5d973d72
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4003187449019038212
+    second: StaminaWaves_00000
+  - first:
+      213: -460066761651649389
+    second: StaminaWaves_00001
+  - first:
+      213: -168745457188497913
+    second: StaminaWaves_00002
+  - first:
+      213: 2043993453412584075
+    second: StaminaWaves_00003
+  - first:
+      213: -6488419652483449727
+    second: StaminaWaves_00004
+  - first:
+      213: -1081585000573842302
+    second: StaminaWaves_00005
+  - first:
+      213: 4511156775347556305
+    second: StaminaWaves_00006
+  - first:
+      213: -8048012724872319392
+    second: StaminaWaves_00007
+  - first:
+      213: -7848542201109202288
+    second: StaminaWaves_00008
+  - first:
+      213: 1613953480014325967
+    second: StaminaWaves_00009
+  - first:
+      213: 4642821733671896394
+    second: StaminaWaves_00010
+  - first:
+      213: 1916039642215214061
+    second: StaminaWaves_00011
+  - first:
+      213: 2273116125539646042
+    second: StaminaWaves_00012
+  - first:
+      213: 83829569717593722
+    second: StaminaWaves_00013
+  - first:
+      213: 3526456735944346759
+    second: StaminaWaves_00014
+  - first:
+      213: -7542851434070033289
+    second: StaminaWaves_00015
+  - first:
+      213: -6460661691379070235
+    second: StaminaWaves_00016
+  - first:
+      213: 4732997127409744772
+    second: StaminaWaves_00017
+  - first:
+      213: -4801942969879676783
+    second: StaminaWaves_00018
+  - first:
+      213: 2154242037394394210
+    second: StaminaWaves_00019
+  - first:
+      213: -6042685602040831136
+    second: StaminaWaves_00020
+  - first:
+      213: 6843396849981252681
+    second: StaminaWaves_00021
+  - first:
+      213: -2091442553791710128
+    second: StaminaWaves_00022
+  - first:
+      213: 6340752168312814307
+    second: StaminaWaves_00023
+  - first:
+      213: -6236269743647933274
+    second: StaminaWaves_00024
+  - first:
+      213: -7297441206783977194
+    second: StaminaWaves_00025
+  - first:
+      213: -7363639220675321252
+    second: StaminaWaves_00026
+  - first:
+      213: 8904678576612160873
+    second: StaminaWaves_00027
+  - first:
+      213: 7916157424696629316
+    second: StaminaWaves_00028
+  - first:
+      213: -2937056915434649268
+    second: StaminaWaves_00029
+  - first:
+      213: -105514574236841598
+    second: StaminaWaves_00030
+  - first:
+      213: 2086807744642166231
+    second: StaminaWaves_00031
+  - first:
+      213: 6340862003875146786
+    second: StaminaWaves_00032
+  - first:
+      213: -955274475176107440
+    second: StaminaWaves_00033
+  - first:
+      213: 1411404927509234519
+    second: StaminaWaves_00034
+  - first:
+      213: -4531093790039627921
+    second: StaminaWaves_00035
+  - first:
+      213: 6979299469962349649
+    second: StaminaWaves_00036
+  - first:
+      213: 1937975902174380654
+    second: StaminaWaves_00037
+  - first:
+      213: -149835455550802819
+    second: StaminaWaves_00038
+  - first:
+      213: -3904821581045508970
+    second: StaminaWaves_00039
+  - first:
+      213: -1097831388824661043
+    second: StaminaWaves_00040
+  - first:
+      213: 2057897989193909571
+    second: StaminaWaves_00041
+  - first:
+      213: 91508126611290732
+    second: StaminaWaves_00042
+  - first:
+      213: -1062522184309341654
+    second: StaminaWaves_00043
+  - first:
+      213: 2328302500920158776
+    second: StaminaWaves_00044
+  - first:
+      213: 9124956007972892641
+    second: StaminaWaves_00045
+  - first:
+      213: 239257566974483315
+    second: StaminaWaves_00046
+  - first:
+      213: -2052573143134946940
+    second: StaminaWaves_00047
+  - first:
+      213: -7098756328377167899
+    second: StaminaWaves_00048
+  - first:
+      213: -6155518994316676669
+    second: StaminaWaves_00049
+  - first:
+      213: -2255261909975372570
+    second: StaminaWaves_00050
+  - first:
+      213: 1537374753599169164
+    second: StaminaWaves_00051
+  - first:
+      213: 384625683853869380
+    second: StaminaWaves_00052
+  - first:
+      213: 7919766209614780713
+    second: StaminaWaves_00053
+  - first:
+      213: 6147705221881405227
+    second: StaminaWaves_00054
+  - first:
+      213: -5063165969685600035
+    second: StaminaWaves_00055
+  - first:
+      213: -15271183975731555
+    second: StaminaWaves_00056
+  - first:
+      213: -2251003007327268163
+    second: StaminaWaves_00057
+  - first:
+      213: 1564805890296741473
+    second: StaminaWaves_00058
+  - first:
+      213: 8986733633840629471
+    second: StaminaWaves_00059
+  - first:
+      213: 3038213660039897928
+    second: StaminaWaves_00060
+  - first:
+      213: -2991494990207283628
+    second: StaminaWaves_00061
+  - first:
+      213: 6280551774865514527
+    second: StaminaWaves_00062
+  - first:
+      213: -7206764549967151254
+    second: StaminaWaves_00063
+  - first:
+      213: -3027442645450730718
+    second: StaminaWaves_00064
+  - first:
+      213: 8965262155001318250
+    second: StaminaWaves_00065
+  - first:
+      213: -4750591915058350323
+    second: StaminaWaves_00066
+  - first:
+      213: -3093595527884962180
+    second: StaminaWaves_00067
+  - first:
+      213: -5318540686358410495
+    second: StaminaWaves_00068
+  - first:
+      213: 1314948950187232746
+    second: StaminaWaves_00069
+  - first:
+      213: 6650708584871194566
+    second: StaminaWaves_00070
+  - first:
+      213: -2827159468765661185
+    second: StaminaWaves_00071
+  - first:
+      213: 1179906381793122004
+    second: StaminaWaves_00072
+  - first:
+      213: -4427691453995605691
+    second: StaminaWaves_00073
+  - first:
+      213: 7875941569783103169
+    second: StaminaWaves_00074
+  - first:
+      213: -6427254790470143611
+    second: StaminaWaves_00075
+  - first:
+      213: -4258562622202389555
+    second: StaminaWaves_00076
+  - first:
+      213: -4662094075589310133
+    second: StaminaWaves_00077
+  - first:
+      213: -4471844171222367460
+    second: StaminaWaves_00078
+  - first:
+      213: -4371896690402806040
+    second: StaminaWaves_00079
+  - first:
+      213: 1553575439876891184
+    second: StaminaWaves_00080
+  - first:
+      213: 2978364236614085064
+    second: StaminaWaves_00081
+  - first:
+      213: 7916203768091025708
+    second: StaminaWaves_00082
+  - first:
+      213: 655190265045736341
+    second: StaminaWaves_00083
+  - first:
+      213: 6145594416201127597
+    second: StaminaWaves_00084
+  - first:
+      213: -2945182923462889713
+    second: StaminaWaves_00085
+  - first:
+      213: 8927836188805267995
+    second: StaminaWaves_00086
+  - first:
+      213: -1521920420636287373
+    second: StaminaWaves_00087
+  - first:
+      213: 6036318567182890345
+    second: StaminaWaves_00088
+  - first:
+      213: -7808012899957940375
+    second: StaminaWaves_00089
+  - first:
+      213: -3853024363252065959
+    second: StaminaWaves_00090
+  - first:
+      213: -1930887245378120991
+    second: StaminaWaves_00091
+  - first:
+      213: 1687116148155894772
+    second: StaminaWaves_00092
+  - first:
+      213: 1181786332428688238
+    second: StaminaWaves_00093
+  - first:
+      213: 2122337342060150537
+    second: StaminaWaves_00094
+  - first:
+      213: -8091559331210340178
+    second: StaminaWaves_00095
+  - first:
+      213: 3859040366762919682
+    second: StaminaWaves_00096
+  - first:
+      213: 1560605505054487573
+    second: StaminaWaves_00097
+  - first:
+      213: -2851921125178748870
+    second: StaminaWaves_00098
+  - first:
+      213: -3203831284485716016
+    second: StaminaWaves_00099
+  - first:
+      213: 5166735683560014498
+    second: StaminaWaves_00100
+  - first:
+      213: 2778317859232788162
+    second: StaminaWaves_00101
+  - first:
+      213: 7954044441319239612
+    second: StaminaWaves_00102
+  - first:
+      213: 2757661666336409697
+    second: StaminaWaves_00103
+  - first:
+      213: 7381464394001837185
+    second: StaminaWaves_00104
+  - first:
+      213: 4084816444873404241
+    second: StaminaWaves_00105
+  - first:
+      213: 5480348078352949646
+    second: StaminaWaves_00106
+  - first:
+      213: 934528111730984252
+    second: StaminaWaves_00107
+  - first:
+      213: 3824896130301039548
+    second: StaminaWaves_00108
+  - first:
+      213: -5783762644532462937
+    second: StaminaWaves_00109
+  - first:
+      213: 9164135010382099199
+    second: StaminaWaves_00110
+  - first:
+      213: -4135485359028065007
+    second: StaminaWaves_00111
+  - first:
+      213: 4596584967901337687
+    second: StaminaWaves_00112
+  - first:
+      213: -1515559846295933452
+    second: StaminaWaves_00113
+  - first:
+      213: 3841942397867599339
+    second: StaminaWaves_00114
+  - first:
+      213: 7678559564211230234
+    second: StaminaWaves_00115
+  - first:
+      213: -1402656764453426091
+    second: StaminaWaves_00116
+  - first:
+      213: -3901573253329474145
+    second: StaminaWaves_00117
+  - first:
+      213: 5508004391135255956
+    second: StaminaWaves_00118
+  - first:
+      213: -8167246592591024754
+    second: StaminaWaves_00119
+  - first:
+      213: -1242729831661367470
+    second: StaminaWaves_00120
+  - first:
+      213: 7188379918709194991
+    second: StaminaWaves_00121
+  - first:
+      213: -8006844834964578610
+    second: StaminaWaves_00122
+  - first:
+      213: 7426258914178826285
+    second: StaminaWaves_00123
+  - first:
+      213: 7048639405246187284
+    second: StaminaWaves_00124
+  - first:
+      213: 3603613786361145081
+    second: StaminaWaves_00125
+  - first:
+      213: 2484472253224971971
+    second: StaminaWaves_00126
+  - first:
+      213: -7922300443313979423
+    second: StaminaWaves_00127
+  - first:
+      213: 2427613807963486736
+    second: StaminaWaves_00128
+  - first:
+      213: 4189145962694542868
+    second: StaminaWaves_00129
+  - first:
+      213: -8188986136285527581
+    second: StaminaWaves_00130
+  - first:
+      213: 4540559050360128062
+    second: StaminaWaves_00131
+  - first:
+      213: 1315060311958955617
+    second: StaminaWaves_00132
+  - first:
+      213: 7153326179508196517
+    second: StaminaWaves_00133
+  - first:
+      213: -8224533784688126599
+    second: StaminaWaves_00134
+  - first:
+      213: 2068148845522893750
+    second: StaminaWaves_00135
+  - first:
+      213: 2008576747980294358
+    second: StaminaWaves_00136
+  - first:
+      213: -4512871189633550456
+    second: StaminaWaves_00137
+  - first:
+      213: -3177776526569386935
+    second: StaminaWaves_00138
+  - first:
+      213: 2630720048322874859
+    second: StaminaWaves_00139
+  - first:
+      213: 1977472625845337259
+    second: StaminaWaves_00140
+  - first:
+      213: 5837879143671398035
+    second: StaminaWaves_00141
+  - first:
+      213: 9203718262485344162
+    second: StaminaWaves_00142
+  - first:
+      213: -5607835023392052259
+    second: StaminaWaves_00143
+  - first:
+      213: -3393180726849438261
+    second: StaminaWaves_00144
+  - first:
+      213: -6424827524906712463
+    second: StaminaWaves_00145
+  - first:
+      213: -4390770278585387035
+    second: StaminaWaves_00146
+  - first:
+      213: 4448538998809244553
+    second: StaminaWaves_00147
+  - first:
+      213: 6854820295923978255
+    second: StaminaWaves_00148
+  - first:
+      213: -5494443996334926348
+    second: StaminaWaves_00149
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: -1
+    wrapV: -1
+    wrapW: -1
+  nPOTScale: 1
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: StaminaWaves_00000
+      rect:
+        serializedVersion: 2
+        x: 3313
+        y: 1575
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf50be39932d178c0800000000000000
+      internalID: -4003187449019038212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00001
+      rect:
+        serializedVersion: 2
+        x: 3313
+        y: 1654
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3940ac2c7b38d99f0800000000000000
+      internalID: -460066761651649389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00002
+      rect:
+        serializedVersion: 2
+        x: 3313
+        y: 1733
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70691d696ee78adf0800000000000000
+      internalID: -168745457188497913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00003
+      rect:
+        serializedVersion: 2
+        x: 3313
+        y: 1812
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8a81e16739bd5c10800000000000000
+      internalID: 2043993453412584075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00004
+      rect:
+        serializedVersion: 2
+        x: 3313
+        y: 1891
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18c7f0404b084f5a0800000000000000
+      internalID: -6488419652483449727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00005
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 311
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28cc7662c207df0f0800000000000000
+      internalID: -1081585000573842302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00006
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 390
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1df00b0af29da9e30800000000000000
+      internalID: 4511156775347556305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00007
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 469
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06e69222117bf4090800000000000000
+      internalID: -8048012724872319392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00008
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 548
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09a39329370641390800000000000000
+      internalID: -7848542201109202288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00009
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 627
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc86244932ae56610800000000000000
+      internalID: 1613953480014325967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00010
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 706
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a450afe94cd9e6040800000000000000
+      internalID: 4642821733671896394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00011
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 785
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: debedc927e3279a10800000000000000
+      internalID: 1916039642215214061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00012
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 864
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5ab00c921bbb8f10800000000000000
+      internalID: 2273116125539646042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00013
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 943
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a76e0bcac82d92100800000000000000
+      internalID: 83829569717593722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00014
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 1022
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78c0fb5a7bd70f030800000000000000
+      internalID: 3526456735944346759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00015
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 1101
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77cb5be9598625790800000000000000
+      internalID: -7542851434070033289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00016
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 1180
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ea4067fb6e1756a0800000000000000
+      internalID: -6460661691379070235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00017
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 1259
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48bb3369fcbfea140800000000000000
+      internalID: 4732997127409744772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00018
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 1338
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19833a88f421c5db0800000000000000
+      internalID: -4801942969879676783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00019
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 1417
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26c4b1728b765ed10800000000000000
+      internalID: 2154242037394394210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00020
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 1496
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0632df0e571142ca0800000000000000
+      internalID: -6042685602040831136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00021
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 1575
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 944e82c5d21a8fe50800000000000000
+      internalID: 6843396849981252681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00022
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 1654
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05cfb190414b9f2e0800000000000000
+      internalID: -2091442553791710128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00023
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 1733
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3eab2199080eef750800000000000000
+      internalID: 6340752168312814307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00024
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 1812
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ac395695b15479a0800000000000000
+      internalID: -6236269743647933274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00025
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 232
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 619d75cc2e74aba90800000000000000
+      internalID: -7297441206783977194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00026
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 311
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c52638d94291fc990800000000000000
+      internalID: -7363639220675321252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00027
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 390
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 965bff58cf5c39b70800000000000000
+      internalID: 8904678576612160873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00028
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 469
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4481d157c37dbdd60800000000000000
+      internalID: 7916157424696629316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00029
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 548
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c49c96eeb4a7d37d0800000000000000
+      internalID: -2937056915434649268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00030
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 627
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2898cf3cd03298ef0800000000000000
+      internalID: -105514574236841598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00031
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 706
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dd2eed5694d5fc10800000000000000
+      internalID: 2086807744642166231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00032
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 785
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22cefbea5644ff750800000000000000
+      internalID: 6340862003875146786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00033
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 864
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05261241dee2eb2f0800000000000000
+      internalID: -955274475176107440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00034
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 943
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7538c6abd41569310800000000000000
+      internalID: 1411404927509234519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00035
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 1022
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f67a5b864325e11c0800000000000000
+      internalID: -4531093790039627921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00036
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 1101
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15c8d28d3e37bd060800000000000000
+      internalID: 6979299469962349649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00037
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 1180
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e620f50b0d215ea10800000000000000
+      internalID: 1937975902174380654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00038
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 1259
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d74b221727dabedf0800000000000000
+      internalID: -149835455550802819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00039
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 1338
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 694d08ee5794fc9c0800000000000000
+      internalID: -3904821581045508970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00040
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 1417
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc315dd1b28b3c0f0800000000000000
+      internalID: -1097831388824661043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00041
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 1496
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 345c4e5615f1f8c10800000000000000
+      internalID: 2057897989193909571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00042
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 1575
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6a3ab4082a154100800000000000000
+      internalID: 91508126611290732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00043
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 1654
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a22054ee3b92141f0800000000000000
+      internalID: -1062522184309341654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00044
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 1733
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83aeff8e9cacf4020800000000000000
+      internalID: 2328302500920158776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00045
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 1891
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ef6a46a42b52ae70800000000000000
+      internalID: 9124956007972892641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00046
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 1812
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37b96515d73025300800000000000000
+      internalID: 239257566974483315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00047
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 153
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4893fefe99bc383e0800000000000000
+      internalID: -2052573143134946940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00048
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 232
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5efc50ceab62c7d90800000000000000
+      internalID: -7098756328377167899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00049
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 311
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c1b5978614339aa0800000000000000
+      internalID: -6155518994316676669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00050
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 390
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ece274ed33b3b0e0800000000000000
+      internalID: -2255261909975372570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00051
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 469
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c82aeea613ad55510800000000000000
+      internalID: 1537374753599169164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00052
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 548
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4410a998507765500800000000000000
+      internalID: 384625683853869380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00053
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 627
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9291b3c2869a8ed60800000000000000
+      internalID: 7919766209614780713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00054
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 706
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2f1e0ec359015550800000000000000
+      internalID: 6147705221881405227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00055
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 785
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd82b0a50650cb9b0800000000000000
+      internalID: -5063165969685600035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00056
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 864
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9ea3d760feb9cff0800000000000000
+      internalID: -15271183975731555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00057
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 943
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db21cefe0b4d2c0e0800000000000000
+      internalID: -2251003007327268163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00058
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 1022
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16e7391aaae47b510800000000000000
+      internalID: 1564805890296741473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00059
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 1101
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd6402050aa47bc70800000000000000
+      internalID: 8986733633840629471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00060
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 1180
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 843ea660a37e92a20800000000000000
+      internalID: 3038213660039897928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00061
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 1259
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45e8551f7231c76d0800000000000000
+      internalID: -2991494990207283628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00062
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 1338
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f10ee4e3090092750800000000000000
+      internalID: 6280551774865514527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00063
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 1417
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6f745b23dd6cfb90800000000000000
+      internalID: -7206764549967151254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00064
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 1496
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2235a0c34fc5cf5d0800000000000000
+      internalID: -3027442645450730718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00065
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 1575
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6b4b131e620b6c70800000000000000
+      internalID: 8965262155001318250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00066
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 1654
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d07ba1ea2d1821eb0800000000000000
+      internalID: -4750591915058350323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00067
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 1733
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c760ea902475115d0800000000000000
+      internalID: -3093595527884962180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00068
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 1891
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10b0522bc6fb036b0800000000000000
+      internalID: -5318540686358410495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00069
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 1812
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aedcea17a13af3210800000000000000
+      internalID: 1314948950187232746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00070
+      rect:
+        serializedVersion: 2
+        x: 3313
+        y: 1970
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cf63e198301c4c50800000000000000
+      internalID: 6650708584871194566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00071
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 1970
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff737dc2179e3c8d0800000000000000
+      internalID: -2827159468765661185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00072
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 1891
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d6def25a9edf5010800000000000000
+      internalID: 1179906381793122004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00073
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 1970
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5412f8dd41ead82c0800000000000000
+      internalID: -4427691453995605691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00074
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 1970
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ce77a21127fc4d60800000000000000
+      internalID: 7875941569783103169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00075
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 74
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 581791532ddcdc6a0800000000000000
+      internalID: -6427254790470143611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00076
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 153
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcbded1abdb86e4c0800000000000000
+      internalID: -4258562622202389555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00077
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 74
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b49cb0b932aec4fb0800000000000000
+      internalID: -4662094075589310133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00078
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 232
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c13c36b4b61d0f1c0800000000000000
+      internalID: -4471844171222367460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00079
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 311
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e6b5d59f17e353c0800000000000000
+      internalID: -4371896690402806040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00080
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 390
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03222a1a1a86f8510800000000000000
+      internalID: 1553575439876891184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00081
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 469
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c92c1f3e76455920800000000000000
+      internalID: 2978364236614085064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00082
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 548
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c21acae92610cdd60800000000000000
+      internalID: 7916203768091025708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00083
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 627
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59b58502314b71900800000000000000
+      internalID: 655190265045736341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00084
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 706
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da6da4f8f89894550800000000000000
+      internalID: 6145594416201127597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00085
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 785
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0fa2704cbb9027d0800000000000000
+      internalID: -2945182923462889713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00086
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 864
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b128d9646bb06eb70800000000000000
+      internalID: 8927836188805267995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00087
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 943
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37e9f8fd07d01eae0800000000000000
+      internalID: -1521920420636287373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00088
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1022
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 965f70c41cf45c350800000000000000
+      internalID: 6036318567182890345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00089
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1101
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96fd658d2ad54a390800000000000000
+      internalID: -7808012899957940375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00090
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1180
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9595f6d71ce478ac0800000000000000
+      internalID: -3853024363252065959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00091
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1259
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e297e5d74c1435e0800000000000000
+      internalID: -1930887245378120991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00092
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1338
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fb48a1b237d96710800000000000000
+      internalID: 1687116148155894772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00093
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1417
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6bd2d0786c866010800000000000000
+      internalID: 1181786332428688238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00094
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1496
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90fba07619e047d10800000000000000
+      internalID: 2122337342060150537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00095
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1575
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea8d530c8a105bf80800000000000000
+      internalID: -8091559331210340178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00096
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1654
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2070cca74c01e8530800000000000000
+      internalID: 3859040366762919682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00097
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1733
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 514ba4b307268a510800000000000000
+      internalID: 1560605505054487573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00098
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1812
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a30d946c8d0fb68d0800000000000000
+      internalID: -2851921125178748870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00099
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1891
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d702ffdb64b983d0800000000000000
+      internalID: -3203831284485716016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00100
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 153
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a20eeacabee3b740800000000000000
+      internalID: 5166735683560014498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00101
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 232
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cea1b07f519e8620800000000000000
+      internalID: 2778317859232788162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00102
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 311
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbfe08ce641726e60800000000000000
+      internalID: 7954044441319239612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00103
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 390
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16881b0ccae254620800000000000000
+      internalID: 2757661666336409697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00104
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 469
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18c6ca6f1ca307660800000000000000
+      internalID: 7381464394001837185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00105
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 548
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15f6a511aee20b830800000000000000
+      internalID: 4084816444873404241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00106
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 627
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e81e8b78a8b1e0c40800000000000000
+      internalID: 5480348078352949646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00107
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 706
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c358754cd5c18fc00800000000000000
+      internalID: 934528111730984252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00108
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 785
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb31c5de3c2c41530800000000000000
+      internalID: 3824896130301039548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00109
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 864
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aaf77bb482fbbfa0800000000000000
+      internalID: -5783762644532462937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00110
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 943
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff2bb8ffc3c8d2f70800000000000000
+      internalID: 9164135010382099199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00111
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1022
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11dad490afdcb96c0800000000000000
+      internalID: -4135485359028065007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00112
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1101
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 758d8afaca95acf30800000000000000
+      internalID: 4596584967901337687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00113
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1180
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fd6fad7956a7fae0800000000000000
+      internalID: -1515559846295933452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00114
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1259
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be529606142515530800000000000000
+      internalID: 3841942397867599339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00115
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1338
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a161d7bad39bf8a60800000000000000
+      internalID: 7678559564211230234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00116
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1417
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55c64f4ba13c88ce0800000000000000
+      internalID: -1402656764453426091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00117
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1496
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9da12a2cc3dad9c0800000000000000
+      internalID: -3901573253329474145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00118
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1575
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49d98e2afcc507c40800000000000000
+      internalID: 5508004391135255956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00119
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1654
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8da797fe7c18ae80800000000000000
+      internalID: -8167246592591024754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00120
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1733
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25f0b086dcfe0cee0800000000000000
+      internalID: -1242729831661367470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00121
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1812
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe0863d437142c360800000000000000
+      internalID: 7188379918709194991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00122
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1891
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eced3407b09f1e090800000000000000
+      internalID: -8006844834964578610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00123
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1970
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2005bde22f5f0760800000000000000
+      internalID: 7426258914178826285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00124
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 74
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 417058b913cc1d160800000000000000
+      internalID: 7048639405246187284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00125
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 153
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f6a1cb55ab920230800000000000000
+      internalID: 3603613786361145081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00126
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 232
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cee9cbd95e9a7220800000000000000
+      internalID: 2484472253224971971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00127
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 311
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1efb95098b55e0290800000000000000
+      internalID: -7922300443313979423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00128
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 390
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01a3f7375ed90b120800000000000000
+      internalID: 2427613807963486736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00129
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 469
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4168baade06d22a30800000000000000
+      internalID: 4189145962694542868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00130
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 548
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e14a140f70ea5e80800000000000000
+      internalID: -8188986136285527581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00131
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 627
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e32866e366e430f30800000000000000
+      internalID: 4540559050360128062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00132
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 706
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1662780e268004210800000000000000
+      internalID: 1315060311958955617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00133
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 785
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a49614a248b54360800000000000000
+      internalID: 7153326179508196517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00134
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 864
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 975177829169cdd80800000000000000
+      internalID: -8224533784688126599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00135
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 943
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bbb600ea6a83bc10800000000000000
+      internalID: 2068148845522893750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00136
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1022
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d8897f09e5efdb10800000000000000
+      internalID: 2008576747980294358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00137
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1101
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8873cc0309f0f51c0800000000000000
+      internalID: -4512871189633550456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00138
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1180
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94cc14ee51546e3d0800000000000000
+      internalID: -3177776526569386935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00139
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1259
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bed88cf12f1328420800000000000000
+      internalID: 2630720048322874859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00140
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1338
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bacf19840e4617b10800000000000000
+      internalID: 1977472625845337259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00141
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1417
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39ef1389620540150800000000000000
+      internalID: 5837879143671398035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00142
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1496
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2afd6301ffc2abf70800000000000000
+      internalID: 9203718262485344162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00143
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1575
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddbe8bff1c7fc22b0800000000000000
+      internalID: -5607835023392052259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00144
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1654
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcdff655b1009e0d0800000000000000
+      internalID: -3393180726849438261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00145
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1733
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17288c2086d66d6a0800000000000000
+      internalID: -6424827524906712463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00146
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1812
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e73396e1b9d013c0800000000000000
+      internalID: -4390770278585387035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00147
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1970
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9833f7966a26cbd30800000000000000
+      internalID: 4448538998809244553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00148
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1891
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f00dfa1adb6312f50800000000000000
+      internalID: 6854820295923978255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StaminaWaves_00149
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1970
+        width: 550
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f5dd20db40dfb3b0800000000000000
+      internalID: -5494443996334926348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

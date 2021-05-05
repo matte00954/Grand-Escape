@@ -1521,6 +1521,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2615448657902923195, guid: 757b00d841697c3489ea049a37d13834, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615448657902923195, guid: 757b00d841697c3489ea049a37d13834, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444330104191472678, guid: 757b00d841697c3489ea049a37d13834, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444330104191472678, guid: 757b00d841697c3489ea049a37d13834, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4884748120044031725, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1609,6 +1625,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7900574503878338942, guid: 757b00d841697c3489ea049a37d13834, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900574503878338942, guid: 757b00d841697c3489ea049a37d13834, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 757b00d841697c3489ea049a37d13834, type: 3}
 --- !u!1001 &5678491155183384658
@@ -1686,14 +1710,14 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1891718169}
-    - target: {fileID: 5678491154712510807, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
-      propertyPath: doubleTapSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5678491156684204016, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
-      propertyPath: OnFire.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      propertyPath: OnFire.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1891718169}
+      objectReference: {fileID: 1771174257}
+    - target: {fileID: 5678491156684204016, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: OnFire.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: WeaponStatus
+      objectReference: {fileID: 0}
     - target: {fileID: 5678491156684204016, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: OnReloadStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -1702,6 +1726,14 @@ PrefabInstance:
       propertyPath: OnReloadFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1891718169}
+    - target: {fileID: 5678491156684204016, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: OnReloadFinish.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1771174257}
+    - target: {fileID: 5678491156684204016, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: OnReloadFinish.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: WeaponStatus
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
 --- !u!1001 &5867011083604430989

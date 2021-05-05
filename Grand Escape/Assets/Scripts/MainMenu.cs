@@ -32,6 +32,27 @@ public class MainMenu : MonoBehaviour
                 CloseSettings();
             }
         }
+
+        if (settingsOpen)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                CloseSettings();
+            }
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                ReturnToMain();
+            }
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                QuitGame();
+            }
+        }
+    }
+
+    public bool isPaused()
+    {
+        return settingsOpen;
     }
 
     public void StartGame()
@@ -74,7 +95,8 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        exitAnim.SetTrigger("fadeOut");
+        //exitAnim.SetTrigger("fadeOut");
+        Debug.Log("Game was Quit");
         Application.Quit();
     }
     IEnumerator Delay(int seconds)

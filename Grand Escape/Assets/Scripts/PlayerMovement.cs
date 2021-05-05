@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float sprintExhaustionTime;
 
     [Header("Slow motion")]
+    [SerializeField] float slowMotionDelayTime; //Remove later
     [SerializeField] float slowMotionAmountMultiplier;
     [SerializeField] float slowMotionStaminaToBeUsedPerTick;
     [SerializeField] float slowMotionTickTime;
@@ -51,40 +52,43 @@ public class PlayerMovement : MonoBehaviour
     Vector3 dodgeDirection;
     Vector3 velocity; //This vector is used for storing added gravity every frame, building up downward velocity
 
-    //Input and movement
-    bool isSprinting;
-    bool isDodging;
-    bool isCrouching;
-    bool isSlowmotion;
+
+    bool isSprinting = false;
+    bool isExhaustedFromSprinting = false;
+    bool isDodging = false;
     bool isGrounded;
-    bool breakSlowMotion;
-    bool isExhaustedFromSlowMotion;
-    bool isExhaustedFromSprinting;
+    bool isSlowmotion = false;
+    bool breakSlowMotion = false;
+    bool isCrouching = false;
+
+    bool isExhaustedFromSlowMotion = false;
 
     float currentSpeed;
     float standingHeight;
     float inputX;
     float inputZ;
 
-    //Dodge timers
-    float lastTapTimeRight, lastTapTimeLeft, dodgeCooldownTimer, dodgeTimer;
+    float dodgeCooldownTimer;
 
-    //Other timers
-    float slowMotionExhaustionTimer, slowMotionTickTimer, sprintExhaustionTimer;
+    float lastTapTime = 0;
+
+    bool pressedRight;
+    bool pressedLeft;
+
+    //Timers
+    float dodgeTimer, slowMotionExhaustionTimer, slowMotionTickTimer, sprintExhaustionTimer;
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
         standingHeight = controller.height;
-
-        //To prevent player from dodging at start
-        lastTapTimeRight = 0.5f;
-        lastTapTimeLeft = 0.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         //Checks if player is grounded and resets gravity velocity if true
         CheckGround();
         //WASD Input
@@ -110,15 +114,7 @@ public class PlayerMovement : MonoBehaviour
             dodgeCooldownTimer -= Time.deltaTime;
         }
 
-        if(lastTapTimeRight > 0)
-        {
-            lastTapTimeRight -= Time.deltaTime;
-        }
-
-        if (lastTapTimeLeft > 0)
-        {
-            lastTapTimeLeft -= Time.deltaTime;
-        }
+        //DodgeDoubleTapTimer();
 
         //Crouch
         Crouch();
@@ -126,8 +122,8 @@ public class PlayerMovement : MonoBehaviour
         //Sprint
         Sprint();
 
-        //Dodge
-        DodgeDoubleTapTimer();
+        //Dodge activation
+        Dodge();
 
         //Time slow activation
         CheckTimeSlow();
@@ -165,32 +161,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void DodgeDoubleTapTimer()
     {
-
-        if (Input.GetKeyDown(KeyCode.D))
+        if (pressedRight)
         {
-            if(lastTapTimeRight >= 0)
-            {
-                Debug.Log("Double tap right!");
-                Dodge(transform.right);
-            }
-            lastTapTimeRight = doubleTapSpeed;
-        }
+            lastTapTime += Time.unscaledDeltaTime;
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            if (lastTapTimeLeft >= 0)
+            if(lastTapTime > doubleTapSpeed)
             {
-                Debug.Log("Double tap left!");
-                Dodge(-transform.right);
+                Debug.Log("Double tap!");
+                lastTapTime = 0f;
+                pressedRight = false;
             }
-            lastTapTimeLeft = doubleTapSpeed;
         }
-
     }
 
-    private void Dodge(Vector3 direction)
+    private void Dodge()
     {
-        if (!isDodging && isGrounded && playerVariables.GetCurrentStamina() > staminaUsedForDodge && dodgeCooldownTimer <= 0)
+        if (!isDodging && isGrounded && playerVariables.GetCurrentStamina() > staminaUsedForDodge && Input.GetKeyDown(KeyCode.E) && dodgeCooldownTimer <= 0 || 
+            !isDodging && isGrounded && playerVariables.GetCurrentStamina() > staminaUsedForDodge && Input.GetKeyDown(KeyCode.Q) && dodgeCooldownTimer <= 0)
         {
             isDodging = true;
 
@@ -198,8 +185,14 @@ public class PlayerMovement : MonoBehaviour
 
             playerVariables.StaminaToBeUsed(staminaUsedForDodge);
 
-            dodgeDirection = direction * currentSpeed * dodgeSpeedMultiplier;
-
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                dodgeDirection = transform.right * currentSpeed * dodgeSpeedMultiplier;
+            }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                dodgeDirection = -transform.right * currentSpeed * dodgeSpeedMultiplier;
+            }
             dodgeCooldownTimer = dodgeCooldown;
         }
     }

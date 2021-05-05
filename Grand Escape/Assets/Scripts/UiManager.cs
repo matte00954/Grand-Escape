@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     [SerializeField] Text ammoLeftText;
+    [SerializeField] Text currentHealthPointsText;
+    [SerializeField] Text currentStaminaText;
     [SerializeField] Text slowMotionExhaustionText;
     [SerializeField] Text sprintExhaustionText;
     [SerializeField] Text tutorialText;
@@ -49,11 +51,13 @@ public class UiManager : MonoBehaviour
     public void HealthPoints(int healthPoints)
     {
         healthPointSlider.value = healthPoints;
+        //currentHealthPointsText.text = i.ToString();
     }
 
     public void Stamina(int staminaPoints)
     {
         staminaPointSlider.value = staminaPoints;
+        //currentStaminaText.text = i.ToString();
     }
 
     public void SlowMotionExhaustion(bool isExhaustedFromSlowMotion)

@@ -1686,10 +1686,6 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1891718169}
-    - target: {fileID: 5678491154712510807, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
-      propertyPath: doubleTapSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5678491156684204016, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: OnFire.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 

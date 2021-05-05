@@ -1718,6 +1718,10 @@ PrefabInstance:
       propertyPath: doubleTapSpeed
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5678491155014987990, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: gunSmoke
+      value: 
+      objectReference: {fileID: 3460947036746910333, guid: 92767ba9a14827340801aa1b857891c2, type: 3}
     - target: {fileID: 5678491156684204016, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: bulletPrefab
       value: 
@@ -1812,6 +1816,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8143186924384828537, guid: 3209bf491ca6e724a91534f0f6c6adac, type: 3}
+      propertyPath: enemies.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3433338016010623814, guid: 3209bf491ca6e724a91534f0f6c6adac, type: 3}
       propertyPath: gameManager
       value: 
@@ -1850,6 +1858,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433338016010623814, guid: 3209bf491ca6e724a91534f0f6c6adac, type: 3}
       propertyPath: PlayerDies.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5614406643149282824, guid: 3209bf491ca6e724a91534f0f6c6adac, type: 3}
+      propertyPath: gameObjects.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5928515166768018072, guid: 3209bf491ca6e724a91534f0f6c6adac, type: 3}

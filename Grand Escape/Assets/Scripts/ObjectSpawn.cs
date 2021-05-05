@@ -24,7 +24,6 @@ public class ObjectSpawn : MonoBehaviour
     {
         for (int i = 0; i <= gameObjects.Length - 1; i++)
         {
-            gameObjects[i].GetComponent<EnemyVariables>().ResetAllStats();
             gameObjects[i].SetActive(true);
         }
     }

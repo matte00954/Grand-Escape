@@ -61,6 +61,12 @@ public class PlayerShooting : MonoBehaviour
 
     private void OnDisable()
     {
+        if (currentAmmoLoaded > 0)
+        {
+            uiManager.WeaponStatus(true);
+        }
+        else
+            uiManager.WeaponStatus(false);
 
         Debug.Log("OnDisable called");
         if (isReloading)
@@ -88,6 +94,7 @@ public class PlayerShooting : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && currentAmmoLoaded > 0)
             {
                 currentAmmoLoaded--;
+                FindObjectOfType<AudioManager>().Play(weaponType.GetSoundWeaponClick());
                 uiManager.WeaponStatus(false);
                 Instantiate(bulletPrefab, point, playerCamera.transform.rotation);
 
@@ -103,6 +110,11 @@ public class PlayerShooting : MonoBehaviour
                     //Debug.Log("Hit Object: " + objectHit);
                 }*/
                 //Debug.DrawRay(point, direction, Color.red); //denna funkar ej
+            }
+            else if(Input.GetMouseButtonDown(0) && currentAmmoLoaded <= 0)
+            {
+                Debug.Log("Weapon empty");
+                FindObjectOfType<AudioManager>().Play(weaponType.GetSoundWeaponClick());
             }
 
             if (Input.GetKeyDown(KeyCode.R) && !isReloading)

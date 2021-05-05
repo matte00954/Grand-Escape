@@ -20,6 +20,7 @@ public class Weapons : ScriptableObject
     [SerializeField] float reloadTime; //In seconds
     [SerializeField] bool canZoom = true; //Can you zoom with weapon? default true
     [Header("Sounds")]
+    [SerializeField] string weaponClick;
     [SerializeField] string fireName;
     [SerializeField] string reloadStartName;
     [SerializeField] string reloadFinishName;
@@ -36,9 +37,9 @@ public class Weapons : ScriptableObject
     public bool GetCanZoom() { return canZoom; }
 
     //Sounds
+    public string GetSoundWeaponClick() { return weaponClick; }
     public string GetSoundFire() { return fireName; }
     public string GetSoundReloadStart() { return reloadStartName; }
     public string GetSoundReloadFinish() { return reloadFinishName; }
-
 
 }

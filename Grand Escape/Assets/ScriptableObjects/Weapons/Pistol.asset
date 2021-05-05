@@ -20,6 +20,7 @@ MonoBehaviour:
   ammoCapacity: 1
   reloadTime: 2.5
   canZoom: 1
+  weaponClick: PistolClick
   fireName: PistolFire
   reloadStartName: PistolStartReload
   reloadFinishName: PistolFinishReload

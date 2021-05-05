@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - clip: {fileID: 8300000, guid: c03336a94b9c8894a9a3d937744f0f2b, type: 3}
+  - clip: {fileID: 8300000, guid: 8498879ec8d8da24784954516e22a75e, type: 3}
     name: PistolFire
     volume: 0.5
     pitch: 0.8
@@ -86,6 +86,31 @@ MonoBehaviour:
     loop: 0
   - clip: {fileID: 8300000, guid: 2390fe10346e28b44b72496eb37d69aa, type: 3}
     name: SwingSword
+    volume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 2acffae4d86dfd545bf166dc27a5a24d, type: 3}
+    name: MusketStartReload
+    volume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: d6d63e0a9b679c341a8513264f00c2b7, type: 3}
+    name: MusketFinishReload
+    volume: 1
+    pitch: 1.5
+    loop: 0
+  - clip: {fileID: 8300000, guid: cbaa24cce18a6ed4185997798ab0bbe9, type: 3}
+    name: MusketFire
+    volume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 9c7b96da92b9b484c9aac0d4817f025c, type: 3}
+    name: PistolClick
+    volume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: df3d43454b1368e438c66a80aab8a5aa, type: 3}
+    name: MusketClick
     volume: 1
     pitch: 1
     loop: 0

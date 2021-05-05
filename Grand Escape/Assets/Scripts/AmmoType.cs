@@ -11,7 +11,7 @@ public class AmmoType : ScriptableObject
     [SerializeField] string ammoName;
     [SerializeField] int ammoDamage;
     [SerializeField] float speed;
-    [SerializeField] float bulletDoesNotHitTimer;
+    [SerializeField] float bulletLifetime;
 
     //public LayerMask GetTerrainMask() { return terrainMask; }
 
@@ -23,5 +23,5 @@ public class AmmoType : ScriptableObject
 
     public float GetAmmoSpeed() { return speed; }
 
-    public float GetBulletDoesNotHitTimer() { return bulletDoesNotHitTimer; }
+    public float GetBulletLifetime() { return bulletLifetime; }
 }

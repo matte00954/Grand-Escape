@@ -10,10 +10,14 @@ public class PlayerShooting : MonoBehaviour
 
     [SerializeField] float slowMotionReloadSpeedDivider = 2;
 
+    UiManager uiManager;
+
     Camera playerCamera;
     PlayerVariables playerVariables;
     CharacterController charController;
     Animator animator;
+
+    //bool isReloaded;
 
     [Header("Event System")]
     [SerializeField] UnityEvent OnReloadStart;
@@ -37,15 +41,18 @@ public class PlayerShooting : MonoBehaviour
 
         isReloading = false;
         currentAmmoLoaded = clipCapacity;
+
+        uiManager = FindObjectOfType<UiManager>();
     }
 
     private void OnEnable()
     {
-        
+
     }
 
     private void OnDisable()
     {
+
         Debug.Log("OnDisable called");
         if (isReloading)
         {
@@ -58,6 +65,7 @@ public class PlayerShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         float inputX = Input.GetAxis("Horizontal");
         float inputZ = Input.GetAxis("Vertical");
 
@@ -70,10 +78,11 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && currentAmmoLoaded > 0)
         {
             currentAmmoLoaded--;
+            uiManager.WeaponStatus(false);
             Instantiate(bulletPrefab, point, playerCamera.transform.rotation);
 
             OnFire.Invoke();
-            
+
             /*if (Physics.Raycast(playerAim, out shootHit)) //this raycast shooting, will probably not be used
             {
                 Transform objectHit = shootHit.transform;
@@ -124,7 +133,9 @@ public class PlayerShooting : MonoBehaviour
                 currentAmmoLoaded = playerVariables.GetCurrentAmmoReserve();
             else
                 currentAmmoLoaded = clipCapacity;
-            
+
+           uiManager.WeaponStatus(true);
+
             playerVariables.ReduceAmmoReserve(clipCapacity);
             
             isReloading = false;

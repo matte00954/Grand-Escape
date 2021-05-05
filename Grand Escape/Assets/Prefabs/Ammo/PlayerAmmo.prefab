@@ -11,9 +11,7 @@ GameObject:
   - component: {fileID: 734761492637824856}
   - component: {fileID: 5678362403766385392}
   - component: {fileID: 5182433223078295261}
-  - component: {fileID: 2875565198689799015}
   - component: {fileID: -8965539588871930641}
-  - component: {fileID: 5592313624258484325}
   m_Layer: 9
   m_Name: PlayerAmmo
   m_TagString: PlayerBullets
@@ -85,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2875565198689799015
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7794666079471084343}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-8965539588871930641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,19 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: {fileID: 11400000, guid: 633e646eadcdc2d458cd027a35719c68, type: 2}
---- !u!54 &5592313624258484325
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7794666079471084343}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 2432

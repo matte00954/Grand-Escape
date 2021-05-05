@@ -32,8 +32,11 @@ public class EnemyRespawnHandler : MonoBehaviour
             {
                 Debug.LogError(i + " in the game manager is null");
             }
-            allCheckPoints[i].GetComponent<EnemyRespawn>().RespawnEnemies();
-            Debug.Log(allCheckPoints[i] + " has respawned enemies");
+            else
+            {
+                allCheckPoints[i].GetComponent<EnemyRespawn>().RespawnEnemies();
+                Debug.Log(allCheckPoints[i] + " has respawned enemies");
+            }
         }
     }
 }

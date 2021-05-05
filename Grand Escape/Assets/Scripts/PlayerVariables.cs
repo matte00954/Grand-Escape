@@ -57,11 +57,12 @@ public class PlayerVariables : MonoBehaviour
         currentStamina = maxStamina;
         gameManager = FindObjectOfType<SceneSwitch>().gameObject;
         uiManager = FindObjectOfType<UiManager>();
+
+        currentRespawnPoint = spawnPoint.transform;
     }
 
     private void Start()
     {
-        currentRespawnPoint = spawnPoint.transform;
         ResetAllStats();
 
         timeUntilRespawn = timerUntilRespawnMax;

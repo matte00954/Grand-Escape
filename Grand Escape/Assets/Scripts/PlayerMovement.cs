@@ -211,7 +211,7 @@ public class PlayerMovement : MonoBehaviour
     private void ApplyDodge()
     {
         if (Time.timeScale < 1f)
-            controller.Move((dodgeDirection * currentSpeed * dodgeSpeedMultiplier) * slowMotionAmountMultiplier * Time.deltaTime);
+            controller.Move((dodgeDirection * currentSpeed * dodgeSpeedMultiplier) * slowMotionAmountMultiplier * Time.unscaledDeltaTime);
         else
             controller.Move(dodgeDirection * currentSpeed * dodgeSpeedMultiplier * Time.deltaTime);
 

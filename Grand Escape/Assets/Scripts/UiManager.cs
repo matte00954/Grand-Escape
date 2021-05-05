@@ -29,10 +29,10 @@ public class UiManager : MonoBehaviour
     {
         if (isReloaded)
         {
-            weaponReloadedSlider.value = 100;
+            weaponReloadedSlider.value = 100f;
         }
         else
-            weaponReloadedSlider.value = 0;
+            weaponReloadedSlider.value = 0f;
 
 
         Debug.Log("is reloaded = " + isReloaded);
@@ -69,4 +69,6 @@ public class UiManager : MonoBehaviour
         else
             sprintExhaustionText.gameObject.SetActive(false);
     }
+
+
 }

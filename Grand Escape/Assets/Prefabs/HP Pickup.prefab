@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6580300420740080296}
   - component: {fileID: 6580300420740080299}
   - component: {fileID: 6580300420740080300}
+  - component: {fileID: 5357944052682130428}
   m_Layer: 0
   m_Name: HP Pickup
   m_TagString: Health boost
@@ -116,3 +117,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &5357944052682130428
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6580300420740080298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4
+  m_Center: {x: 0.0000009536743, y: 0.0000009536743, z: 0}

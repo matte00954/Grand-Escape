@@ -4013,8 +4013,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7314712825971380538}
+  - component: {fileID: 5859965252680028143}
   m_Layer: 0
-  m_Name: CellDoor (1)
+  m_Name: CellDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4043,6 +4044,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5859965252680028143
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7314712825971380539}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.24477, y: 8.574072, z: 1}
+  m_Center: {x: 2.2233372, y: -3.94485, z: 0}
 --- !u!1 &7314712826053092794
 GameObject:
   m_ObjectHideFlags: 0

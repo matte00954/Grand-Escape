@@ -7,9 +7,12 @@ public class ObjectSpawn : MonoBehaviour
     [Header("Objects that spawns when you reach this point")] //For optimising
     [SerializeField] GameObject[] gameObjects;
 
+    [Header("Objects that gets disabled when you reach this point")] //For optimising 
+    [SerializeField] GameObject[] toDisable;
+
     private void Start()
     {
-        DisableObjects();
+        DisableObjects(gameObjects);
 
         for (int i = 0; i <= gameObjects.Length - 1; i++)
         {
@@ -28,11 +31,11 @@ public class ObjectSpawn : MonoBehaviour
         }
     }
 
-    public void DisableObjects() //may not need to be public, but might use this one for something else
+    public void DisableObjects(GameObject[] list) //may not need to be public, but might use this one for something else
     {
-        for (int i = 0; i <= gameObjects.Length - 1; i++)
+        for (int i = 0; i <= list.Length - 1; i++)
         {
-            gameObjects[i].SetActive(false);
+            list[i].SetActive(false);
         }
     }
 
@@ -41,6 +44,7 @@ public class ObjectSpawn : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             SpawnObjects();
+            DisableObjects(toDisable);
         }
     }
 }

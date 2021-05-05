@@ -43,13 +43,13 @@ public class EnemyRespawn : MonoBehaviour
         //Do not remove
     }
 
-    //private void SetEnemiesInactiveBeforeRespawn() //not used at the moment
-    //{
-    //    for (int i = 0; i <= enemies.Length - 1; i++)
-    //    {
-    //        enemies[i].SetActive(false);
-    //    }
-    //}
+    private void SetEnemiesInactiveBeforeRespawn() //not used at the moment
+    {
+        for (int i = 0; i <= enemies.Length - 1; i++)
+        {
+            enemies[i].SetActive(false);
+        }
+    }
 
     public void RespawnEnemies() 
     {

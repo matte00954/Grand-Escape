@@ -47,7 +47,12 @@ public class PlayerShooting : MonoBehaviour
 
     private void OnEnable()
     {
-
+        if(currentAmmoLoaded > 0)
+        {
+            uiManager.WeaponStatus(true);
+        }
+        else
+            uiManager.WeaponStatus(false);
     }
 
     private void OnDisable()

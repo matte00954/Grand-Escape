@@ -13,6 +13,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] Slider healthPointSlider;
     [SerializeField] Slider staminaPointSlider;
     [SerializeField] Slider weaponReloadedSlider;
+    [SerializeField] Slider dodgeCooldownSlider;
 
     public void TutorialText(string s, bool active)
     {
@@ -54,6 +55,11 @@ public class UiManager : MonoBehaviour
         staminaPointSlider.value = staminaPoints;
     }
 
+    public void DodgeCooldown(float cooldownTimer, float cooldownCapacity) //Value in inspector needs to be the same as value currently assigned in player movement
+    {
+        dodgeCooldownSlider.value = cooldownCapacity - cooldownTimer;
+    }
+
     public void SlowMotionExhaustion(bool isExhaustedFromSlowMotion)
     {
         if (isExhaustedFromSlowMotion)
@@ -68,18 +74,5 @@ public class UiManager : MonoBehaviour
             sprintExhaustionText.gameObject.SetActive(true);
         else
             sprintExhaustionText.gameObject.SetActive(false);
-    }
-
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            WeaponStatus(true);
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            WeaponStatus(false);
-        }
     }
 }

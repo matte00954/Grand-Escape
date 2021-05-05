@@ -10,9 +10,13 @@ public class EnemyVariables : MonoBehaviour
 
     int healthPoints;
 
+    Vector3 startPosition;
+
     private void Start()
     {
         ResetAllStats();
+
+        startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -25,6 +29,7 @@ public class EnemyVariables : MonoBehaviour
             particleSystem.transform.position = transform.position;
             this.gameObject.SetActive(false);
         }
+        Debug.Log(startPosition);
     }
 
     public void ApplyDamage(float damage)
@@ -36,5 +41,10 @@ public class EnemyVariables : MonoBehaviour
     public void ResetAllStats()
     {
         healthPoints = enemyType.GetMaxHealthPoints();
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = startPosition;
     }
 }

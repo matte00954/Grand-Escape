@@ -4,10 +4,11 @@ using UnityEngine.Events;
 
 public class EnemyMovement : MonoBehaviour
 {
-    NavMeshAgent agent;
     [SerializeField] LayerMask groundMask, playerMask, detectionMask;
-    Transform playerTransform;
     [SerializeField] BoxCollider sightCollider;
+    [SerializeField] Transform headTransform;
+    Transform playerTransform;
+    NavMeshAgent agent;
 
     //Patroling
     [Header("Patrol state")]
@@ -73,7 +74,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (alertTimer > 0f) //The enemy will chase the player's current position until 'alertTimer' hits 0.
         {
-            if (IsStationary || Vector3.Distance(transform.position, playerTransform.position) <= maxAttackRange)
+            if (IsStationary || Vector3.Distance(headTransform.position, playerTransform.position) <= maxAttackRange)
                 AttackPlayer();
             else
                 ChasePlayer();
@@ -93,11 +94,11 @@ public class EnemyMovement : MonoBehaviour
         RaycastHit sightHit;
         RaycastHit peripheralHit;
 
-        if (!isBlind && Physics.Raycast(transform.position, (playerTransform.position - transform.position).normalized, out peripheralHit, peripheralRange, detectionMask))
+        if (!isBlind && Physics.Raycast(headTransform.position, (playerTransform.position - headTransform.position).normalized, out peripheralHit, peripheralRange, detectionMask))
             if (peripheralHit.collider.gameObject.tag == "Player")
                 sawPlayer = true;
 
-        if (!isBlind && Physics.Raycast(transform.position, (playerTransform.position - transform.position).normalized, out sightHit, sightRange, detectionMask))
+        if (!isBlind && Physics.Raycast(headTransform.position, (playerTransform.position - headTransform.position).normalized, out sightHit, sightRange, detectionMask))
             if (sightHit.collider.gameObject.tag == "Player" && sightCollider.bounds.Contains(playerTransform.position))
                 sawPlayer = true;
     }
@@ -173,12 +174,12 @@ public class EnemyMovement : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, hearingRange);
+        Gizmos.DrawWireSphere(headTransform.position, hearingRange);
         if (playerTransform != null)
         {
-            Gizmos.DrawRay(transform.position, (playerTransform.position - transform.position).normalized * sightRange);
+            Gizmos.DrawRay(headTransform.position, (playerTransform.position - headTransform.position).normalized * sightRange);
             Gizmos.color = Color.green;
-            Gizmos.DrawRay(transform.position, (playerTransform.position - transform.position).normalized * peripheralRange);
+            Gizmos.DrawRay(headTransform.position, (playerTransform.position - headTransform.position).normalized * peripheralRange);
         }
     }
 }

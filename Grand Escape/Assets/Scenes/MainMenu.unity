@@ -983,6 +983,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 58591df5714589d45a99f73a902b2901, type: 2}
+    - target: {fileID: 5854550199064594695, guid: bea518b3286ac8948a3300c3b6c05ecb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6765851995904515322, guid: bea518b3286ac8948a3300c3b6c05ecb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bea518b3286ac8948a3300c3b6c05ecb, type: 3}
@@ -1227,7 +1231,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057013733}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4164aa99830febe4aaddebc37e5ad3fb, type: 3}
   m_Name: 
@@ -2227,7 +2231,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1926924146873198546, guid: 93b9c9e5b0696174085bc781082a25c4, type: 3}
       propertyPath: m_Text
-      value: Options
+      value: press esc to pause
       objectReference: {fileID: 0}
     - target: {fileID: 2970232396417106452, guid: 93b9c9e5b0696174085bc781082a25c4, type: 3}
       propertyPath: m_Pivot.x
@@ -2313,6 +2317,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4215117510140224115, guid: 93b9c9e5b0696174085bc781082a25c4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b53b422ffc9654241a99ef905b664fbf, type: 3}
     - target: {fileID: 4215117510140224115, guid: 93b9c9e5b0696174085bc781082a25c4, type: 3}
       propertyPath: m_Color.b
       value: 1

@@ -275,6 +275,8 @@ public class PlayerMovement : MonoBehaviour
                 transform.position -= new Vector3(0, crouchHeight / 2);
                 controller.enabled = true;
             }
+
+            uiManager.CrouchingImage(isCrouching);
         }
     }
 

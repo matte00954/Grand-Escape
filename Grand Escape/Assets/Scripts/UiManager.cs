@@ -15,6 +15,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] Slider weaponReloadedSlider;
     [SerializeField] Slider dodgeCooldownSlider;
 
+    [SerializeField] Image crouchImage;
+
     public void TutorialText(string s, bool active)
     {
         if (active)
@@ -74,5 +76,13 @@ public class UiManager : MonoBehaviour
             sprintExhaustionText.gameObject.SetActive(true);
         else
             sprintExhaustionText.gameObject.SetActive(false);
+    }
+
+    public void CrouchingImage(bool active)
+    {
+        if (active)
+            crouchImage.gameObject.SetActive(true);
+        else
+            crouchImage.gameObject.SetActive(false);
     }
 }

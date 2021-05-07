@@ -71,22 +71,17 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(Delay(1));
     }
 
-    //settingsmenu yet to be created/implemented
-    /*
-    private void OpenSettings()
+
+    public void OpenSettings()
     {
         settingsMenu.SetActive(true);
-        paused = true;
-        Time.timeScale = 0.01f;
     }
 
     public void CloseSettings()
     {
         settingsMenu.SetActive(false);
-        paused = false;
-        Time.timeScale = 1;
     }
-    */
+
 
     private void OpenPause()    //activates pausemenu
     {
@@ -100,6 +95,7 @@ public class MainMenu : MonoBehaviour
     public void ClosePause()    //inactivates pausemenu
     {
         pauseMenu.SetActive(false);
+        settingsMenu.SetActive(false);
         paused = false;
         Time.timeScale = 1;
         disableFPS();
@@ -147,7 +143,7 @@ public class MainMenu : MonoBehaviour
             mouseScript.enabled = true;
             flintScript.enabled = true;
             rifleScript.enabled = true;
-            //todo: return mousestate to previous
+            Cursor.visible = false;
         }
         else
         {

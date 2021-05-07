@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        //settingsMenu.SetActive(false);
+        settingsMenu.SetActive(false);
         pauseMenu.SetActive(false);
         paused = false;
         mouseScript = mainCamera.GetComponent<MouseLook>();

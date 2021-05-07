@@ -44,10 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42457970738e0b44a76172ddf38b396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingsMenu: {fileID: 0}
+  settingsMenu: {fileID: 8065556348545749021, guid: 8fa82caf5911472458a90fd8d38bbf7b, type: 3}
+  pauseMenu: {fileID: 977183634348126334, guid: bea518b3286ac8948a3300c3b6c05ecb, type: 3}
   newGameAnim: {fileID: 0}
   exitAnim: {fileID: 0}
   buttonAnim: {fileID: 0}
+  mainCamera: {fileID: 0}
+  flintlock: {fileID: 0}
+  rifle: {fileID: 0}
 --- !u!114 &1347217543691652736
 MonoBehaviour:
   m_ObjectHideFlags: 0

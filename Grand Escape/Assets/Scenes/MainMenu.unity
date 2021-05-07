@@ -1559,6 +1559,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8065556348545749020, guid: 8fa82caf5911472458a90fd8d38bbf7b, type: 3}
   m_PrefabInstance: {fileID: 1335042675}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1335042677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8065556348545749021, guid: 8fa82caf5911472458a90fd8d38bbf7b, type: 3}
+  m_PrefabInstance: {fileID: 1335042675}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1540908722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,6 +2214,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1540908726}
     - target: {fileID: 1347217543691652742, guid: 616a66892d0cd39428a8cf98ca02db39, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 775324360}
+    - target: {fileID: 1347217543691652742, guid: 616a66892d0cd39428a8cf98ca02db39, type: 3}
       propertyPath: buttonAnim
       value: 
       objectReference: {fileID: 34871024}
@@ -2219,7 +2228,7 @@ PrefabInstance:
     - target: {fileID: 1347217543691652742, guid: 616a66892d0cd39428a8cf98ca02db39, type: 3}
       propertyPath: settingsMenu
       value: 
-      objectReference: {fileID: 775324360}
+      objectReference: {fileID: 1335042677}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 616a66892d0cd39428a8cf98ca02db39, type: 3}
 --- !u!1001 &7906038606067679211

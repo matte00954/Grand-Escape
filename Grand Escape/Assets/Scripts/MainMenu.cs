@@ -120,6 +120,7 @@ public class MainMenu : MonoBehaviour
 
     public void ReturnToMain()      //returns player to start scene
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
         //y not interactable? .~.
     }
@@ -142,10 +143,11 @@ public class MainMenu : MonoBehaviour
         //implement in MouseLook and/or PlayerShooting script instead? Sätta en bool om att CursorLockMode.Locked inte ska va aktivt när pausmenyn är öppen?
         if (!paused)
         {
-            //Enable FPS script
+            //Enable mouselock + shooting script
             mouseScript.enabled = true;
             flintScript.enabled = true;
             rifleScript.enabled = true;
+            //todo: return mousestate to previous
         }
         else
         {

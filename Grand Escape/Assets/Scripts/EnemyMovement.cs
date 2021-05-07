@@ -46,10 +46,16 @@ public class EnemyMovement : MonoBehaviour
 
     float patrolTimer, alertTimer;
 
+    // Animations
+    private Animator anim;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         patrolTimer = timeBetweenPatrol;
+
+        // Animations
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -86,6 +92,9 @@ public class EnemyMovement : MonoBehaviour
             isAlerted = false;
             OnAlertEnd.Invoke();
         }
+
+        // Animations
+        anim.SetFloat("Speed", agent.speed/20);
             
     }
 

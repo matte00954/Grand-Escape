@@ -19,8 +19,13 @@ public class EnemyShooting : MonoBehaviour
 
     bool isAlerted = false;
 
+    // Animations
+    private Animator anim;
+
     void Start()
     {
+        // Animations
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -83,6 +88,9 @@ public class EnemyShooting : MonoBehaviour
     private void ShootWithGun()
     {
         Instantiate(enemyAmmo, barrelEnd.transform.position, barrelEnd.transform.rotation);
+
+        // Animations
+        anim.SetTrigger("Fire");
     }
 
     private void OnDrawGizmosSelected()

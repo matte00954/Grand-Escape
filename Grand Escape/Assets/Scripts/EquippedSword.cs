@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class EquippedSword : MonoBehaviour
 {
-    [SerializeField] private AudioClip[] clips;
+    [SerializeField] AudioClip[] clips;
     [SerializeField] BoxCollider swordCollider;
 
     [SerializeField] UnityEvent OnAttack;

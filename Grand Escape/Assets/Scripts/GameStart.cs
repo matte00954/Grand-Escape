@@ -10,12 +10,14 @@ public class GameStart : MonoBehaviour
     [SerializeField] GameObject mainMenu;
     private Animator anim;
     private Animator menuAnim;
+    private GameObject newGame;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = startText.GetComponent<Animator>();
         menuAnim = mainMenu.GetComponent<Animator>();
+        //newGame = mainMenu.GetChild(0).gameObject;
         mainMenu.SetActive(false);
     }
 

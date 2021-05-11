@@ -490,7 +490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6037736, g: 0.30577278, b: 0.24207903, a: 1}
+  m_Color: {r: 0.4811321, g: 0.083971165, b: 0.083971165, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1812,12 +1812,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 8fa82caf5911472458a90fd8d38bbf7b, type: 3}
 --- !u!224 &1335042676 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8435319643311190837, guid: 8fa82caf5911472458a90fd8d38bbf7b, type: 3}
-  m_PrefabInstance: {fileID: 1335042675}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1335042677 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8435319643311190836, guid: 8fa82caf5911472458a90fd8d38bbf7b, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8065556348545749020, guid: 8fa82caf5911472458a90fd8d38bbf7b, type: 3}
   m_PrefabInstance: {fileID: 1335042675}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1540908722
@@ -2484,7 +2479,7 @@ PrefabInstance:
     - target: {fileID: 1347217543691652742, guid: 616a66892d0cd39428a8cf98ca02db39, type: 3}
       propertyPath: settingsMenu
       value: 
-      objectReference: {fileID: 1335042677}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 616a66892d0cd39428a8cf98ca02db39, type: 3}
 --- !u!1001 &7906038606067679211
@@ -2629,6 +2624,10 @@ PrefabInstance:
     - target: {fileID: 6938325667417827215, guid: 93b9c9e5b0696174085bc781082a25c4, type: 3}
       propertyPath: m_Name
       value: SettingsButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6938325667417827215, guid: 93b9c9e5b0696174085bc781082a25c4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8843455177386967240, guid: 93b9c9e5b0696174085bc781082a25c4, type: 3}
       propertyPath: m_AnchoredPosition.x

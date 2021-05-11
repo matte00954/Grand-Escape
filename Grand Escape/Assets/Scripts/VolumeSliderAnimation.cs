@@ -8,13 +8,16 @@ public class VolumeSliderAnimation : MonoBehaviour
     [SerializeField] Sprite[] handleImages;
     [SerializeField] GameObject handle;
     [SerializeField] Text volumeText;
+    [SerializeField] Toggle muteToggle;
     private Slider slider;
     private Sprite handleImage;
+
     // Start is called before the first frame update
     void Start()
     {
         slider = GetComponent<Slider>();
         handleImage = handle.GetComponent<Image>().sprite;
+        muteToggle = muteToggle.GetComponent<Toggle>();
         volumeText.text = "100";
     }
 
@@ -25,7 +28,6 @@ public class VolumeSliderAnimation : MonoBehaviour
         volumeText.text = volume.ToString();
         if (slider.value <= 100 && slider.value >= 90)
         {
-            Debug.Log("WorksSoFar");
             handle.GetComponent<Image>().sprite = handleImages[0];
         }
         else if (slider.value <= 90 && slider.value >= 80)
@@ -69,5 +71,15 @@ public class VolumeSliderAnimation : MonoBehaviour
             handle.GetComponent<Image>().sprite = handleImages[9];
         }
         //note to self: gör om till en switch-sats
+    }
+
+    public void SetToZero()
+    {
+        slider.value = 0f;
+    }
+
+    public int GetSliderValue()
+    {
+        return (int)slider.value;
     }
 }

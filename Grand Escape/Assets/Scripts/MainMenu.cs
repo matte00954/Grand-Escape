@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject settingsMenu;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject howToPlay;
     [SerializeField] Animator newGameAnim;
     [SerializeField] Animator exitAnim;
     [SerializeField] Animator buttonAnim;
@@ -23,6 +24,7 @@ public class MainMenu : MonoBehaviour
     {
         settingsMenu.SetActive(false);
         pauseMenu.SetActive(false);
+        howToPlay.SetActive(false);
         paused = false;
         mouseScript = mainCamera.GetComponent<MouseLook>();
         flintScript = flintlock.GetComponent<PlayerShooting>();
@@ -71,7 +73,6 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(Delay(1));
     }
 
-
     public void OpenSettings()
     {
         settingsMenu.SetActive(true);
@@ -82,6 +83,15 @@ public class MainMenu : MonoBehaviour
         settingsMenu.SetActive(false);
     }
 
+    public void OpenHTP()
+    {
+        howToPlay.SetActive(true);
+    }
+
+    public void CloseHTP()
+    {
+        howToPlay.SetActive(false);
+    }
 
     private void OpenPause()    //activates pausemenu
     {

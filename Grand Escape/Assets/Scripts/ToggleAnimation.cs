@@ -7,9 +7,16 @@ public class ToggleAnimation : MonoBehaviour
 {
     //script to be attached to a Toggle gameobject to animate its active and inactive states
     
-    [SerializeField] GameObject sword; //Image to be activated/deactivated on ToggleValueChanged
-    [SerializeField] Animator swordAnim;
+    [SerializeField] Image sword; //Image to be activated/deactivated on ToggleValueChanged
+    //[SerializeField] Animator swordAnim;
+    [SerializeField] Image inactiveSword;
+    [SerializeField] Slider masterVolume;
+    [SerializeField] Slider musicVolume;
     private Toggle toggle;
+    private VolumeSliderAnimation masterScript;
+    private VolumeSliderAnimation musicScript;
+    int lastMasterValue = 100;
+    int lastMusicValue = 100;
 
 
     // Start is called before the first frame update
@@ -20,26 +27,69 @@ public class ToggleAnimation : MonoBehaviour
         {
             ToggleValueChanged(toggle);
         }); //adds a listener to when toggle value is changed
-        sword.SetActive(false);     //deactivates sword image 
+        inactiveSword.color = new Color(inactiveSword.color.r, inactiveSword.color.g, inactiveSword.color.b, 0f);     //deactivates sword image
+        sword = sword.GetComponent<Image>();
+        inactiveSword = inactiveSword.GetComponent<Image>();
+        masterVolume.onValueChanged.AddListener(delegate { MasterValueChanged(); });
+        musicVolume.onValueChanged.AddListener(delegate { MusicValueChanged(); });
+        masterScript = masterVolume.GetComponent<VolumeSliderAnimation>();
+        musicScript = musicVolume.GetComponent<VolumeSliderAnimation>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(masterVolume.value == 0 && musicVolume.value == 0)
+        {
+            toggle.isOn = false;
+        }
+    }
+
+    void MasterValueChanged()
+    {
+        if (!toggle.isOn)
+        {
+            toggle.isOn = true;
+        }
+    }
+
+    void MusicValueChanged()
+    {
+        if (!toggle.isOn)
+        {
+            toggle.isOn = true;
+        }
     }
 
     void ToggleValueChanged(Toggle change)
     {
         if (!toggle.isOn)
         {
-            sword.SetActive(true);
-            swordAnim.SetTrigger("fadeOut");    
+            sword.color = new Color(sword.color.r, sword.color.g, sword.color.b, 0.5f);
+            inactiveSword.color = new Color(inactiveSword.color.r, inactiveSword.color.g, inactiveSword.color.b, 0.5f);
+            if (masterVolume.value != 0 || musicVolume.value != 0)
+            {
+                lastMasterValue = (int)masterVolume.value;
+                lastMusicValue = (int)musicVolume.value;
+                Debug.Log(lastMasterValue.ToString() + lastMusicValue.ToString());
+            }
+            masterVolume.value = 0;
+            musicVolume.value = 0;
+            //swordAnim.SetTrigger("fadeOut");    
         }
+
         else if(toggle.isOn)
         {
-            sword.SetActive(false);
-            swordAnim.SetTrigger("fadeIn");
+            sword.color = new Color(sword.color.r, sword.color.g, sword.color.b, 1f);
+            inactiveSword.color = new Color(inactiveSword.color.r, inactiveSword.color.g, inactiveSword.color.b, 0f);
+            masterVolume.value = lastMasterValue;
+            musicVolume.value = lastMusicValue;
+            //swordAnim.SetTrigger("fadeIn");
         }
+    }
+
+    public void SwitchOn()
+    {
+        toggle.isOn = true;
     }
 }

@@ -5,19 +5,19 @@ using UnityEngine;
 public class EnemyRespawnHandler : MonoBehaviour
 {
     [Header("All checkpoints in the scene here")] 
-    [SerializeField] GameObject[] allCheckPoints; //all checkpoints in the scene
+    [SerializeField] List<EnemyRespawn> enemyRespawnList = new List<EnemyRespawn>();
 
 
     private void Start()
     {
-        if (allCheckPoints.Length == 0)
+        if (enemyRespawnList.Capacity == 0)
         {
             Debug.LogError("Checkpoint list in game manager is empty, enemies will not respawn");
         }
 
-        for (int i = 0; i <= allCheckPoints.Length - 1; i++)
+        for (int i = 0; i < enemyRespawnList.Capacity; i++)
         {
-            if (allCheckPoints[i] == null)
+            if (enemyRespawnList[i] == null)
             {
                 Debug.LogError(i + " in the game manager is null, ALL checkpoints need to be assigned to the game manager");
             }
@@ -26,16 +26,16 @@ public class EnemyRespawnHandler : MonoBehaviour
 
     public void RepsawnAll()
     {
-        for (int i = 0; i <= allCheckPoints.Length - 1; i++)
+        for (int i = 0; i < enemyRespawnList.Capacity; i++)
         {
-            if (allCheckPoints[i] == null)
+            if (enemyRespawnList[i] == null)
             {
                 Debug.LogError(i + " in the game manager is null");
             }
             else
             {
-                allCheckPoints[i].GetComponent<EnemyRespawn>().RespawnEnemies();
-                Debug.Log(allCheckPoints[i] + " has respawned enemies");
+                enemyRespawnList[i].GetComponent<EnemyRespawn>().RespawnEnemies();
+                Debug.Log(enemyRespawnList[i] + " has respawned enemies");
             }
         }
     }

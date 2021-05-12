@@ -1,51 +1,16 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 public class EnemyRespawn : MonoBehaviour
 {
     [Header("Enemies in previous section to respawn, if player dies")] //All enemies in the previous section that will spawn if player respawns at this location
-    [SerializeField] GameObject[] enemies;
 
-    //[SerializeField] GameObject gameManager;
-
-    //Transform[] enemiesTransform; //Might change system to instasiate instead of set active
-
-    //GameObject meelePrefab;
-
-    //GameObject rangedPrefab;
-
-    //Code above might be used for rework
-
-    private void Start()
-    {
-
-        for (int i = 0; i <= enemies.Length - 1; i++)
-        {
-            if (enemies[i] == null)
-            {
-                Debug.LogError(i + " in enemies array is null " + this.gameObject);
-            }
-        }
-
-        //Do not remove
-
-        //enemiesTransform = new Transform[enemies.Length];
-
-        //for (int i = 0; i <= enemies.Length - 1; i++)
-        //{
-        //    enemiesTransform[i] = enemies[i].gameObject.transform;
-        //}
-
-        //for (int i = 0; i <= enemies.Length - 1; i++)
-        //{
-        //}
-
-        //Do not remove
-    }
+    [SerializeField] List<GameObject> enemies = new List<GameObject>();
 
     private void SetEnemiesInactiveBeforeRespawn() //not used at the moment
     {
-        for (int i = 0; i <= enemies.Length - 1; i++)
+        for (int i = 0; i < enemies.Capacity - 1; i++)
         {
             enemies[i].SetActive(false);
         }
@@ -55,11 +20,18 @@ public class EnemyRespawn : MonoBehaviour
     {
         if (this.gameObject.activeSelf)
         {
-            for (int i = 0; i <= enemies.Length - 1; i++)
+            for (int i = 0; i < enemies.Capacity; i++)
             {
-                enemies[i].GetComponent<EnemyVariables>().ResetAllStats();
-                enemies[i].GetComponent<EnemyVariables>().ResetPosition();
-                enemies[i].SetActive(true);
+                if (enemies[i] == null)
+                {
+                    Debug.LogError(i + " in enemies list is null " + this.gameObject);
+                }
+                else
+                {
+                    enemies[i].GetComponent<EnemyVariables>().ResetAllStats();
+                    enemies[i].GetComponent<EnemyVariables>().ResetPosition();
+                    enemies[i].SetActive(true);
+                }
             }
         }
     }

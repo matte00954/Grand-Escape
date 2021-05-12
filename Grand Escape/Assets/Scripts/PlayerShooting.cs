@@ -50,6 +50,8 @@ public class PlayerShooting : MonoBehaviour
 
         isReloading = false;
         currentAmmoLoaded = clipCapacity;
+
+        playerVariables = GetComponentInParent<PlayerVariables>();
     }
 
     private void OnEnable()

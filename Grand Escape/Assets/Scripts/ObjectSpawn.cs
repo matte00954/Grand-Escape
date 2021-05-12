@@ -14,7 +14,7 @@ public class ObjectSpawn : MonoBehaviour
     {
         DisableObjects(gameObjects);
 
-        for (int i = 0; i <= gameObjects.Length - 1; i++)
+        for (int i = 0; i < gameObjects.Length; i++)
         {
             if (gameObjects[i] == null)
             {
@@ -25,7 +25,7 @@ public class ObjectSpawn : MonoBehaviour
 
     public void SpawnObjects()
     {
-        for (int i = 0; i <= gameObjects.Length - 1; i++)
+        for (int i = 0; i < gameObjects.Length; i++)
         {
             gameObjects[i].SetActive(true);
         }
@@ -33,7 +33,7 @@ public class ObjectSpawn : MonoBehaviour
 
     public void DisableObjects(GameObject[] list) //may not need to be public, but might use this one for something else
     {
-        for (int i = 0; i <= list.Length - 1; i++)
+        for (int i = 0; i < list.Length; i++)
         {
             list[i].SetActive(false);
         }

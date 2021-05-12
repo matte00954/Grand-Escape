@@ -1,23 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class DamageArea : MonoBehaviour
 {
     /*public int damage; //<---- TODO: inflict damage to player health */
-    [SerializeField] PlayerVariables playerVariables;
-    [SerializeField] float cooldown = 2f;
-    [SerializeField] int damage = 40;
+    [SerializeField] private PlayerVariables playerVariables;
+    [SerializeField] private float cooldown = 2f;
+    [SerializeField] private int damage = 40;
 
-    float timer;
-    bool readyToHit;
+    private float timer;
+    private bool readyToHit;
 
     // Animations
-    [SerializeField] AudioClip[] swingClips;
-    [SerializeField] AudioClip[] hitClips;
-    [SerializeField] BoxCollider swordCollider;
-    [SerializeField] UnityEvent onAttack;
+    [SerializeField] private AudioClip[] swingClips;
+    [SerializeField] private AudioClip[] hitClips;
+    [SerializeField] private BoxCollider swordCollider;
+    [SerializeField] private UnityEvent onAttack;
+
     private AudioSource audioSource;
     private Animator anim;
     private int clipIndex;

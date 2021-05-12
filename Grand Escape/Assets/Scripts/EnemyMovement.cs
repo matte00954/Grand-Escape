@@ -1,50 +1,45 @@
+//Author: William Örnquist
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] LayerMask groundMask, playerMask, detectionMask;
-    [SerializeField] BoxCollider sightCollider;
-    [SerializeField] Transform headTransform;
-    Transform playerTransform;
-    NavMeshAgent agent;
+    [SerializeField] private LayerMask groundMask, playerMask, detectionMask;
+    [SerializeField] private BoxCollider sightCollider;
+    [SerializeField] private Transform headTransform;
+    private Transform playerTransform;
+    private NavMeshAgent agent;
 
-    //Patroling
     [Header("Patrol state")]
-    [SerializeField] bool IsStationary;
-    [SerializeField] float walkPointRange;
-    [SerializeField] float timeBetweenPatrol;
-    [SerializeField] float patrolSpeed;
+    [SerializeField] private bool IsStationary;
+    [SerializeField] private float walkPointRange;
+    [SerializeField] private float timeBetweenPatrol;
+    [SerializeField] private float patrolSpeed;
 
-    Vector3 walkPoint;
-    bool walkPointSet;
+    private Vector3 walkPoint;
+    private bool walkPointSet;
 
     [Header("Detection")]
-    [SerializeField] float sightRange;
-    [SerializeField] float peripheralRange;
-    [SerializeField] float hearingRange;
-    [SerializeField] bool isDeaf;
-    [SerializeField] bool isBlind;
+    [SerializeField] private float sightRange;
+    [SerializeField] private float peripheralRange;
+    [SerializeField] private float hearingRange;
+    [SerializeField] private bool isDeaf;
+    [SerializeField] private bool isBlind;
 
     [Header("Alert state")]
-    [SerializeField] float chasingSpeed;
-    [SerializeField] float maxAttackRange;
-    [SerializeField] float alertBufferTime;
-
-    [Header("Alert events")]
-    [SerializeField] UnityEvent OnAlertStart;
-    [SerializeField] UnityEvent OnAlertEnd;
+    [SerializeField] private float chasingSpeed;
+    [SerializeField] private float maxAttackRange;
+    [SerializeField] private float alertBufferTime;
 
     [Header("Attack state")]
-    [SerializeField] float rotationSpeed;
+    [SerializeField] private float rotationSpeed;
     
-    bool heardPlayer;
-    bool sawPlayer;
-    bool isAlerted;
-    bool isHurt;
+    private bool heardPlayer;
+    private bool sawPlayer;
+    private bool isAlerted;
+    private bool isHurt;
 
-    float patrolTimer, alertTimer;
+    private float patrolTimer, alertTimer;
 
     // Animations
     private Animator anim;
@@ -62,8 +57,11 @@ public class EnemyMovement : MonoBehaviour
     {
         playerTransform = FindObjectOfType<PlayerMovement>().transform;
 
-        if (!(patrolTimer >= timeBetweenPatrol))
-            patrolTimer += Time.deltaTime;
+        if (patrolTimer > 0f)
+            if (agent.remainingDistance != Mathf.Infinity
+            && agent.pathStatus == NavMeshPathStatus.PathComplete
+            && agent.remainingDistance == 0)
+                patrolTimer -= Time.deltaTime;
 
         UpdateDetectionRays();
 
@@ -75,7 +73,6 @@ public class EnemyMovement : MonoBehaviour
             heardPlayer = false;
             sawPlayer = false;
             isAlerted = true;
-            OnAlertStart.Invoke();
         }
 
         if (alertTimer > 0f) //The enemy will chase the player's current position until 'alertTimer' hits 0.
@@ -90,7 +87,6 @@ public class EnemyMovement : MonoBehaviour
         else if (isAlerted)
         {
             isAlerted = false;
-            OnAlertEnd.Invoke();
         }
 
         // Animations
@@ -114,10 +110,10 @@ public class EnemyMovement : MonoBehaviour
 
     private void Patroling()
     {
-        if (!walkPointSet && patrolTimer >= timeBetweenPatrol)
+        if (!walkPointSet && patrolTimer <= 0f)
         {
             SearchWalkPoint();
-            patrolTimer = 0f;
+            patrolTimer = timeBetweenPatrol;
         }
 
         if (walkPointSet)
@@ -182,10 +178,9 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(headTransform.position, hearingRange);
         if (playerTransform != null)
         {
+            Gizmos.color = Color.red;
             Gizmos.DrawRay(headTransform.position, (playerTransform.position - headTransform.position).normalized * sightRange);
             Gizmos.color = Color.green;
             Gizmos.DrawRay(headTransform.position, (playerTransform.position - headTransform.position).normalized * peripheralRange);

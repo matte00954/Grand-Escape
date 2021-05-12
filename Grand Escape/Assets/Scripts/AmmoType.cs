@@ -8,10 +8,10 @@ public class AmmoType : ScriptableObject
     //[SerializeField] LayerMask targetMask; //The target layer the projectile is searching to damage, NOT USED
 
 
-    [SerializeField] string ammoName { get; }
-    [SerializeField] int ammoDamage { get; }
-    [SerializeField] float speed { get; }
-    [SerializeField] float bulletLifetime { get; }
+    [SerializeField] string ammoName;
+    [SerializeField] int ammoDamage;
+    [SerializeField] float speed;
+    [SerializeField] float bulletLifetime;
 
     //public LayerMask GetTerrainMask() { return terrainMask; }
 

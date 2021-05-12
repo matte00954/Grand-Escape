@@ -1,20 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyVariables : MonoBehaviour
 {
+    [SerializeField] private EnemyType enemyType;
+    [SerializeField] private ParticleSystem deathParticleEffect;
+    [SerializeField] private AudioClip[] damagedClips;
+    [SerializeField] private AudioClip[] deathClips;
 
-    [SerializeField] EnemyType enemyType;
-    [SerializeField] ParticleSystem deathParticleEffect;
-    [SerializeField] AudioClip[] damagedClips;
-    [SerializeField] AudioClip[] deathClips;
 
-
-    int healthPoints;
+    private int healthPoints;
     private AudioSource audioSource;
 
-    Vector3 startPosition;
+    private Vector3 startPosition;
 
     // Animations
     private Animator anim;
@@ -30,7 +27,7 @@ public class EnemyVariables : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(healthPoints <= 0)
         {

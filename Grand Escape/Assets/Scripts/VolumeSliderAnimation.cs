@@ -1,19 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class VolumeSliderAnimation : MonoBehaviour
 {
-    [SerializeField] Sprite[] handleImages;
-    [SerializeField] GameObject handle;
-    [SerializeField] Text volumeText;
-    [SerializeField] Toggle muteToggle;
+    [SerializeField] private Sprite[] handleImages;
+    [SerializeField] private GameObject handle;
+    [SerializeField] private Text volumeText;
+    [SerializeField] private Toggle muteToggle;
     private Slider slider;
     private Sprite handleImage;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         slider = GetComponent<Slider>();
         handleImage = handle.GetComponent<Image>().sprite;
@@ -22,7 +20,7 @@ public class VolumeSliderAnimation : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         int volume = (int)slider.value;
         volumeText.text = volume.ToString();

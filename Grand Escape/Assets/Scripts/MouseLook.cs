@@ -1,55 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
+//Main author: William Örnquist
+//Secondary author: Mattias Larsson
 using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    WeaponHolder weaponHolder;
+    [Header("References")]
+    [SerializeField] private WeaponHolder weaponHolder;
+    [SerializeField] private Transform playerBody; //The player's model object transform.
+    private Camera cam;
 
-    [SerializeField] Transform playerBody; //The player's model object.
-    [SerializeField] Camera camera;
+    [Header("Settings")]
+    [SerializeField] private float mouseSensitivity = 100f; //Default mouse sensitivity value. Can be changed otherwise in Inspector.
+    [SerializeField] private float fovForZoom = 20;
 
-    [SerializeField] float mouseSensitivity = 100f; //Default mouse sensitivity value. Can be changed otherwise in Inspector.
-    [SerializeField] float fovForZoom = 20;
+    private float xRotation;
+    private float defaultFov;
 
-    float xRotation = 0f;
-    float defaultFov;
+    private bool isZoomed;
+    private bool canZoom;
 
-    bool isZoomed;
-
-    bool canZoom;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        cam = GetComponent<Camera>();
+
         //This locks the mouse cursor to the game screen and hides it.
         Cursor.lockState = CursorLockMode.Locked;
-        defaultFov = camera.fieldOfView;
-
-        weaponHolder = FindObjectOfType<WeaponHolder>();
+        defaultFov = cam.fieldOfView;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Time.timeScale != 0)
         {
             if (Input.GetKeyDown(KeyCode.Mouse1) && !isZoomed && weaponHolder.GetSelectedWeapon() == 1) //1 is musket
             {
-                camera.fieldOfView = fovForZoom;
+                cam.fieldOfView = fovForZoom;
                 isZoomed = true;
             }
             else if (Input.GetKeyDown(KeyCode.Mouse1) && isZoomed)
             {
-                camera.fieldOfView = defaultFov;
+                cam.fieldOfView = defaultFov;
                 isZoomed = false;
             }
 
             if (weaponHolder.GetSelectedWeapon() != 1) //1 is musket
-            {
-                camera.fieldOfView = defaultFov;
-            }
-
+                cam.fieldOfView = defaultFov;
 
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.unscaledDeltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.unscaledDeltaTime;

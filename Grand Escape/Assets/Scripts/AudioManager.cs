@@ -1,16 +1,16 @@
+//Author: William Örnquist
 using System;
-using UnityEngine.Audio;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] Sound[] sounds;
+    [SerializeField] private Sound[] sounds;
     [Range(0.1f, 2f)]
-    [SerializeField] float walkSoundFrequency = 0.7f;
+    [SerializeField] private float walkSoundFrequency = 0.7f;
 
-    float walkSoundFrequencyTimer;
+    private float walkSoundFrequencyTimer;
 
-    void Awake()
+    private void Awake()
     {
         foreach (Sound sound in sounds)
         {
@@ -36,7 +36,7 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        if (FindObjectOfType<PlayerMovement>().IsWalking() && walkSoundFrequencyTimer >= walkSoundFrequency)
+        if (FindObjectOfType<PlayerMovement>().IsMoving() && walkSoundFrequencyTimer >= walkSoundFrequency)
         {
             Play("Walk1");
             walkSoundFrequencyTimer = 0f;

@@ -1,31 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
+//Main author: William Örnquist
+//Secondary author: Mattias Larsson
 using UnityEngine;
 
 public class EnemyShooting : MonoBehaviour
 {
-    [SerializeField] GameObject gun;
-    [SerializeField] GameObject barrelEnd;
-    [SerializeField] GameObject enemyAmmo;
-    Transform playerTransform;
+    [Header("References")]
+    [SerializeField] private GameObject gun;
+    [SerializeField] private GameObject barrelEnd;
+    [SerializeField] private GameObject enemyAmmo;
+    private Transform playerTransform;
 
-    [SerializeField] LayerMask aimCollisionMask;
+    [Header("Detection")]
+    [SerializeField] private LayerMask aimCollisionMask;
+    [SerializeField] private float maxFiringRange;
 
-    [SerializeField] float enemyRange;
-    [SerializeField] float reloadTimeInSeconds;
+    [Header("Weapon")]
+    [SerializeField] private float reloadTimeInSeconds;
 
-    float rotationSpeedMultiplier;
-    float reloadTimer;
+    private float rotationSpeedMultiplier;
+    private float reloadTimer;
 
-    bool isAlerted = false;
+    private bool isAlerted = false;
 
     // Animations
-    private Animator anim;
+    private Animator animator;
 
     void Start()
     {
         // Animations
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -50,20 +53,16 @@ public class EnemyShooting : MonoBehaviour
         if (isAlerted)
         {
             Vector3 direction = (playerTransform.position - gun.transform.position).normalized;
-            //Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, direction.y, direction.z));
-            gun.transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, direction.y, direction.z)); //Quaternion.Slerp(gun.transform.rotation, lookRotation, Time.deltaTime * rotationSpeedMultiplier);
-            //Debug.Log("Trying to rotate:" + lookRotation);
+            gun.transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, direction.y, direction.z));
             gun.transform.rotation = Quaternion.Euler(gun.transform.eulerAngles.x, transform.eulerAngles.y, 0f);
         }
-        //else
-        //    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * rotationSpeedMultiplier);
     }
 
     private void TakeAim()
     {
         RaycastHit hit;
 
-        if (isAlerted && Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.forward, out hit, enemyRange, aimCollisionMask) && reloadTimer <= 0f)
+        if (isAlerted && Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.forward, out hit, maxFiringRange, aimCollisionMask) && reloadTimer <= 0f)
         {
             if (hit.collider.gameObject.tag == "Player")
             {
@@ -90,12 +89,12 @@ public class EnemyShooting : MonoBehaviour
         Instantiate(enemyAmmo, barrelEnd.transform.position, barrelEnd.transform.rotation);
 
         // Animations
-        anim.SetTrigger("Fire");
+        animator.SetTrigger("Fire");
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(barrelEnd.transform.position, barrelEnd.transform.forward * enemyRange);
+        Gizmos.DrawRay(barrelEnd.transform.position, barrelEnd.transform.forward * maxFiringRange);
     }
 }

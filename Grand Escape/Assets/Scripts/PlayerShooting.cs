@@ -1,65 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PlayerShooting : MonoBehaviour
 {
-    [SerializeField] GameObject bulletPrefab; //Assign prefab
-    [SerializeField] Weapons weaponType; //Assign weapon type from Weapons folder
+    [SerializeField] private GameObject bulletPrefab; //Assign prefab
+    [SerializeField] private Weapons weaponType; //Assign weapon type from Weapons folder
+    [SerializeField] private float slowMotionReloadSpeedDivider = 2;
+    [SerializeField] private ParticleSystem gunSmoke; //Assign prefab
 
-    [SerializeField] float slowMotionReloadSpeedDivider = 2;
+    private UiManager uiManager;
 
-    [SerializeField] ParticleSystem gunSmoke; //Assign prefab
-
-    UiManager uiManager;
-
-    Camera playerCamera;
-    PlayerVariables playerVariables;
-    CharacterController charController;
-    Animator animator;
-
-    //bool isReloaded;
-
-    [Header("Event System")]
-    [SerializeField] UnityEvent OnReloadStart;
-    [SerializeField] UnityEvent OnReloadFinish;
-    [SerializeField] UnityEvent OnFire;
-
-
+    private Camera playerCamera;
+    private PlayerVariables playerVariables;
+    private CharacterController charController;
+    private Animator animator;
 
     private bool isReloading;
     private int currentAmmoLoaded; //shots that are loaded
 
-    float reloadTimer;
-    int clipCapacity = 1; //bullet clip capacity, 1 by default.
+    private float reloadTimer;
 
-    private void Awake()
-    {
-        uiManager = FindObjectOfType<UiManager>();
-    }
+    private void Awake() => uiManager = FindObjectOfType<UiManager>();
 
     private void Start()
     {
         playerCamera = GetComponentInParent<Camera>();
-
         playerVariables = GetComponentInParent<PlayerVariables>();
         charController = GetComponentInParent<CharacterController>();
 
         animator = GetComponent<Animator>();
 
         isReloading = false;
-        currentAmmoLoaded = clipCapacity;
-
-        playerVariables = GetComponentInParent<PlayerVariables>();
+        currentAmmoLoaded = weaponType.GetAmmoCap();
     }
 
     private void OnEnable()
     {
         if(currentAmmoLoaded > 0)
-        {
             uiManager.WeaponStatus(true);
-        }
         else
             uiManager.WeaponStatus(false);
     }
@@ -67,13 +44,10 @@ public class PlayerShooting : MonoBehaviour
     private void OnDisable()
     {
         if (currentAmmoLoaded > 0)
-        {
             uiManager.WeaponStatus(true);
-        }
         else
             uiManager.WeaponStatus(false);
 
-        Debug.Log("OnDisable called");
         if (isReloading)
         {
             Debug.Log("Canceling reload");
@@ -83,7 +57,7 @@ public class PlayerShooting : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Time.timeScale != 0)
         {
@@ -100,21 +74,13 @@ public class PlayerShooting : MonoBehaviour
             {
                 currentAmmoLoaded--;
                 FindObjectOfType<AudioManager>().Play(weaponType.GetSoundWeaponClick());
+                animator.SetTrigger("Fire");
                 uiManager.WeaponStatus(false);
                 Instantiate(bulletPrefab, point, playerCamera.transform.rotation);
 
                 Instantiate(gunSmoke, point, playerCamera.transform.rotation);
 
                 FindObjectOfType<AudioManager>().Play(weaponType.GetSoundFire());
-                OnFire.Invoke();
-
-                /*if (Physics.Raycast(playerAim, out shootHit)) //this raycast shooting, will probably not be used
-                {
-                    Transform objectHit = shootHit.transform;
-
-                    //Debug.Log("Hit Object: " + objectHit);
-                }*/
-                //Debug.DrawRay(point, direction, Color.red); //denna funkar ej
             }
             else if(Input.GetMouseButtonDown(0) && currentAmmoLoaded <= 0)
             {
@@ -124,11 +90,11 @@ public class PlayerShooting : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.R) && !isReloading)
             {
-                if (currentAmmoLoaded < clipCapacity && playerVariables.GetCurrentAmmoReserve() > 0)
+                if (currentAmmoLoaded < weaponType.GetAmmoCap() && playerVariables.GetCurrentAmmoReserve() > 0)
                 {
                     isReloading = true;
                     FindObjectOfType<AudioManager>().Play(weaponType.GetSoundReloadStart());
-                    OnReloadStart.Invoke();
+                    animator.SetTrigger("Reload");
                 }
                 else if (playerVariables.GetCurrentAmmoReserve() == 0)
                     Debug.Log("No ammo left");
@@ -146,27 +112,23 @@ public class PlayerShooting : MonoBehaviour
         float reloadTime = weaponType.GetReloadTime();
 
         if (Time.timeScale < 1)
-        {
             reloadTime /= slowMotionReloadSpeedDivider;
-        }
 
         if (reloadTimer < reloadTime)
             reloadTimer += Time.deltaTime;
         else if (reloadTimer >= reloadTime)
         {
             FindObjectOfType<AudioManager>().Play(weaponType.GetSoundReloadFinish());
-            OnReloadFinish.Invoke();
+            animator.SetTrigger("FinishReload");
 
             reloadTimer = 0f;
-            if (playerVariables.GetCurrentAmmoReserve() < clipCapacity)
+            if (playerVariables.GetCurrentAmmoReserve() < weaponType.GetAmmoCap())
                 currentAmmoLoaded = playerVariables.GetCurrentAmmoReserve();
             else
-                currentAmmoLoaded = clipCapacity;
+                currentAmmoLoaded = weaponType.GetAmmoCap();
 
             uiManager.WeaponStatus(true);
-
-            playerVariables.ReduceAmmoReserve(clipCapacity);
-
+            playerVariables.ReduceAmmoReserve(weaponType.GetAmmoCap());
             isReloading = false;
         }
     }

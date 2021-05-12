@@ -1,17 +1,16 @@
-using System.Collections;
 using UnityEngine;
 
 public class AmmoVelocity : MonoBehaviour
 {
     //All other variables move to AmmoType Scriptable object
 
-    [SerializeField] AmmoType ammo;
-    [SerializeField] LayerMask collisionMask;
+    [SerializeField] private AmmoType ammo;
+    [SerializeField] private LayerMask collisionMask;
 
     private Vector3 direction;
-    float lifeTimer;
+    private float lifeTimer;
 
-    void Start()
+    private void Start()
     {
         direction = transform.forward;
     }
@@ -21,7 +20,7 @@ public class AmmoVelocity : MonoBehaviour
         lifeTimer = ammo.GetBulletLifetime();
     }
 
-    void Update()
+    private void Update()
     {
         RayCheck();
         transform.position += direction * ammo.GetAmmoSpeed() * Time.deltaTime;
@@ -47,6 +46,7 @@ public class AmmoVelocity : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, direction * ammo.GetAmmoSpeed() * Time.deltaTime);
     }
 }

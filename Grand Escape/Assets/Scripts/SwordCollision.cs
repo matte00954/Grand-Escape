@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+//Author: William Örnquist
 using UnityEngine;
 
 public class SwordCollision : MonoBehaviour
 {
-    [SerializeField] float damageOnHit;
+    [SerializeField] private float damageOnHit;
 
     private void OnTriggerStay(Collider other)
     {

@@ -1,27 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
-    [SerializeField] Text ammoLeftText;
-    [SerializeField] Text slowMotionExhaustionText;
-    [SerializeField] Text sprintExhaustionText;
-    [SerializeField] Text tutorialText;
+    [SerializeField] private Text ammoLeftText;
+    [SerializeField] private Text slowMotionExhaustionText;
+    [SerializeField] private Text sprintExhaustionText;
+    [SerializeField] private Text tutorialText;
 
-    [SerializeField] Slider healthPointSlider;
-    [SerializeField] Slider staminaPointSlider;
-    [SerializeField] Slider weaponReloadedSlider;
-    [SerializeField] Slider dodgeCooldownSlider;
+    [SerializeField] private Slider healthPointSlider;
+    [SerializeField] private Slider staminaPointSlider;
+    [SerializeField] private Slider weaponReloadedSlider;
+    [SerializeField] private Slider dodgeCooldownSlider;
 
-    [SerializeField] Image crouchImage;
+    [SerializeField] private Image crouchImage;
 
-    public void TutorialText(string s, bool active)
+    public void TutorialText(string textToShow, bool active)
     {
         if (active)
         {
-            tutorialText.text = s;
+            tutorialText.text = textToShow;
             tutorialText.gameObject.SetActive(true);
         }
         else
@@ -31,9 +29,7 @@ public class UiManager : MonoBehaviour
     public void WeaponStatus(bool isReloaded)
     {
         if (isReloaded)
-        {
             weaponReloadedSlider.value = 100f;
-        }
         else
             weaponReloadedSlider.value = 0f;
 
@@ -42,23 +38,15 @@ public class UiManager : MonoBehaviour
         Debug.Log("weapon slider value " + weaponReloadedSlider.value);
     }
 
-    public void AmmoStatus(int i)
-    {
-        ammoLeftText.text = i.ToString();
-    }
+    public void AmmoStatus(int i) => ammoLeftText.text = i.ToString();
 
-    public void HealthPoints(int healthPoints)
-    {
-        healthPointSlider.value = healthPoints;
-    }
+    public void HealthPoints(int healthPoints) => healthPointSlider.value = healthPoints;
 
-    public void Stamina(int staminaPoints)
-    {
-        staminaPointSlider.value = staminaPoints;
-    }
+    public void Stamina(int staminaPoints) => staminaPointSlider.value = staminaPoints;
 
     public void DodgeCooldown(float cooldownTimer, float cooldownCapacity) //Value in inspector needs to be the same as value currently assigned in player movement
     {
+        Debug.Log("Dodge: " + cooldownTimer + " ; " + cooldownCapacity);
         dodgeCooldownSlider.value = cooldownCapacity - cooldownTimer;
     }
 

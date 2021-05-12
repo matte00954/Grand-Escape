@@ -1,25 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class EquippedSword : MonoBehaviour
 {
-    [SerializeField] AudioClip[] clips;
-    [SerializeField] BoxCollider swordCollider;
-
-    [SerializeField] UnityEvent OnAttack;
+    [SerializeField] private AudioClip[] clips;
+    [SerializeField] private BoxCollider swordCollider;
+    [SerializeField] private UnityEvent OnAttack;
 
     private AudioSource audioSource;
     private Animator anim;
 
-    void Start()
+    private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetMouseButton(0) && !anim.GetCurrentAnimatorStateInfo(0).IsName("ES_Slash"))
         {

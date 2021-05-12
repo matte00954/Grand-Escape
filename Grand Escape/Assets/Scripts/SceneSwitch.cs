@@ -3,14 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitch : MonoBehaviour
 {
-    //TODO Get whole list here in a array?
-    [SerializeField] string sceneToSwitchTo;
-
-    [SerializeField] string[] sceneList;
+    [SerializeField] private string sceneToSwitchTo;
+    [SerializeField] private string[] sceneList;
 
     public void ChangeScene()
     {
-        Debug.Log("Scene end reached");
+        Debug.Log("Changing to scene: " + sceneToSwitchTo);
         SceneManager.LoadScene(sceneToSwitchTo);
     }
 }

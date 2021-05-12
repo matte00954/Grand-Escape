@@ -1,68 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PlayerVariables : MonoBehaviour
 {
-    UiManager uiManager;
+    [SerializeField] private GameObject spawnPoint;
+    [SerializeField] private GameObject gameManager;
+    [SerializeField] private UiManager uiManager;
 
-    [SerializeField] GameObject spawnPoint;
+    private Transform currentRespawnPoint;
     
-    GameObject gameManager;
-    GameObject player;
-
-    Transform currentRespawnPoint;
-
     [Header("Stamina")]
-    [SerializeField] float staminaRegenPerTick; //per update tick
+    [SerializeField] private float staminaRegenPerTick; //per update tick
 
     [Header("Max Variables")]
-    [SerializeField] int maxHealthPoints;
-    [SerializeField] int maxAmmoReserve;
-    [SerializeField] float maxStamina;
+    [SerializeField] private int maxHealthPoints;
+    [SerializeField] private int maxAmmoReserve;
+    [SerializeField] private float maxStamina;
 
     [Header("Start Variables")] //variables that are not max after respawn
-    [SerializeField] int startAmmoReserve;
+    [SerializeField] private int startAmmoReserve;
 
     [Header("Pickup Amount")] //TODO consistent naming?
-    [SerializeField] int healthBoostAmount;
-    [SerializeField] int ammoBoxAmount;
-    [SerializeField] int staminaPickUpRestoreAmount;
+    [SerializeField] private int healthBoostAmount;
+    [SerializeField] private int ammoBoxAmount;
+    [SerializeField] private int staminaPickUpRestoreAmount;
 
     [Header("Timers")] //max timers are constant
-    [SerializeField] float timerUntilRespawnMax;
-    [SerializeField] float timerUntilStaminaComparisonCheckMax; //In frames (done in update)
-    [SerializeField] float timerUntilStaminaRegenMax; //In frames (done in update)
-    [SerializeField] float recentDamageTimerMax; //In frames (done in update)
+    [SerializeField] private float timerUntilRespawnMax;
+    [SerializeField] private float timerUntilStaminaComparisonCheckMax; //In frames (done in update)
+    [SerializeField] private float timerUntilStaminaRegenMax; //In frames (done in update)
+    [SerializeField] private float recentDamageTimerMax; //In frames (done in update)
 
     //Timers that changes during runtime
-    float timeUntilRespawn;
-    float timerUntilStaminaComparisonCheck; 
-    float timerUntilStaminaRegen; 
-    float recentDamageTimer;
+    private float timeUntilRespawn;
+    private float timerUntilStaminaComparisonCheck; 
+    private float timerUntilStaminaRegen;
+    private float recentDamageTimer;
 
     //Used during runtime
-    int healthPoints;
-    int currentAmmoReserve;
-    float currentStamina;
-    bool takenRecentDamage = false;
-    bool isDead = false; //Not used at the moment
-
-    private void Awake()
-    {
-        player = this.gameObject;
-        healthPoints = maxHealthPoints;
-        currentAmmoReserve = startAmmoReserve;
-        currentStamina = maxStamina;
-        gameManager = FindObjectOfType<SceneSwitch>().gameObject;
-        uiManager = FindObjectOfType<UiManager>();
-
-        currentRespawnPoint = spawnPoint.transform;
-    }
+    private int healthPoints;
+    private int currentAmmoReserve;
+    private float currentStamina;
+    private bool takenRecentDamage = false;
+    private bool isDead = false; //Not used at the moment
 
     private void Start()
     {
+        healthPoints = maxHealthPoints;
+        currentAmmoReserve = startAmmoReserve;
+        currentStamina = maxStamina;
+
+        currentRespawnPoint = spawnPoint.transform;
+
         ResetAllStats();
 
         timeUntilRespawn = timerUntilRespawnMax;
@@ -72,15 +60,10 @@ public class PlayerVariables : MonoBehaviour
     }
 
     public float GetCurrentStamina() { return currentStamina; }
-
     public int GetCurrentHealthPoints() { return healthPoints; }
-
     public int GetCurrentAmmoReserve() { return currentAmmoReserve; }
-
     public float GetMaxStamina() { return maxStamina; }
-
     public float GetMaxAmmoReserve() { return maxAmmoReserve; }
-
     public float GetMaxHealth() { return maxHealthPoints; }
 
     public void ReduceAmmoReserve(int amountToReduce)
@@ -122,11 +105,8 @@ public class PlayerVariables : MonoBehaviour
 
     public void StaminaToBeUsed(float amount) //Everything that costs stamina should use this method
     {
-
         if (currentStamina >= 0)
-        {
             currentStamina -= amount;
-        }
         else 
             Debug.Log("Out of stamina");
     }
@@ -134,11 +114,8 @@ public class PlayerVariables : MonoBehaviour
     private void Update()
     {
         PlayerDeath();
-
         StaminaRegen();
-
         UiUpdate();
-
         RecentDamageTaken();
     }
 
@@ -200,7 +177,7 @@ public class PlayerVariables : MonoBehaviour
 
     private void StaminaRegen()
     {
-        if (currentStamina < maxStamina && Time.timeScale == 1) //stamina regen start, and checks if slow motion is NOT active
+        if (currentStamina < maxStamina && Time.timeScale == 1f) //stamina regen start, and checks if slow motion is NOT active
         {
             timerUntilStaminaComparisonCheck -= Time.deltaTime;
 
@@ -222,9 +199,7 @@ public class PlayerVariables : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Pickups(other);
-
         CheckPointAndEndScene(other);
-
         PlayerDrown(other);
     }
 

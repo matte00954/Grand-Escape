@@ -1,17 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpotFX : MonoBehaviour
 {
-    [SerializeField] AudioClip clip;
+    [SerializeField] private AudioClip clip;
     private AudioSource source;
-    public float minDelay = 0.5f;
-    public float maxDelay = 2f;
-    public float minVol = 0.5f;
-    public float maxVol = 1.5f;
-    public float minPitch = 1.0f;
-    public float maxPitch = 1.0f;
+
+    [SerializeField] float minDelay = 0.5f;
+    [SerializeField] float maxDelay = 2f;
+    [SerializeField] float minVol = 0.5f;
+    [SerializeField] float maxVol = 1.5f;
+    [SerializeField] float minPitch = 1.0f;
+    [SerializeField] float maxPitch = 1.0f;
 
 
     // Start is called before the first frame update

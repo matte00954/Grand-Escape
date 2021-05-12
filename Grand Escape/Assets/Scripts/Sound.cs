@@ -1,20 +1,20 @@
-using UnityEngine.Audio;
+//Author: William Örnquist
 using UnityEngine;
 
 [System.Serializable]
 public class Sound
 {
-    [SerializeField] AudioClip clip;
+    [SerializeField] private AudioClip clip;
 
-    [SerializeField] string name;
+    [SerializeField] private string name;
 
     [Range(0f, 1f)]
-    [SerializeField] float volume;
+    [SerializeField] private float volume;
     [Range(.1f, 3f)]
-    [SerializeField] float pitch;
-    [SerializeField] bool loop;
+    [SerializeField] private float pitch;
+    [SerializeField] private bool loop;
 
-    AudioSource source;
+    private AudioSource source;
 
 
     public AudioClip Clip

@@ -1,23 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] GameObject settingsMenu;
-    [SerializeField] GameObject pauseMenu;
-    [SerializeField] GameObject howToPlay;
-    [SerializeField] Animator newGameAnim;
-    [SerializeField] Animator exitAnim;
-    [SerializeField] Animator buttonAnim;
-    [SerializeField] GameObject mainCamera;
-    [SerializeField] GameObject flintlock;
-    [SerializeField] GameObject rifle;
+    [SerializeField] private GameObject settingsMenu;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject howToPlay;
+    [SerializeField] private Animator newGameAnim;
+    [SerializeField] private Animator exitAnim;
+    [SerializeField] private Animator buttonAnim;
 
-    MouseLook mouseScript;
-    PlayerShooting flintScript;
-    PlayerShooting rifleScript;
+    [SerializeField] private MouseLook mouseLook;
+    [SerializeField] private PlayerShooting flintScript;
+    [SerializeField] private PlayerShooting rifleScript;
     private bool paused;
 
     void Start()
@@ -26,9 +22,6 @@ public class MainMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         howToPlay.SetActive(false);
         paused = false;
-        mouseScript = mainCamera.GetComponent<MouseLook>();
-        flintScript = flintlock.GetComponent<PlayerShooting>();
-        rifleScript = rifle.GetComponent<PlayerShooting>();
     }
 
     void Update()
@@ -36,33 +29,23 @@ public class MainMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))   //pressing escape button toggles pause menu on or off depending on whether it's already active
         {
             if (!paused)
-            {
                 OpenPause();
-            }
             else if (paused)
-            {
                 ClosePause();
-            }
         }
 
         if (paused)     //checks if pausemenu is active
         {
             if (Input.GetKeyDown(KeyCode.Return))   //press return to exit/disable pausemenu
-            {
                 ClosePause();
-            }
             if (Input.GetKeyDown(KeyCode.M))      //press m to return to main/start menu
-            {
                 ReturnToMain();
-            }
             if (Input.GetKeyDown(KeyCode.O))        //press o to quit application
-            {
                 QuitGame();
-            }
         }
     }
 
-    public bool isPaused()  //checks if game is paused (if pause menu is activated) or not
+    public bool IsPaused()  //checks if game is paused (if pause menu is activated) or not
     {
         return paused;
     }
@@ -73,25 +56,10 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(Delay(1));
     }
 
-    public void OpenSettings()
-    {
-        settingsMenu.SetActive(true);
-    }
-
-    public void CloseSettings()
-    {
-        settingsMenu.SetActive(false);
-    }
-
-    public void OpenHTP()
-    {
-        howToPlay.SetActive(true);
-    }
-
-    public void CloseHTP()
-    {
-        howToPlay.SetActive(false);
-    }
+    public void OpenSettings() => settingsMenu.SetActive(true);
+    public void CloseSettings() => settingsMenu.SetActive(false);
+    public void OpenHTP() => howToPlay.SetActive(true);
+    public void CloseHTP() => howToPlay.SetActive(false);
 
     private void OpenPause()    //activates pausemenu
     {
@@ -115,13 +83,9 @@ public class MainMenu : MonoBehaviour
     {
         buttonAnim.SetTrigger("pressed");
         if (!paused)
-        {
             OpenPause();
-        }
         else if (paused)
-        {
             ClosePause();
-        }
     }
 
     public void ReturnToMain()      //returns player to start scene
@@ -150,7 +114,7 @@ public class MainMenu : MonoBehaviour
         if (!paused)
         {
             //Enable mouselock + shooting script
-            mouseScript.enabled = true;
+            mouseLook.enabled = true;
             flintScript.enabled = true;
             rifleScript.enabled = true;
             Cursor.visible = false;
@@ -158,7 +122,7 @@ public class MainMenu : MonoBehaviour
         else
         {
             //Disable mouselock + shooting script
-            mouseScript.enabled = false;
+            mouseLook.enabled = false;
             flintScript.enabled = false;
             rifleScript.enabled = false;
             //Unlock Mouse and make it visible

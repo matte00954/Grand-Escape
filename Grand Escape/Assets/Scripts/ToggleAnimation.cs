@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,20 +5,20 @@ public class ToggleAnimation : MonoBehaviour
 {
     //script to be attached to a Toggle gameobject to animate its active and inactive states
     
-    [SerializeField] Image sword; //Image to be activated/deactivated on ToggleValueChanged
+    [SerializeField] private Image sword; //Image to be activated/deactivated on ToggleValueChanged
     //[SerializeField] Animator swordAnim;
-    [SerializeField] Image inactiveSword;
-    [SerializeField] Slider masterVolume;
-    [SerializeField] Slider musicVolume;
+    [SerializeField] private Image inactiveSword;
+    [SerializeField] private Slider masterVolume;
+    [SerializeField] private Slider musicVolume;
     private Toggle toggle;
     private VolumeSliderAnimation masterScript;
     private VolumeSliderAnimation musicScript;
-    int lastMasterValue = 100;
-    int lastMusicValue = 100;
+    private int lastMasterValue = 100;
+    private int lastMusicValue = 100;
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         toggle = GetComponent<Toggle>();    //locates the toggle component on the gameobject this script is attached to
         toggle.onValueChanged.AddListener(delegate
@@ -37,7 +35,7 @@ public class ToggleAnimation : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(masterVolume.value == 0 && musicVolume.value == 0)
         {
@@ -45,7 +43,7 @@ public class ToggleAnimation : MonoBehaviour
         }
     }
 
-    void MasterValueChanged()
+    private void MasterValueChanged()
     {
         if (!toggle.isOn)
         {
@@ -53,7 +51,7 @@ public class ToggleAnimation : MonoBehaviour
         }
     }
 
-    void MusicValueChanged()
+    private void MusicValueChanged()
     {
         if (!toggle.isOn)
         {
@@ -61,7 +59,7 @@ public class ToggleAnimation : MonoBehaviour
         }
     }
 
-    void ToggleValueChanged(Toggle change)
+    private void ToggleValueChanged(Toggle change)
     {
         if (!toggle.isOn)
         {

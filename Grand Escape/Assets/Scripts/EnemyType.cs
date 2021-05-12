@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyType : ScriptableObject
 {
 
-    [SerializeField] int maxHealthPoints = 100;
+    [SerializeField] private int maxHealthPoints = 100;
 
     public int GetMaxHealthPoints() { return maxHealthPoints; }
 }

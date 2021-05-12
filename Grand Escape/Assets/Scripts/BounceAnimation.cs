@@ -1,26 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 //using Unity.Mathfx;
 
 public class BounceAnimation : MonoBehaviour
 {
-    public float startTime = 0f;
-    public float time;
+    [SerializeField] private float startTime = 0f;
+    [SerializeField] private float time;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         time = startTime;
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         time = startTime;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {        
         if (time <= 1f)
         {

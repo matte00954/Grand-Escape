@@ -1,13 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameStart : MonoBehaviour
 {
-    [SerializeField] GameObject startText;
-    [SerializeField] GameObject mainMenu;
+    [SerializeField] private GameObject startText;
+    [SerializeField] private GameObject mainMenu;
     private Animator anim;
     private Animator menuAnim;
     private GameObject newGame;

@@ -1,38 +1,31 @@
+//Author: William Örnquist
 using UnityEngine;
-using System.Collections;
 
 public class CamAnimation : MonoBehaviour
 {
-    [SerializeField] CharacterController playerController;
-    [SerializeField] PlayerMovement playerMovement;
-    [SerializeField] Animation anim; //Empty GameObject's animation component
-
-    private bool isMoving;
+    private CharacterController controller;
+    private PlayerMovement movement;
+    private Animation anim; //Empty GameObject's animation component
 
     private bool left;
     private bool right;
-    private float inputX;
-    private float inputY;
 
     void CameraAnimations()
     {
-        if (inputX != 0 || inputY != 0)
-            isMoving = true;
-        else if (inputX == 0 && inputY == 0)
-            isMoving = false;
-
-        if (playerController.isGrounded && isMoving && !playerMovement.IsDodging())
-            PlayWalkAnim();
-
-        if (playerMovement.IsDodging())
-            PlayDodgeAnim();
+        if (movement.GetHorizontalInput() != 0 || movement.GetVerticalInput() != 0)
+            if (controller.isGrounded && !movement.IsDodging())
+                PlayWalkAnimation();
+        
+        if (movement.IsDodging())
+            PlayDodgeAnimation();
     }
 
-    private void PlayWalkAnim()
+    private void PlayWalkAnimation()
     {
-        if (!anim.isPlaying && left == true)
-        {//Waits until no animation is playing to play the next
-            if (playerMovement.IsSprinting())
+        //Waits until no walk animation is playing to play the next
+        if (!anim.isPlaying && left == true) 
+        {
+            if (movement.IsSprinting())
                 anim.Play("sprintBobLeft");
             else
                 anim.Play("walkBobLeft");
@@ -43,7 +36,7 @@ public class CamAnimation : MonoBehaviour
 
         if (!anim.isPlaying && right == true)
         {
-            if (playerMovement.IsSprinting())
+            if (movement.IsSprinting())
                 anim.Play("sprintBobRight");
             else
                 anim.Play("walkBobRight");
@@ -53,11 +46,11 @@ public class CamAnimation : MonoBehaviour
         }
     }
 
-    private void PlayDodgeAnim() 
+    private void PlayDodgeAnimation() 
     {
-        if (inputX == -1)
+        if (movement.GetHorizontalInput() == -1)
             anim.Play("dodgeLeft");
-        else if (inputX == 1)
+        else if (movement.GetHorizontalInput() == 1)
             anim.Play("dodgeRight");
     }
 
@@ -66,14 +59,15 @@ public class CamAnimation : MonoBehaviour
     { //First step in a new scene/life/etc. will be "walkLeft"
         left = true;
         right = false;
+
+        anim = GetComponent<Animation>();
+        controller = GetComponentInParent<CharacterController>();
+        movement = GetComponentInParent<PlayerMovement>();
     }
 
 
     void Update()
     {
-        inputX = Input.GetAxis("Horizontal"); //Keyboard input to determine if player is moving
-        inputY = Input.GetAxis("Vertical");
-
         CameraAnimations();
     }
 }

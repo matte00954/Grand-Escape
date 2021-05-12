@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+//Main author: William Örnquist
+//Secondary author: Mattias Larsson
 using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour
 {
-    Animator animator;
-    int selectedWeapon = 0;
+    private Animator animator;
+    private int selectedWeapon = 0;
 
     private void Start()
     {

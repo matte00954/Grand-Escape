@@ -9,7 +9,7 @@ public class EnemyRespawn : MonoBehaviour
 
     private void SetEnemiesInactiveBeforeRespawn() //not used at the moment
     {
-        for (int i = 0; i < enemies.Capacity - 1; i++)
+        for (int i = 0; i < enemies.Count - 1; i++)
             enemies[i].SetActive(false);
     }
 
@@ -17,10 +17,10 @@ public class EnemyRespawn : MonoBehaviour
     {
         if (this.gameObject.activeSelf)
         {
-            for (int i = 0; i < enemies.Capacity; i++)
+            for (int i = 0; i < enemies.Count; i++)
             {
                 if (enemies[i] == null)
-                    Debug.LogError(i + " in enemies list is null " + this.gameObject);
+                    Debug.LogError(i + " in enemies list is null " + gameObject);
                 else
                 {
                     enemies[i].GetComponent<EnemyVariables>().ResetAllStats();

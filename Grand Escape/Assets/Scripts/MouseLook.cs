@@ -31,7 +31,7 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Time.timeScale != 0)
+        if (PlayerVariables.isAlive)
         {
             if (Input.GetKeyDown(KeyCode.Mouse1) && !isZoomed && weaponHolder.GetSelectedWeapon() == 1) //1 is musket
             {

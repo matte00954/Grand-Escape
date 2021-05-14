@@ -41,7 +41,19 @@ public class PlayerVariables : MonoBehaviour
     private int currentAmmoReserve;
     private float currentStamina;
     private bool takenRecentDamage = false;
-    private bool isDead = false; //Not used at the moment
+
+    public static bool isAlive = true;
+
+
+    public int GetCurrentHealthPoints() { return healthPoints; }
+    public int GetCurrentAmmoReserve() { return currentAmmoReserve; }
+
+    public float GetCurrentStamina() { return currentStamina; }
+    public float GetMaxStamina() { return maxStamina; }
+    public float GetMaxAmmoReserve() { return maxAmmoReserve; }
+    public float GetMaxHealth() { return maxHealthPoints; }
+
+    public bool IsPlayerAlive() { return isAlive; }
 
     private void Start()
     {
@@ -58,13 +70,6 @@ public class PlayerVariables : MonoBehaviour
         timerUntilStaminaComparisonCheck = timerUntilStaminaComparisonCheckMax;
         recentDamageTimer = recentDamageTimerMax;
     }
-
-    public float GetCurrentStamina() { return currentStamina; }
-    public int GetCurrentHealthPoints() { return healthPoints; }
-    public int GetCurrentAmmoReserve() { return currentAmmoReserve; }
-    public float GetMaxStamina() { return maxStamina; }
-    public float GetMaxAmmoReserve() { return maxAmmoReserve; }
-    public float GetMaxHealth() { return maxHealthPoints; }
 
     public void ReduceAmmoReserve(int amountToReduce)
     {
@@ -129,28 +134,21 @@ public class PlayerVariables : MonoBehaviour
 
         if (healthPoints <= 0)
         {
-            isDead = true;
-
-            PlayerMovement pm = GetComponent<PlayerMovement>();
+            isAlive = false;
             Debug.Log("PLAYER HAS DIED");
 
+            PlayerMovement pm = GetComponent<PlayerMovement>();
+
             timeUntilRespawn -= Time.deltaTime;
-
-            pm.SetControllerInactive();
-
             if (timeUntilRespawn <= 0)
             {
                 gameManager.GetComponent<EnemyRespawnHandler>().RepsawnAll();
                 pm.TeleportPlayer(currentRespawnPoint.position);
                 ResetAllStats();
                 timeUntilRespawn = timerUntilRespawnMax;
+                isAlive = true;
             }
         }
-    }
-
-    public bool IsPlayerDead()
-    {
-        return isDead;
     }
 
     private void RecentDamageTaken() //to prevent massive amount of damage during a short period of time

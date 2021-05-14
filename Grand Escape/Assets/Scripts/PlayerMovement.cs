@@ -88,18 +88,21 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //Checks if player is grounded and resets gravity velocity if true
-        CheckGround();
+        if (PlayerVariables.isAlive)
+        {
+            //Checks if player is grounded and resets gravity velocity if true
+            CheckGround();
 
-        //Input checks
-        CheckMovement();
-        CheckCrouch();
-        CheckSprint();
-        CheckDodge();
-        CheckTimeSlow();
+            //Input checks
+            CheckMovement();
+            CheckCrouch();
+            CheckSprint();
+            CheckDodge();
+            CheckTimeSlow();
 
-        //Applies gravity and jump velocity
-        ApplyYAxisVelocity();
+            //Applies gravity and jump velocity
+            ApplyYAxisVelocity();
+        }
     }
 
     private void CheckMovement()

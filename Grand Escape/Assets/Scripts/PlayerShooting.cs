@@ -59,7 +59,7 @@ public class PlayerShooting : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Time.timeScale != 0)
+        if (PlayerVariables.isAlive)
         {
             float inputX = Input.GetAxis("Horizontal");
             float inputZ = Input.GetAxis("Vertical");

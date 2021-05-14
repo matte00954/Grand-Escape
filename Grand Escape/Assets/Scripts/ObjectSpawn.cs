@@ -11,10 +11,6 @@ public class ObjectSpawn : MonoBehaviour
     private void Start()
     {
         DisableObjects(gameObjects);
-
-        for (int i = 0; i < gameObjects.Length; i++)
-            if (gameObjects[i] == null)
-                Debug.LogError(i + " in gameObjects array is null " + this.gameObject);
     }
 
     public void SpawnObjects()
@@ -34,7 +30,6 @@ public class ObjectSpawn : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             SpawnObjects();
-            DisableObjects(toDisable);
         }
     }
 }

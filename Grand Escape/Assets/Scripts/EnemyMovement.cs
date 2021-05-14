@@ -7,8 +7,9 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private LayerMask groundMask, playerMask, detectionMask;
     [SerializeField] private BoxCollider sightCollider;
     [SerializeField] private Transform headTransform;
-    private Transform playerTransform;
+    private GameObject player;
     private NavMeshAgent agent;
+    private EnemyShooting enemyShooting;
 
     [Header("Patrol state")]
     [SerializeField] private bool IsStationary;
@@ -44,8 +45,11 @@ public class EnemyMovement : MonoBehaviour
     // Animations
     private Animator anim;
 
+    private void Start() => player = GameObject.Find("First Person Player");
+
     private void Awake()
     {
+        enemyShooting = GetComponent<EnemyShooting>();
         agent = GetComponent<NavMeshAgent>();
         patrolTimer = timeBetweenPatrol;
 
@@ -55,8 +59,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        playerTransform = FindObjectOfType<PlayerMovement>().transform;
-
         if (patrolTimer > 0f)
             if (agent.remainingDistance != Mathf.Infinity
             && agent.pathStatus == NavMeshPathStatus.PathComplete
@@ -73,11 +75,12 @@ public class EnemyMovement : MonoBehaviour
             heardPlayer = false;
             sawPlayer = false;
             isAlerted = true;
+            enemyShooting.SetAlert(true);
         }
 
         if (alertTimer > 0f) //The enemy will chase the player's current position until 'alertTimer' hits 0.
         {
-            if (IsStationary || Vector3.Distance(headTransform.position, playerTransform.position) <= maxAttackRange)
+            if (IsStationary || Vector3.Distance(headTransform.position, player.transform.position) <= maxAttackRange)
                 AttackPlayer();
             else
                 ChasePlayer();
@@ -87,6 +90,7 @@ public class EnemyMovement : MonoBehaviour
         else if (isAlerted)
         {
             isAlerted = false;
+            enemyShooting.SetAlert(false);
         }
 
         // Animations
@@ -99,12 +103,12 @@ public class EnemyMovement : MonoBehaviour
         RaycastHit sightHit;
         RaycastHit peripheralHit;
 
-        if (!isBlind && Physics.Raycast(headTransform.position, (playerTransform.position - headTransform.position).normalized, out peripheralHit, peripheralRange, detectionMask))
+        if (!isBlind && Physics.Raycast(headTransform.position, (player.transform.position - headTransform.position).normalized, out peripheralHit, peripheralRange, detectionMask))
             if (peripheralHit.collider.gameObject.tag == "Player")
                 sawPlayer = true;
 
-        if (!isBlind && Physics.Raycast(headTransform.position, (playerTransform.position - headTransform.position).normalized, out sightHit, sightRange, detectionMask))
-            if (sightHit.collider.gameObject.tag == "Player" && sightCollider.bounds.Contains(playerTransform.position))
+        if (!isBlind && Physics.Raycast(headTransform.position, (player.transform.position - headTransform.position).normalized, out sightHit, sightRange, detectionMask))
+            if (sightHit.collider.gameObject.tag == "Player" && sightCollider.bounds.Contains(player.transform.position))
                 sawPlayer = true;
     }
 
@@ -149,7 +153,7 @@ public class EnemyMovement : MonoBehaviour
     private void ChasePlayer()
     {
         agent.speed = chasingSpeed;
-        agent.SetDestination(playerTransform.position);
+        agent.SetDestination(player.transform.position);
     }
 
     private void Scan()
@@ -161,7 +165,7 @@ public class EnemyMovement : MonoBehaviour
     {
         agent.SetDestination(transform.position);
 
-        Vector3 direction = (playerTransform.position - transform.position).normalized;
+        Vector3 direction = (player.transform.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
@@ -178,12 +182,12 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (playerTransform != null)
+        if (player != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawRay(headTransform.position, (playerTransform.position - headTransform.position).normalized * sightRange);
+            Gizmos.DrawRay(headTransform.position, (player.transform.position - headTransform.position).normalized * sightRange);
             Gizmos.color = Color.green;
-            Gizmos.DrawRay(headTransform.position, (playerTransform.position - headTransform.position).normalized * peripheralRange);
+            Gizmos.DrawRay(headTransform.position, (player.transform.position - headTransform.position).normalized * peripheralRange);
         }
     }
 }

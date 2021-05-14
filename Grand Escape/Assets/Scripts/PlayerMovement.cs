@@ -75,7 +75,6 @@ public class PlayerMovement : MonoBehaviour
     {
         playerVariables = GetComponent<PlayerVariables>();
         controller = GetComponent<CharacterController>();
-
         standingHeight = controller.height;
        
         //To prevent player from dodging at start
@@ -117,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckSprint()
     {
-        isSprinting = (!isDodging && !isCrouching && isGrounded && Input.GetKey(KeyCode.LeftShift) && 
+        isSprinting = (!isDodging && !isCrouching && Input.GetKey(KeyCode.LeftShift) && 
             playerVariables.GetCurrentStamina() > 0 && inputZ == 1 && inputX == 0 && !isExhaustedFromSprinting);
 
         if (isSprinting)

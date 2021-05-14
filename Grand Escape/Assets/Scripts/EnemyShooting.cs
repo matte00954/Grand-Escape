@@ -8,7 +8,7 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField] private GameObject gun;
     [SerializeField] private GameObject barrelEnd;
     [SerializeField] private GameObject enemyAmmo;
-    private Transform playerTransform;
+    private GameObject player;
 
     [Header("Detection")]
     [SerializeField] private LayerMask aimCollisionMask;
@@ -29,12 +29,11 @@ public class EnemyShooting : MonoBehaviour
     {
         // Animations
         animator = GetComponent<Animator>();
+        player = GameObject.Find("First Person Player");
     }
 
     void Update()
     {
-        playerTransform = FindObjectOfType<PlayerMovement>().transform;
-
         if (isAlerted)
         {
             RotateSelfToTarget();
@@ -52,9 +51,10 @@ public class EnemyShooting : MonoBehaviour
     {
         if (isAlerted)
         {
-            Vector3 direction = (playerTransform.position - gun.transform.position).normalized;
-            gun.transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, direction.y, direction.z));
-            gun.transform.rotation = Quaternion.Euler(gun.transform.eulerAngles.x, transform.eulerAngles.y, 0f);
+            Debug.Log("Rotate gun to player: " + player.transform.position);
+            Vector3 direction = (player.transform.position - barrelEnd.transform.position).normalized;
+            barrelEnd.transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, direction.y, direction.z));
+            barrelEnd.transform.rotation = Quaternion.Euler(barrelEnd.transform.eulerAngles.x, barrelEnd.transform.eulerAngles.y, 0f);
         }
     }
 
@@ -64,8 +64,10 @@ public class EnemyShooting : MonoBehaviour
 
         if (isAlerted && Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.forward, out hit, maxFiringRange, aimCollisionMask) && reloadTimer <= 0f)
         {
+            Debug.Log("TakeAim hit something");
             if (hit.collider.gameObject.tag == "Player")
             {
+                Debug.Log("TakeAim raycast hit player");
                 reloadTimer = reloadTimeInSeconds;
                 ShootWithGun();
             }
@@ -74,7 +76,7 @@ public class EnemyShooting : MonoBehaviour
 
     private void RotateSelfToTarget()
     {
-        Vector3 direction = (playerTransform.position - transform.position).normalized;
+        Vector3 direction = (player.transform.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeedMultiplier);
     }
@@ -92,7 +94,7 @@ public class EnemyShooting : MonoBehaviour
         animator.SetTrigger("Fire");
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(barrelEnd.transform.position, barrelEnd.transform.forward * maxFiringRange);

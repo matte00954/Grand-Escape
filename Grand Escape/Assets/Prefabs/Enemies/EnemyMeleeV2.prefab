@@ -1077,7 +1077,7 @@ MonoBehaviour:
   sightCollider: {fileID: 341790925963359553}
   headTransform: {fileID: 9079189499366403010}
   IsStationary: 0
-  walkPointRange: 20
+  walkPointRange: 10
   timeBetweenPatrol: 3
   patrolSpeed: 11
   sightRange: 50
@@ -1088,12 +1088,6 @@ MonoBehaviour:
   chasingSpeed: 20
   maxAttackRange: 2
   alertBufferTime: 3
-  OnAlertStart:
-    m_PersistentCalls:
-      m_Calls: []
-  OnAlertEnd:
-    m_PersistentCalls:
-      m_Calls: []
   rotationSpeed: 20
 --- !u!195 &8171808867781266306
 NavMeshAgent:
@@ -1105,8 +1099,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 11
-  m_Acceleration: 12
+  m_Speed: 5
+  m_Acceleration: 5
   avoidancePriority: 30
   m_AngularSpeed: 120
   m_StoppingDistance: 0

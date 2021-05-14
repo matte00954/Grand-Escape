@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 390643834018679050}
-  m_LocalRotation: {x: -0.0032306872, y: -0.70709974, z: -0.70709914, w: -0.003230604}
-  m_LocalPosition: {x: 0.0256, y: 1.6764, z: -0}
-  m_LocalScale: {x: 0.39999995, y: 1.6000007, z: 0.40000013}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.287, z: 0.475}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7976394184955873707}
+  m_Father: {fileID: 7582761312788922756}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2685155713519311759
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,7 +58,7 @@ Transform:
   m_LocalScale: {x: 0.8695652, y: 0.8695652, z: 0.8695652}
   m_Children: []
   m_Father: {fileID: 7582761312788922756}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7348195553936216849
 GameObject:
@@ -88,8 +88,7 @@ Transform:
   m_LocalRotation: {x: -0.032060053, y: 0.000008301869, z: -0.69544905, w: 0.71785986}
   m_LocalPosition: {x: 0.314, y: -0.046, z: 0.059}
   m_LocalScale: {x: 0.4347826, y: 0.43478253, z: 0.43478253}
-  m_Children:
-  - {fileID: 390643834018679051}
+  m_Children: []
   m_Father: {fileID: 7582761312788922836}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -2.638, y: 2.559, z: 271.758}
@@ -571,7 +570,7 @@ Transform:
   - {fileID: 7582761312788922754}
   - {fileID: 7582761312788922816}
   m_Father: {fileID: 7582761312788922756}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7582761312788962332
 GameObject:
@@ -797,6 +796,7 @@ Transform:
   m_LocalPosition: {x: 437.25, y: 7.11, z: -12.75}
   m_LocalScale: {x: 2.3, y: 2.3, z: 2.3}
   m_Children:
+  - {fileID: 390643834018679051}
   - {fileID: 7582761312788922820}
   - {fileID: 7582761312788922874}
   - {fileID: 4589696279718779589}
@@ -906,10 +906,11 @@ MonoBehaviour:
   gun: {fileID: 7348195553936216849}
   barrelEnd: {fileID: 390643834018679050}
   enemyAmmo: {fileID: 7794666079471084343, guid: 196220794740a7946a8e8ad2692d7339, type: 3}
+  playerTransform: {fileID: 5678491154712510806, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
   aimCollisionMask:
     serializedVersion: 2
     m_Bits: 2496
-  enemyRange: 60
+  maxFiringRange: 60
   reloadTimeInSeconds: 3
 --- !u!114 &7582761312788962751
 MonoBehaviour:
@@ -935,7 +936,7 @@ MonoBehaviour:
   sightCollider: {fileID: 8175941856538727421}
   headTransform: {fileID: 4589696279718779589}
   IsStationary: 0
-  walkPointRange: 20
+  walkPointRange: 10
   timeBetweenPatrol: 3
   patrolSpeed: 11
   sightRange: 50
@@ -946,36 +947,6 @@ MonoBehaviour:
   chasingSpeed: 20
   maxAttackRange: 50
   alertBufferTime: 3
-  OnAlertStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: EnemyShooting, Assembly-CSharp
-        m_MethodName: SetAlert
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  OnAlertEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: EnemyShooting, Assembly-CSharp
-        m_MethodName: SetAlert
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   rotationSpeed: 5
 --- !u!195 &7582761312788962721
 NavMeshAgent:
@@ -988,7 +959,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 1
   m_Speed: 5
-  m_Acceleration: 12
+  m_Acceleration: 5
   avoidancePriority: 30
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -2209,7 +2180,7 @@ Transform:
   m_Children:
   - {fileID: 7582761312788922758}
   m_Father: {fileID: 7582761312788922756}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7582761312788962790
 GameObject:
@@ -2646,7 +2617,7 @@ Transform:
   m_LocalScale: {x: 0.8695651, y: 0.8695651, z: 0.8695651}
   m_Children: []
   m_Father: {fileID: 7582761312788922756}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8175941856538727421
 BoxCollider:

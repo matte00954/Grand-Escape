@@ -6,12 +6,12 @@ public class SpotFX : MonoBehaviour
     [SerializeField] private AudioClip clip;
     private AudioSource source;
 
-    [SerializeField] float minDelay = 0.5f;
-    [SerializeField] float maxDelay = 2f;
-    [SerializeField] float minVol = 0.5f;
-    [SerializeField] float maxVol = 1.5f;
-    [SerializeField] float minPitch = 1.0f;
-    [SerializeField] float maxPitch = 1.0f;
+    [SerializeField] private float minDelay = 0.5f;
+    [SerializeField] private float maxDelay = 2f;
+    [SerializeField] private float minVol = 0.5f;
+    [SerializeField] private float maxVol = 1.5f;
+    [SerializeField] private float minPitch = 1.0f;
+    [SerializeField] private float maxPitch = 1.0f;
 
 
     // Start is called before the first frame update

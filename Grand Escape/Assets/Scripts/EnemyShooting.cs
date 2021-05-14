@@ -20,6 +20,8 @@ public class EnemyShooting : MonoBehaviour
     private float rotationSpeedMultiplier;
     private float reloadTimer;
 
+    private string fireAnimationName;
+
     private bool isAlerted = false;
 
     // Animations
@@ -30,6 +32,7 @@ public class EnemyShooting : MonoBehaviour
         // Animations
         animator = GetComponent<Animator>();
         player = GameObject.Find("First Person Player");
+        fireAnimationName = "Fire";
     }
 
     void Update()
@@ -51,7 +54,6 @@ public class EnemyShooting : MonoBehaviour
     {
         if (isAlerted)
         {
-            Debug.Log("Rotate gun to player: " + player.transform.position);
             Vector3 direction = (player.transform.position - barrelEnd.transform.position).normalized;
             barrelEnd.transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, direction.y, direction.z));
             barrelEnd.transform.rotation = Quaternion.Euler(barrelEnd.transform.eulerAngles.x, barrelEnd.transform.eulerAngles.y, 0f);
@@ -64,10 +66,8 @@ public class EnemyShooting : MonoBehaviour
 
         if (isAlerted && Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.forward, out hit, maxFiringRange, aimCollisionMask) && reloadTimer <= 0f)
         {
-            Debug.Log("TakeAim hit something");
             if (hit.collider.gameObject.tag == "Player")
             {
-                Debug.Log("TakeAim raycast hit player");
                 reloadTimer = reloadTimeInSeconds;
                 ShootWithGun();
             }
@@ -81,17 +81,14 @@ public class EnemyShooting : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeedMultiplier);
     }
 
-    public void SetAlert(bool isAlerted)
-    {
-        this.isAlerted = isAlerted;
-    }
+    public void SetAlert(bool isAlerted) => this.isAlerted = isAlerted;
 
     private void ShootWithGun()
     {
         Instantiate(enemyAmmo, barrelEnd.transform.position, barrelEnd.transform.rotation);
 
         // Animations
-        animator.SetTrigger("Fire");
+        animator.SetTrigger(fireAnimationName);
     }
 
     private void OnDrawGizmos()

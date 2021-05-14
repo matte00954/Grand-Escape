@@ -3,6 +3,7 @@ using UnityEngine;
 public class TutorialText : MonoBehaviour
 {
     [SerializeField] private UiManager uiManager;
+    [TextArea]
     [SerializeField] private string tutorialText;
 
     private void Start()

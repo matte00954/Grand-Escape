@@ -4,7 +4,7 @@ public class MoveRespawnPoint : MonoBehaviour
 {
     public void SetNewPoint(Vector3 newPoint)
     {
-        gameObject.transform.position = newPoint;
+        this.gameObject.transform.position = newPoint;
         Debug.Log("Respawn point move to " + newPoint);
     }
 }

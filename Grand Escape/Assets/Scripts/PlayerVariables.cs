@@ -136,17 +136,20 @@ public class PlayerVariables : MonoBehaviour
         {
             isAlive = false;
             Debug.Log("PLAYER HAS DIED");
+            uiManager.DeathText();
 
-            PlayerMovement pm = GetComponent<PlayerMovement>();
+            PlayerMovement pm = gameObject.GetComponent<PlayerMovement>();
 
             timeUntilRespawn -= Time.deltaTime;
+
             if (timeUntilRespawn <= 0)
             {
                 gameManager.GetComponent<EnemyRespawnHandler>().RepsawnAll();
-                pm.TeleportPlayer(currentRespawnPoint.position);
                 ResetAllStats();
-                timeUntilRespawn = timerUntilRespawnMax;
+                pm.TeleportPlayer(currentRespawnPoint.position);
+                uiManager.DeathText();
                 isAlive = true;
+                timeUntilRespawn = timerUntilRespawnMax;
             }
         }
     }

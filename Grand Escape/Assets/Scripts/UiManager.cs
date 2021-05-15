@@ -14,6 +14,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Slider dodgeCooldownSlider;
 
     [SerializeField] private Image crouchImage;
+    [SerializeField] private Image deathImage;
 
     public void TutorialText(string textToShow, bool active)
     {
@@ -35,7 +36,6 @@ public class UiManager : MonoBehaviour
 
 
         Debug.Log("is reloaded = " + isReloaded);
-        Debug.Log("weapon slider value " + weaponReloadedSlider.value);
     }
 
     public void AmmoStatus(int i) => ammoLeftText.text = i.ToString();
@@ -46,7 +46,6 @@ public class UiManager : MonoBehaviour
 
     public void DodgeCooldown(float cooldownTimer, float cooldownCapacity) //Value in inspector needs to be the same as value currently assigned in player movement
     {
-        Debug.Log("Dodge: " + cooldownTimer + " ; " + cooldownCapacity);
         dodgeCooldownSlider.value = cooldownCapacity - cooldownTimer;
     }
 
@@ -73,4 +72,13 @@ public class UiManager : MonoBehaviour
         else
             crouchImage.gameObject.SetActive(false);
     }
+
+    public void DeathText() //when player dies
+    {
+        if (PlayerVariables.isAlive)
+            crouchImage.gameObject.SetActive(true);
+        else
+            crouchImage.gameObject.SetActive(false);
+    }
+
 }

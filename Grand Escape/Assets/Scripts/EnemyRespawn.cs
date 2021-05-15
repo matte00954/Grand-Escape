@@ -15,7 +15,7 @@ public class EnemyRespawn : MonoBehaviour
 
     public void RespawnEnemies() 
     {
-        if (this.gameObject.activeSelf)
+        if (gameObject.activeSelf)
         {
             for (int i = 0; i < enemies.Count; i++)
             {

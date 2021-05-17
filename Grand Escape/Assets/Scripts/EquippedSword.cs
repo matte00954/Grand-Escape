@@ -7,6 +7,8 @@ public class EquippedSword : MonoBehaviour
     [SerializeField] private BoxCollider swordCollider;
     [SerializeField] private UnityEvent OnAttack;
 
+    [SerializeField] private UiManager uiManager;
+
     private AudioSource audioSource;
     private Animator anim;
 
@@ -14,6 +16,12 @@ public class EquippedSword : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
+
+        if(uiManager == null)
+        {
+            Debug.LogError("uiManager not set on EquippedSword");
+        }
+
     }
 
     private void Update()
@@ -25,7 +33,12 @@ public class EquippedSword : MonoBehaviour
     }
 
     private void OnDisable() => swordCollider.enabled = false;
-    private void OnEnable() => swordCollider.enabled = false;
+
+    private void OnEnable()
+    {
+        uiManager.WeaponStatus(false);
+        swordCollider.enabled = false;
+    }
 
     private void AttackStart()
     {

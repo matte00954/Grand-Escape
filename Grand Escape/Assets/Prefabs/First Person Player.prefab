@@ -218,6 +218,7 @@ MonoBehaviour:
           m_StringArgument: Attack
           m_BoolArgument: 0
         m_CallState: 2
+  uiManager: {fileID: 4884748120044031724, guid: 757b00d841697c3489ea049a37d13834, type: 3}
 --- !u!82 &751679708
 AudioSource:
   m_ObjectHideFlags: 0

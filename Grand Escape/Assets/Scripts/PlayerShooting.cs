@@ -52,9 +52,6 @@ public class PlayerShooting : MonoBehaviour
 
     private void OnDisable()
     {
-        if(currentAmmoLoaded == 0)
-            uiManager.WeaponStatus(false);
-
         if (isReloading)
         {
             Debug.Log("Canceling reload");

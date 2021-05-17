@@ -65,8 +65,9 @@ public class PlayerVariables : MonoBehaviour
     {
         if (godMode)
             maxHealthPoints = 9999;
+        else
+            healthPoints = maxHealthPoints;
 
-        healthPoints = maxHealthPoints;
         currentAmmoReserve = startAmmoReserve;
         currentStamina = maxStamina;
 

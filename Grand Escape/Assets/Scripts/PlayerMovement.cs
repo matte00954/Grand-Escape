@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
     [Header("References")]
-    [SerializeField] private Transform groundCheck; //The groundCheck object.
-    [SerializeField] private GameObject camHolder;
-    private Vector3 camHolderPositionOrigin;
+    [SerializeField] private Transform groundCheck; //Alternative groundCheck
+    [SerializeField] private Transform crouchHeadTransform; //The position of the head in a crouched state
+    [SerializeField] private GameObject playerHead; //The parent object to the camera holder object
+    private Vector3 playerHeadPositionOrigin; //The camholder's original position (non-crouch state)
 
     private CamAnimation camAnimation;
     private PlayerVariables playerVariables;
@@ -19,16 +19,16 @@ public class PlayerMovement : MonoBehaviour
     [Header("Misc")]
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private LayerMask headMask;
-    [SerializeField] private float groundCheckRadius = 0.4f; //The radius of the CheckSphere for 'groundCheck'.
+    [SerializeField] private float groundCheckRadius = 0.4f; //The radius of the CheckSphere for 'groundCheck'
 
     [Header("Movement")]
     [SerializeField] private float walkSpeed;
     [SerializeField] private float gravity;
     [SerializeField] private float jumpHeight;
-    [SerializeField] private float crouchHeight;
     [SerializeField] private float sprintCooldown;
     [SerializeField] private float sprintSpeed;
     [SerializeField] private float crouchSpeed;
+    [SerializeField] private float crouchingHeight;
 
     [Header("Stamina")]
     [SerializeField] private float staminaUsedForSprint;
@@ -57,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     public static bool IsMoving { get; private set; }
     public static bool IsSprinting { get; private set; }
     public static bool IsDodging { get; private set; }
+
     private bool isCrouching;
     private bool isSlowmotion;
     private bool isGrounded;
@@ -64,8 +65,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isExhaustedFromSlowMotion;
     private bool isExhaustedFromSprinting;
 
-    private float currentSpeed;
     private float standingHeight;
+    private float currentSpeed;
     private float inputX;
     private float inputZ;
 
@@ -75,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
     //Other timers
     private float slowMotionExhaustionTimer, slowMotionTickTimer, sprintExhaustionTimer;
 
+    //String cache
     private readonly string horizontal = "Horizontal";
     private readonly string vertical = "Vertical";
 
@@ -85,10 +87,12 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         audioManager = FindObjectOfType<AudioManager>();
         uiManager = FindObjectOfType<UiManager>();
+
         standingHeight = controller.height;
-        camHolderPositionOrigin = camHolder.transform.position;
+        playerHeadPositionOrigin = playerHead.transform.localPosition;
+        Debug.Log(playerHeadPositionOrigin);
        
-        //To prevent player from dodging at start
+        //Prevents player from dodging at start
         rightDoubleTapTimer = maxDoubleTapTime;
         leftDoubleTapTimer = maxDoubleTapTime;
     }
@@ -96,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (PlayerVariables.isAlive)
+        if (PlayerVariables.isAlive) //Disables movement when player is dead
         {
             //Checks if player is grounded and resets gravity velocity if true
             CheckGround();
@@ -146,8 +150,9 @@ public class PlayerMovement : MonoBehaviour
                 sprintExhaustionTimer = sprintExhaustionTime;
             }
         }
-        else
+        else if (!isCrouching)
             currentSpeed = walkSpeed;
+
 
         if (isExhaustedFromSprinting && sprintExhaustionTimer <= 0f)
         {
@@ -183,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (IsDodging && dodgeTimer > 0f)
-            ApplyDodge();
+            ApplyDodge(); //Applies the horizontal force for the duration.
         else
             IsDodging = false;
 
@@ -200,7 +205,7 @@ public class PlayerMovement : MonoBehaviour
             leftDoubleTapTimer -= Time.deltaTime;
     }
 
-    private void Dodge(Vector3 direction)
+    private void Dodge(Vector3 direction) //This method is called once for the activation of dodge, resetting appropriate timers.
     {
         if (!IsDodging && isGrounded && playerVariables.GetCurrentStamina() > staminaUsedForDodge && dodgeCooldownTimer <= 0)
         {
@@ -212,10 +217,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void ApplyDodge()
+    private void ApplyDodge() //While dodge is active, this method is called every frame to apply force for the dodge mechanic.
     {
         if (Time.timeScale < 1f)
-            controller.Move((dodgeDirection * currentSpeed * dodgeSpeedMultiplier) * slowMotionAmountMultiplier * Time.unscaledDeltaTime);
+            controller.Move(dodgeDirection * currentSpeed * dodgeSpeedMultiplier * slowMotionAmountMultiplier * Time.unscaledDeltaTime);
         else
             controller.Move(dodgeDirection * currentSpeed * dodgeSpeedMultiplier * Time.deltaTime);
 
@@ -263,34 +268,50 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            if (isCrouching && Physics.CheckSphere(camHolderPositionOrigin, 0.6f, headMask))
+            if (isCrouching && !Physics.CheckSphere(playerHead.transform.position + Vector3.up * crouchingHeight, 0.6f, headMask))
             {
                 isCrouching = false;
                 currentSpeed = walkSpeed;
+                controller.enabled = false;
+                controller.height = standingHeight;
+                controller.center -= Vector3.up * (standingHeight - crouchingHeight) / 2;
+                transform.position += new Vector3(0, (standingHeight - crouchingHeight) / 2);
+                controller.enabled = true;
             }
-
-            //if (isCrouching)
-            //{
-            //    isCrouching = false;
-            //    controller.enabled = false;
-            //    transform.position += new Vector3(0, crouchHeight / 2);
-            //    controller.enabled = true;
-            //    controller.height = standingHeight;
-            //    currentSpeed = crouchSpeed;
-            //}
-            //else
-            //{
-            //    isCrouching = true;
-            //    controller.height = crouchHeight;
-            //    controller.enabled = false;
-            //    transform.position -= new Vector3(0, crouchHeight / 2);
-            //    controller.enabled = true;
-            //    currentSpeed = walkSpeed;
-            //}
+            else if (!isCrouching)
+            {
+                isCrouching = true;
+                currentSpeed = crouchSpeed;
+                controller.enabled = false;
+                controller.height = crouchingHeight;
+                controller.center += Vector3.up * (standingHeight - crouchingHeight) / 2;
+                transform.position -= new Vector3(0, (standingHeight - crouchingHeight));
+                controller.enabled = true;
+            }
 
             uiManager.CrouchingImage(isCrouching);
         }
+
+        //if (Input.GetKeyDown(KeyCode.LeftControl))
+        //{
+        //    if (isCrouching && !Physics.CheckSphere(playerHeadPositionOrigin, 0.6f, headMask))
+        //    {
+        //        isCrouching = false;
+        //        currentSpeed = walkSpeed;
+        //        playerHead.transform.localPosition = playerHeadPositionOrigin;
+        //    }
+        //    else if (!isCrouching)
+        //    {
+        //        isCrouching = true;
+        //        currentSpeed = crouchSpeed;
+        //        playerHead.transform.localPosition = crouchHeadTransform.localPosition;
+        //    }
+
+        //    uiManager.CrouchingImage(isCrouching);
+        //}
     }
+
+
 
     public void TeleportPlayer(Vector3 pos) //Respawn method, this method is here because it needs the controller, playervariables handles player death, this only teleports the player
     {
@@ -303,19 +324,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckGround()
     {
-        //CheckSphere creates an overlap-check in the form of a sphere at a [1]position, with a [2]radius, that only detects objects(with collider) assigned with a specific [3]layer.
+        //The alternative check if player is grounded by casting CheckSphere.
         isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
 
         //Reset gravity force when the character is grounded. This prevents gravity buildup.
         if (controller.isGrounded && yVelocity.y < 0)
             yVelocity.y = -2f;
     }
-
-    //public static bool IsDodging() { return isDodging; }
-
-    //public bool IsSprinting() { return isSprinting; }
-
-    //public bool IsMoving() { return controller.isGrounded && inputX != 0 || controller.isGrounded && inputZ != 0; }
 
     public float GetHorizontalInput() { return inputX; }
     public float GetVerticalInput() { return inputZ; }
@@ -360,7 +375,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.white;
-        Gizmos.DrawSphere(camHolderPositionOrigin, 0.6f);
+        if (isCrouching)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(playerHead.transform.position + Vector3.up * crouchingHeight, 0.6f);
+        }
     }
 }

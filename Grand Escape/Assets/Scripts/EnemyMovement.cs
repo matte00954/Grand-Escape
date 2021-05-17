@@ -46,7 +46,7 @@ public class EnemyMovement : MonoBehaviour
     // Animations
     private Animator anim;
 
-    private void Start() => player = GameObject.Find("First Person Player");
+    private void Start() => player = GameObject.Find("PlayerHead");
 
     private void Awake()
     {

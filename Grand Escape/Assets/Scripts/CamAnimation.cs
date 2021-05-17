@@ -4,7 +4,6 @@ using UnityEngine;
 public class CamAnimation : MonoBehaviour
 {
     private AudioManager audioManager;
-    private PlayerMovement movement;
     private Animator animator;
 
     private readonly string isMovingParameterName = "IsMoving";
@@ -19,7 +18,6 @@ public class CamAnimation : MonoBehaviour
     {
         audioManager = FindObjectOfType<AudioManager>();
         animator = GetComponent<Animator>();
-        movement = GetComponentInParent<PlayerMovement>();
     }
 
     private void Update() => UpdateAnimatorParameters();
@@ -35,7 +33,7 @@ public class CamAnimation : MonoBehaviour
     public void PlayDeathAnimation() => animator.SetTrigger(playerDiedParameterName);
     public void PlayDodgeLeft() => animator.SetTrigger(isDodgingLeftParameterName);
     public void PlayDodgeRight() => animator.SetTrigger(isDodgingRightParameterName);
-    public void CallAnimationSFX(string name)
+    public void CallAnimationSFX(string name) //This method is only called from animation events.
     {
         if (name is null)
         {

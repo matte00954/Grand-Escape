@@ -19,7 +19,7 @@ public class EnemyShooting : MonoBehaviour
     private float rotationSpeedMultiplier;
     private float reloadTimer;
 
-    private string fireAnimationName;
+    private readonly string fireAnimationName = "Fire";
 
     private bool isAlerted = false;
 
@@ -30,8 +30,7 @@ public class EnemyShooting : MonoBehaviour
     {
         // Animations
         animator = GetComponent<Animator>();
-        player = GameObject.Find("First Person Player");
-        fireAnimationName = "Fire";
+        player = GameObject.Find("PlayerHead");
     }
 
     void Update()

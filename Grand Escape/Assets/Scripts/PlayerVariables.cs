@@ -160,50 +160,6 @@ public class PlayerVariables : MonoBehaviour
                 currentAmmoReserve = maxAmmoReserve;
             }
         }
-
-        //if (other.gameObject.CompareTag("Health boost") && healthPoints < maxHealthPoints)
-        //{
-        //    healthPoints += healthBoostAmount;
-        //    Destroy(other.gameObject);
-
-        //    if (healthPoints > maxHealthPoints)
-        //    {
-        //        Debug.Log("HP restored to max");
-        //        healthPoints = maxHealthPoints;
-        //    }
-        //    else
-        //        Debug.Log("HP restored by " + healthBoostAmount);
-
-        //}
-
-        //if (other.gameObject.CompareTag("Ammo boost") && currentAmmoReserve < maxAmmoReserve)
-        //{
-        //    currentAmmoReserve += ammoBoxAmount;
-        //    Destroy(other.gameObject);
-
-        //    if (currentAmmoReserve > maxAmmoReserve)
-        //    {
-        //        Debug.Log("Ammo restored to max");
-        //        currentAmmoReserve = maxAmmoReserve;
-        //    }
-        //    else
-        //        Debug.Log("Ammo restored by " + ammoBoxAmount);
-
-        //}
-
-        //if (other.gameObject.CompareTag("Stamina boost") && currentStamina < maxStamina)
-        //{
-        //    currentStamina += staminaPickUpRestoreAmount;
-        //    Destroy(other.gameObject);
-
-        //    if (currentStamina > maxStamina)
-        //    {
-        //        Debug.Log("Stamina restored to max");
-        //        currentStamina = maxStamina;
-        //    }
-        //    else
-        //        Debug.Log("Stamina restored by " + staminaPickUpRestoreAmount);
-        //}
     }
 
     private void Update()
@@ -315,50 +271,4 @@ public class PlayerVariables : MonoBehaviour
         }
     }
 
-    //private void Pickups(Collider other) //All pickups should be here
-    //{
-    //    if (other.gameObject.CompareTag("Health boost") && healthPoints < maxHealthPoints)
-    //    {
-    //        healthPoints += healthBoostAmount;
-    //        Destroy(other.gameObject);
-
-    //        if (healthPoints > maxHealthPoints)
-    //        {
-    //            Debug.Log("HP restored to max");
-    //            healthPoints = maxHealthPoints;
-    //        }
-    //        else
-    //            Debug.Log("HP restored by " + healthBoostAmount);
-
-    //    }
-
-    //    if (other.gameObject.CompareTag("Ammo boost") && currentAmmoReserve < maxAmmoReserve)
-    //    {
-    //        currentAmmoReserve += ammoBoxAmount;
-    //        Destroy(other.gameObject);
-
-    //        if (currentAmmoReserve > maxAmmoReserve)
-    //        {
-    //            Debug.Log("Ammo restored to max");
-    //            currentAmmoReserve = maxAmmoReserve;
-    //        }
-    //        else
-    //            Debug.Log("Ammo restored by " + ammoBoxAmount);
-
-    //    }
-
-    //    if (other.gameObject.CompareTag("Stamina boost") && currentStamina < maxStamina)
-    //    {
-    //        currentStamina += staminaPickUpRestoreAmount;
-    //        Destroy(other.gameObject);
-
-    //        if (currentStamina > maxStamina)
-    //        {
-    //            Debug.Log("Stamina restored to max");
-    //            currentStamina = maxStamina;
-    //        }
-    //        else
-    //            Debug.Log("Stamina restored by " + staminaPickUpRestoreAmount);
-    //    }
-    //}
 }

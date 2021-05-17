@@ -21,16 +21,21 @@ public class PlayerVariables : MonoBehaviour
     [Header("Start Variables")] //variables that are not max after respawn
     [SerializeField] private int startAmmoReserve;
 
-    [Header("Pickup Amount")] //TODO consistent naming?
-    [SerializeField] private int healthBoostAmount;
-    [SerializeField] private int ammoBoxAmount;
-    [SerializeField] private int staminaPickUpRestoreAmount;
+    //[Header("Pickup Amount")] //TODO consistent naming?
+    //[SerializeField] private int healthBoostAmount;
+    //[SerializeField] private int ammoBoxAmount;
+    //[SerializeField] private int staminaPickUpRestoreAmount;
 
     [Header("Timers")] //max timers are constant
     [SerializeField] private float timerUntilRespawnMax;
     [SerializeField] private float timerUntilStaminaComparisonCheckMax; //In frames (done in update)
     [SerializeField] private float timerUntilStaminaRegenMax; //In frames (done in update)
     [SerializeField] private float recentDamageTimerMax; //In frames (done in update)
+
+
+    [Header("For testing")] //max timers are constant
+    [SerializeField] private bool PlayerSuicideAvailable;
+    [SerializeField] private bool GodMode;
 
     //Timers that changes during runtime
     private float timeUntilRespawn;
@@ -58,6 +63,9 @@ public class PlayerVariables : MonoBehaviour
 
     private void Start()
     {
+        if (GodMode)
+            maxHealthPoints = 9999;
+
         healthPoints = maxHealthPoints;
         currentAmmoReserve = startAmmoReserve;
         currentStamina = maxStamina;
@@ -117,21 +125,108 @@ public class PlayerVariables : MonoBehaviour
             Debug.Log("Out of stamina");
     }
 
+    public void AddingStatAfterPickup(string statToChange, int amount)
+    {
+        if (statToChange.Contains("stamina"))
+        {
+            currentStamina += amount;
+            Debug.Log("Stamina restored by " + amount);
+
+            if (currentStamina > maxStamina)
+            {
+                currentStamina = maxStamina;
+            }
+        }
+
+        if (statToChange.Contains("health"))
+        {
+            healthPoints += amount;
+            Debug.Log("Health restored by " + amount);
+
+            if (healthPoints > maxHealthPoints)
+            {
+                healthPoints = maxHealthPoints;
+            }
+        }
+
+        if (statToChange.Contains("ammo"))
+        {
+            currentAmmoReserve += amount;
+
+            Debug.Log("Ammo restored by " + amount);
+
+            if (currentAmmoReserve > maxAmmoReserve)
+            {
+                currentAmmoReserve = maxAmmoReserve;
+            }
+        }
+
+        //if (other.gameObject.CompareTag("Health boost") && healthPoints < maxHealthPoints)
+        //{
+        //    healthPoints += healthBoostAmount;
+        //    Destroy(other.gameObject);
+
+        //    if (healthPoints > maxHealthPoints)
+        //    {
+        //        Debug.Log("HP restored to max");
+        //        healthPoints = maxHealthPoints;
+        //    }
+        //    else
+        //        Debug.Log("HP restored by " + healthBoostAmount);
+
+        //}
+
+        //if (other.gameObject.CompareTag("Ammo boost") && currentAmmoReserve < maxAmmoReserve)
+        //{
+        //    currentAmmoReserve += ammoBoxAmount;
+        //    Destroy(other.gameObject);
+
+        //    if (currentAmmoReserve > maxAmmoReserve)
+        //    {
+        //        Debug.Log("Ammo restored to max");
+        //        currentAmmoReserve = maxAmmoReserve;
+        //    }
+        //    else
+        //        Debug.Log("Ammo restored by " + ammoBoxAmount);
+
+        //}
+
+        //if (other.gameObject.CompareTag("Stamina boost") && currentStamina < maxStamina)
+        //{
+        //    currentStamina += staminaPickUpRestoreAmount;
+        //    Destroy(other.gameObject);
+
+        //    if (currentStamina > maxStamina)
+        //    {
+        //        Debug.Log("Stamina restored to max");
+        //        currentStamina = maxStamina;
+        //    }
+        //    else
+        //        Debug.Log("Stamina restored by " + staminaPickUpRestoreAmount);
+        //}
+    }
+
     private void Update()
     {
-        PlayerDeath();
         StaminaRegen();
         UiUpdate();
         RecentDamageTaken();
+        PlayerDeath();
+
+        if (PlayerSuicideAvailable)
+            PlayerSuicide();
     }
 
-    private void PlayerDeath()
+    private void PlayerSuicide() //For testing
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
             healthPoints = -1;
         }
+    }
 
+    private void PlayerDeath()
+    {
 
         if (healthPoints <= 0)
         {
@@ -146,7 +241,7 @@ public class PlayerVariables : MonoBehaviour
 
             if (timeUntilRespawn <= 0)
             {
-                gameManager.GetComponent<EnemyRespawnHandler>().RepsawnAll();
+                gameManager.GetComponent<CheckpointRespawnHandler>().RepsawnAll();
                 ResetAllStats();
                 pm.TeleportPlayer(currentRespawnPoint.position);
                 uiManager.DeathText(false);
@@ -201,7 +296,7 @@ public class PlayerVariables : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Pickups(other);
+        //Pickups(other);
         CheckPointAndEndScene(other);
     }
 
@@ -220,50 +315,50 @@ public class PlayerVariables : MonoBehaviour
         }
     }
 
-    private void Pickups(Collider other) //All pickups should be here
-    {
-        if (other.gameObject.CompareTag("Health boost") && healthPoints < maxHealthPoints)
-        {
-            healthPoints += healthBoostAmount;
-            Destroy(other.gameObject);
+    //private void Pickups(Collider other) //All pickups should be here
+    //{
+    //    if (other.gameObject.CompareTag("Health boost") && healthPoints < maxHealthPoints)
+    //    {
+    //        healthPoints += healthBoostAmount;
+    //        Destroy(other.gameObject);
 
-            if (healthPoints > maxHealthPoints)
-            {
-                Debug.Log("HP restored to max");
-                healthPoints = maxHealthPoints;
-            }
-            else
-                Debug.Log("HP restored by " + healthBoostAmount);
+    //        if (healthPoints > maxHealthPoints)
+    //        {
+    //            Debug.Log("HP restored to max");
+    //            healthPoints = maxHealthPoints;
+    //        }
+    //        else
+    //            Debug.Log("HP restored by " + healthBoostAmount);
 
-        }
+    //    }
 
-        if (other.gameObject.CompareTag("Ammo boost") && currentAmmoReserve < maxAmmoReserve)
-        {
-            currentAmmoReserve += ammoBoxAmount;
-            Destroy(other.gameObject);
+    //    if (other.gameObject.CompareTag("Ammo boost") && currentAmmoReserve < maxAmmoReserve)
+    //    {
+    //        currentAmmoReserve += ammoBoxAmount;
+    //        Destroy(other.gameObject);
 
-            if (currentAmmoReserve > maxAmmoReserve)
-            {
-                Debug.Log("Ammo restored to max");
-                currentAmmoReserve = maxAmmoReserve;
-            }
-            else
-                Debug.Log("Ammo restored by " + ammoBoxAmount);
+    //        if (currentAmmoReserve > maxAmmoReserve)
+    //        {
+    //            Debug.Log("Ammo restored to max");
+    //            currentAmmoReserve = maxAmmoReserve;
+    //        }
+    //        else
+    //            Debug.Log("Ammo restored by " + ammoBoxAmount);
 
-        }
+    //    }
 
-        if (other.gameObject.CompareTag("Stamina boost") && currentStamina < maxStamina)
-        {
-            currentStamina += staminaPickUpRestoreAmount;
-            Destroy(other.gameObject);
+    //    if (other.gameObject.CompareTag("Stamina boost") && currentStamina < maxStamina)
+    //    {
+    //        currentStamina += staminaPickUpRestoreAmount;
+    //        Destroy(other.gameObject);
 
-            if (currentStamina > maxStamina)
-            {
-                Debug.Log("Stamina restored to max");
-                currentStamina = maxStamina;
-            }
-            else
-                Debug.Log("Stamina restored by " + staminaPickUpRestoreAmount);
-        }
-    }
+    //        if (currentStamina > maxStamina)
+    //        {
+    //            Debug.Log("Stamina restored to max");
+    //            currentStamina = maxStamina;
+    //        }
+    //        else
+    //            Debug.Log("Stamina restored by " + staminaPickUpRestoreAmount);
+    //    }
+    //}
 }

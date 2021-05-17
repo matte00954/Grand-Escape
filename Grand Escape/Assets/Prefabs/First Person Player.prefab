@@ -2634,7 +2634,6 @@ GameObject:
   - component: {fileID: 5678491154712510801}
   - component: {fileID: 5678491154712510807}
   - component: {fileID: 5678491154712510805}
-  - component: {fileID: 825756553128633993}
   m_Layer: 6
   m_Name: First Person Player
   m_TagString: Player
@@ -2738,25 +2737,12 @@ MonoBehaviour:
   maxAmmoReserve: 10
   maxStamina: 100
   startAmmoReserve: 5
-  healthBoostAmount: 50
-  ammoBoxAmount: 5
-  staminaPickUpRestoreAmount: 25
   timerUntilRespawnMax: 3
   timerUntilStaminaComparisonCheckMax: 0.01
   timerUntilStaminaRegenMax: 0.01
   recentDamageTimerMax: 0.6
---- !u!114 &825756553128633993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5678491154712510800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aacfdfd2207bfdc49aa3c747ba3fdd5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  PlayerSuicideAvailable: 0
+  GodMode: 0
 --- !u!1 &5678491154870700840
 GameObject:
   m_ObjectHideFlags: 0

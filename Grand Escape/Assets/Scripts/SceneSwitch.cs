@@ -1,4 +1,4 @@
-//Main author: Mattias Larsson
+//Author: Mattias Larsson
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

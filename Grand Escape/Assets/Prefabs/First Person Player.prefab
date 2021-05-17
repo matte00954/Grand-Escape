@@ -2689,12 +2689,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbffbb62f9c81e41af3e87ed52c696f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioManager: {fileID: 5867011082258007188, guid: eae677ce2dd650d44b5011df900429b2, type: 3}
-  uiManager: {fileID: 4884748120044031724, guid: 757b00d841697c3489ea049a37d13834, type: 3}
   groundCheck: {fileID: 5678491155964031437}
+  camHolder: {fileID: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 128
+  headMask:
+    serializedVersion: 2
+    m_Bits: 0
   groundCheckRadius: 0.4
   walkSpeed: 12
   gravity: -19.62
@@ -2730,7 +2732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
-  gameManager: {fileID: 836856738668078748, guid: 39ed1fe7731245a4bb647fdeb77c9f8e, type: 3}
+  gameManager: {fileID: 0}
   uiManager: {fileID: 0}
   staminaRegenPerTick: 0.05
   maxHealthPoints: 100
@@ -2741,7 +2743,7 @@ MonoBehaviour:
   timerUntilStaminaComparisonCheckMax: 0.01
   timerUntilStaminaRegenMax: 0.01
   recentDamageTimerMax: 0.6
-  PlayerSuicideAvailable: 0
+  PlayerSuicideAvailable: 1
   GodMode: 0
 --- !u!1 &5678491154870700840
 GameObject:
@@ -3169,8 +3171,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5678491155972590117}
-  - component: {fileID: 5678491155972590123}
   - component: {fileID: 5678491155972590122}
+  - component: {fileID: 231048073}
   m_Layer: 0
   m_Name: CamHolder
   m_TagString: Untagged
@@ -3193,27 +3195,6 @@ Transform:
   m_Father: {fileID: 5678491154712510806}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &5678491155972590123
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5678491155972590116}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: 0fd4fb930b8907241892d7b4b16280b1, type: 2}
-  - {fileID: 7400000, guid: b8711391fee1ccb4ebf295d3d1c76b0f, type: 2}
-  - {fileID: 7400000, guid: 4592f4c977c5f9d4d8bfad2e9f7ae6c6, type: 2}
-  - {fileID: 7400000, guid: 7995f6ce1ada3754da410b6916c6fdf7, type: 2}
-  - {fileID: 7400000, guid: 4d74cef1b2011ea458d8ec1e13266ab9, type: 2}
-  - {fileID: 7400000, guid: c561ff5d4d56296409a9e410dc77b814, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &5678491155972590122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3226,6 +3207,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c47fa1483eb84498e9e2a566e0bd2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &231048073
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5678491155972590116}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 762aad621c9c769479b13d8bf3d159e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5678491156329480982
 GameObject:
   m_ObjectHideFlags: 0

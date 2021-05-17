@@ -13,10 +13,11 @@ public class CheckpointRespawnHandler : MonoBehaviour
 
     private void Start()
     {
+
         for (int i = 0; i < checkPointList.Count; i++)
         {
-            enemyRespawnList[i] = checkPointList[i].GetComponent<EnemyRespawn>();
-            objectRespawnList[i] = checkPointList[i].GetComponent<ObjectRespawn>();
+            enemyRespawnList.Add(checkPointList[i].GetComponent<EnemyRespawn>());
+            objectRespawnList.Add(checkPointList[i].GetComponent<ObjectRespawn>());
 
             if (checkPointList[i] == null)
             {
@@ -53,7 +54,7 @@ public class CheckpointRespawnHandler : MonoBehaviour
                 Debug.LogError(i + " in the game manager is null");
             else
             {
-                objectRespawnList[i].GetComponent<EnemyRespawn>().RespawnEnemies();
+                objectRespawnList[i].GetComponent<ObjectRespawn>().RespawnObjects();
                 Debug.Log(objectRespawnList[i] + " has respawned pickups and other objects in this list");
             }
         }

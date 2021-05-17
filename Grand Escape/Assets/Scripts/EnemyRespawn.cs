@@ -8,11 +8,11 @@ public class EnemyRespawn : MonoBehaviour
 
     [SerializeField] private List<GameObject> enemies = new List<GameObject>();
 
-    private void SetEnemiesInactiveBeforeRespawn() //not used at the moment
-    {
-        for (int i = 0; i < enemies.Count - 1; i++)
-            enemies[i].SetActive(false);
-    }
+    //private void SetEnemiesInactiveBeforeRespawn() //not used at the moment
+    //{
+    //    for (int i = 0; i < enemies.Count - 1; i++)
+    //        enemies[i].SetActive(false);
+    //}
 
     public void RespawnEnemies() 
     {

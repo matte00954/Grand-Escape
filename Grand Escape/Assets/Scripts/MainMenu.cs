@@ -1,3 +1,5 @@
+//Main Author: Miranda Greting
+//Secondary Author: William Örnquist
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,9 +9,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject howToPlay;
-    [SerializeField] private Animator newGameAnim;
-    [SerializeField] private Animator exitAnim;
-    [SerializeField] private Animator buttonAnim;
+    //[SerializeField] private Animator newGameAnim;
+    //[SerializeField] private Animator exitAnim;
+    //[SerializeField] private Animator buttonAnim;
 
     [SerializeField] private MouseLook mouseLook;
     [SerializeField] private PlayerShooting flintScript;
@@ -32,6 +34,8 @@ public class MainMenu : MonoBehaviour
                 OpenPause();
             else if (paused)
                 ClosePause();
+            CloseHTP();
+                CloseSettings();
         }
 
         if (paused)     //checks if pausemenu is active
@@ -48,12 +52,6 @@ public class MainMenu : MonoBehaviour
     public bool IsPaused()  //checks if game is paused (if pause menu is activated) or not
     {
         return paused;
-    }
-
-    public void StartGame()
-    {
-        newGameAnim.SetTrigger("fadeOut");
-        StartCoroutine(Delay(1));
     }
 
     public void OpenSettings() => settingsMenu.SetActive(true);
@@ -81,7 +79,7 @@ public class MainMenu : MonoBehaviour
 
     public void PressPause()    //method for pausebutton that toggles pause menu on or off depending on whether it's already opened
     {
-        buttonAnim.SetTrigger("pressed");
+        //buttonAnim.SetTrigger("pressed");
         if (!paused)
             OpenPause();
         else if (paused)
@@ -97,7 +95,6 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        //exitAnim.SetTrigger("fadeOut");
         Debug.Log("Game was Quit");
         Application.Quit();
     }

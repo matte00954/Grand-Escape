@@ -25,9 +25,9 @@ public class ToggleAnimation : MonoBehaviour
         {
             ToggleValueChanged(toggle);
         }); //adds a listener to when toggle value is changed
+        inactiveSword = inactiveSword.GetComponent<Image>();
         inactiveSword.color = new Color(inactiveSword.color.r, inactiveSword.color.g, inactiveSword.color.b, 0f);     //deactivates sword image
         sword = sword.GetComponent<Image>();
-        inactiveSword = inactiveSword.GetComponent<Image>();
         masterVolume.onValueChanged.AddListener(delegate { MasterValueChanged(); });
         musicVolume.onValueChanged.AddListener(delegate { MusicValueChanged(); });
         masterScript = masterVolume.GetComponent<VolumeSliderAnimation>();
@@ -47,6 +47,11 @@ public class ToggleAnimation : MonoBehaviour
     {
         if (!toggle.isOn)
         {
+            //toggle.isOn = true;
+        }
+        if(masterVolume.value != 0)
+        {
+            lastMasterValue = (int)masterVolume.value;
             toggle.isOn = true;
         }
     }
@@ -55,6 +60,11 @@ public class ToggleAnimation : MonoBehaviour
     {
         if (!toggle.isOn)
         {
+            //toggle.isOn = true;
+        }
+        if (musicVolume.value != 0)
+        {
+            lastMusicValue = (int)musicVolume.value;
             toggle.isOn = true;
         }
     }
@@ -65,12 +75,6 @@ public class ToggleAnimation : MonoBehaviour
         {
             sword.color = new Color(sword.color.r, sword.color.g, sword.color.b, 0.5f);
             inactiveSword.color = new Color(inactiveSword.color.r, inactiveSword.color.g, inactiveSword.color.b, 0.5f);
-            if (masterVolume.value != 0 || musicVolume.value != 0)
-            {
-                lastMasterValue = (int)masterVolume.value;
-                lastMusicValue = (int)musicVolume.value;
-                Debug.Log(lastMasterValue.ToString() + lastMusicValue.ToString());
-            }
             masterVolume.value = 0;
             musicVolume.value = 0;
             //swordAnim.SetTrigger("fadeOut");    

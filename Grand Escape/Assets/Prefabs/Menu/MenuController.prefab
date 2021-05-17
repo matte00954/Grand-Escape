@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1347217543691652737}
   - component: {fileID: 1347217543691652742}
-  - component: {fileID: 1347217543691652736}
   m_Layer: 0
   m_Name: MenuController
   m_TagString: Untagged
@@ -46,23 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsMenu: {fileID: 8065556348545749021, guid: 8fa82caf5911472458a90fd8d38bbf7b, type: 3}
   pauseMenu: {fileID: 977183634348126334, guid: bea518b3286ac8948a3300c3b6c05ecb, type: 3}
+  howToPlay: {fileID: 0}
   newGameAnim: {fileID: 0}
   exitAnim: {fileID: 0}
   buttonAnim: {fileID: 0}
-  mainCamera: {fileID: 0}
-  flintlock: {fileID: 0}
-  rifle: {fileID: 0}
---- !u!114 &1347217543691652736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1347217543691652739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8766c6e34d1bedc41b36b26f6a95108a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startText: {fileID: 0}
-  mainMenu: {fileID: 0}
+  mouseLook: {fileID: 0}
+  flintScript: {fileID: 0}
+  rifleScript: {fileID: 0}

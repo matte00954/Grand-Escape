@@ -1,13 +1,16 @@
+//Main Author: Miranda Greting
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStart : MonoBehaviour
 {
     [SerializeField] private GameObject startText;
     [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject settingsMenu;
+    [SerializeField] private Animator newGameAnim;
     private Animator anim;
     private Animator menuAnim;
-    private GameObject newGame;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +19,7 @@ public class GameStart : MonoBehaviour
         menuAnim = mainMenu.GetComponent<Animator>();
         //newGame = mainMenu.GetChild(0).gameObject;
         mainMenu.SetActive(false);
+        settingsMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -24,13 +28,35 @@ public class GameStart : MonoBehaviour
         if (Input.anyKey)
         {
             anim.SetTrigger("fadeOut");
-            StartCoroutine(DelayInactivation());
+            StartCoroutine(DelayInactivation(1));
         }
     }
 
-    IEnumerator DelayInactivation()
+    public void OpenSettings() => settingsMenu.SetActive(true);
+    public void CloseSettings() => settingsMenu.SetActive(false);
+
+    public void StartGame()
     {
-        yield return new WaitForSeconds(1);
+        newGameAnim.SetTrigger("fadeOut");
+        StartCoroutine(StartDelay(1));
+    }
+
+    public void QuitGame()
+    {
+        //exitAnim.SetTrigger("fadeOut");
+        Debug.Log("Game was Quit");
+        Application.Quit();
+    }
+
+    IEnumerator StartDelay(int seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(1);
+    }
+
+    IEnumerator DelayInactivation(int seconds)
+    {
+        yield return new WaitForSeconds(seconds);
         startText.SetActive(false);
         mainMenu.SetActive(true);
         menuAnim.SetTrigger("fadeIn");

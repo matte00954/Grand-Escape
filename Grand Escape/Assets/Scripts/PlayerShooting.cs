@@ -16,6 +16,7 @@ public class PlayerShooting : MonoBehaviour
     private PlayerVariables playerVariables;
     private CharacterController charController;
     private Animator animator;
+    private AudioManager audioManager;
 
     private bool isReloading;
     private bool justFired;
@@ -30,8 +31,8 @@ public class PlayerShooting : MonoBehaviour
         playerCamera = GetComponentInParent<Camera>();
         playerVariables = GetComponentInParent<PlayerVariables>();
         charController = GetComponentInParent<CharacterController>();
-
         animator = GetComponent<Animator>();
+        audioManager = FindObjectOfType<AudioManager>();
 
         isReloading = false;
         currentAmmoLoaded = weaponType.GetAmmoCap();
@@ -60,7 +61,6 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     private void Update()
     {
         if (PlayerVariables.isAlive)
@@ -77,7 +77,7 @@ public class PlayerShooting : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && currentAmmoLoaded > 0)
             {
                 currentAmmoLoaded--;
-                FindObjectOfType<AudioManager>().Play(weaponType.GetSoundWeaponClick());
+                audioManager.Play(weaponType.GetSoundWeaponClick());
                 animator.SetTrigger("Fire");
                 uiManager.WeaponStatus(false);
                 Instantiate(bulletPrefab, point, playerCamera.transform.rotation);
@@ -91,7 +91,7 @@ public class PlayerShooting : MonoBehaviour
             else if(Input.GetMouseButtonDown(0) && currentAmmoLoaded <= 0)
             {
                 Debug.Log("Weapon empty");
-                FindObjectOfType<AudioManager>().Play(weaponType.GetSoundWeaponClick());
+                audioManager.Play(weaponType.GetSoundWeaponClick());
             }
 
             if (Input.GetKeyDown(KeyCode.R) && !isReloading)
@@ -99,7 +99,7 @@ public class PlayerShooting : MonoBehaviour
                 if (currentAmmoLoaded < weaponType.GetAmmoCap() && playerVariables.GetCurrentAmmoReserve() > 0)
                 {
                     isReloading = true;
-                    FindObjectOfType<AudioManager>().Play(weaponType.GetSoundReloadStart());
+                    audioManager.Play(weaponType.GetSoundReloadStart());
                     animator.SetTrigger("Reload");
                 }
                 else if (playerVariables.GetCurrentAmmoReserve() == 0)
@@ -117,7 +117,7 @@ public class PlayerShooting : MonoBehaviour
             timerFireSound -= Time.deltaTime;
             if (timerFireSound > 0)
             {
-                FindObjectOfType<AudioManager>().Play(weaponType.GetSoundFire());
+                audioManager.Play(weaponType.GetSoundFire());
                 justFired = false;
             }
         }
@@ -134,7 +134,7 @@ public class PlayerShooting : MonoBehaviour
             reloadTimer += Time.deltaTime;
         else if (reloadTimer >= reloadTime)
         {
-            FindObjectOfType<AudioManager>().Play(weaponType.GetSoundReloadFinish());
+            audioManager.Play(weaponType.GetSoundReloadFinish());
             animator.SetTrigger("FinishReload");
 
             reloadTimer = 0f;

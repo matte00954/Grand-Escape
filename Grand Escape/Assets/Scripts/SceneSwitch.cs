@@ -1,3 +1,4 @@
+//Main author: Mattias Larsson
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

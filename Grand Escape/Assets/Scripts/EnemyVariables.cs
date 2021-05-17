@@ -1,3 +1,5 @@
+//Main author: Mattias Larsson
+//Secondary author: William Örnquist
 using UnityEngine;
 
 public class EnemyVariables : MonoBehaviour

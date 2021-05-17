@@ -1,3 +1,5 @@
+//Main author: Mattias Larsson
+//Secondary author: William Örnquist
 using UnityEngine;
 
 public class PlayerVariables : MonoBehaviour
@@ -200,7 +202,6 @@ public class PlayerVariables : MonoBehaviour
     {
         Pickups(other);
         CheckPointAndEndScene(other);
-        PlayerDrown(other);
     }
 
     private void CheckPointAndEndScene(Collider other) //For checkpoints and ending scenes
@@ -215,14 +216,6 @@ public class PlayerVariables : MonoBehaviour
         if (other.gameObject.CompareTag("Scene end"))
         {
             gameManager.GetComponent<SceneSwitch>().ChangeScene();
-        }
-    }
-
-    private void PlayerDrown(Collider other) //Player should die from touching this collider trigger
-    {
-        if (other.gameObject.CompareTag("Water"))
-        {
-            healthPoints = -1;
         }
     }
 

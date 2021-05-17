@@ -1,3 +1,4 @@
+//Author: Mattias Larsson
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New enemy type", menuName = "Enemy")]

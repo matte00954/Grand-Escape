@@ -1,3 +1,5 @@
+//Main author: William Örnquist
+//Secondary author: Mattias Larsson
 using UnityEngine;
 
 public class AmmoVelocity : MonoBehaviour

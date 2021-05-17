@@ -1,3 +1,4 @@
+//Author: Mattias Larsson
 using UnityEngine;
 using System.Collections.Generic;
 

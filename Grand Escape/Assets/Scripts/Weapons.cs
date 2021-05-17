@@ -1,15 +1,9 @@
+//Author: Mattias Larsson
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Weapons")]
 public class Weapons : ScriptableObject
 {
-    [Header("DO NOT USE")]
-    [SerializeField] private MeshFilter weaponMeshFilter; //Not sure if needed, NOT USED
-    [SerializeField] private MeshRenderer weaponMeshRenderer; //Not sure if needed, NOT USED
-    private Transform weaponTransform; //might not be used
-
-    [SerializeField] private Sprite crosshair; //crosshair on UI
-
     [Header("Stats")]
     [SerializeField] private string weaponName; //musket/pistol
     [SerializeField] private int weaponDamage = 100; //Should be 100, unless changed design decision
@@ -21,10 +15,6 @@ public class Weapons : ScriptableObject
     [SerializeField] private string fireName;
     [SerializeField] private string reloadStartName;
     [SerializeField] private string reloadFinishName;
-
-    public MeshFilter GetWepMeshFilter() { return weaponMeshFilter; }
-    public MeshRenderer GetWepMeshRenderer() { return weaponMeshRenderer; }
-    public Sprite GetWepSprite() { return crosshair; }
 
     //Stats
     public string GetWepName() { return weaponName; }

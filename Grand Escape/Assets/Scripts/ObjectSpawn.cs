@@ -1,3 +1,4 @@
+//Main author: Mattias Larsson
 using UnityEngine;
 
 public class ObjectSpawn : MonoBehaviour

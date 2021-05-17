@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyShooting : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GameObject gun;
     [SerializeField] private GameObject barrelEnd;
     [SerializeField] private GameObject enemyAmmo;
     private GameObject player;
@@ -43,7 +42,7 @@ public class EnemyShooting : MonoBehaviour
             TakeAim();
             RotateGun();
         }
-        else if (!isAlerted && gun.transform.rotation != Quaternion.identity)
+        else if (!isAlerted && barrelEnd.transform.rotation != Quaternion.identity)
             RotateGun();
 
         if (reloadTimer > 0f)

@@ -138,6 +138,7 @@ public class PlayerVariables : MonoBehaviour
             isAlive = false;
             Debug.Log("PLAYER HAS DIED");
             uiManager.DeathText(true);
+            FindObjectOfType<CamAnimation>().PlayDeathAnimation();
 
             PlayerMovement pm = gameObject.GetComponent<PlayerMovement>();
 

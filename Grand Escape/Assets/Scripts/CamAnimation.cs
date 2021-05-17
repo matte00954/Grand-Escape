@@ -3,71 +3,46 @@ using UnityEngine;
 
 public class CamAnimation : MonoBehaviour
 {
-    private CharacterController controller;
+    private AudioManager audioManager;
     private PlayerMovement movement;
-    private Animation anim; //Empty GameObject's animation component
+    private Animator animator;
 
-    private bool left;
-    private bool right;
+    private readonly string isMovingParameterName = "IsMoving";
+    private readonly string isSprintingParameterName = "IsSprinting";
+    private readonly string isDodgingParameterName = "IsDodging";
+    private readonly string playerDiedParameterName = "PlayerDied";
+    private readonly string isDodgingLeftParameterName = "IsDodgingLeft";
+    private readonly string isDodgingRightParameterName = "IsDodgingRight";
+    private readonly string isAliveParameterName = "IsAlive";
 
-    void CameraAnimations()
+    private void Start()
     {
-        if (movement.GetHorizontalInput() != 0 || movement.GetVerticalInput() != 0)
-            if (controller.isGrounded && !movement.IsDodging())
-                PlayWalkAnimation();
-        
-        if (movement.IsDodging())
-            PlayDodgeAnimation();
-    }
-
-    private void PlayWalkAnimation()
-    {
-        //Waits until no walk animation is playing to play the next
-        if (!anim.isPlaying && left == true) 
-        {
-            if (movement.IsSprinting())
-                anim.Play("sprintBobLeft");
-            else
-                anim.Play("walkBobLeft");
-
-            left = false;
-            right = true;
-        }
-
-        if (!anim.isPlaying && right == true)
-        {
-            if (movement.IsSprinting())
-                anim.Play("sprintBobRight");
-            else
-                anim.Play("walkBobRight");
-
-            right = false;
-            left = true;
-        }
-    }
-
-    private void PlayDodgeAnimation() 
-    {
-        if (movement.GetHorizontalInput() == -1)
-            anim.Play("dodgeLeft");
-        else if (movement.GetHorizontalInput() == 1)
-            anim.Play("dodgeRight");
-    }
-
-
-    void Start()
-    { //First step in a new scene/life/etc. will be "walkLeft"
-        left = true;
-        right = false;
-
-        anim = GetComponent<Animation>();
-        controller = GetComponentInParent<CharacterController>();
+        audioManager = FindObjectOfType<AudioManager>();
+        animator = GetComponent<Animator>();
         movement = GetComponentInParent<PlayerMovement>();
     }
 
+    private void Update() => UpdateAnimatorParameters();
 
-    void Update()
+    private void UpdateAnimatorParameters()
     {
-        CameraAnimations();
+        animator.SetBool(isMovingParameterName, PlayerMovement.IsMoving);
+        animator.SetBool(isSprintingParameterName, PlayerMovement.IsSprinting);
+        animator.SetBool(isDodgingParameterName, PlayerMovement.IsDodging);
+        animator.SetBool(isAliveParameterName, PlayerVariables.isAlive);
+    }
+
+    public void PlayDeathAnimation() => animator.SetTrigger(playerDiedParameterName);
+    public void PlayDodgeLeft() => animator.SetTrigger(isDodgingLeftParameterName);
+    public void PlayDodgeRight() => animator.SetTrigger(isDodgingRightParameterName);
+    public void CallAnimationSFX(string name)
+    {
+        if (name is null)
+        {
+            Debug.LogError("CamAnimation 'CallFootstepSFX' recieved null.");
+            return;
+        }
+
+        audioManager.Play(name);
     }
 }

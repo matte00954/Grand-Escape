@@ -5,10 +5,12 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private Sound[] sounds;
-    [Range(0.1f, 2f)]
-    [SerializeField] private float walkSoundFrequency = 0.7f;
+    //[Range(0.1f, 2f)]
+    //[SerializeField] private float walkSoundFrequency = 0.7f;
 
-    private float walkSoundFrequencyTimer;
+    //private PlayerMovement playerMovement;
+
+    //private float walkSoundFrequencyTimer;
 
     private void Awake()
     {
@@ -34,14 +36,14 @@ public class AudioManager : MonoBehaviour
         Play("DefaultBGM");
     }
 
-    private void Update()
-    {
-        if (FindObjectOfType<PlayerMovement>().IsMoving() && walkSoundFrequencyTimer >= walkSoundFrequency)
-        {
-            Play("Walk1");
-            walkSoundFrequencyTimer = 0f;
-        }
-        else
-            walkSoundFrequencyTimer += Time.deltaTime;
-    }
+    //private void Update()
+    //{
+    //    if (PlayerMovement.IsMoving && walkSoundFrequencyTimer >= walkSoundFrequency)
+    //    {
+    //        Play("Walk1");
+    //        walkSoundFrequencyTimer = 0f;
+    //    }
+    //    else
+    //        walkSoundFrequencyTimer += Time.deltaTime;
+    //}
 }

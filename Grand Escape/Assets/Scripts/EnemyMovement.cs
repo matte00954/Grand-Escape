@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
+    [Header("Base variables")]
     [SerializeField] private LayerMask groundMask, playerMask, detectionMask;
     [SerializeField] private BoxCollider sightCollider;
     [SerializeField] private Transform headTransform;
@@ -66,7 +67,29 @@ public class EnemyMovement : MonoBehaviour
                 patrolTimer -= Time.deltaTime;
 
         UpdateDetectionRays();
+        UpdateState();
 
+        // Animations
+        anim.SetFloat("Speed", agent.speed/20);
+            
+    }
+
+    private void UpdateDetectionRays()
+    {
+        RaycastHit sightHit;
+        RaycastHit peripheralHit;
+
+        if (!isBlind && Physics.Raycast(headTransform.position, (player.transform.position - headTransform.position).normalized, out peripheralHit, peripheralRange, detectionMask))
+            if (peripheralHit.collider.gameObject.tag == "Player")
+                sawPlayer = true;
+
+        if (!isBlind && Physics.Raycast(headTransform.position, (player.transform.position - headTransform.position).normalized, out sightHit, sightRange, detectionMask))
+            if (sightHit.collider.gameObject.tag == "Player" && sightCollider.bounds.Contains(player.transform.position))
+                sawPlayer = true;
+    }
+
+    private void UpdateState()
+    {
         if (!IsStationary && !heardPlayer && !sawPlayer && alertTimer <= 0f) //Patroling state when not detecting player and not in an alerted state
             Patroling();
         else if (heardPlayer || sawPlayer) //If enemy either sees or hears the player, it will reset and start the timer for alerted state
@@ -92,24 +115,6 @@ public class EnemyMovement : MonoBehaviour
             isAlerted = false;
             enemyShooting.SetAlert(false);
         }
-
-        // Animations
-        anim.SetFloat("Speed", agent.speed/20);
-            
-    }
-
-    private void UpdateDetectionRays()
-    {
-        RaycastHit sightHit;
-        RaycastHit peripheralHit;
-
-        if (!isBlind && Physics.Raycast(headTransform.position, (player.transform.position - headTransform.position).normalized, out peripheralHit, peripheralRange, detectionMask))
-            if (peripheralHit.collider.gameObject.tag == "Player")
-                sawPlayer = true;
-
-        if (!isBlind && Physics.Raycast(headTransform.position, (player.transform.position - headTransform.position).normalized, out sightHit, sightRange, detectionMask))
-            if (sightHit.collider.gameObject.tag == "Player" && sightCollider.bounds.Contains(player.transform.position))
-                sawPlayer = true;
     }
 
     private void Patroling()
@@ -154,11 +159,6 @@ public class EnemyMovement : MonoBehaviour
     {
         agent.speed = chasingSpeed;
         agent.SetDestination(player.transform.position);
-    }
-
-    private void Scan()
-    {
-        //Make stationary enemies look around.
     }
 
     private void AttackPlayer()

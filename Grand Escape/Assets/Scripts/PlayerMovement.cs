@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private PlayerVariables playerVariables;
+    
     [Header("References")]
-    [SerializeField] private AudioManager audioManager;
-    [SerializeField] private UiManager uiManager;
     [SerializeField] private Transform groundCheck; //The groundCheck object.
+    [SerializeField] private GameObject camHolder;
+    private Vector3 camHolderPositionOrigin;
+
+    private CamAnimation camAnimation;
+    private PlayerVariables playerVariables;
+    private AudioManager audioManager;
+    private UiManager uiManager;
+    private CharacterController controller;
 
     [Header("Misc")]
     [SerializeField] private LayerMask groundMask;
+    [SerializeField] private LayerMask headMask;
     [SerializeField] private float groundCheckRadius = 0.4f; //The radius of the CheckSphere for 'groundCheck'.
-
-    private CharacterController controller;
 
     [Header("Movement")]
     [SerializeField] private float walkSpeed;
@@ -49,8 +54,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 yVelocity; //This vector is used for storing added gravity every frame, building up downward velocity
 
     //Input and movement
-    private bool isSprinting;
-    private bool isDodging;
+    public static bool IsMoving { get; private set; }
+    public static bool IsSprinting { get; private set; }
+    public static bool IsDodging { get; private set; }
     private bool isCrouching;
     private bool isSlowmotion;
     private bool isGrounded;
@@ -69,20 +75,22 @@ public class PlayerMovement : MonoBehaviour
     //Other timers
     private float slowMotionExhaustionTimer, slowMotionTickTimer, sprintExhaustionTimer;
 
-    private string horizontal, vertical;
+    private readonly string horizontal = "Horizontal";
+    private readonly string vertical = "Vertical";
 
     private void Start()
     {
+        camAnimation = GetComponentInChildren<CamAnimation>();
         playerVariables = GetComponent<PlayerVariables>();
         controller = GetComponent<CharacterController>();
+        audioManager = FindObjectOfType<AudioManager>();
+        uiManager = FindObjectOfType<UiManager>();
         standingHeight = controller.height;
+        camHolderPositionOrigin = camHolder.transform.position;
        
         //To prevent player from dodging at start
         rightDoubleTapTimer = maxDoubleTapTime;
         leftDoubleTapTimer = maxDoubleTapTime;
-
-        horizontal = "Horizontal";
-        vertical = "Vertical";
     }
 
     // Update is called once per frame
@@ -112,17 +120,21 @@ public class PlayerMovement : MonoBehaviour
         inputZ = Input.GetAxis(vertical);
         Vector3 move = transform.right * inputX + transform.forward * inputZ;
 
+        if (controller.isGrounded && inputX != 0 || controller.isGrounded && inputZ != 0)
+            IsMoving = true;
+        else
+            IsMoving = false;
         //Applying WASD- or Dodge-movement based on 'Dodge'-state
-        if (!isDodging)
+        if (!IsDodging)
             controller.Move(move * currentSpeed * Time.deltaTime);
     }
 
     private void CheckSprint()
     {
-        isSprinting = (!isDodging && !isCrouching && Input.GetKey(KeyCode.LeftShift) && 
+        IsSprinting = (!IsDodging && !isCrouching && Input.GetKey(KeyCode.LeftShift) && 
             playerVariables.GetCurrentStamina() > 0 && inputZ == 1 && inputX == 0 && !isExhaustedFromSprinting);
 
-        if (isSprinting)
+        if (IsSprinting)
         {
             currentSpeed = sprintSpeed;
             playerVariables.StaminaToBeUsed(staminaUsedForSprint * Time.deltaTime);
@@ -154,6 +166,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("Double tap right!");
                 Dodge(transform.right);
+                camAnimation.PlayDodgeRight();
             }
             rightDoubleTapTimer = maxDoubleTapTime;
         }
@@ -164,14 +177,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("Double tap left!");
                 Dodge(-transform.right);
+                camAnimation.PlayDodgeLeft();
             }
             leftDoubleTapTimer = maxDoubleTapTime;
         }
 
-        if (isDodging && dodgeTimer > 0f)
+        if (IsDodging && dodgeTimer > 0f)
             ApplyDodge();
         else
-            isDodging = false;
+            IsDodging = false;
 
         //Timers
         if (dodgeCooldownTimer > 0)
@@ -188,9 +202,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dodge(Vector3 direction)
     {
-        if (!isDodging && isGrounded && playerVariables.GetCurrentStamina() > staminaUsedForDodge && dodgeCooldownTimer <= 0)
+        if (!IsDodging && isGrounded && playerVariables.GetCurrentStamina() > staminaUsedForDodge && dodgeCooldownTimer <= 0)
         {
-            isDodging = true;
+            IsDodging = true;
             dodgeTimer = dodgeAmountOfTime;
             playerVariables.StaminaToBeUsed(staminaUsedForDodge);
             dodgeDirection = direction * currentSpeed * dodgeSpeedMultiplier;
@@ -249,37 +263,39 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            if (isCrouching)
+            if (isCrouching && Physics.CheckSphere(camHolderPositionOrigin, 0.6f, headMask))
             {
                 isCrouching = false;
-                controller.enabled = false;
-                transform.position += new Vector3(0, crouchHeight / 2);
-                controller.enabled = true;
-                controller.height = standingHeight;
-                currentSpeed = crouchSpeed;
-            }
-            else
-            {
-                isCrouching = true;
-                controller.height = crouchHeight;
-                controller.enabled = false;
-                transform.position -= new Vector3(0, crouchHeight / 2);
-                controller.enabled = true;
                 currentSpeed = walkSpeed;
             }
+
+            //if (isCrouching)
+            //{
+            //    isCrouching = false;
+            //    controller.enabled = false;
+            //    transform.position += new Vector3(0, crouchHeight / 2);
+            //    controller.enabled = true;
+            //    controller.height = standingHeight;
+            //    currentSpeed = crouchSpeed;
+            //}
+            //else
+            //{
+            //    isCrouching = true;
+            //    controller.height = crouchHeight;
+            //    controller.enabled = false;
+            //    transform.position -= new Vector3(0, crouchHeight / 2);
+            //    controller.enabled = true;
+            //    currentSpeed = walkSpeed;
+            //}
 
             uiManager.CrouchingImage(isCrouching);
         }
     }
 
-    public void SetControllerInactive() //Dead state, should not be able to move
-    {
-        controller.enabled = false;
-        currentSpeed = 0;
-    }
-
     public void TeleportPlayer(Vector3 pos) //Respawn method, this method is here because it needs the controller, playervariables handles player death, this only teleports the player
     {
+        currentSpeed = 0;
+        controller.enabled = false;
         Debug.Log("Teleport activated on position " + pos);
         transform.position = pos;
         controller.enabled = true;
@@ -295,11 +311,11 @@ public class PlayerMovement : MonoBehaviour
             yVelocity.y = -2f;
     }
 
-    public bool IsDodging() { return isDodging; }
+    //public static bool IsDodging() { return isDodging; }
 
-    public bool IsSprinting() { return isSprinting; }
+    //public bool IsSprinting() { return isSprinting; }
 
-    public bool IsMoving() { return controller.isGrounded && inputX != 0 || controller.isGrounded && inputZ != 0; }
+    //public bool IsMoving() { return controller.isGrounded && inputX != 0 || controller.isGrounded && inputZ != 0; }
 
     public float GetHorizontalInput() { return inputX; }
     public float GetVerticalInput() { return inputZ; }
@@ -308,7 +324,7 @@ public class PlayerMovement : MonoBehaviour
     private void ApplyYAxisVelocity()
     {
         //Jump
-        if (Input.GetButtonDown("Jump") && isGrounded && !isDodging && playerVariables.GetCurrentStamina() > staminaUsedForJump)
+        if (Input.GetButtonDown("Jump") && isGrounded && !IsDodging && playerVariables.GetCurrentStamina() > staminaUsedForJump)
         {
             playerVariables.StaminaToBeUsed(staminaUsedForJump);
             yVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
@@ -340,5 +356,11 @@ public class PlayerMovement : MonoBehaviour
         breakSlowMotion = false;
         Debug.Log("Time has restored to : " + Time.timeScale);
         audioManager.Play("SlowMoFinish");
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawSphere(camHolderPositionOrigin, 0.6f);
     }
 }

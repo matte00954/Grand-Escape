@@ -33,9 +33,9 @@ public class PlayerVariables : MonoBehaviour
     [SerializeField] private float recentDamageTimerMax; //In frames (done in update)
 
 
-    [Header("For testing")] //max timers are constant
-    [SerializeField] private bool PlayerSuicideAvailable;
-    [SerializeField] private bool GodMode;
+    [Header("Cheats for testing")] //for testing
+    [SerializeField] private bool playerSuicideAvailable;
+    [SerializeField] private bool godMode;
 
     //Timers that changes during runtime
     private float timeUntilRespawn;
@@ -63,7 +63,7 @@ public class PlayerVariables : MonoBehaviour
 
     private void Start()
     {
-        if (GodMode)
+        if (godMode)
             maxHealthPoints = 9999;
 
         healthPoints = maxHealthPoints;
@@ -169,7 +169,7 @@ public class PlayerVariables : MonoBehaviour
         RecentDamageTaken();
         PlayerDeath();
 
-        if (PlayerSuicideAvailable)
+        if (playerSuicideAvailable)
             PlayerSuicide();
     }
 

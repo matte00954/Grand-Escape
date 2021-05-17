@@ -1955,6 +1955,7 @@ MonoBehaviour:
   weaponType: {fileID: 11400000, guid: 3eb395f5374fb7d48b76f567c0912ad5, type: 2}
   slowMotionReloadSpeedDivider: 5
   gunSmoke: {fileID: 3460947036746910333, guid: 92767ba9a14827340801aa1b857891c2, type: 3}
+  timeFireSoundMax: 0.2
 --- !u!54 &1460285257
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2048,6 +2049,7 @@ MonoBehaviour:
   weaponType: {fileID: 11400000, guid: 47b3f4a5ac30fbf429bf8519c114f9f7, type: 2}
   slowMotionReloadSpeedDivider: 5
   gunSmoke: {fileID: 3460947036746910333, guid: 92767ba9a14827340801aa1b857891c2, type: 3}
+  timeFireSoundMax: 0.2
 --- !u!95 &4760133623324821055
 Animator:
   serializedVersion: 3

@@ -7,6 +7,9 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private float slowMotionReloadSpeedDivider = 2;
     [SerializeField] private ParticleSystem gunSmoke; //Assign prefab
 
+    [SerializeField] private float timeFireSoundMax;
+    private float timerFireSound;
+
     private UiManager uiManager;
 
     private Camera playerCamera;
@@ -15,6 +18,7 @@ public class PlayerShooting : MonoBehaviour
     private Animator animator;
 
     private bool isReloading;
+    private bool justFired;
     private int currentAmmoLoaded; //shots that are loaded
 
     private float reloadTimer;
@@ -31,11 +35,16 @@ public class PlayerShooting : MonoBehaviour
 
         isReloading = false;
         currentAmmoLoaded = weaponType.GetAmmoCap();
+
+        if (currentAmmoLoaded == 1)
+            uiManager.WeaponStatus(true);
+        else
+            uiManager.WeaponStatus(false);
     }
 
     private void OnEnable()
     {
-        if(currentAmmoLoaded > 0)
+        if(currentAmmoLoaded == 1)
             uiManager.WeaponStatus(true);
         else
             uiManager.WeaponStatus(false);
@@ -43,9 +52,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void OnDisable()
     {
-        if (currentAmmoLoaded > 0)
-            uiManager.WeaponStatus(true);
-        else
+        if(currentAmmoLoaded == 0)
             uiManager.WeaponStatus(false);
 
         if (isReloading)
@@ -80,7 +87,9 @@ public class PlayerShooting : MonoBehaviour
 
                 Instantiate(gunSmoke, point, playerCamera.transform.rotation);
 
-                FindObjectOfType<AudioManager>().Play(weaponType.GetSoundFire());
+                timerFireSound = timeFireSoundMax;
+
+                justFired = true;
             }
             else if(Input.GetMouseButtonDown(0) && currentAmmoLoaded <= 0)
             {
@@ -104,6 +113,16 @@ public class PlayerShooting : MonoBehaviour
 
             if (isReloading)
                 UpdateReload();
+        }
+
+        if (justFired)
+        {
+            timerFireSound -= Time.deltaTime;
+            if (timerFireSound > 0)
+            {
+                FindObjectOfType<AudioManager>().Play(weaponType.GetSoundFire());
+                justFired = false;
+            }
         }
     }
 

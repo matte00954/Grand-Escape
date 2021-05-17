@@ -16,6 +16,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Image crouchImage;
     [SerializeField] private Image deathImage;
 
+    [SerializeField] private WeaponHolder weaponHolder;
+
     public void TutorialText(string textToShow, bool active)
     {
         if (active)
@@ -29,13 +31,19 @@ public class UiManager : MonoBehaviour
 
     public void WeaponStatus(bool isReloaded)
     {
-        if (isReloaded)
-            weaponReloadedSlider.value = 100f;
-        else
+        if (weaponHolder.GetSelectedWeapon() == 2)
+        {
             weaponReloadedSlider.value = 0f;
+        }
+        else
+        {
+            if (isReloaded)
+                weaponReloadedSlider.value = 100f;
+            else
+                weaponReloadedSlider.value = 0f;
 
-
-        Debug.Log("is reloaded = " + isReloaded);
+            Debug.Log("is reloaded = " + isReloaded);
+        }
     }
 
     public void AmmoStatus(int i) => ammoLeftText.text = i.ToString();
@@ -73,12 +81,11 @@ public class UiManager : MonoBehaviour
             crouchImage.gameObject.SetActive(false);
     }
 
-    public void DeathText() //when player dies
+    public void DeathText(bool isAlive) //when player dies
     {
-        if (PlayerVariables.isAlive)
-            crouchImage.gameObject.SetActive(true);
+        if (isAlive) //PlayerVariables.IsAlive does not work here
+            deathImage.gameObject.SetActive(true);
         else
-            crouchImage.gameObject.SetActive(false);
+            deathImage.gameObject.SetActive(false);
     }
-
 }

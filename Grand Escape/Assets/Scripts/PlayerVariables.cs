@@ -44,7 +44,6 @@ public class PlayerVariables : MonoBehaviour
 
     public static bool isAlive = true;
 
-
     public int GetCurrentHealthPoints() { return healthPoints; }
     public int GetCurrentAmmoReserve() { return currentAmmoReserve; }
 
@@ -136,7 +135,7 @@ public class PlayerVariables : MonoBehaviour
         {
             isAlive = false;
             Debug.Log("PLAYER HAS DIED");
-            uiManager.DeathText();
+            uiManager.DeathText(true);
 
             PlayerMovement pm = gameObject.GetComponent<PlayerMovement>();
 
@@ -147,7 +146,7 @@ public class PlayerVariables : MonoBehaviour
                 gameManager.GetComponent<EnemyRespawnHandler>().RepsawnAll();
                 ResetAllStats();
                 pm.TeleportPlayer(currentRespawnPoint.position);
-                uiManager.DeathText();
+                uiManager.DeathText(false);
                 isAlive = true;
                 timeUntilRespawn = timerUntilRespawnMax;
             }

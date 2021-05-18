@@ -8,6 +8,8 @@ public class PlayerVariables : MonoBehaviour
     [SerializeField] private GameObject gameManager;
     [SerializeField] private UiManager uiManager;
 
+    [SerializeField] private AudioManager audioManager;
+
     private Transform currentRespawnPoint;
     
     [Header("Stamina")]
@@ -37,6 +39,9 @@ public class PlayerVariables : MonoBehaviour
     [SerializeField] private bool playerSuicideAvailable;
     [SerializeField] private bool godMode;
 
+
+    private string playerDamageTakenSound = "PlayerDamageTaken";
+
     //Timers that changes during runtime
     private float timeUntilRespawn;
     private float timerUntilStaminaComparisonCheck; 
@@ -47,7 +52,7 @@ public class PlayerVariables : MonoBehaviour
     private int healthPoints;
     private int currentAmmoReserve;
     private float currentStamina;
-    private bool takenRecentDamage = false;
+    private bool takenRecentDamage;
 
     public static bool isAlive = true;
 
@@ -65,7 +70,7 @@ public class PlayerVariables : MonoBehaviour
     {
         if (godMode)
             maxHealthPoints = 9999;
-        else
+
             healthPoints = maxHealthPoints;
 
         currentAmmoReserve = startAmmoReserve;
@@ -95,6 +100,9 @@ public class PlayerVariables : MonoBehaviour
         if (!takenRecentDamage)
         {
             healthPoints -= damageToBeApplied;
+            uiManager.TakenDamage(true);
+            audioManager.Play(playerDamageTakenSound);
+            recentDamageTimer = recentDamageTimerMax;
             takenRecentDamage = true;
         }
         uiManager.HealthPoints(healthPoints);
@@ -170,6 +178,9 @@ public class PlayerVariables : MonoBehaviour
         RecentDamageTaken();
         PlayerDeath();
 
+        Debug.LogWarning(recentDamageTimer);
+        Debug.LogWarning(takenRecentDamage);
+
         if (playerSuicideAvailable)
             PlayerSuicide();
     }
@@ -212,13 +223,14 @@ public class PlayerVariables : MonoBehaviour
     {
         if (takenRecentDamage)
         {
+
             recentDamageTimer -= Time.deltaTime;
 
             if (recentDamageTimer <= 0)
             {
-                takenRecentDamage = false;
+                uiManager.TakenDamage(false);
                 Debug.Log("Player can take damage again");
-                recentDamageTimer = recentDamageTimerMax;
+                takenRecentDamage = false;
             }
         }
     }

@@ -17,6 +17,7 @@ public class UiManager : MonoBehaviour
 
     [SerializeField] private Image crouchImage;
     [SerializeField] private Image deathImage;
+    [SerializeField] private Image recentDamageTakenImage;
 
     [SerializeField] private WeaponHolder weaponHolder;
 
@@ -89,5 +90,10 @@ public class UiManager : MonoBehaviour
             deathImage.gameObject.SetActive(true);
         else
             deathImage.gameObject.SetActive(false);
+    }
+
+    public void TakenDamage(bool recentDamageTaken) //when recentDamageTaken is active
+    {
+        recentDamageTakenImage.gameObject.SetActive(recentDamageTaken);
     }
 }

@@ -21,6 +21,12 @@ public class UiManager : MonoBehaviour
 
     [SerializeField] private WeaponHolder weaponHolder;
 
+    [SerializeField] private float recentDamageTakenTimerMax;
+
+    private float recentDamageTakenTimer;
+
+    private bool recentDamage;
+
     public void TutorialText(string textToShow, bool active)
     {
         if (active)
@@ -92,8 +98,22 @@ public class UiManager : MonoBehaviour
             deathImage.gameObject.SetActive(false);
     }
 
-    public void TakenDamage(bool recentDamageTaken) //when recentDamageTaken is active
+    public void TakenDamage() //when recentDamageTaken is active
     {
-        recentDamageTakenImage.gameObject.SetActive(recentDamageTaken);
+        recentDamageTakenImage.gameObject.SetActive(true);
+        recentDamage = true;
+    }
+
+    private void Update()
+    {
+        if (recentDamage)
+        {
+            recentDamageTakenTimer -= Time.deltaTime;
+            if (recentDamageTakenTimer <= 0)
+            {
+                recentDamageTakenImage.gameObject.SetActive(false);
+                recentDamage = false;
+            }
+        }
     }
 }

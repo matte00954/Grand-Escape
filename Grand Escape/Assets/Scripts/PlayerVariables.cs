@@ -46,13 +46,11 @@ public class PlayerVariables : MonoBehaviour
     private float timeUntilRespawn;
     private float timerUntilStaminaComparisonCheck; 
     private float timerUntilStaminaRegen;
-    private float recentDamageTimer;
 
     //Used during runtime
     private int healthPoints;
     private int currentAmmoReserve;
     private float currentStamina;
-    private bool takenRecentDamage;
 
     public static bool isAlive = true;
 
@@ -83,7 +81,6 @@ public class PlayerVariables : MonoBehaviour
         timeUntilRespawn = timerUntilRespawnMax;
         timerUntilStaminaRegen = timerUntilStaminaRegenMax;
         timerUntilStaminaComparisonCheck = timerUntilStaminaComparisonCheckMax;
-        recentDamageTimer = recentDamageTimerMax;
     }
 
     public void ReduceAmmoReserve(int amountToReduce)
@@ -97,14 +94,9 @@ public class PlayerVariables : MonoBehaviour
     public void ApplyDamage(int damageToBeApplied)
     {
         Debug.Log("Player took :" + damageToBeApplied + " damage");
-        if (!takenRecentDamage)
-        {
-            healthPoints -= damageToBeApplied;
-            uiManager.TakenDamage(true);
-            audioManager.Play(playerDamageTakenSound);
-            recentDamageTimer = recentDamageTimerMax;
-            takenRecentDamage = true;
-        }
+        healthPoints -= damageToBeApplied;
+        uiManager.TakenDamage();
+        audioManager.Play(playerDamageTakenSound);
         uiManager.HealthPoints(healthPoints);
     }
 
@@ -175,11 +167,7 @@ public class PlayerVariables : MonoBehaviour
     {
         StaminaRegen();
         UiUpdate();
-        RecentDamageTaken();
         PlayerDeath();
-
-        Debug.LogWarning(recentDamageTimer);
-        Debug.LogWarning(takenRecentDamage);
 
         if (playerSuicideAvailable)
             PlayerSuicide();
@@ -219,21 +207,21 @@ public class PlayerVariables : MonoBehaviour
         }
     }
 
-    private void RecentDamageTaken() //to prevent massive amount of damage during a short period of time
-    {
-        if (takenRecentDamage)
-        {
+    //private void RecentDamageTaken() //to prevent massive amount of damage during a short period of time
+    //{
+    //    if (takenRecentDamage)
+    //    {
 
-            recentDamageTimer -= Time.deltaTime;
+    //        recentDamageTimer -= Time.deltaTime;
 
-            if (recentDamageTimer <= 0)
-            {
-                uiManager.TakenDamage(false);
-                Debug.Log("Player can take damage again");
-                takenRecentDamage = false;
-            }
-        }
-    }
+    //        if (recentDamageTimer <= 0)
+    //        {
+    //            uiManager.TakenDamage(false);
+    //            Debug.Log("Player can take damage again");
+    //            takenRecentDamage = false;
+    //        }
+    //    }
+    //}
 
     private void UiUpdate()
     {

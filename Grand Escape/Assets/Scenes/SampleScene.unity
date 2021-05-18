@@ -1611,6 +1611,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 1129520535161724197, guid: 757b00d841697c3489ea049a37d13834, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129520535161724197, guid: 757b00d841697c3489ea049a37d13834, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129520535161724197, guid: 757b00d841697c3489ea049a37d13834, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1874603462025322344, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
@@ -1799,6 +1811,10 @@ PrefabInstance:
       propertyPath: weaponStatusBorder
       value: 
       objectReference: {fileID: 567079557}
+    - target: {fileID: 4884748120044031724, guid: 757b00d841697c3489ea049a37d13834, type: 3}
+      propertyPath: recentDamageTakenTimerMax
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4884748120044031725, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1889,12 +1905,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5154083745498873339, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: m_Type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5154083745498873339, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 5154083745498873339, guid: 757b00d841697c3489ea049a37d13834, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154083745498873339, guid: 757b00d841697c3489ea049a37d13834, type: 3}
+      propertyPath: m_FillCenter
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5448399694019180791, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

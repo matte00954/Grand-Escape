@@ -9,7 +9,7 @@ public class CheckpointRespawnHandler : MonoBehaviour
     [SerializeField] private List<GameObject> checkPointList = new List<GameObject>();
 
     private List<EnemyRespawn> enemyRespawnList = new List<EnemyRespawn>();
-    private List<ObjectRespawn> objectRespawnList = new List<ObjectRespawn>();
+    private List<PickupRespawn> pickupRespawnList = new List<PickupRespawn>();
 
     private void Start()
     {
@@ -17,7 +17,7 @@ public class CheckpointRespawnHandler : MonoBehaviour
         for (int i = 0; i < checkPointList.Count; i++)
         {
             enemyRespawnList.Add(checkPointList[i].GetComponent<EnemyRespawn>());
-            objectRespawnList.Add(checkPointList[i].GetComponent<ObjectRespawn>());
+            pickupRespawnList.Add(checkPointList[i].GetComponent<PickupRespawn>());
 
             if (checkPointList[i] == null)
             {
@@ -48,14 +48,14 @@ public class CheckpointRespawnHandler : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < objectRespawnList.Count; i++)
+        for (int i = 0; i < pickupRespawnList.Count; i++)
         {
-            if (objectRespawnList[i] == null)
+            if (pickupRespawnList[i] == null)
                 Debug.LogError(i + " in the game manager is null");
             else
             {
-                objectRespawnList[i].GetComponent<ObjectRespawn>().RespawnObjects();
-                Debug.Log(objectRespawnList[i] + " has respawned pickups and other objects in this list");
+                pickupRespawnList[i].GetComponent<PickupRespawn>().RespawnObjects();
+                Debug.Log(pickupRespawnList[i] + " has respawned pickups and other objects in this list");
             }
         }
     }

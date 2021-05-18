@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectRespawn : MonoBehaviour
+public class PickupRespawn : MonoBehaviour
 {
     [Header("Objects in previous section to respawn, if player dies")] //All enemies in the previous section that will spawn if player respawns at this location
 

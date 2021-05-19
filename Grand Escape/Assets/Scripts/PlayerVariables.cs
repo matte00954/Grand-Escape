@@ -93,11 +93,16 @@ public class PlayerVariables : MonoBehaviour
 
     public void ApplyDamage(int damageToBeApplied)
     {
-        Debug.Log("Player took :" + damageToBeApplied + " damage");
-        healthPoints -= damageToBeApplied;
-        uiManager.TakenDamage();
-        audioManager.Play(playerDamageTakenSound);
-        uiManager.HealthPoints(healthPoints);
+        if (!PlayerMovement.IsDodging)
+        {
+            Debug.Log("Player took :" + damageToBeApplied + " damage");
+            healthPoints -= damageToBeApplied;
+            uiManager.TakenDamage();
+            audioManager.Play(playerDamageTakenSound);
+            uiManager.HealthPoints(healthPoints);
+        }
+        else
+            Debug.Log("Player absorbed damage on Dodge");
     }
 
     public void ResetAllStats() //should work on player death too

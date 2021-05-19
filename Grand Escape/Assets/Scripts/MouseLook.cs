@@ -5,7 +5,7 @@ using UnityEngine;
 public class MouseLook : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private WeaponHolder weaponHolder;
+    [SerializeField] private WeaponHolder weaponHolder; //The script that allows weapon cycling.
     [SerializeField] private Transform playerBody; //The player's model object transform.
     private Camera cam;
 
@@ -19,6 +19,9 @@ public class MouseLook : MonoBehaviour
     private bool isZoomed;
     private bool canZoom;
 
+    private readonly string mouseXName = "Mouse X";
+    private readonly string mouseYName = "Mouse Y";
+
     private void Start()
     {
         cam = GetComponent<Camera>();
@@ -28,12 +31,11 @@ public class MouseLook : MonoBehaviour
         defaultFov = cam.fieldOfView;
     }
 
-    // Update is called once per frame
     private void Update()
     {
         if (PlayerVariables.isAlive)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1) && !isZoomed && weaponHolder.GetSelectedWeapon() == 1) //1 is musket
+            if (Input.GetKeyDown(KeyCode.Mouse1) && !isZoomed && weaponHolder.GetSelectedWeapon() == 1) //Zooming is reserved for the musket rifle on array slot 1.
             {
                 cam.fieldOfView = fovForZoom;
                 isZoomed = true;
@@ -44,11 +46,11 @@ public class MouseLook : MonoBehaviour
                 isZoomed = false;
             }
 
-            if (weaponHolder.GetSelectedWeapon() != 1) //1 is musket
+            if (weaponHolder.GetSelectedWeapon() != 1) //1 is musket rifle
                 cam.fieldOfView = defaultFov;
 
-            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.unscaledDeltaTime;
-            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.unscaledDeltaTime;
+            float mouseX = Input.GetAxis(mouseXName) * mouseSensitivity * Time.unscaledDeltaTime; //unscaledDeltaTime retains the mouse sensitivity during slow motions.
+            float mouseY = Input.GetAxis(mouseYName) * mouseSensitivity * Time.unscaledDeltaTime;
 
             xRotation -= mouseY; //Looking up or down means you're rotating your view along the X-axis.
             xRotation = Mathf.Clamp(xRotation, -90f, 90f); //This makes it so that you can't look further past than straight down and up.

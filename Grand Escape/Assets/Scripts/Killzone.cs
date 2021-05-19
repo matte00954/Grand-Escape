@@ -1,17 +1,18 @@
+//Author: William Örnquist
 using UnityEngine;
 
 public class Killzone : MonoBehaviour
 {
-    private readonly int PLAYER_DEATH_DAMAGE = 101;
-    private readonly string PLAYER_TAG_NAME = "Player";
+    //private readonly int playerDeathDamage = 101;
+    //private readonly string playerTagName = "Player";
 
-    private PlayerVariables playerVariables;
+    //private PlayerVariables playerVariables;
 
-    private void Start() => playerVariables = FindObjectOfType<PlayerVariables>();
+    //private void Start() => playerVariables = FindObjectOfType<PlayerVariables>();
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == PLAYER_TAG_NAME)
-            playerVariables.ApplyDamage(PLAYER_DEATH_DAMAGE);
+        if (other.gameObject.tag == "Player")
+            FindObjectOfType<PlayerVariables>().ApplyDamage(101);
     }
 }

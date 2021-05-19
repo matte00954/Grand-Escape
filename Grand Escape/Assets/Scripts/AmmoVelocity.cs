@@ -11,6 +11,7 @@ public class AmmoVelocity : MonoBehaviour
 
     private Vector3 direction;
     private float lifeTimer;
+    private bool isActive = true;
 
     private void Start()
     {
@@ -35,8 +36,9 @@ public class AmmoVelocity : MonoBehaviour
     private void RayCheck()
     {
         RaycastHit raycastHit;
-        if (Physics.Raycast(transform.position, direction, out raycastHit, ammo.GetAmmoSpeed() * Time.deltaTime, collisionMask))
+        if (Physics.Raycast(transform.position, direction, out raycastHit, ammo.GetAmmoSpeed() * Time.deltaTime, collisionMask) && isActive)
         {
+            isActive = false;
             if (raycastHit.collider.gameObject.tag == "Player")
                 raycastHit.collider.gameObject.GetComponentInParent<PlayerVariables>().ApplyDamage(ammo.GetAmmoDamage());
             else if (raycastHit.collider.gameObject.tag == "Enemy")

@@ -268,11 +268,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
+            //The player cannot stand up after crouching if the CheckSphere hovering above the player collides with an object. 
             if (isCrouching && !Physics.CheckSphere(playerHead.transform.position + Vector3.up * crouchingHeight, 0.6f, headMask))
             {
                 isCrouching = false;
                 currentSpeed = walkSpeed;
-                controller.enabled = false;
+                controller.enabled = false; //CharacterController module MUST be disabled before directly changing the player's transform position.
                 controller.height = standingHeight;
                 controller.center -= Vector3.up * (standingHeight - crouchingHeight) / 2;
                 transform.position += new Vector3(0, (standingHeight - crouchingHeight) / 2);
@@ -291,29 +292,9 @@ public class PlayerMovement : MonoBehaviour
 
             uiManager.CrouchingImage(isCrouching);
         }
-
-        //if (Input.GetKeyDown(KeyCode.LeftControl))
-        //{
-        //    if (isCrouching && !Physics.CheckSphere(playerHeadPositionOrigin, 0.6f, headMask))
-        //    {
-        //        isCrouching = false;
-        //        currentSpeed = walkSpeed;
-        //        playerHead.transform.localPosition = playerHeadPositionOrigin;
-        //    }
-        //    else if (!isCrouching)
-        //    {
-        //        isCrouching = true;
-        //        currentSpeed = crouchSpeed;
-        //        playerHead.transform.localPosition = crouchHeadTransform.localPosition;
-        //    }
-
-        //    uiManager.CrouchingImage(isCrouching);
-        //}
     }
 
-
-
-    public void TeleportPlayer(Vector3 pos) //Respawn method, this method is here because it needs the controller, playervariables handles player death, this only teleports the player
+    public void TeleportPlayer(Vector3 pos) //This method teleports the player during respawn.
     {
         currentSpeed = 0;
         controller.enabled = false;
@@ -327,7 +308,7 @@ public class PlayerMovement : MonoBehaviour
         //The alternative check if player is grounded by casting CheckSphere.
         isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
 
-        //Reset gravity force when the character is grounded. This prevents gravity buildup.
+        //Resets gravity force when the character is grounded. This prevents gravity buildup.
         if (controller.isGrounded && yVelocity.y < 0)
             yVelocity.y = -2f;
     }
@@ -345,10 +326,10 @@ public class PlayerMovement : MonoBehaviour
             yVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
-        //This builds up the downward velocity vector with gravity.
+        //This builds up the downward velocity vector with gravity over time.
         yVelocity.y += gravity * Time.deltaTime;
 
-        //This updates the player's position with the downward velocity. This is multiplied by deltaTime again for the formula of real gravitation.
+        //This updates the player's position with the downward velocity. This is multiplied by deltaTime again for the formula of gravitation.
         controller.Move(yVelocity * Time.deltaTime);
     }
 

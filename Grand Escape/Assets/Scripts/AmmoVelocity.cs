@@ -13,13 +13,16 @@ public class AmmoVelocity : MonoBehaviour
     private float lifeTimer;
     private bool isActive = true;
 
-    private void Start()
-    {
-        direction = transform.forward;
-    }
-
     private void Awake()
     {
+        float horizontalMargin = ammo.GetHorizontalMargin();
+        float verticalMargin = ammo.GetVerticalMargin();
+        float randomHorizontalError = Random.Range(-horizontalMargin, horizontalMargin);
+        float randomVerticalError = Random.Range(-verticalMargin, verticalMargin);
+        transform.Rotate(new Vector3(randomVerticalError, randomHorizontalError, 0f));
+        direction = transform.forward;
+        Debug.Log("Bullet direction: " + direction);
+        Debug.Log("Bullet rotation: " + transform.rotation.eulerAngles);
         lifeTimer = ammo.GetBulletLifetime();
     }
 

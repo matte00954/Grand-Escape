@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: EnemyMusketAmmo
   m_EditorClassIdentifier: 
   ammoName: EnemyMusketAmmo
-  ammoDamage: 40
-  speed: 50
+  ammoDamage: 10
+  speed: 250
   bulletLifetime: 4
+  horizontalAccuracyMargin: 0.5
+  verticalAccuracyMargin: 0.5

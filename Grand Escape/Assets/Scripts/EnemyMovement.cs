@@ -50,7 +50,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Awake()
     {
-        enemyShooting = GetComponent<EnemyShooting>();
+        TryGetComponent(out enemyShooting);
         agent = GetComponent<NavMeshAgent>();
         patrolTimer = timeBetweenPatrol;
 
@@ -98,7 +98,8 @@ public class EnemyMovement : MonoBehaviour
             heardPlayer = false;
             sawPlayer = false;
             isAlerted = true;
-            enemyShooting.SetAlert(true);
+            if (enemyShooting != null)
+                enemyShooting.SetAlert(true);
         }
 
         if (alertTimer > 0f) //The enemy will chase the player's current position until 'alertTimer' hits 0.
@@ -113,7 +114,8 @@ public class EnemyMovement : MonoBehaviour
         else if (isAlerted)
         {
             isAlerted = false;
-            enemyShooting.SetAlert(false);
+            if (enemyShooting != null)
+                enemyShooting.SetAlert(false);
         }
     }
 

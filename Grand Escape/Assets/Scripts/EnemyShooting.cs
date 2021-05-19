@@ -7,6 +7,7 @@ public class EnemyShooting : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject barrelEnd;
     [SerializeField] private GameObject enemyAmmo;
+    [SerializeField] private ParticleSystem gunSmoke;
     private GameObject player;
 
     [Header("Detection")]
@@ -84,7 +85,7 @@ public class EnemyShooting : MonoBehaviour
     private void ShootWithGun()
     {
         Instantiate(enemyAmmo, barrelEnd.transform.position, barrelEnd.transform.rotation);
-
+        Instantiate(gunSmoke, barrelEnd.transform.position, barrelEnd.transform.rotation);
         // Animations
         animator.SetTrigger(fireAnimationName);
     }

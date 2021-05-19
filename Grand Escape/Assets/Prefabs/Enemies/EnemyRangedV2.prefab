@@ -903,10 +903,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4402275d1433f24d9a43b8ade5a9967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun: {fileID: 7348195553936216849}
   barrelEnd: {fileID: 390643834018679050}
   enemyAmmo: {fileID: 7794666079471084343, guid: 196220794740a7946a8e8ad2692d7339, type: 3}
-  playerTransform: {fileID: 5678491154712510806, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+  gunSmoke: {fileID: 3460947036746910333, guid: 92767ba9a14827340801aa1b857891c2, type: 3}
   aimCollisionMask:
     serializedVersion: 2
     m_Bits: 2496

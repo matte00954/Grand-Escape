@@ -6,6 +6,7 @@ public class CamAnimation : MonoBehaviour
     private AudioManager audioManager;
     private Animator animator;
 
+    private readonly string isGroundedParameterName = "IsGrounded";
     private readonly string isMovingParameterName = "IsMoving";
     private readonly string isSprintingParameterName = "IsSprinting";
     private readonly string isDodgingParameterName = "IsDodging";
@@ -25,6 +26,7 @@ public class CamAnimation : MonoBehaviour
 
     private void UpdateAnimatorParameters()
     {
+        animator.SetBool(isGroundedParameterName, PlayerMovement.IsGrounded);
         animator.SetBool(isMovingParameterName, PlayerMovement.IsMoving);
         animator.SetBool(isSprintingParameterName, PlayerMovement.IsSprinting);
         animator.SetBool(isDodgingParameterName, PlayerMovement.IsDodging);

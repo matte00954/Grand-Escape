@@ -58,9 +58,9 @@ public class PlayerMovement : MonoBehaviour
     public static bool IsSprinting { get; private set; }
     public static bool IsDodging { get; private set; }
     public static bool IsCrouching { get; private set; }
+    public static bool IsGrounded { get; private set; }
 
     private bool isSlowmotion;
-    private bool isGrounded;
     private bool breakSlowMotion;
     private bool isExhaustedFromSlowMotion;
     private bool isExhaustedFromSprinting;
@@ -214,7 +214,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dodge(Vector3 direction) //This method is called once for the activation of dodge, resetting appropriate timers.
     {
-        if (!IsDodging && isGrounded && playerVariables.GetCurrentStamina() > staminaUsedForDodge && dodgeCooldownTimer <= 0)
+        if (!IsDodging && IsGrounded && playerVariables.GetCurrentStamina() > staminaUsedForDodge && dodgeCooldownTimer <= 0)
         {
             IsDodging = true;
             dodgeTimer = dodgeAmountOfTime;
@@ -320,7 +320,7 @@ public class PlayerMovement : MonoBehaviour
     private void CheckGround()
     {
         //The alternative check if player is grounded by casting CheckSphere.
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
+        IsGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
 
         //Resets gravity force when the character is grounded. This prevents gravity buildup.
         if (controller.isGrounded && yVelocity.y < 0)
@@ -330,7 +330,7 @@ public class PlayerMovement : MonoBehaviour
     private void ApplyYAxisVelocity()
     {
         //Jump
-        if (Input.GetButtonDown("Jump") && isGrounded && !IsDodging && playerVariables.GetCurrentStamina() > staminaUsedForJump && PlayerVariables.isAlive)
+        if (Input.GetButtonDown("Jump") && IsGrounded && !IsDodging && playerVariables.GetCurrentStamina() > staminaUsedForJump && PlayerVariables.isAlive)
         {
             playerVariables.StaminaToBeUsed(staminaUsedForJump);
             yVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);

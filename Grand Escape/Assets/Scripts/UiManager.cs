@@ -17,6 +17,7 @@ public class UiManager : MonoBehaviour
 
     [SerializeField] private Image crouchImage;
     [SerializeField] private Image deathImage;
+    [SerializeField] private Image slowMotionImage;
     [SerializeField] private Image recentDamageTakenImage;
 
     [SerializeField] private WeaponHolder weaponHolder;
@@ -102,6 +103,16 @@ public class UiManager : MonoBehaviour
     {
         recentDamageTakenImage.gameObject.SetActive(true);
         recentDamage = true;
+    }
+
+    public void SlowMotionEffect()
+    {
+        if(Time.timeScale == 1)
+        {
+            slowMotionImage.gameObject.SetActive(false);
+        }
+        else
+            slowMotionImage.gameObject.SetActive(true);
     }
 
     private void Start()

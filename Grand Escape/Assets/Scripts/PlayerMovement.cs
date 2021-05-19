@@ -245,6 +245,7 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = slowMotionMovementSpeed;
             Debug.Log("Slow motion active, time scale : " + Time.timeScale);
             audioManager.Play("SlowMoStart");
+            uiManager.SlowMotionEffect();
 
             //Reset timers
             slowMotionTickTimer = slowMotionTickTime;
@@ -359,6 +360,7 @@ public class PlayerMovement : MonoBehaviour
         Time.timeScale = 1f; //returns to normal time
         isSlowmotion = false;
         breakSlowMotion = false;
+        uiManager.SlowMotionEffect();
         Debug.Log("Time has restored to : " + Time.timeScale);
         audioManager.Play("SlowMoFinish");
     }

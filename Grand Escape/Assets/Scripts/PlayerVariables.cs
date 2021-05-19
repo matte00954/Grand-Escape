@@ -41,10 +41,11 @@ public class PlayerVariables : MonoBehaviour
     [SerializeField] private bool unlockAllWeapons;
 
 
-    private string playerDamageTakenSound = "PlayerDamageTaken";
+    private string playerDamageTakenSound = "PlayerDamageTakenSound";
+    private string playerDeathSound = "PlayerDeathSound";
 
     //Timers that changes during runtime
-    private float timeUntilRespawn;
+    private float timerUntilRespawn;
     private float timerUntilStaminaComparisonCheck; 
     private float timerUntilStaminaRegen;
 
@@ -85,7 +86,7 @@ public class PlayerVariables : MonoBehaviour
 
         ResetAllStats();
 
-        timeUntilRespawn = timerUntilRespawnMax;
+        timerUntilRespawn = timerUntilRespawnMax;
         timerUntilStaminaRegen = timerUntilStaminaRegenMax;
         timerUntilStaminaComparisonCheck = timerUntilStaminaComparisonCheckMax;
     }
@@ -180,6 +181,7 @@ public class PlayerVariables : MonoBehaviour
         StaminaRegen();
         UiUpdate();
         PlayerDeath();
+        UpdateDeathTimer();
 
         if (playerSuicideAvailable)
             PlayerSuicide();
@@ -196,25 +198,35 @@ public class PlayerVariables : MonoBehaviour
     private void PlayerDeath()
     {
 
-        if (healthPoints <= 0)
+        if (healthPoints <= 0 && isAlive)
         {
-            isAlive = false;
             Debug.Log("PLAYER HAS DIED");
+
             uiManager.DeathText(true);
+
+            audioManager.Play(playerDeathSound);
+
             FindObjectOfType<CamAnimation>().PlayDeathAnimation();
 
-            PlayerMovement pm = gameObject.GetComponent<PlayerMovement>();
+            isAlive = false;
+        }
+    }
 
-            timeUntilRespawn -= Time.deltaTime;
+    private void UpdateDeathTimer()
+    {
+        if (!isAlive)
+        {
+            timerUntilRespawn -= Time.unscaledDeltaTime;
 
-            if (timeUntilRespawn <= 0)
+            if (timerUntilRespawn <= 0)
             {
+                PlayerMovement pm = gameObject.GetComponent<PlayerMovement>();
                 gameManager.GetComponent<CheckpointRespawnHandler>().RepsawnAll();
                 ResetAllStats();
                 pm.TeleportPlayer(currentRespawnPoint.position);
                 uiManager.DeathText(false);
                 isAlive = true;
-                timeUntilRespawn = timerUntilRespawnMax;
+                timerUntilRespawn = timerUntilRespawnMax;
             }
         }
     }

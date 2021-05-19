@@ -213,6 +213,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5867011082258007188, guid: eae677ce2dd650d44b5011df900429b2, type: 3}
+      propertyPath: sounds.Array.data[3].volume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5867011082258007189, guid: eae677ce2dd650d44b5011df900429b2, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -373,6 +377,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 225630750}
+    - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
+      propertyPath: unlockAllWeapons
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5678491154712510805, guid: 622fc69782db1c24e8110b45fe6feef9, type: 3}
       propertyPath: PlayerSuicideAvailable
       value: 1
@@ -1637,19 +1645,19 @@ PrefabInstance:
       objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 2313779150665006420, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2313779150665006420, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.03457636
       objectReference: {fileID: 0}
     - target: {fileID: 2313779150665006420, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.03457636
       objectReference: {fileID: 0}
     - target: {fileID: 2313779150665006420, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 0.1981132
       objectReference: {fileID: 0}
     - target: {fileID: 2374131456251773988, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1813,7 +1821,7 @@ PrefabInstance:
       objectReference: {fileID: 567079557}
     - target: {fileID: 4884748120044031724, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: recentDamageTakenTimerMax
-      value: 1
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 4884748120044031725, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: m_Pivot.x

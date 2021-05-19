@@ -100,6 +100,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (isSlowmotion && Input.GetKeyDown(KeyCode.Q) || isSlowmotion && playerVariables.GetCurrentStamina() <= 0f || !PlayerVariables.isAlive)
+            StopTimeSlow();
+
         if (PlayerVariables.isAlive) //Disables movement when player is dead
         {
             //Checks if player is grounded and resets gravity velocity if true
@@ -111,11 +114,15 @@ public class PlayerMovement : MonoBehaviour
             CheckSprint();
             CheckDodge();
             CheckTimeSlow();
-
-            //Applies gravity and jump velocity
-            ApplyYAxisVelocity();
         }
+            //Applies gravity and jump velocity
+        ApplyYAxisVelocity();
     }
+
+
+    public float GetHorizontalInput() { return inputX; }
+    public float GetVerticalInput() { return inputZ; }
+    public Vector3 GetDodgeDirection() { return dodgeDirection; }
 
     private void CheckMovement()
     {
@@ -229,16 +236,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckTimeSlow()
     {
-        if (isSlowmotion && Input.GetKeyDown(KeyCode.Q) || isSlowmotion && playerVariables.GetCurrentStamina() <= 0f)
-        {
-            Debug.Log("Slow motion stops");
-            isSlowmotion = false;
-            isExhaustedFromSlowMotion = true;
-            uiManager.SlowMotionExhaustion(isExhaustedFromSlowMotion);
-            RestoreTime();
-        }
 
-        if (Input.GetKeyDown(KeyCode.Q) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlow && !isExhaustedFromSlowMotion && !isSlowmotion)
+        if (Input.GetKeyDown(KeyCode.Q) && playerVariables.GetCurrentStamina() > staminaUsedTimeSlow && !isExhaustedFromSlowMotion)
         {
             playerVariables.StaminaToBeUsed(staminaUsedTimeSlow);
             isSlowmotion = true;
@@ -262,6 +261,20 @@ public class PlayerMovement : MonoBehaviour
 
         if (isSlowmotion)
             UpdateSlowMotion();
+    }
+
+    private void StopTimeSlow()
+    {
+        Debug.Log("Slow motion stops");
+        isSlowmotion = false;
+
+        if (PlayerVariables.isAlive)
+        {
+            isExhaustedFromSlowMotion = true;
+            uiManager.SlowMotionExhaustion(isExhaustedFromSlowMotion);
+        }
+
+        RestoreTime();
     }
 
     private void CheckCrouch()
@@ -313,14 +326,10 @@ public class PlayerMovement : MonoBehaviour
             yVelocity.y = -2f;
     }
 
-    public float GetHorizontalInput() { return inputX; }
-    public float GetVerticalInput() { return inputZ; }
-    public Vector3 GetDodgeDirection() { return dodgeDirection; }
-
     private void ApplyYAxisVelocity()
     {
         //Jump
-        if (Input.GetButtonDown("Jump") && isGrounded && !IsDodging && playerVariables.GetCurrentStamina() > staminaUsedForJump)
+        if (Input.GetButtonDown("Jump") && isGrounded && !IsDodging && playerVariables.GetCurrentStamina() > staminaUsedForJump && PlayerVariables.isAlive)
         {
             playerVariables.StaminaToBeUsed(staminaUsedForJump);
             yVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);

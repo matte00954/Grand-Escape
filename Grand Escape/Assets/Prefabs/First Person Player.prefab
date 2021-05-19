@@ -2735,6 +2735,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   gameManager: {fileID: 0}
   uiManager: {fileID: 0}
+  audioManager: {fileID: 0}
   staminaRegenPerTick: 0.05
   maxHealthPoints: 100
   maxAmmoReserve: 10
@@ -2744,8 +2745,8 @@ MonoBehaviour:
   timerUntilStaminaComparisonCheckMax: 0.01
   timerUntilStaminaRegenMax: 0.01
   recentDamageTimerMax: 0.6
-  PlayerSuicideAvailable: 1
-  GodMode: 0
+  playerSuicideAvailable: 0
+  godMode: 0
 --- !u!1 &5678491154870700840
 GameObject:
   m_ObjectHideFlags: 0

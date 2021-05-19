@@ -104,6 +104,11 @@ public class UiManager : MonoBehaviour
         recentDamage = true;
     }
 
+    private void Start()
+    {
+        recentDamageTakenTimer = recentDamageTakenTimerMax;
+    }
+
     private void Update()
     {
         if (recentDamage)
@@ -113,6 +118,7 @@ public class UiManager : MonoBehaviour
             {
                 recentDamageTakenImage.gameObject.SetActive(false);
                 recentDamage = false;
+                recentDamageTakenTimer = recentDamageTakenTimerMax;
             }
         }
     }

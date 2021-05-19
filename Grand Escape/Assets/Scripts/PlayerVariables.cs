@@ -38,6 +38,7 @@ public class PlayerVariables : MonoBehaviour
     [Header("Cheats for testing")] //for testing
     [SerializeField] private bool playerSuicideAvailable;
     [SerializeField] private bool godMode;
+    [SerializeField] private bool unlockAllWeapons;
 
 
     private string playerDamageTakenSound = "PlayerDamageTaken";
@@ -69,7 +70,13 @@ public class PlayerVariables : MonoBehaviour
         if (godMode)
             maxHealthPoints = 9999;
 
-            healthPoints = maxHealthPoints;
+        if (unlockAllWeapons)
+        {
+            for (int index = 0; index < 3; index++)
+                WeaponHolder.UnlockWeaponSlot(index);
+        }
+
+        healthPoints = maxHealthPoints;
 
         currentAmmoReserve = startAmmoReserve;
         currentStamina = maxStamina;

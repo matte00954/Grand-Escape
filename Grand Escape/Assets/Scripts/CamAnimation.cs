@@ -9,6 +9,7 @@ public class CamAnimation : MonoBehaviour
     private readonly string isMovingParameterName = "IsMoving";
     private readonly string isSprintingParameterName = "IsSprinting";
     private readonly string isDodgingParameterName = "IsDodging";
+    private readonly string isCrouchingParameterName = "IsCrouching";
     private readonly string playerDiedParameterName = "PlayerDied";
     private readonly string isDodgingLeftParameterName = "IsDodgingLeft";
     private readonly string isDodgingRightParameterName = "IsDodgingRight";
@@ -27,6 +28,7 @@ public class CamAnimation : MonoBehaviour
         animator.SetBool(isMovingParameterName, PlayerMovement.IsMoving);
         animator.SetBool(isSprintingParameterName, PlayerMovement.IsSprinting);
         animator.SetBool(isDodgingParameterName, PlayerMovement.IsDodging);
+        animator.SetBool(isCrouchingParameterName, PlayerMovement.IsCrouching);
         animator.SetBool(isAliveParameterName, PlayerVariables.isAlive);
     }
 

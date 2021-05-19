@@ -57,8 +57,8 @@ public class PlayerMovement : MonoBehaviour
     public static bool IsMoving { get; private set; }
     public static bool IsSprinting { get; private set; }
     public static bool IsDodging { get; private set; }
+    public static bool IsCrouching { get; private set; }
 
-    private bool isCrouching;
     private bool isSlowmotion;
     private bool isGrounded;
     private bool breakSlowMotion;
@@ -142,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckSprint()
     {
-        IsSprinting = (!IsDodging && !isCrouching && Input.GetKey(KeyCode.LeftShift) && 
+        IsSprinting = (!IsDodging && !IsCrouching && Input.GetKey(KeyCode.LeftShift) && 
             playerVariables.GetCurrentStamina() > 0 && inputZ == 1 && inputX == 0 && !isExhaustedFromSprinting);
 
         if (IsSprinting)
@@ -157,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
                 sprintExhaustionTimer = sprintExhaustionTime;
             }
         }
-        else if (!isCrouching)
+        else if (!IsCrouching)
             currentSpeed = walkSpeed;
 
 
@@ -282,9 +282,9 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             //The player cannot stand up after crouching if the CheckSphere hovering above the player collides with an object. 
-            if (isCrouching && !Physics.CheckSphere(playerHead.transform.position + Vector3.up * crouchingHeight, 0.6f, headMask))
+            if (IsCrouching && !Physics.CheckSphere(playerHead.transform.position + Vector3.up * crouchingHeight, 0.6f, headMask))
             {
-                isCrouching = false;
+                IsCrouching = false;
                 currentSpeed = walkSpeed;
                 controller.enabled = false; //CharacterController module MUST be disabled before directly changing the player's transform position.
                 controller.height = standingHeight;
@@ -292,9 +292,9 @@ public class PlayerMovement : MonoBehaviour
                 transform.position += new Vector3(0, (standingHeight - crouchingHeight) / 2);
                 controller.enabled = true;
             }
-            else if (!isCrouching)
+            else if (!IsCrouching)
             {
-                isCrouching = true;
+                IsCrouching = true;
                 currentSpeed = crouchSpeed;
                 controller.enabled = false;
                 controller.height = crouchingHeight;
@@ -303,7 +303,7 @@ public class PlayerMovement : MonoBehaviour
                 controller.enabled = true;
             }
 
-            uiManager.CrouchingImage(isCrouching);
+            uiManager.CrouchingImage(IsCrouching);
         }
     }
 
@@ -365,7 +365,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (isCrouching)
+        if (IsCrouching)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(playerHead.transform.position + Vector3.up * crouchingHeight, 0.6f);

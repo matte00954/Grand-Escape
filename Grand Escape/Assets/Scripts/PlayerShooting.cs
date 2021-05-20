@@ -40,17 +40,17 @@ public class PlayerShooting : MonoBehaviour
         currentAmmoLoaded = weaponType.GetAmmoCap();
 
         if (currentAmmoLoaded == 1)
-            uiManager.WeaponStatus(true);
+            uiManager.WeaponStatus(1);
         else
-            uiManager.WeaponStatus(false);
+            uiManager.WeaponStatus(0);
     }
 
     private void OnEnable()
     {
         if(currentAmmoLoaded == 1)
-            uiManager.WeaponStatus(true);
+            uiManager.WeaponStatus(1);
         else
-            uiManager.WeaponStatus(false);
+            uiManager.WeaponStatus(0);
     }
 
     private void OnDisable()
@@ -81,7 +81,7 @@ public class PlayerShooting : MonoBehaviour
                 currentAmmoLoaded--;
                 audioManager.Play(weaponType.GetSoundWeaponClick());
                 animator.SetTrigger("Fire");
-                uiManager.WeaponStatus(false);
+                uiManager.WeaponStatus(0);
                 Instantiate(bulletPrefab, point, playerCamera.transform.rotation);
 
                 Instantiate(gunSmoke, point, playerCamera.transform.rotation);
@@ -145,7 +145,7 @@ public class PlayerShooting : MonoBehaviour
             else
                 currentAmmoLoaded = weaponType.GetAmmoCap();
 
-            uiManager.WeaponStatus(true);
+            uiManager.WeaponStatus(1);
             playerVariables.ReduceAmmoReserve(weaponType.GetAmmoCap());
             isReloading = false;
         }

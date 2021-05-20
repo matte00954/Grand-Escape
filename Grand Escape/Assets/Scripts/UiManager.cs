@@ -20,7 +20,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Image slowMotionImage;
     [SerializeField] private Image recentDamageTakenImage;
 
-    [SerializeField] private WeaponHolder weaponHolder;
+    [SerializeField] private Image weaponStatusBorder;
 
     [SerializeField] private float recentDamageTakenTimerMax;
 
@@ -39,15 +39,16 @@ public class UiManager : MonoBehaviour
             tutorialText.gameObject.SetActive(false);
     }
 
-    public void WeaponStatus(bool isReloaded)
+    public void WeaponStatus(int isReloaded) //0 == false, 1 == true, 2 == meele
     {
-        if (weaponHolder.GetSelectedWeapon() == 2)
+        if (isReloaded == 2)
         {
             weaponReloadedSlider.value = 0f;
         }
         else
         {
-            if (isReloaded)
+            weaponStatusBorder.gameObject.SetActive(true);
+            if (isReloaded == 1)
                 weaponReloadedSlider.value = 100f;
             else
                 weaponReloadedSlider.value = 0f;

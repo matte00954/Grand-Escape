@@ -784,11 +784,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fe1c3d1beebdb740ac1b541a5664eb3, type: 3}
---- !u!1 &1062243719 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2530989072935224802, guid: 757b00d841697c3489ea049a37d13834, type: 3}
-  m_PrefabInstance: {fileID: 4884748118591715229}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1108289146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1671,6 +1666,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2438000142751429672, guid: 757b00d841697c3489ea049a37d13834, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2530989072935224802, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1704,6 +1703,10 @@ PrefabInstance:
       value: 65.6
       objectReference: {fileID: 0}
     - target: {fileID: 3805971371947395489, guid: 757b00d841697c3489ea049a37d13834, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856682711990743396, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -1838,11 +1841,15 @@ PrefabInstance:
     - target: {fileID: 4884748120044031724, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: weaponStatus
       value: 
-      objectReference: {fileID: 1062243719}
+      objectReference: {fileID: 0}
     - target: {fileID: 4884748120044031724, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: weaponStatusFill
       value: 
       objectReference: {fileID: 1216776102}
+    - target: {fileID: 4884748120044031724, guid: 757b00d841697c3489ea049a37d13834, type: 3}
+      propertyPath: weaponStatusImage
+      value: 
+      objectReference: {fileID: 567079557}
     - target: {fileID: 4884748120044031724, guid: 757b00d841697c3489ea049a37d13834, type: 3}
       propertyPath: weaponStatusBorder
       value: 

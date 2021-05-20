@@ -28,7 +28,7 @@ public class EquippedSword : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0) && !anim.GetCurrentAnimatorStateInfo(0).IsName("ES_Slash"))
+        if (Input.GetMouseButton(0) && !anim.GetCurrentAnimatorStateInfo(0).IsName("ES_Slash") && PlayerVariables.isAlive)
         {
             OnAttack.Invoke();
         }

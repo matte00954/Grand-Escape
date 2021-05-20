@@ -27,15 +27,19 @@ public class WeaponHolder : MonoBehaviour
         //        selectedWeapon--;
         //}
 
-        if (Input.GetKeyDown(KeyCode.Alpha1) && unlockedFlintPistol)
-            selectedWeapon = 0;
-        if (Input.GetKeyDown(KeyCode.Alpha2) && unlockedMusket)
-            selectedWeapon = 1;
-        if (Input.GetKeyDown(KeyCode.Alpha3) && unlockedSword)
-            selectedWeapon = 2;
+        if (PlayerVariables.isAlive)
+        {
 
-        if (previousSelectedWep != selectedWeapon)
-            SelectWeapon();
+            if (Input.GetKeyDown(KeyCode.Alpha1) && unlockedFlintPistol)
+                selectedWeapon = 0;
+            if (Input.GetKeyDown(KeyCode.Alpha2) && unlockedMusket)
+                selectedWeapon = 1;
+            if (Input.GetKeyDown(KeyCode.Alpha3) && unlockedSword)
+                selectedWeapon = 2;
+
+            if (previousSelectedWep != selectedWeapon)
+                SelectWeapon();
+        }
     }
 
     private void SelectWeapon()

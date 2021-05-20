@@ -5,7 +5,9 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     [Header("Base variables")]
-    [SerializeField] private LayerMask groundMask, playerMask, detectionMask;
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private LayerMask playerMask;
+    [SerializeField] private LayerMask detectionMask;
     [SerializeField] private BoxCollider sightCollider;
     [SerializeField] private Transform headTransform;
     private GameObject player;
@@ -13,28 +15,41 @@ public class EnemyMovement : MonoBehaviour
     private EnemyShooting enemyShooting;
 
     [Header("Patrol state")]
-    [SerializeField] private bool IsStationary;
-    [SerializeField] private float walkPointRange;
-    [SerializeField] private float timeBetweenPatrol;
-    [SerializeField] private float patrolSpeed;
+    [Tooltip("The enemy will never move."),
+        SerializeField] private bool IsStationary;
+    [Tooltip("The maximum distance from the next patrol point."),
+        SerializeField] private float walkPointRadius;
+    [Tooltip("Time between setting new destinations."),
+        SerializeField] private float timeBetweenPatrol;
+    [Tooltip("The maximum speed during patrol state."),
+        SerializeField] private float patrolSpeed;
 
     private Vector3 walkPoint;
     private bool walkPointSet;
 
     [Header("Detection")]
-    [SerializeField] private float sightRange;
-    [SerializeField] private float peripheralRange;
-    [SerializeField] private float hearingRange;
-    [SerializeField] private bool isDeaf;
-    [SerializeField] private bool isBlind;
+    [Tooltip("The range of the enemy's line of sight detection of the player."),
+        SerializeField] private float sightRange;
+    [Tooltip("The range where the enemy will detect the player from any direction."),
+        SerializeField] private float peripheralRange;
+    [Tooltip("Not yet functional."),
+        SerializeField] private float hearingRange;
+    [Tooltip("Not yet functional."),
+        SerializeField] private bool isDeaf;
+    [Tooltip("Disables detection related to enemy's sight."), 
+        SerializeField] private bool isBlind;
 
     [Header("Alert state")]
-    [SerializeField] private float chasingSpeed;
-    [SerializeField] private float maxAttackRange;
-    [SerializeField] private float alertBufferTime;
+    [Tooltip("The maximum speed of the enemy in alerted state."), 
+        SerializeField] private float chasingSpeed;
+    [Tooltip("The maximum range from the player required for the enemy to stand still and attack."), 
+        SerializeField] private float maxAttackRange;
+    [Tooltip("The time it takes for the enemy to give up chasing after losing sight of the player."), 
+        SerializeField] private float alertBufferTime;
 
     [Header("Attack state")]
-    [SerializeField] private float rotationSpeed;
+    [Tooltip("The speed of enemy's rotation while standing still and attacking."), 
+        SerializeField] private float rotationSpeed;
     
     private bool heardPlayer;
     private bool sawPlayer;
@@ -61,30 +76,25 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         if (patrolTimer > 0f)
-            if (agent.remainingDistance != Mathf.Infinity
-            && agent.pathStatus == NavMeshPathStatus.PathComplete
-            && agent.remainingDistance == 0)
                 patrolTimer -= Time.deltaTime;
 
         UpdateDetectionRays();
         UpdateState();
 
         // Animations
-        anim.SetFloat("Speed", agent.speed/20);
-            
+        anim.SetFloat("Speed", agent.velocity.magnitude);
+        Debug.LogWarning("Velocity: " + agent.velocity.magnitude);
     }
 
     private void UpdateDetectionRays()
     {
-        RaycastHit sightHit;
-        RaycastHit peripheralHit;
 
-        if (!isBlind && Physics.Raycast(headTransform.position, (player.transform.position - headTransform.position).normalized, out peripheralHit, peripheralRange, detectionMask))
-            if (peripheralHit.collider.gameObject.tag == "Player")
+        if (!isBlind && Physics.Raycast(headTransform.position, (player.transform.position - headTransform.position).normalized, out RaycastHit peripheralHit, peripheralRange, detectionMask))
+            if (peripheralHit.collider.gameObject.CompareTag("Player"))
                 sawPlayer = true;
 
-        if (!isBlind && Physics.Raycast(headTransform.position, (player.transform.position - headTransform.position).normalized, out sightHit, sightRange, detectionMask))
-            if (sightHit.collider.gameObject.tag == "Player" && sightCollider.bounds.Contains(player.transform.position))
+        if (!isBlind && Physics.Raycast(headTransform.position, (player.transform.position - headTransform.position).normalized, out RaycastHit sightHit, sightRange, detectionMask))
+            if (sightHit.collider.gameObject.CompareTag("Player") && sightCollider.bounds.Contains(player.transform.position))
                 sawPlayer = true;
     }
 
@@ -144,17 +154,23 @@ public class EnemyMovement : MonoBehaviour
     private void SearchWalkPoint()
     {
         //Calculate random point in range
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
+        //float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        //float randomX = Random.Range(-walkPointRange, walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        RaycastHit raycastHit;
+        Vector3 randomDirection = Random.insideUnitSphere * walkPointRadius;
+        randomDirection += transform.position;
+        NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, walkPointRadius, 1);
+        walkPoint = hit.position;
+        walkPointSet = true;
 
-        if (Physics.Raycast(walkPoint + Vector3.up * 5f, -transform.up, out raycastHit, 20f, groundMask))
-        {
-            walkPoint.y = raycastHit.point.y;
-            walkPointSet = true;
-        }
+        //walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        //RaycastHit raycastHit;
+
+        //if (Physics.Raycast(walkPoint + Vector3.up * 5f, -transform.up, out raycastHit, 20f, groundMask))
+        //{
+        //    walkPoint.y = raycastHit.point.y;
+        //    walkPointSet = true;
+        //}
     }
 
     private void ChasePlayer()

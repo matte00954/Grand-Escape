@@ -7,10 +7,12 @@ public class EquippedSword : MonoBehaviour
     [SerializeField] private BoxCollider swordCollider;
     [SerializeField] private UnityEvent OnAttack;
 
-    [SerializeField] private UiManager uiManager;
+    private UiManager uiManager;
 
     private AudioSource audioSource;
     private Animator anim;
+
+    private void Awake() => uiManager = FindObjectOfType<UiManager>();
 
     private void Start()
     {
@@ -26,7 +28,7 @@ public class EquippedSword : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0) && !anim.GetCurrentAnimatorStateInfo(0).IsName("ES_Slash"))
+        if (Input.GetMouseButton(0) && !anim.GetCurrentAnimatorStateInfo(0).IsName("ES_Slash") && PlayerVariables.isAlive)
         {
             OnAttack.Invoke();
         }
@@ -36,7 +38,7 @@ public class EquippedSword : MonoBehaviour
 
     private void OnEnable()
     {
-        uiManager.WeaponStatus(false);
+        uiManager.WeaponStatus(2);
         swordCollider.enabled = false;
     }
 

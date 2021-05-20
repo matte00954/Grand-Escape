@@ -123,31 +123,31 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Damaged
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Death
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Speed
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Direction
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -224,7 +224,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400002, guid: b1514ab22d7ee41418c61864e51aac53, type: 3}
     m_Threshold: 0.625
-    m_Position: {x: 0, y: 1}
+    m_Position: {x: 0, y: 6}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Speed
@@ -232,7 +232,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400006, guid: b1514ab22d7ee41418c61864e51aac53, type: 3}
     m_Threshold: 0.75
-    m_Position: {x: 0, y: -1}
+    m_Position: {x: 0, y: -6}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Speed
@@ -240,7 +240,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400014, guid: b1514ab22d7ee41418c61864e51aac53, type: 3}
     m_Threshold: 0.875
-    m_Position: {x: 1, y: 0}
+    m_Position: {x: 6, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Speed
@@ -248,7 +248,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400010, guid: b1514ab22d7ee41418c61864e51aac53, type: 3}
     m_Threshold: 1
-    m_Position: {x: -1, y: 0}
+    m_Position: {x: -6, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Speed

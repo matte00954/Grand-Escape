@@ -1037,10 +1037,10 @@ MonoBehaviour:
   dodgeCooldownSlider: {fileID: 4866926394493602353}
   crouchImage: {fileID: 669202788935568809}
   deathImage: {fileID: 2313779150665006420}
-  slowMotionImage: {fileID: 2793664842316158197}
   recentDamageTakenImage: {fileID: 5154083745498873339}
   weaponStatusBorder: {fileID: 2438000142751429672}
   recentDamageTakenTimerMax: 0.65
+  frostEffect: {fileID: 0}
 --- !u!1 &5462516964440403375
 GameObject:
   m_ObjectHideFlags: 0

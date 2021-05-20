@@ -17,12 +17,16 @@ public class UiManager : MonoBehaviour
 
     [SerializeField] private Image crouchImage;
     [SerializeField] private Image deathImage;
-    [SerializeField] private Image slowMotionImage;
+    //[SerializeField] private Image slowMotionImage;
     [SerializeField] private Image recentDamageTakenImage;
 
     [SerializeField] private Image weaponStatusBorder;
 
     [SerializeField] private float recentDamageTakenTimerMax;
+
+    [Header("Player camera here")]
+    [SerializeField] FrostEffect frostEffect;
+
 
     private float recentDamageTakenTimer;
 
@@ -108,12 +112,19 @@ public class UiManager : MonoBehaviour
 
     public void SlowMotionEffect()
     {
-        if(Time.timeScale == 1)
+        if (Time.timeScale == 1)
         {
-            slowMotionImage.gameObject.SetActive(false);
+            frostEffect.enabled = false;
         }
         else
-            slowMotionImage.gameObject.SetActive(true);
+            frostEffect.enabled = true;
+
+        //if(Time.timeScale == 1)
+        //{
+        //    slowMotionImage.gameObject.SetActive(false);
+        //}
+        //else
+        //    slowMotionImage.gameObject.SetActive(true);
     }
 
     private void Start()

@@ -15,6 +15,7 @@ public class UiManager : MonoBehaviour
 
     [SerializeField] private Image slowMotionExhaustion;
     [SerializeField] private Image sprintExhaustion;
+    [SerializeField] private Image tutorial;
 
     [SerializeField] private Image crouchImage;
     [SerializeField] private Image deathImage;
@@ -38,10 +39,10 @@ public class UiManager : MonoBehaviour
         if (active)
         {
             tutorialText.text = textToShow;
-            tutorialText.gameObject.SetActive(true);
+            tutorial.gameObject.SetActive(true);
         }
         else
-            tutorialText.gameObject.SetActive(false);
+            tutorial.gameObject.SetActive(false);
     }
 
     public void WeaponStatus(int isReloaded) //0 == false, 1 == true, 2 == meele

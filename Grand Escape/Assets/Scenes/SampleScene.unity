@@ -1197,7 +1197,11 @@ PrefabInstance:
       objectReference: {fileID: 1771174257}
     - target: {fileID: 5445452363763676152, guid: c496816584f76ed4883c8ad0e5a66cc8, type: 3}
       propertyPath: tutorialText
-      value: Tutorial text test
+      value: 'Tutorial text test
+
+        Test
+
+        Test'
       objectReference: {fileID: 0}
     - target: {fileID: 5445452363763676153, guid: c496816584f76ed4883c8ad0e5a66cc8, type: 3}
       propertyPath: m_Name

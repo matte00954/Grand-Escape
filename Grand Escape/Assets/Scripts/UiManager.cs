@@ -6,14 +6,15 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     [SerializeField] private Text ammoLeftText;
-    [SerializeField] private Text slowMotionExhaustionText;
-    [SerializeField] private Text sprintExhaustionText;
     [SerializeField] private Text tutorialText;
 
     [SerializeField] private Slider healthPointSlider;
     [SerializeField] private Slider staminaPointSlider;
     [SerializeField] private Slider weaponReloadedSlider;
     [SerializeField] private Slider dodgeCooldownSlider;
+
+    [SerializeField] private Image slowMotionExhaustion;
+    [SerializeField] private Image sprintExhaustion;
 
     [SerializeField] private Image crouchImage;
     [SerializeField] private Image deathImage;
@@ -75,17 +76,17 @@ public class UiManager : MonoBehaviour
     public void SlowMotionExhaustion(bool isExhaustedFromSlowMotion)
     {
         if (isExhaustedFromSlowMotion)
-            slowMotionExhaustionText.gameObject.SetActive(true);
+            slowMotionExhaustion.gameObject.SetActive(true);
         else
-            slowMotionExhaustionText.gameObject.SetActive(false);
+            slowMotionExhaustion.gameObject.SetActive(false);
     }
 
     public void SprintExhaustion(bool isExhaustedFromSprinting)
     {
         if (isExhaustedFromSprinting)
-            sprintExhaustionText.gameObject.SetActive(true);
+            sprintExhaustion.gameObject.SetActive(true);
         else
-            sprintExhaustionText.gameObject.SetActive(false);
+            sprintExhaustion.gameObject.SetActive(false);
     }
 
     public void CrouchingImage(bool active)

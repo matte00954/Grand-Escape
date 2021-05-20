@@ -7,11 +7,18 @@ public class PickupType : ScriptableObject
 {
     [SerializeField] private string pickupType;
 
+    [SerializeField] private string pickupSoundName;
+
     [SerializeField] private int amount;
 
     public string GetPickupType()
     {
         return pickupType;
+    }
+
+    public string GetPickupSoundName()
+    {
+        return pickupSoundName;
     }
 
     public int GetAmount()

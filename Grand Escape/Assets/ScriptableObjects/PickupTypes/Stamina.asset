@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Stamina
   m_EditorClassIdentifier: 
   pickupType: stamina
+  pickupSoundName: staminaPickupSound
   amount: 30

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Ammo
   m_EditorClassIdentifier: 
   pickupType: ammo
+  pickupSoundName: ammoPickupSound
   amount: 5

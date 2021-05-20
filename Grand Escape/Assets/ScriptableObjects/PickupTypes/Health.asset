@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Health
   m_EditorClassIdentifier: 
   pickupType: health
+  pickupSoundName: healthPickupSound
   amount: 50

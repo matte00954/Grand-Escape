@@ -61,7 +61,7 @@ MonoBehaviour:
     loop: 0
   - clip: {fileID: 8300000, guid: 9e6d7ceadcad50141afaa2ec7aadb4ad, type: 3}
     name: DefaultBGM
-    volume: 0.3
+    volume: 0.1
     pitch: 1
     loop: 1
   - clip: {fileID: 8300000, guid: 69500cfd43f784b44b165e8c52c727fd, type: 3}
@@ -123,4 +123,29 @@ MonoBehaviour:
     name: PlayerDeathSound
     volume: 0.4
     pitch: 0.5
+    loop: 0
+  - clip: {fileID: 8300000, guid: f2539763e0cefb04ba55acbc4e963eaa, type: 3}
+    name: PlayerDodgeSound
+    volume: 0.4
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 5548bf8813963e84db56e6ac9ad650e9, type: 3}
+    name: healthPickupSound
+    volume: 0.4
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: bfe52767ef19c054082033f95b07d33f, type: 3}
+    name: staminaPickupSound
+    volume: 0.4
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: e7a87590d34c47e409506d2245484bc7, type: 3}
+    name: ammoPickupSound
+    volume: 0.4
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 8705c87317500f1448bde5428f1a0d72, type: 3}
+    name: playerJump
+    volume: 0.4
+    pitch: 1
     loop: 0

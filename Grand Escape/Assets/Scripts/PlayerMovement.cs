@@ -217,6 +217,7 @@ public class PlayerMovement : MonoBehaviour
         if (!IsDodging && IsGrounded && playerVariables.GetCurrentStamina() > staminaUsedForDodge && dodgeCooldownTimer <= 0)
         {
             IsDodging = true;
+            audioManager.Play("PlayerDodgeSound");
             dodgeTimer = dodgeAmountOfTime;
             playerVariables.StaminaToBeUsed(staminaUsedForDodge);
             dodgeDirection = direction * currentSpeed * dodgeSpeedMultiplier;
@@ -334,6 +335,7 @@ public class PlayerMovement : MonoBehaviour
         {
             playerVariables.StaminaToBeUsed(staminaUsedForJump);
             yVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            audioManager.Play("playerJump");
         }
 
         //This builds up the downward velocity vector with gravity over time.

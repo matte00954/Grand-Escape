@@ -12,6 +12,10 @@ public class Pickup : MonoBehaviour
 
             other.gameObject.GetComponent<PlayerVariables>().AddingStatAfterPickup(pickupType.GetPickupType(), pickupType.GetAmount());
 
+            AudioManager audioManager = FindObjectOfType<AudioManager>();
+
+            audioManager.Play(pickupType.GetPickupSoundName());
+
             gameObject.SetActive(false);
         }
     }

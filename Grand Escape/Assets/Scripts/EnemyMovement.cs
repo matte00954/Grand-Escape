@@ -83,7 +83,7 @@ public class EnemyMovement : MonoBehaviour
 
         // Animations
         anim.SetFloat("Speed", agent.velocity.magnitude);
-        Debug.LogWarning("Velocity: " + agent.velocity.magnitude);
+        //Debug.LogWarning("Velocity: " + agent.velocity.magnitude); // I did my part
     }
 
     private void UpdateDetectionRays()

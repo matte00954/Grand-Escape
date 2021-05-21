@@ -376,8 +376,8 @@ RectTransform:
   m_Father: {fileID: 1458925148674149416}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -521,15 +521,15 @@ RectTransform:
   m_GameObject: {fileID: 4441014221204354086}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 4884748120044031725}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2000, y: 2000}
+  m_SizeDelta: {x: 0, y: 2000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &645371847632023994
 CanvasRenderer:
@@ -1655,7 +1655,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1704,6 +1704,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4884748120044031725}
     m_Modifications:
+    - target: {fileID: 742283947, guid: 4d221835e58c5ca45932e76ca54fedbc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218481187, guid: 4d221835e58c5ca45932e76ca54fedbc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554796185, guid: 4d221835e58c5ca45932e76ca54fedbc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397308092478381159, guid: 4d221835e58c5ca45932e76ca54fedbc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397308092698637980, guid: 4d221835e58c5ca45932e76ca54fedbc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4397308093875119013, guid: 4d221835e58c5ca45932e76ca54fedbc, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -1747,6 +1767,10 @@ PrefabInstance:
     - target: {fileID: 4397308093875119013, guid: 4d221835e58c5ca45932e76ca54fedbc, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397308093982334816, guid: 4d221835e58c5ca45932e76ca54fedbc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d221835e58c5ca45932e76ca54fedbc, type: 3}
@@ -1849,14 +1873,6 @@ PrefabInstance:
     - target: {fileID: 8936374207791805999, guid: fa77dfbf02fcb634aa9fb193f3faddcd, type: 3}
       propertyPath: m_Name
       value: StaminaBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 8936374208512928460, guid: fa77dfbf02fcb634aa9fb193f3faddcd, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8936374208512928460, guid: fa77dfbf02fcb634aa9fb193f3faddcd, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa77dfbf02fcb634aa9fb193f3faddcd, type: 3}
@@ -2237,14 +2253,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4884748120044031725}
     m_Modifications:
-    - target: {fileID: 1669205111046951141, guid: 25ad3df0660b87e46abdb65869cc4042, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1669205111046951141, guid: 25ad3df0660b87e46abdb65869cc4042, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2586183202422770469, guid: 25ad3df0660b87e46abdb65869cc4042, type: 3}
       propertyPath: m_Name
       value: HealthBar

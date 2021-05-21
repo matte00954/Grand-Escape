@@ -1077,7 +1077,7 @@ MonoBehaviour:
   sightCollider: {fileID: 341790925963359553}
   headTransform: {fileID: 9079189499366403010}
   IsStationary: 0
-  walkPointRange: 10
+  walkPointRadius: 0
   timeBetweenPatrol: 3
   patrolSpeed: 11
   sightRange: 50
@@ -1153,8 +1153,18 @@ MonoBehaviour:
   playerVariables: {fileID: 0}
   cooldown: 2
   damage: 40
-  swingClips: []
-  hitClips: []
+  swingClips:
+  - {fileID: 8300000, guid: 7e17ee4546270ae46bf43345d818ae90, type: 3}
+  - {fileID: 8300000, guid: ba9f03244bf4b95478d900b6c08ab3cd, type: 3}
+  - {fileID: 8300000, guid: 140d00a5a3b3e1c4cbdac9148e7417a4, type: 3}
+  - {fileID: 8300000, guid: bfe52767ef19c054082033f95b07d33f, type: 3}
+  - {fileID: 8300000, guid: 49d494b05b9281a47b3c7453fc38f1f8, type: 3}
+  - {fileID: 8300000, guid: 58c1ce623a6276248857438ee0c43943, type: 3}
+  - {fileID: 8300000, guid: e7a87590d34c47e409506d2245484bc7, type: 3}
+  hitClips:
+  - {fileID: 8300000, guid: 5548bf8813963e84db56e6ac9ad650e9, type: 3}
+  - {fileID: 8300000, guid: 38be8efccf4fa3946abf9b434876fb8c, type: 3}
+  - {fileID: 8300000, guid: d718574a3b6eda04085fa591cec7e0ab, type: 3}
   swordCollider: {fileID: 6463753934936622731}
   onAttack:
     m_PersistentCalls:

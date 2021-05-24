@@ -20,14 +20,9 @@ public class EnemyRespawn : MonoBehaviour
         {
             for (int i = 0; i < enemies.Count; i++)
             {
-                if (enemies[i] == null)
-                    Debug.LogError(i + " in enemies list is null " + gameObject);
-                else
-                {
-                    enemies[i].GetComponent<EnemyVariables>().ResetAllStats();
-                    enemies[i].GetComponent<EnemyVariables>().ResetPosition();
-                    enemies[i].SetActive(true);
-                }
+                enemies[i].GetComponent<EnemyVariables>().ResetAllStats();
+                enemies[i].SetActive(true);
+                enemies[i].GetComponent<EnemyVariables>().ResetPosition();
             }
         }
     }

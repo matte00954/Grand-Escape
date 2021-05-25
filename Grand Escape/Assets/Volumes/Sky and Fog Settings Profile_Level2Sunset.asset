@@ -16,7 +16,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   rotation:
     m_OverrideState: 1
-    m_Value: 48
+    m_Value: 67
     min: 0
     max: 360
   skyIntensityMode:
@@ -279,6 +279,38 @@ MonoBehaviour:
     m_Value: 0
     min: -100
     max: 100
+--- !u!114 &-3447174418138271029
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f034cba68ab55e046ae1445a42f18c0e, type: 3}
+  m_Name: IndirectLightingController
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  indirectDiffuseLightingMultiplier:
+    m_OverrideState: 1
+    m_Value: 4
+    min: 0
+  indirectDiffuseLightingLayers:
+    m_OverrideState: 0
+    m_Value: 255
+  reflectionLightingMultiplier:
+    m_OverrideState: 1
+    m_Value: 3
+    min: 0
+  reflectionLightingLayers:
+    m_OverrideState: 0
+    m_Value: 255
+  reflectionProbeIntensityMultiplier:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
 --- !u!114 &-2504396148230417583
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -291,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7593b3a9277ac4696b20006c21dde2, type: 3}
   m_Name: VisualEnvironment
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   skyType:
     m_OverrideState: 1
@@ -326,6 +358,7 @@ MonoBehaviour:
   - {fileID: 1996615428922269669}
   - {fileID: -3531559105263384108}
   - {fileID: 6059952903438069411}
+  - {fileID: -3447174418138271029}
 --- !u!114 &1996615428922269669
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -622,7 +655,7 @@ MonoBehaviour:
     m_Value: {fileID: 8900000, guid: 76f621538ef366e4090a2739f8b00d4a, type: 3}
   spaceEmissionMultiplier:
     m_OverrideState: 1
-    m_Value: 2000
+    m_Value: 5000
     min: 0
   spaceRotation:
     m_OverrideState: 0
@@ -894,7 +927,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   maxShadowDistance:
     m_OverrideState: 1
-    m_Value: 500
+    m_Value: 100000
     min: 0
   directionalTransmissionMultiplier:
     m_OverrideState: 1
@@ -950,7 +983,7 @@ MonoBehaviour:
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.496
+    m_Value: 0.6
     min: 0
     max: 1
   scatter:

@@ -100,8 +100,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void UpdateState()
     {
-        if (!IsStationary && !heardPlayer && !sawPlayer && alertTimer <= 0f) //Patroling state when not detecting player and not in an alerted state
+        if (!IsStationary && !heardPlayer && !sawPlayer && alertTimer <= 0f || !PlayerVariables.isAlive) //Patroling state when not detecting player and not in an alerted state
+        {
+            alertTimer = 0f;
             Patroling();
+        }
         else if (heardPlayer || sawPlayer) //If enemy either sees or hears the player, it will reset and start the timer for alerted state
         {
             alertTimer = alertBufferTime;

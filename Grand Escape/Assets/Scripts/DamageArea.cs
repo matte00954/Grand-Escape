@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class DamageArea : MonoBehaviour
 {
     /*public int damage; //<---- TODO: inflict damage to player health */
-    [SerializeField] private PlayerVariables playerVariables;
+    private PlayerVariables playerVariables;
     [SerializeField] private float cooldown = 2f;
     [SerializeField] private int damage = 40;
 
@@ -23,7 +23,7 @@ public class DamageArea : MonoBehaviour
 
     private void Awake()
     {
-        playerVariables = GameObject.Find("First Person Player").GetComponent<PlayerVariables>();
+        playerVariables = FindObjectOfType<PlayerVariables>();
 
         // Animations
         audioSource = GetComponent<AudioSource>();

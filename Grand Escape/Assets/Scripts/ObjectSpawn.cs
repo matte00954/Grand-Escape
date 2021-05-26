@@ -3,24 +3,22 @@ using UnityEngine;
 
 public class ObjectSpawn : MonoBehaviour
 {
-    [Header("Objects that spawns when you reach this point")] //For optimising
-    [SerializeField] private GameObject[] gameObjects;
-
-    [Header("Objects that gets disabled when you reach this point")] //For optimising 
-    [SerializeField] private GameObject[] toDisable;
+    [Header("Objects that spawn")]
+    [Tooltip("These objects will be set active once the player reaches the trigger connected to this gameObject(checkpoint)")]
+    [SerializeField] private GameObject[] objectList;
 
     private void Start()
     {
-        DisableObjects(gameObjects);
+        DisableObjects(objectList);
     }
 
     public void SpawnObjects()
     {
-        for (int i = 0; i < gameObjects.Length; i++)
-            gameObjects[i].SetActive(true);
+        for (int i = 0; i < objectList.Length; i++)
+            objectList[i].SetActive(true);
     }
 
-    public void DisableObjects(GameObject[] list) //may not need to be public, but might use this one for something else
+    private void DisableObjects(GameObject[] list) 
     {
         for (int i = 0; i < list.Length; i++)
             list[i].SetActive(false);

@@ -29,7 +29,6 @@ public class WeaponHolder : MonoBehaviour
 
         if (PlayerVariables.isAlive)
         {
-
             if (Input.GetKeyDown(KeyCode.Alpha1) && unlockedFlintPistol)
                 selectedWeapon = 0;
             if (Input.GetKeyDown(KeyCode.Alpha2) && unlockedMusket)

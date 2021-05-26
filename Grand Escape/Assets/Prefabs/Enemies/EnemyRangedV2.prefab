@@ -935,7 +935,7 @@ MonoBehaviour:
   sightCollider: {fileID: 8175941856538727421}
   headTransform: {fileID: 4589696279718779589}
   IsStationary: 0
-  walkPointRange: 10
+  walkPointRadius: 5
   timeBetweenPatrol: 3
   patrolSpeed: 11
   sightRange: 50

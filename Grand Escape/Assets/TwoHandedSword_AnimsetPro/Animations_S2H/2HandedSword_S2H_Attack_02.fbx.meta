@@ -436,7 +436,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
-    optimizeGameObjects: 0
+    optimizeGameObjects: 1
     motionNodeName: root
     rigImportErrors: 
     rigImportWarnings: 
@@ -643,14 +643,14 @@ ModelImporter:
       - time: 0.34369135
         functionName: AttackStart
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: d27d831c31d615b489cf10b282ff62ab, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: 226716b0631e7f04f932e28a34dbf99c, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.4842165
         functionName: AttackEnd
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: d27d831c31d615b489cf10b282ff62ab, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: 226716b0631e7f04f932e28a34dbf99c, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

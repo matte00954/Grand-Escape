@@ -14,6 +14,8 @@ public class PlayerVariables : MonoBehaviour
     
     [Header("Stamina")]
     [SerializeField] private float staminaRegenPerTick; //per update tick
+    [Tooltip("The amount of stamina regenerated from each kill during slow motion."),
+        SerializeField] private float staminaLeechAmount;
 
     [Header("Max Variables")]
     [SerializeField] private int maxHealthPoints;
@@ -133,13 +135,16 @@ public class PlayerVariables : MonoBehaviour
 
     public void StaminaToBeUsed(float amount) //Everything that costs stamina should use this method
     {
-        if (currentStamina >= 0)
-            currentStamina -= amount;
-        else 
-            Debug.Log("Out of stamina");
+        if (!godMode)
+        {
+            if (currentStamina >= 0)
+                currentStamina -= amount;
+            else
+                Debug.Log("Out of stamina");
+        }
     }
 
-    public void AddingStatAfterPickup(string statToChange, int amount)
+    public void AddStatAfterPickup(string statToChange, int amount)
     {
         if (statToChange.Contains("stamina"))
         {

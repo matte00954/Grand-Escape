@@ -10,7 +10,7 @@ public class Pickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 
-            other.gameObject.GetComponent<PlayerVariables>().AddingStatAfterPickup(pickupType.GetPickupType(), pickupType.GetAmount());
+            other.gameObject.GetComponent<PlayerVariables>().AddStatAfterPickup(pickupType.GetPickupType(), pickupType.GetAmount());
 
             AudioManager audioManager = FindObjectOfType<AudioManager>();
 

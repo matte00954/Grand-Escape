@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-public class DamageArea : MonoBehaviour
+public class EnemyMelee : MonoBehaviour
 {
-    [SerializeField] private float cooldown = 2f;
+    [Tooltip("The time between attacks in seconds."),
+        SerializeField] private float cooldown = 2f;
+    [SerializeField] EnemySword enemySword;
     private float timer;
     private Animator anim;
     
@@ -24,4 +27,7 @@ public class DamageArea : MonoBehaviour
             anim.SetTrigger("Attack");
         }
     }
+
+    private void AttackStart() => enemySword.AttackStart();
+    private void AttackEnd() => enemySword.AttackEnd();
 }

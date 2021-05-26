@@ -38,13 +38,12 @@ public class AmmoVelocity : MonoBehaviour
 
     private void RayCheck()
     {
-        RaycastHit raycastHit;
-        if (Physics.Raycast(transform.position, direction, out raycastHit, ammo.GetAmmoSpeed() * Time.deltaTime, collisionMask) && isActive)
+        if (Physics.Raycast(transform.position, direction, out RaycastHit raycastHit, ammo.GetAmmoSpeed() * Time.deltaTime, collisionMask) && isActive)
         {
             isActive = false;
-            if (raycastHit.collider.gameObject.tag == "Player")
+            if (raycastHit.collider.gameObject.CompareTag("Player"))
                 raycastHit.collider.gameObject.GetComponentInParent<PlayerVariables>().ApplyDamage(ammo.GetAmmoDamage());
-            else if (raycastHit.collider.gameObject.tag == "Enemy")
+            else if (raycastHit.collider.gameObject.CompareTag("Enemy"))
                 raycastHit.collider.gameObject.GetComponent<EnemyVariables>().ApplyDamage(ammo.GetAmmoDamage());
 
             Destroy(this.gameObject);

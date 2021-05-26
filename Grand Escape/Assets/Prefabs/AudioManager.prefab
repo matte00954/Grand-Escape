@@ -43,109 +43,182 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed310f011e9dc44a8fa376e2ddafb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundSourcePrefab: {fileID: 7392164038285942141, guid: 17e3bf1f09b8dee42b27bef2d9bff044, type: 3}
   sounds:
   - clip: {fileID: 8300000, guid: 8498879ec8d8da24784954516e22a75e, type: 3}
     name: PistolFire
     volume: 0.5
-    pitch: 0.8
+    pitchValue: 1
+    pitchRange: 0
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: 1337170f923c4d1408bf360fb3e53b6a, type: 3}
     name: PistolStartReload
     volume: 0.5
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: 4e830fa665fe1b847b738f4e4080b4c1, type: 3}
     name: PistolFinishReload
     volume: 0.5
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: 9e6d7ceadcad50141afaa2ec7aadb4ad, type: 3}
     name: DefaultBGM
     volume: 0.1
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0
     loop: 1
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: 69500cfd43f784b44b165e8c52c727fd, type: 3}
     name: SlowMoStart
     volume: 1
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: 06a21d50e88d5ab499a305c23e82ed5b, type: 3}
     name: SlowMoFinish
     volume: 1
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: 92b0e11aff865414ba4bc942f2843d68, type: 3}
     name: Walk1
     volume: 0.435
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0.1
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: d6d63e0a9b679c341a8513264f00c2b7, type: 3}
     name: DrawSword
     volume: 1
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: 2390fe10346e28b44b72496eb37d69aa, type: 3}
     name: SwingSword
     volume: 1
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0.3
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: 2acffae4d86dfd545bf166dc27a5a24d, type: 3}
     name: MusketStartReload
     volume: 1
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: d6d63e0a9b679c341a8513264f00c2b7, type: 3}
     name: MusketFinishReload
     volume: 1
-    pitch: 1.5
+    pitchValue: 1
+    pitchRange: 0
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: cbaa24cce18a6ed4185997798ab0bbe9, type: 3}
     name: MusketFire
     volume: 1
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0.2
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: 9c7b96da92b9b484c9aac0d4817f025c, type: 3}
     name: PistolClick
     volume: 1
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: df3d43454b1368e438c66a80aab8a5aa, type: 3}
     name: MusketClick
     volume: 1
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: d187cebc56c294e48b0e1bee5da66313, type: 3}
     name: PlayerDamageTakenSound
     volume: 1
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: 9e193850775126f4786dc4d14d494450, type: 3}
     name: PlayerDeathSound
     volume: 0.4
-    pitch: 0.5
+    pitchValue: 1
+    pitchRange: 0
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: f2539763e0cefb04ba55acbc4e963eaa, type: 3}
     name: PlayerDodgeSound
     volume: 0.4
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0.1
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: 5548bf8813963e84db56e6ac9ad650e9, type: 3}
     name: healthPickupSound
     volume: 0.4
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0.2
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: bfe52767ef19c054082033f95b07d33f, type: 3}
     name: staminaPickupSound
     volume: 0.4
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0.1
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: e7a87590d34c47e409506d2245484bc7, type: 3}
     name: ammoPickupSound
     volume: 0.4
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0.2
     loop: 0
+    minDistance: 0
+    maxDistance: 0
   - clip: {fileID: 8300000, guid: 8705c87317500f1448bde5428f1a0d72, type: 3}
     name: playerJump
     volume: 0.4
-    pitch: 1
+    pitchValue: 1
+    pitchRange: 0.2
     loop: 0
+    minDistance: 0
+    maxDistance: 0
+  enemySounds:
+  - clip: {fileID: 8300000, guid: 78859c07e9e1b7b49b8a74b034d11db8, type: 3}
+    name: EnemyDeath1
+    volume: 0.396
+    pitchValue: 1
+    pitchRange: 1
+    loop: 0
+    minDistance: 10
+    maxDistance: 500

@@ -1,6 +1,7 @@
 //Main author: Mattias Larsson
 //Secondary author: William Örnquist
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyVariables : MonoBehaviour
 {
@@ -12,8 +13,9 @@ public class EnemyVariables : MonoBehaviour
 
     private int healthPoints;
     private AudioSource audioSource;
-
     private Vector3 startPosition;
+
+    private bool isAlive = true;
 
     // Animations
     private Animator anim;
@@ -31,7 +33,7 @@ public class EnemyVariables : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(healthPoints <= 0)
+        if(healthPoints <= 0 && isAlive)
         {
             Debug.Log("Enemy dies");
 
@@ -44,10 +46,31 @@ public class EnemyVariables : MonoBehaviour
             AudioSource.PlayClipAtPoint(clip, transform.position);
 
             // När animationen Death har spelat klar ska fienden inaktiveras
-            this.gameObject.SetActive(false);
+            isAlive = false;
+            Die();
         }
+        anim.SetBool("IsAlive", isAlive);
     }
 
+    private void Die()
+    {
+        SetEnemyComponents(false);
+    }
+
+    private void SetEnemyComponents(bool enable)
+    {
+        foreach (MonoBehaviour component in GetComponents<MonoBehaviour>())
+            component.enabled = enable;
+        foreach (Collider col in GetComponentsInChildren<Collider>())
+            col.enabled = enable;
+
+        GetComponent<NavMeshAgent>().enabled = enable;
+    }
+
+    /// <summary>
+    /// Applies a set amount of damage to enemy healthpool.
+    /// </summary>
+    /// <param name="damage">The amount of damage to apply.</param>
     public void ApplyDamage(float damage)
     {
         Debug.Log("Enemy took " + damage + " in damage");
@@ -67,6 +90,8 @@ public class EnemyVariables : MonoBehaviour
     public void ResetAllStats()
     {
         healthPoints = enemyType.GetMaxHealthPoints();
+        SetEnemyComponents(true);
+        isAlive = true;
     }
 
     public void ResetPosition()

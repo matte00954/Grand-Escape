@@ -51,6 +51,7 @@ public class EnemyVariables : MonoBehaviour
 
     private void Die()
     {
+        PlayerVariables.AddStamina(enemyType.GetStaminaLeechAmount(), true);
         SetEnemyComponents(false);
     }
 

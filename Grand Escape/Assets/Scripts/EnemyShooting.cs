@@ -21,7 +21,6 @@ public class EnemyShooting : MonoBehaviour
 
     private readonly string fireName = "Fire";
 
-    private float rotationSpeedMultiplier;
     private float reloadTimer;
     private bool isAlerted = false;
     
@@ -62,11 +61,9 @@ public class EnemyShooting : MonoBehaviour
 
     private void TakeAim()
     {
-        RaycastHit hit;
-
-        if (isAlerted && Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.forward, out hit, maxFiringRange, aimCollisionMask) && reloadTimer <= 0f)
+        if (isAlerted && Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.forward, out RaycastHit hit, maxFiringRange, aimCollisionMask) && reloadTimer <= 0f)
         {
-            if (hit.collider.gameObject.tag == "Player")
+            if (hit.collider.gameObject.CompareTag("Player"))
             {
                 reloadTimer = reloadTimeInSeconds;
                 ShootWithGun();
@@ -78,7 +75,7 @@ public class EnemyShooting : MonoBehaviour
     {
         Vector3 direction = (player.transform.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeedMultiplier);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime);
     }
 
     public void SetAlert(bool isAlerted) => this.isAlerted = isAlerted;

@@ -11,7 +11,7 @@ public class PlayerVariables : MonoBehaviour
     [SerializeField] private AudioManager audioManager;
 
     private Transform currentRespawnPoint;
-    
+
     [Header("Stamina")]
     [SerializeField] private float staminaRegenPerTick; //per update tick
     [Tooltip("The amount of stamina regenerated from each kill during slow motion."),
@@ -48,28 +48,40 @@ public class PlayerVariables : MonoBehaviour
 
     //Timers that changes during runtime
     private float timerUntilRespawn;
-    private float timerUntilStaminaComparisonCheck; 
+    private float timerUntilStaminaComparisonCheck;
     private float timerUntilStaminaRegen;
 
     //Used during runtime
     private int healthPoints;
     private int currentAmmoReserve;
-    private float currentStamina;
+
+    private static float maximumStamina;
+    private static float currentStamina;
+
+    /// <summary>
+    /// The current stamina of the player in realtime. Setting a value will add up to total.
+    /// </summary>
+    public static void AddStamina(float amountToAdd, bool isLeech)
+    {
+        if (isLeech && Time.timeScale < 1f || !isLeech)
+        {
+            currentStamina += amountToAdd;
+            if (currentStamina > maximumStamina)
+            {
+                currentStamina = maximumStamina;
+            }
+        }
+    }
 
     public static bool isAlive = true;
 
-    public int GetCurrentHealthPoints() { return healthPoints; }
     public int GetCurrentAmmoReserve() { return currentAmmoReserve; }
-
     public float GetCurrentStamina() { return currentStamina; }
-    public float GetMaxStamina() { return maxStamina; }
-    public float GetMaxAmmoReserve() { return maxAmmoReserve; }
-    public float GetMaxHealth() { return maxHealthPoints; }
-
-    public bool IsPlayerAlive() { return isAlive; }
 
     private void Start()
     {
+        maximumStamina = maxStamina;
+
         if (godMode)
             maxHealthPoints = 9999;
 

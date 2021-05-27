@@ -10,15 +10,12 @@ public class EnemyVariables : MonoBehaviour
     [SerializeField] private AudioClip[] damagedClips;
     [SerializeField] private AudioClip[] deathClips;
 
+    [HideInInspector] public bool isAlive = true;
 
-    private int healthPoints;
     private AudioSource audioSource;
-    private Vector3 startPosition;
-
-    private bool isAlive = true;
-
-    // Animations
     private Animator anim;
+    private Vector3 startPosition;
+    private int healthPoints;
 
     private void Start()
     {

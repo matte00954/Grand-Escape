@@ -8,7 +8,9 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField] private GameObject barrelEnd;
     [SerializeField] private GameObject enemyAmmo;
     [SerializeField] private ParticleSystem gunSmoke;
+    [SerializeField] private EnemyVariables enemyVariables;
     private GameObject player;
+    private Animator animator;
 
     [Header("Detection")]
     [SerializeField] private LayerMask aimCollisionMask;
@@ -17,36 +19,35 @@ public class EnemyShooting : MonoBehaviour
     [Header("Weapon")]
     [SerializeField] private float reloadTimeInSeconds;
 
+    private readonly string fireName = "Fire";
+
     private float rotationSpeedMultiplier;
     private float reloadTimer;
-
-    private readonly string fireAnimationName = "Fire";
-
     private bool isAlerted = false;
-
-    // Animations
-    private Animator animator;
+    
 
     void Start()
     {
-        // Animations
         animator = GetComponent<Animator>();
         player = GameObject.Find("PlayerHead");
     }
 
-    void Update()
+    private void Update()
     {
-        if (isAlerted)
+        if (enemyVariables.isAlive)
         {
-            RotateSelfToTarget();
-            TakeAim();
-            RotateGun();
-        }
-        else if (!isAlerted && barrelEnd.transform.rotation != Quaternion.identity)
-            RotateGun();
+            if (isAlerted)
+            {
+                RotateSelfToTarget();
+                TakeAim();
+                RotateGun();
+            }
+            else if (!isAlerted && barrelEnd.transform.rotation != Quaternion.identity)
+                RotateGun();
 
-        if (reloadTimer > 0f)
-            reloadTimer -= Time.deltaTime;
+            if (reloadTimer > 0f)
+                reloadTimer -= Time.deltaTime;
+        }
     }
 
     private void RotateGun()
@@ -87,7 +88,7 @@ public class EnemyShooting : MonoBehaviour
         Instantiate(enemyAmmo, barrelEnd.transform.position, barrelEnd.transform.rotation);
         Instantiate(gunSmoke, barrelEnd.transform.position, barrelEnd.transform.rotation);
         // Animations
-        animator.SetTrigger(fireAnimationName);
+        animator.SetTrigger(fireName);
     }
 
     private void OnDrawGizmos()

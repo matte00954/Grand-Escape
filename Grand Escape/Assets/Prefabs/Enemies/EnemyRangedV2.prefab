@@ -891,6 +891,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1f2bc0fb467c91743a1880144e9551fd, type: 3}
   - {fileID: 8300000, guid: f6206c92dc680f64c96742f9b9ae8db3, type: 3}
   - {fileID: 8300000, guid: 6618bdb39cb1909458a133faa7ebb200, type: 3}
+  isAlive: 1
 --- !u!114 &7582761312788962749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -906,6 +907,7 @@ MonoBehaviour:
   barrelEnd: {fileID: 390643834018679050}
   enemyAmmo: {fileID: 7794666079471084343, guid: 196220794740a7946a8e8ad2692d7339, type: 3}
   gunSmoke: {fileID: 3460947036746910333, guid: 92767ba9a14827340801aa1b857891c2, type: 3}
+  enemyVariables: {fileID: 7582761312788962747}
   aimCollisionMask:
     serializedVersion: 2
     m_Bits: 2496

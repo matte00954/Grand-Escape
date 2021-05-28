@@ -48,7 +48,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1826556449864740133}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: {fileID: 11400000, guid: f21e3e68ba731084b89fc0bc3b11cedd, type: 2}
+  bulletTrailPrefab: {fileID: 6508456210116507581, guid: 77672c62ecc93ac46958a3dad2f54da3, type: 3}
   collisionMask:
     serializedVersion: 2
     m_Bits: 2432

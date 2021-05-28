@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5182433223078295261}
   - component: {fileID: -8965539588871930641}
   m_Layer: 9
-  m_Name: PlayerAmmo
+  m_Name: PlayerMusketAmmo
   m_TagString: PlayerBullets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7794666079471084343}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: {fileID: 11400000, guid: 633e646eadcdc2d458cd027a35719c68, type: 2}
+  bulletTrailPrefab: {fileID: 6508456210116507581, guid: 77672c62ecc93ac46958a3dad2f54da3, type: 3}
   collisionMask:
     serializedVersion: 2
     m_Bits: 2432

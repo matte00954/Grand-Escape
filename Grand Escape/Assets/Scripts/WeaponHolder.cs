@@ -6,11 +6,10 @@ public class WeaponHolder : MonoBehaviour
 {
     private static bool unlockedFlintPistol, unlockedMusket, unlockedSword;
     private static int selectedWeapon = -1;
+    private int previousSelectedWeapon;
 
     private void Update()
     {
-        int previousSelectedWep = selectedWeapon;
-
         //if(Input.GetAxis("Mouse ScrollWheel") > 0f)
         //{
         //    if(selectedWeapon >= transform.childCount - 1)
@@ -36,8 +35,9 @@ public class WeaponHolder : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha3) && unlockedSword)
                 selectedWeapon = 2;
 
-            if (previousSelectedWep != selectedWeapon)
+            if (previousSelectedWeapon != selectedWeapon)
                 SelectWeapon();
+            previousSelectedWeapon = selectedWeapon;
         }
     }
 

@@ -213,6 +213,30 @@ MonoBehaviour:
     loop: 0
     minDistance: 0
     maxDistance: 0
+  - clip: {fileID: 8300000, guid: 7bd4917fcae28ad4c8430e98aae15b43, type: 3}
+    name: PickupPistol
+    volume: 0.4
+    pitchValue: 1
+    pitchRange: 0
+    loop: 0
+    minDistance: 0
+    maxDistance: 0
+  - clip: {fileID: 8300000, guid: 9c7b96da92b9b484c9aac0d4817f025c, type: 3}
+    name: PickupMusket
+    volume: 0.4
+    pitchValue: 1
+    pitchRange: 0
+    loop: 0
+    minDistance: 0
+    maxDistance: 0
+  - clip: {fileID: 8300000, guid: d6d63e0a9b679c341a8513264f00c2b7, type: 3}
+    name: PickupSword
+    volume: 0.4
+    pitchValue: 1
+    pitchRange: 0
+    loop: 0
+    minDistance: 0
+    maxDistance: 0
   enemySounds:
   - clip: {fileID: 8300000, guid: 78859c07e9e1b7b49b8a74b034d11db8, type: 3}
     name: EnemyDeath1

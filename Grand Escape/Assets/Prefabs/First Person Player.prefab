@@ -682,9 +682,9 @@ MonoBehaviour:
   timerUntilStaminaComparisonCheckMax: 0.01
   timerUntilStaminaRegenMax: 0.01
   recentDamageTimerMax: 0.6
-  playerSuicideAvailable: 1
+  playerSuicideAvailable: 0
   godMode: 0
-  unlockAllWeapons: 1
+  unlockAllWeapons: 0
 --- !u!1 &5678491155060102435
 GameObject:
   m_ObjectHideFlags: 0

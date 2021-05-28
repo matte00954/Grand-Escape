@@ -158,38 +158,80 @@ public class PlayerVariables : MonoBehaviour
 
     public void AddStatAfterPickup(string statToChange, int amount)
     {
-        if (statToChange.Contains("stamina"))
+        //if (statToChange.Contains("stamina"))
+        //{
+        //    currentStamina += amount;
+        //    Debug.Log("Stamina restored by " + amount);
+
+        //    if (currentStamina > maxStamina)
+        //    {
+        //        currentStamina = maxStamina;
+        //    }
+        //}
+
+        //if (statToChange.Contains("health"))
+        //{
+        //    healthPoints += amount;
+        //    Debug.Log("Health restored by " + amount);
+
+        //    if (healthPoints > maxHealthPoints)
+        //    {
+        //        healthPoints = maxHealthPoints;
+        //    }
+        //}
+
+        //if (statToChange.Contains("ammo"))
+        //{
+        //    currentAmmoReserve += amount;
+
+        //    Debug.Log("Ammo restored by " + amount);
+
+        //    if (currentAmmoReserve > maxAmmoReserve)
+        //    {
+        //        currentAmmoReserve = maxAmmoReserve;
+        //    }
+        //}
+
+        switch (statToChange)
         {
-            currentStamina += amount;
-            Debug.Log("Stamina restored by " + amount);
+            case "stamina":
+                currentStamina += amount;
+                if (currentStamina > maxStamina)
+                    currentStamina = maxStamina;
+                Debug.Log("Stamina restored by " + amount);
+                break;
 
-            if (currentStamina > maxStamina)
-            {
-                currentStamina = maxStamina;
-            }
-        }
+            case "health":
+                healthPoints += amount;
+                if (healthPoints > maxHealthPoints)
+                    healthPoints = maxHealthPoints;
+                Debug.Log("Health restored by " + amount);
+                break;
 
-        if (statToChange.Contains("health"))
-        {
-            healthPoints += amount;
-            Debug.Log("Health restored by " + amount);
+            case "ammo":
+                currentAmmoReserve += amount;
+                if (currentAmmoReserve > maxAmmoReserve)
+                    currentAmmoReserve = maxAmmoReserve;
+                Debug.Log("Ammo restored by " + amount);
+                break;
 
-            if (healthPoints > maxHealthPoints)
-            {
-                healthPoints = maxHealthPoints;
-            }
-        }
+            case "pistol":
+                WeaponHolder.UnlockWeaponSlot(0);
+                Debug.Log("Unlocking pistol");
+                break;
 
-        if (statToChange.Contains("ammo"))
-        {
-            currentAmmoReserve += amount;
+            case "musket":
+                WeaponHolder.UnlockWeaponSlot(1);
+                Debug.Log("Unlocking musket");
+                break;
 
-            Debug.Log("Ammo restored by " + amount);
+            case "sword":
+                WeaponHolder.UnlockWeaponSlot(2);
+                Debug.Log("Unlocking sword");
+                break;
 
-            if (currentAmmoReserve > maxAmmoReserve)
-            {
-                currentAmmoReserve = maxAmmoReserve;
-            }
+            default:
+                break;
         }
     }
 

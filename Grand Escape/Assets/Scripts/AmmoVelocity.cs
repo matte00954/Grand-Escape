@@ -7,6 +7,7 @@ public class AmmoVelocity : MonoBehaviour
     //All other variables move to AmmoType Scriptable object
 
     [SerializeField] private AmmoType ammo;
+    [SerializeField] private ParticleSystem bulletTrailPrefab;
     [SerializeField] private LayerMask collisionMask;
 
     private Vector3 direction;
@@ -24,16 +25,21 @@ public class AmmoVelocity : MonoBehaviour
         Debug.Log("Bullet direction: " + direction);
         Debug.Log("Bullet rotation: " + transform.rotation.eulerAngles);
         lifeTimer = ammo.GetBulletLifetime();
+
+        Instantiate(bulletTrailPrefab, transform);
     }
 
     private void Update()
     {
-        RayCheck();
-        transform.position += direction * ammo.GetAmmoSpeed() * Time.deltaTime;
+        if (isActive)
+        {
+            RayCheck();
+            transform.position += direction * ammo.GetAmmoSpeed() * Time.deltaTime;
 
-        lifeTimer -= Time.deltaTime;
-        if (lifeTimer <= 0f)
-            Destroy(this.gameObject);
+            lifeTimer -= Time.deltaTime;
+            if (lifeTimer <= 0f)
+                Destroy(this.gameObject);
+        }
     }
 
     private void RayCheck()
@@ -46,7 +52,7 @@ public class AmmoVelocity : MonoBehaviour
             else if (raycastHit.collider.gameObject.CompareTag("Enemy"))
                 raycastHit.collider.gameObject.GetComponent<EnemyVariables>().ApplyDamage(ammo.GetAmmoDamage());
 
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 2f);
         }
     }
 

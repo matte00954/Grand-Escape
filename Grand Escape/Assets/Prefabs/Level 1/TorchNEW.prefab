@@ -821,6 +821,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3008408516187046608, guid: b30451b75bf997f47adff1bdd4ad1293, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546347415072545624, guid: b30451b75bf997f47adff1bdd4ad1293, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.18396229
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546347415072545624, guid: b30451b75bf997f47adff1bdd4ad1293, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.523054
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546347415072545624, guid: b30451b75bf997f47adff1bdd4ad1293, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6106715460051197047, guid: b30451b75bf997f47adff1bdd4ad1293, type: 3}
@@ -873,7 +885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6944577693919164712, guid: b30451b75bf997f47adff1bdd4ad1293, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b30451b75bf997f47adff1bdd4ad1293, type: 3}

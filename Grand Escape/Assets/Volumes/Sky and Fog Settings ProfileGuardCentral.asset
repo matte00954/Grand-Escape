@@ -268,26 +268,26 @@ MonoBehaviour:
   m_AdvancedMode: 0
   postExposure:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 3
   contrast:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: -14
     min: -100
     max: 100
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 0.6462264, g: 0.75451934, b: 1, a: 1}
+    m_Value: {r: 0.51428443, g: 0.59074813, b: 0.8584906, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
   hueShift:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 2
     min: -180
     max: 180
   saturation:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 2
     min: -100
     max: 100
 --- !u!114 &11400000
@@ -306,10 +306,10 @@ MonoBehaviour:
   - {fileID: -6277265094989652232}
   - {fileID: -7012589222717605617}
   - {fileID: 6230529364694392246}
-  - {fileID: -5788869686645341574}
-  - {fileID: 6171937823815403077}
   - {fileID: 4690974908472641067}
   - {fileID: -8850553422152293879}
+  - {fileID: 6171937823815403077}
+  - {fileID: -5788869686645341574}
 --- !u!114 &4690974908472641067
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -392,14 +392,14 @@ MonoBehaviour:
   m_AdvancedMode: 0
   indirectDiffuseLightingMultiplier:
     m_OverrideState: 1
-    m_Value: 7.4
+    m_Value: 1.4
     min: 0
   indirectDiffuseLightingLayers:
     m_OverrideState: 0
     m_Value: 255
   reflectionLightingMultiplier:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 1.4
     min: 0
   reflectionLightingLayers:
     m_OverrideState: 0
@@ -486,7 +486,7 @@ MonoBehaviour:
     max: 1
   depthExtent:
     m_OverrideState: 1
-    m_Value: 45
+    m_Value: 60
     min: 0.1
   denoisingMode:
     m_OverrideState: 1

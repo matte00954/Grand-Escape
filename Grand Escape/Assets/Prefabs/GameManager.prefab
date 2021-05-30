@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18478cfad5daa13478149f2d28cf7468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingScreen: {fileID: 0}
+  loadingPercent: {fileID: 0}
   sceneToSwitchTo: Level 1
-  sceneList: []
 --- !u!114 &321427237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,5 +59,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7039d22552e4f4db42ed860bd55b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allCheckPoints:
-  - {fileID: 0}
+  checkPointList: []

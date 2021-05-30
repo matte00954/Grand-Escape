@@ -76,6 +76,7 @@ public class PlayerVariables : MonoBehaviour
     public static bool isAlive = true;
 
     public int GetCurrentAmmoReserve() { return currentAmmoReserve; }
+    public int GetCurrentHealthPoints() { return healthPoints; }
     public float GetCurrentStamina() { return currentStamina; }
 
     private void Start()

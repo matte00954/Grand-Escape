@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 836856738668078746}
   - component: {fileID: 321427235}
   - component: {fileID: 321427237}
+  - component: {fileID: 7026655372591217567}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,8 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 0}
-  loadingPercent: {fileID: 0}
-  sceneToSwitchTo: Level 1
+  nextScene: 
 --- !u!114 &321427237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,3 +60,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkPointList: []
+--- !u!114 &7026655372591217567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836856738668078748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f555e0df9237d8e47886ad1702d9e24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}

@@ -32,9 +32,10 @@ public class UiManager : MonoBehaviour
 
     public void TutorialText(string textToShow, bool active)
     {
+        tutorialText.text = textToShow;
+
         if (active)
         {
-            tutorialText.text = textToShow;
             tutorial.gameObject.SetActive(true);
         }
         else
@@ -46,12 +47,13 @@ public class UiManager : MonoBehaviour
         if (isReloaded == 2)
         {
             weaponReloadedSlider.value = 0f;
+            weaponStatusBorder.gameObject.SetActive(false);
         }
         else
         {
             weaponStatusBorder.gameObject.SetActive(true);
             if (isReloaded == 1)
-                weaponReloadedSlider.value = 100f;
+                weaponReloadedSlider.value = 1f;
             else
                 weaponReloadedSlider.value = 0f;
 

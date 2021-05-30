@@ -229,9 +229,9 @@ RectTransform:
   m_Father: {fileID: 4884748120044031725}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 500, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 500, y: 500}
   m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &6536954032416010665
@@ -382,7 +382,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 400, y: 105}
+  m_AnchoredPosition: {x: 600, y: 105}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &2270871188565963255
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 5048357283611235719}
   - component: {fileID: 2438000142751429672}
   m_Layer: 5
-  m_Name: Border
+  m_Name: WeaponStatusBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -767,9 +767,9 @@ RectTransform:
   m_Father: {fileID: 4884748120044031725}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -800, y: 100}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4884748118807340730
@@ -1148,7 +1148,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 83.057, y: -27.877}
+  m_AnchoredPosition: {x: 83.05701, y: -27.876953}
   m_SizeDelta: {x: -237.886, y: -124.246}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2742320951276642665
@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 1
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -1446,7 +1446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3778650853126347523
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1454,7 +1454,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6983746355349744440}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.5}
   m_Children:
@@ -1463,10 +1463,10 @@ RectTransform:
   - {fileID: 8029836150670759190}
   m_Father: {fileID: 4884748120044031725}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 65.6001, y: 271.7}
+  m_AnchoredPosition: {x: 130, y: 200}
   m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7271909017377173063
@@ -1755,7 +1755,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2108,7 +2108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8936374207791805992, guid: fa77dfbf02fcb634aa9fb193f3faddcd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8936374207791805992, guid: fa77dfbf02fcb634aa9fb193f3faddcd, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2595,7 +2595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6350259757282316834, guid: 25ad3df0660b87e46abdb65869cc4042, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -50
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 6350259757282316834, guid: 25ad3df0660b87e46abdb65869cc4042, type: 3}
       propertyPath: m_AnchoredPosition.y

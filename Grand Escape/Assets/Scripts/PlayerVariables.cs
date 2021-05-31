@@ -13,7 +13,7 @@ public class PlayerVariables : MonoBehaviour
     private Transform currentRespawnPoint;
 
     [Header("Stamina")]
-    [SerializeField] private float staminaRegenPerTick; //per update tick
+    [SerializeField] private float staminaRegenerationPerTick; //per update tick
     [Tooltip("The amount of stamina regenerated from each kill during slow motion."),
         SerializeField] private float staminaLeechAmount;
 
@@ -53,10 +53,12 @@ public class PlayerVariables : MonoBehaviour
 
     //Used during runtime
     private int healthPoints;
-    private int currentAmmoReserve;
+    private int ammoReserve;
+
+    private int checkPoint; 
 
     private static float maximumStamina;
-    private static float currentStamina;
+    private static float stamina;
 
     /// <summary>
     /// The current stamina of the player in realtime. Setting a value will add up to total.
@@ -65,19 +67,21 @@ public class PlayerVariables : MonoBehaviour
     {
         if (isLeech && Time.timeScale < 1f || !isLeech)
         {
-            currentStamina += amountToAdd;
-            if (currentStamina > maximumStamina)
+            stamina += amountToAdd;
+            if (stamina > maximumStamina)
             {
-                currentStamina = maximumStamina;
+                stamina = maximumStamina;
             }
         }
     }
 
     public static bool isAlive = true;
 
-    public int GetCurrentAmmoReserve() { return currentAmmoReserve; }
+    public int GetCurrentAmmoReserve() { return ammoReserve; }
     public int GetCurrentHealthPoints() { return healthPoints; }
-    public float GetCurrentStamina() { return currentStamina; }
+    public int GetCurrentCheckPoint() { return checkPoint; }
+    public float GetCurrentStamina() { return stamina; }
+    public Transform GetCurrentRespawnPoint() { return currentRespawnPoint; }
 
     private void Start()
     {
@@ -94,8 +98,8 @@ public class PlayerVariables : MonoBehaviour
 
         healthPoints = maxHealthPoints;
 
-        currentAmmoReserve = startAmmoReserve;
-        currentStamina = maxStamina;
+        ammoReserve = startAmmoReserve;
+        stamina = maxStamina;
 
         currentRespawnPoint = spawnPoint.transform;
 
@@ -106,12 +110,21 @@ public class PlayerVariables : MonoBehaviour
         timerUntilStaminaComparisonCheck = timerUntilStaminaComparisonCheckMax;
     }
 
+    public void SetStatsAfterSaveLoad(int savedHealthPoints, int savedAmmoReserve, float savedStamina, int savedCheckPoint)
+    {
+        healthPoints = savedHealthPoints;
+        ammoReserve = savedAmmoReserve;
+        stamina = savedStamina;
+        checkPoint = savedCheckPoint;
+        SetNewRespawnPoint(this.gameObject); //Weird solution, respawn point gets set at player pos because i can not find a way to get the deactivated checkpoints transform, should give the same result
+    }
+
     public void ReduceAmmoReserve(int amountToReduce)
     {
-        if(currentAmmoReserve - amountToReduce < 0)
-            currentAmmoReserve = 0;
+        if(ammoReserve - amountToReduce < 0)
+            ammoReserve = 0;
         else
-            currentAmmoReserve -= amountToReduce;
+            ammoReserve -= amountToReduce;
     }
 
     public void ApplyDamage(int damageToBeApplied)
@@ -131,12 +144,12 @@ public class PlayerVariables : MonoBehaviour
     public void ResetAllStats() //should work on player death too
     {
         healthPoints = maxHealthPoints;
-        currentAmmoReserve = startAmmoReserve;
-        currentStamina = maxStamina;
+        ammoReserve = startAmmoReserve;
+        stamina = maxStamina;
 
         uiManager.HealthPoints(healthPoints);
-        uiManager.Stamina((int)currentStamina);
-        uiManager.AmmoStatus(currentAmmoReserve);
+        uiManager.Stamina((int)stamina);
+        uiManager.AmmoStatus(ammoReserve);
     }
 
     public void SetNewRespawnPoint(GameObject newRespawnPoint) 
@@ -150,8 +163,8 @@ public class PlayerVariables : MonoBehaviour
     {
         if (!godMode)
         {
-            if (currentStamina >= 0)
-                currentStamina -= amount;
+            if (stamina >= 0)
+                stamina -= amount;
             else
                 Debug.Log("Out of stamina");
         }
@@ -162,9 +175,9 @@ public class PlayerVariables : MonoBehaviour
         switch (statToChange)
         {
             case "stamina":
-                currentStamina += amount;
-                if (currentStamina > maxStamina)
-                    currentStamina = maxStamina;
+                stamina += amount;
+                if (stamina > maxStamina)
+                    stamina = maxStamina;
                 Debug.Log("Stamina restored by " + amount);
                 break;
 
@@ -176,9 +189,9 @@ public class PlayerVariables : MonoBehaviour
                 break;
 
             case "ammo":
-                currentAmmoReserve += amount;
-                if (currentAmmoReserve > maxAmmoReserve)
-                    currentAmmoReserve = maxAmmoReserve;
+                ammoReserve += amount;
+                if (ammoReserve > maxAmmoReserve)
+                    ammoReserve = maxAmmoReserve;
                 Debug.Log("Ammo restored by " + amount);
                 break;
 
@@ -204,7 +217,7 @@ public class PlayerVariables : MonoBehaviour
 
     private void Update()
     {
-        StaminaRegen();
+        StaminaRegeneration();
         UiUpdate();
         PlayerDeath();
         UpdateDeathTimer();
@@ -277,13 +290,13 @@ public class PlayerVariables : MonoBehaviour
     private void UiUpdate()
     {
         uiManager.HealthPoints(healthPoints);
-        uiManager.Stamina((int)currentStamina);
-        uiManager.AmmoStatus(currentAmmoReserve);
+        uiManager.Stamina((int)stamina);
+        uiManager.AmmoStatus(ammoReserve);
     }
 
-    private void StaminaRegen()
+    private void StaminaRegeneration()
     {
-        if (currentStamina < maxStamina && Time.timeScale == 1f) //stamina regen start, and checks if slow motion is NOT active
+        if (stamina < maxStamina && Time.timeScale == 1f) //stamina regen start, and checks if slow motion is NOT active
         {
             timerUntilStaminaComparisonCheck -= Time.deltaTime;
 
@@ -294,7 +307,7 @@ public class PlayerVariables : MonoBehaviour
                 if (timerUntilStaminaRegen <= 0)
                 {
                     //Debug.Log("Stamina is now regenerating");
-                    currentStamina += staminaRegenPerTick;
+                    stamina += staminaRegenerationPerTick;
                     timerUntilStaminaComparisonCheck = timerUntilStaminaComparisonCheckMax;
                     timerUntilStaminaRegen = timerUntilStaminaRegenMax;
                 }
@@ -308,7 +321,8 @@ public class PlayerVariables : MonoBehaviour
         {
             SetNewRespawnPoint(other.gameObject);
             other.gameObject.SetActive(false);
-            //Destroy(other.gameObject);
+            checkPoint++;
+            Debug.Log("Player has reached checkpoint " + "current check point is " + checkPoint);
         }
     }
 }

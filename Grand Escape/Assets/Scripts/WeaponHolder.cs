@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour
 {
-    private static bool unlockedFlintPistol, unlockedMusket, unlockedSword;
+    public static bool unlockedFlintPistol, unlockedMusket, unlockedSword; //public so that player data can acess
     private static int selectedWeapon = -1;
     private int previousSelectedWeapon;
 

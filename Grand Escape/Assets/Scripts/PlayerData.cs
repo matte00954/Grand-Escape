@@ -3,26 +3,42 @@
 [System.Serializable]
 public class PlayerData
 {
-
     public string level;
 
     public int savedHealthPoints;
     public int savedAmmoCount;
-    public int savedSelectedWeapon;
+    public int savedCheckPoint; //which checkpoint the player is currently at
 
     public float savedStaminaPoints;
-    public float[] position; //Can not save vector3 here, instead will save 3 floats, x y z
+
+    public bool pistolUnlocked;
+    public bool musketUnlocked;
+    public bool swordUnlocked;
+
+
+    public float[] respawnPosition; //Can not save vector3 here, instead will save 3 floats, x y z, position refers to the respawn point
 
     public PlayerData(PlayerVariables playerVariables, string currentLevel)
     {
         level = currentLevel;
+
         savedHealthPoints = playerVariables.GetCurrentHealthPoints();
         savedStaminaPoints = playerVariables.GetCurrentStamina();
         savedAmmoCount = playerVariables.GetCurrentAmmoReserve();
+        savedCheckPoint = playerVariables.GetCurrentCheckPoint();
 
-        position = new float[3];
-        position[0] = playerVariables.gameObject.transform.position.x;
-        position[1] = playerVariables.gameObject.transform.position.y;
-        position[2] = playerVariables.gameObject.transform.position.z;
+        pistolUnlocked = WeaponHolder.unlockedFlintPistol;
+        musketUnlocked = WeaponHolder.unlockedMusket;
+        swordUnlocked = WeaponHolder.unlockedSword;
+
+        respawnPosition = new float[3];
+
+        respawnPosition[0] = playerVariables.GetCurrentRespawnPoint().position.x;
+        respawnPosition[1] = playerVariables.GetCurrentRespawnPoint().position.y;
+        respawnPosition[2] = playerVariables.GetCurrentRespawnPoint().position.z;
+
+        //position[0] = playerVariables.gameObject.transform.position.x;
+        //position[1] = playerVariables.gameObject.transform.position.y;
+        //position[2] = playerVariables.gameObject.transform.position.z;
     }
 }

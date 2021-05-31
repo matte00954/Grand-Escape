@@ -17,4 +17,12 @@ public class EnemyRespawn : MonoBehaviour
                 enemies[i].GetComponent<EnemyVariables>().ResetPosition();
             }
     }
+
+    public void RemoveEnemies()
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            enemies[i].SetActive(false);
+        }
+    }
 }

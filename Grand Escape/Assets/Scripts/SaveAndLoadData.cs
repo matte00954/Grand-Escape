@@ -1,5 +1,5 @@
 //Main author: Mattias Larsson
-
+//this script should be placed on the game manager
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,37 +18,36 @@ public class SaveAndLoadData : MonoBehaviour
         Debug.Log("Loading player data");
         PlayerData data = SaveSystem.LoadPlayer();
 
-        /*
-        data.level;
-
-        data.savedHealthPoints;
-
-        data.savedAmmoCount;
-
-        data.savedSelectedWeapon;
-
-        data.savedStaminaPoints;
-        */
+        player.GetComponent<PlayerVariables>().SetStatsAfterSaveLoad(data.savedHealthPoints, data.savedAmmoCount, data.savedStaminaPoints, data.savedCheckPoint);
 
         Vector3 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        position.z = data.position[2];
+        position.x = data.respawnPosition[0];
+        position.y = data.respawnPosition[1];
+        position.z = data.respawnPosition[2];
 
-        player.GetComponent<PlayerMovement>().TeleportPlayer(position); //temp, should happen at start not here
+        player.GetComponent<PlayerMovement>().TeleportPlayer(position);
+
+        GetComponent<CheckpointRespawnHandler>().DeactivateEnemies(data.savedCheckPoint);
     }
 
     private void Update()
     {
+        ///
+        /// Update method here only for testing
+        ///
+
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             SavePlayer();
         }
-        if (Input.GetKeyDown(KeyCode.Alpha7))
+        if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             LoadPlayer();
         }
-
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
 

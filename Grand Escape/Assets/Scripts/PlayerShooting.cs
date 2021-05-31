@@ -131,11 +131,11 @@ public class PlayerShooting : MonoBehaviour
     {
         float reloadTime = weaponType.GetReloadTime();
 
-        if (Time.timeScale < 1)
-            reloadTime /= slowMotionReloadSpeedDivider;
+        //if (Time.timeScale < 1)
+        //    reloadTime /= slowMotionReloadSpeedDivider;
 
         if (reloadTimer > 0f)
-            reloadTimer -= Time.deltaTime;
+            reloadTimer -= Time.unscaledDeltaTime;
         else if (reloadTimer <= 0f)
         {
             //audioManager.Play(weaponType.GetSoundReloadFinish()); //redundant for new animation

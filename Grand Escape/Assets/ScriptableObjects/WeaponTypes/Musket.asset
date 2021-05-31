@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35b53f7e188b154d866bfebb2a885ab, type: 3}
   m_Name: Musket
   m_EditorClassIdentifier: 
-  weaponMeshFilter: {fileID: 0}
-  weaponMeshRenderer: {fileID: 0}
-  crosshair: {fileID: 0}
   weaponName: Musket
   weaponDamage: 100
   ammoCapacity: 1
@@ -22,5 +19,5 @@ MonoBehaviour:
   canZoom: 1
   weaponClick: MusketClick
   fireName: MusketFire
-  reloadStartName: MusketStartReload
+  reloadStartName: PickupSword
   reloadFinishName: MusketFinishReload

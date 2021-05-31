@@ -1,17 +1,20 @@
 fileFormatVersion: 2
-guid: 0ca74689ed39ef840b13cd88b1ed0460
+guid: 71bccd5d8b1507e4a8f06f6e5fb23626
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable:
   - first:
-      74: -6729575303951956993
-    second: Arms|Fire1
+      74: 7615393285693369722
+    second: Arms|Draw
+  - first:
+      74: 2192703085981563062
+    second: Arms|Fire
   - first:
       74: -2800998935075318748
     second: Arms|Idle
   - first:
-      74: 4453382028614027039
-    second: Arms|Reload1
+      74: 5648719108093778588
+    second: Arms|Reload
   - first:
       74: 5651528126610416513
     second: Arms|Walk
@@ -19,8 +22,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: polySurface112SG
-    second: {fileID: -6792673702119787056, guid: 2aa5c6b39eca2824c939362bbe39c131, type: 3}
+      name: SparkCarbine
+    second: {fileID: 2100000, guid: 8978300621376e441a197a5b0188db4c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -40,7 +43,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 0
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -49,11 +52,40 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Arms|Fire1
-      takeName: Arms|Fire1
+      name: Arms|Draw
+      takeName: Arms|Draw
       internalID: 0
       firstFrame: 0
-      lastFrame: 73
+      lastFrame: 41
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Arms|Fire
+      takeName: Arms|Fire
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -82,7 +114,7 @@ ModelImporter:
       takeName: Arms|Idle
       internalID: 0
       firstFrame: 0
-      lastFrame: 59
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -107,11 +139,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Arms|Reload1
-      takeName: Arms|Reload1
+      name: Arms|Reload
+      takeName: Arms|Reload
       internalID: 0
       firstFrame: 0
-      lastFrame: 101
+      lastFrame: 105
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -131,7 +163,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.13449776
+      - time: 0.2735104
         functionName: PlayReloadSound
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 6c8154ff93a675b4686fc5209f6ed5be, type: 3}
@@ -225,7 +257,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.003
+    globalScale: 0.3
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

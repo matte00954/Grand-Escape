@@ -51,6 +51,9 @@ public class PlayerShooting : MonoBehaviour
             uiManager.WeaponStatus(1);
         else
             uiManager.WeaponStatus(0);
+
+        if (weaponType.GetWepName() == "Musket")
+            animator.SetTrigger("Draw");
     }
 
     private void OnDisable()

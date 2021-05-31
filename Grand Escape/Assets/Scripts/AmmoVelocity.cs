@@ -22,8 +22,8 @@ public class AmmoVelocity : MonoBehaviour
         float randomVerticalError = Random.Range(-verticalMargin, verticalMargin);
         transform.Rotate(new Vector3(randomVerticalError, randomHorizontalError, 0f));
         direction = transform.forward;
-        Debug.Log("Bullet direction: " + direction);
-        Debug.Log("Bullet rotation: " + transform.rotation.eulerAngles);
+        //Debug.Log("Bullet direction: " + direction);
+        //Debug.Log("Bullet rotation: " + transform.rotation.eulerAngles);
         lifeTimer = ammo.GetBulletLifetime();
 
         Instantiate(bulletTrailPrefab, transform);

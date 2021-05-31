@@ -337,23 +337,11 @@ public class PlayerVariables : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Pickups(other);
-        CheckPointAndEndScene(other);
-    }
-
-    private void CheckPointAndEndScene(Collider other) //For checkpoints and ending scenes
-    {
         if (other.gameObject.CompareTag("Check point"))
         {
             SetNewRespawnPoint(other.gameObject);
             other.gameObject.SetActive(false);
             //Destroy(other.gameObject);
         }
-
-        if (other.gameObject.CompareTag("Scene end"))
-        {
-            gameManager.GetComponent<SceneSwitch>().ChangeScene();
-        }
     }
-
 }

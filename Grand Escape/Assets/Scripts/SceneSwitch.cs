@@ -20,10 +20,11 @@ public class SceneSwitch : MonoBehaviour
         //SceneManager.LoadScene(sceneToSwitchTo);
         //StartCoroutine(AsynchronousLoad());
     }
+}
 
     //private IEnumerator AsynchronousLoad()
     //{
-    
+
     //    AsyncOperation operation = SceneManager.LoadSceneAsync(sceneToSwitchTo);
 
     //    operation.allowSceneActivation = false;
@@ -46,4 +47,3 @@ public class SceneSwitch : MonoBehaviour
     //    yield return null;
     //}
     //Code above does not work for some reason, might be a unity bug
-}

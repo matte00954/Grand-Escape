@@ -100,7 +100,7 @@ public class PlayerShooting : MonoBehaviour
                 if (currentAmmoLoaded < weaponType.GetAmmoCap() && playerVariables.GetCurrentAmmoReserve() > 0)
                 {
                     isReloading = true;
-                    
+                    reloadTimer = weaponType.GetReloadTime();
                     animator.SetTrigger("Reload");
                 }
                 else if (playerVariables.GetCurrentAmmoReserve() == 0)

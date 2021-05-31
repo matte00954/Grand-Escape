@@ -159,40 +159,6 @@ public class PlayerVariables : MonoBehaviour
 
     public void AddStatAfterPickup(string statToChange, int amount)
     {
-        //if (statToChange.Contains("stamina"))
-        //{
-        //    currentStamina += amount;
-        //    Debug.Log("Stamina restored by " + amount);
-
-        //    if (currentStamina > maxStamina)
-        //    {
-        //        currentStamina = maxStamina;
-        //    }
-        //}
-
-        //if (statToChange.Contains("health"))
-        //{
-        //    healthPoints += amount;
-        //    Debug.Log("Health restored by " + amount);
-
-        //    if (healthPoints > maxHealthPoints)
-        //    {
-        //        healthPoints = maxHealthPoints;
-        //    }
-        //}
-
-        //if (statToChange.Contains("ammo"))
-        //{
-        //    currentAmmoReserve += amount;
-
-        //    Debug.Log("Ammo restored by " + amount);
-
-        //    if (currentAmmoReserve > maxAmmoReserve)
-        //    {
-        //        currentAmmoReserve = maxAmmoReserve;
-        //    }
-        //}
-
         switch (statToChange)
         {
             case "stamina":
@@ -285,6 +251,7 @@ public class PlayerVariables : MonoBehaviour
                 ResetAllStats();
                 pm.TeleportPlayer(currentRespawnPoint.position);
                 uiManager.DeathText(false);
+                EnemyMovement.EaseAllEnemies(2f);
                 isAlive = true;
                 timerUntilRespawn = timerUntilRespawnMax;
             }

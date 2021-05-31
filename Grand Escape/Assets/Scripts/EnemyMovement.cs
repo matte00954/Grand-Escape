@@ -57,8 +57,8 @@ public class EnemyMovement : MonoBehaviour
     private bool isHurt;
 
     private float patrolTimer, alertTimer;
+    private static float easeTimer;
 
-    // Animations
     private Animator anim;
 
     private void Start() => player = GameObject.Find("PlayerHead");
@@ -69,7 +69,6 @@ public class EnemyMovement : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         patrolTimer = timeBetweenPatrol;
 
-        // Animations
         anim = GetComponent<Animator>();
     }
 
@@ -78,13 +77,20 @@ public class EnemyMovement : MonoBehaviour
         if (patrolTimer > 0f)
                 patrolTimer -= Time.deltaTime;
 
+        if (easeTimer > 0f)
+            easeTimer -= Time.deltaTime;
+
         UpdateDetectionRays();
         UpdateState();
 
-        // Animations
         anim.SetFloat("Speed", agent.velocity.magnitude);
-        //Debug.LogWarning("Velocity: " + agent.velocity.magnitude); // I did my part
     }
+
+    /// <summary>
+    /// Prevents all enemies from getting alerted for a set amount of time.
+    /// </summary>
+    /// <param name="timeInSeconds">Time before enemies are able to become alerted again.</param>
+    public static void EaseAllEnemies(float timeInSeconds) => easeTimer = timeInSeconds;
 
     private void UpdateDetectionRays()
     {
@@ -100,8 +106,10 @@ public class EnemyMovement : MonoBehaviour
 
     private void UpdateState()
     {
-        if (!IsStationary && !heardPlayer && !sawPlayer && alertTimer <= 0f || !PlayerVariables.isAlive) //Patroling state when not detecting player and not in an alerted state
+        if (!IsStationary && !heardPlayer && !sawPlayer && alertTimer <= 0f || !PlayerVariables.isAlive || easeTimer > 0f) //Patroling state when not detecting player and not in an alerted state
         {
+            heardPlayer = false;
+            sawPlayer = false;
             alertTimer = 0f;
             Patroling();
         }
@@ -156,24 +164,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void SearchWalkPoint()
     {
-        //Calculate random point in range
-        //float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        //float randomX = Random.Range(-walkPointRange, walkPointRange);
-
         Vector3 randomDirection = Random.insideUnitSphere * walkPointRadius;
         randomDirection += transform.position;
         NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, walkPointRadius, 1);
         walkPoint = hit.position;
         walkPointSet = true;
-
-        //walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        //RaycastHit raycastHit;
-
-        //if (Physics.Raycast(walkPoint + Vector3.up * 5f, -transform.up, out raycastHit, 20f, groundMask))
-        //{
-        //    walkPoint.y = raycastHit.point.y;
-        //    walkPointSet = true;
-        //}
     }
 
     private void ChasePlayer()

@@ -78,4 +78,9 @@ public class MouseLook : MonoBehaviour
 
         cam.fieldOfView = currentFOV;
     }
+
+    public void ChangeMouseSensitivity(float value)
+    {
+        mouseSensitivity = value;
+    }
 }

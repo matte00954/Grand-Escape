@@ -7,15 +7,32 @@ public class SaveAndLoadData : MonoBehaviour
 {
     [SerializeField] private GameObject player;
 
-    public void SavePlayer()
+    private void Start()
+    {
+        if (player.GetComponent<PlayerVariables>().GetCurrentCheckPoint() > 0)
+        {
+            LoadPlayerFromMainMenu();
+        }
+        else
+            LoadPlayerOnNextLevel();
+    }
+
+    public void SavePlayerFromMainMenu() //should be called from UI
     {
         Debug.Log("Saving player data");
         SaveSystem.SavePlayer(player.GetComponent<PlayerVariables>(),SceneManager.GetActiveScene().name);
     }
 
-    public void LoadPlayer()
+
+    public void SavePlayerOnSceneChange() //should be called from scene
     {
-        Debug.Log("Loading player data");
+        Debug.Log("Saving player data");
+        SaveSystem.SavePlayer(player.GetComponent<PlayerVariables>(), "");
+    }
+
+    public void LoadPlayerFromMainMenu() //should be called from UI
+    {
+        Debug.Log("Loading player data from main menu");
         PlayerData data = SaveSystem.LoadPlayer();
 
         player.GetComponent<PlayerVariables>().SetStatsAfterSaveLoad(data.savedHealthPoints, data.savedAmmoCount, data.savedStaminaPoints, data.savedCheckPoint);
@@ -27,27 +44,68 @@ public class SaveAndLoadData : MonoBehaviour
 
         player.GetComponent<PlayerMovement>().TeleportPlayer(position);
 
+        if (data.pistolUnlocked)
+        {
+            WeaponHolder.UnlockWeaponSlot(0);
+        }
+        if (data.musketUnlocked)
+        {
+            WeaponHolder.UnlockWeaponSlot(1);
+        }
+        if (data.swordUnlocked)
+        {
+            WeaponHolder.UnlockWeaponSlot(2);
+        }
+
         GetComponent<CheckpointRespawnHandler>().DeactivateEnemies(data.savedCheckPoint);
+    }
+
+    public void LoadPlayerOnNextLevel()
+    {
+        Debug.Log("Loading player data on next level");
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        player.GetComponent<PlayerVariables>().SetStatsAfterSaveLoad(data.savedHealthPoints, data.savedAmmoCount, data.savedStaminaPoints, 0); //0 (last parameter) means that the next level should start at checkpoint 0
+
+        if (data.pistolUnlocked) //all weapons should be unlocked at this point
+        {
+            WeaponHolder.UnlockWeaponSlot(0);
+        }
+        if (data.musketUnlocked)
+        {
+            WeaponHolder.UnlockWeaponSlot(1);
+        }
+        if (data.swordUnlocked)
+        {
+            WeaponHolder.UnlockWeaponSlot(2);
+        }
+
+        SaveSystem.SavePlayer(player.GetComponent<PlayerVariables>(), SceneManager.GetActiveScene().name); //need to save again here to make sure that the correct scene reference gets saved on file
+
     }
 
     private void Update()
     {
         ///
-        /// Update method here only for testing
+        /// Update method here only for testing, need to remove before final version!!!
         ///
 
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            SavePlayer();
+            SavePlayerFromMainMenu();
         }
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
-            LoadPlayer();
+            LoadPlayerFromMainMenu();
         }
         if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        ///
+        /// Update method here only for testing, need to remove before final version!!!
+        ///
     }
 }
 

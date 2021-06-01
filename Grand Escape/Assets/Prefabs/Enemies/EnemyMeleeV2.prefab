@@ -1049,6 +1049,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f6206c92dc680f64c96742f9b9ae8db3, type: 3}
   - {fileID: 8300000, guid: 6618bdb39cb1909458a133faa7ebb200, type: 3}
   isAlive: 1
+  healthPickupDrop: {fileID: 7988310615112836629, guid: d2e165bf7ccd8b548b33a36d8724d2b5, type: 3}
+  ammoPickupDrop: {fileID: 7718052225549627958, guid: 316cebfd91271264ca1f7190fd2ab9e6, type: 3}
 --- !u!114 &8171808867781266312
 MonoBehaviour:
   m_ObjectHideFlags: 0

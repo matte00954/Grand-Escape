@@ -12,6 +12,10 @@ public class EnemyVariables : MonoBehaviour
 
     [HideInInspector] public bool isAlive = true;
 
+
+    [SerializeField] private GameObject healthPickupDrop;
+    [SerializeField] private GameObject ammoPickupDrop;
+
     private AudioSource audioSource;
     private Animator anim;
     private Vector3 startPosition;
@@ -52,6 +56,21 @@ public class EnemyVariables : MonoBehaviour
     private void Die()
     {
         PlayerVariables.AddStamina(enemyType.GetStaminaLeechAmount(), true);
+
+        Vector3 pickupSpawnPosition;
+        pickupSpawnPosition.x = this.gameObject.transform.position.x;
+        pickupSpawnPosition.y = this.gameObject.transform.position.y + 1f; //to make sure pickup spawns above body
+        pickupSpawnPosition.z = this.gameObject.transform.position.z;
+
+        int dropTableIndex = Random.Range(0, 4);
+        Debug.Log("dropTableIndex is " + dropTableIndex);
+        if (dropTableIndex == 0)
+            Instantiate(healthPickupDrop, pickupSpawnPosition, Quaternion.identity);
+        else if (dropTableIndex == 1)
+            Instantiate(ammoPickupDrop, pickupSpawnPosition, Quaternion.identity);
+        else
+            Debug.Log("Nothing was dropped");
+
         SetEnemyComponents(false);
     }
 

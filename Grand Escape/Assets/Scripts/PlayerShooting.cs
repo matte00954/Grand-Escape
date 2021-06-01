@@ -68,7 +68,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerVariables.isAlive)
+        if (PlayerVariables.isAlive && !MainMenu.IsPaused)
         {
             float inputX = Input.GetAxis("Horizontal");
             float inputZ = Input.GetAxis("Vertical");
@@ -80,6 +80,7 @@ public class PlayerShooting : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0) && currentAmmoLoaded > 0)
             {
+                Debug.Log("IsPaused: " + MainMenu.IsPaused);
                 currentAmmoLoaded--;
                 audioManager.Play(weaponType.GetSoundWeaponClick());
                 animator.SetTrigger("Fire");
@@ -114,15 +115,15 @@ public class PlayerShooting : MonoBehaviour
 
             if (isReloading)
                 UpdateReload();
-        }
 
-        if (justFired)
-        {
-            timerFireSound -= Time.deltaTime;
-            if (timerFireSound > 0)
+            if (justFired)
             {
-                audioManager.Play(weaponType.GetSoundFire());
-                justFired = false;
+                timerFireSound -= Time.deltaTime;
+                if (timerFireSound > 0)
+                {
+                    audioManager.Play(weaponType.GetSoundFire());
+                    justFired = false;
+                }
             }
         }
     }

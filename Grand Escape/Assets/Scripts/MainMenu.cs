@@ -12,81 +12,71 @@ public class MainMenu : MonoBehaviour
     //[SerializeField] private Animator newGameAnim;
     //[SerializeField] private Animator exitAnim;
     //[SerializeField] private Animator buttonAnim;
-
-    [SerializeField] private MouseLook mouseLook;
-    [SerializeField] private PlayerShooting flintScript;
-    [SerializeField] private PlayerShooting rifleScript;
-    private bool paused;
+    public static bool IsPaused { get; private set; }
 
     void Start()
     {
         settingsMenu.SetActive(false);
         pauseMenu.SetActive(false);
         howToPlay.SetActive(false);
-        paused = false;
+        IsPaused = false;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))   //pressing escape button toggles pause menu on or off depending on whether it's already active
+        if (Input.GetKeyDown(KeyCode.P)) //Pauses and unpauses the game with 'P'-key.
         {
-            if (!paused)
+            if (!IsPaused)
                 OpenPause();
-            else if (paused)
-                ClosePause();
+            else if (IsPaused)
+                ClosePauseMenu();
             CloseHTP();
                 CloseSettings();
         }
 
-        if (paused)     //checks if pausemenu is active
+        if (IsPaused)
         {
-            if (Input.GetKeyDown(KeyCode.Return))   //press return to exit/disable pausemenu
-                ClosePause();
-            if (Input.GetKeyDown(KeyCode.M))      //press m to return to main/start menu
+            if (Input.GetKeyDown(KeyCode.Return)) //Exits pausemenu
+                ClosePauseMenu();
+            if (Input.GetKeyDown(KeyCode.M)) //Returns the player to main/start menu
                 ReturnToMain();
-            if (Input.GetKeyDown(KeyCode.O))        //press o to quit application
+            if (Input.GetKeyDown(KeyCode.O)) //Quits the application
                 QuitGame();
         }
     }
 
-    public bool IsPaused()  //checks if game is paused (if pause menu is activated) or not
-    {
-        return paused;
-    }
-
     public void OpenSettings() => settingsMenu.SetActive(true);
     public void CloseSettings() => settingsMenu.SetActive(false);
-    public void OpenHTP() => howToPlay.SetActive(true);
-    public void CloseHTP() => howToPlay.SetActive(false);
+    public void OpenHTP() => howToPlay.SetActive(true); //Enables the 'how to play'-window.
+    public void CloseHTP() => howToPlay.SetActive(false); //Disables the 'how to play'-window.
 
-    private void OpenPause()    //activates pausemenu
+    private void OpenPause()
     {
         pauseMenu.SetActive(true);
-        paused = true;
-        //Time.timeScale = 0.01f;
+        IsPaused = true;
         Time.timeScale = 0;
-        disableFPS();   //enables mouseclick
+        UpdateCursorLockState();
     }   
 
-    public void ClosePause()    //inactivates pausemenu
+    public void ClosePauseMenu()
     {
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
-        paused = false;
+        IsPaused = false;
         Time.timeScale = 1;
-        disableFPS();
+        UpdateCursorLockState();
     }
 
     public void PressPause()    //method for pausebutton that toggles pause menu on or off depending on whether it's already opened
     {
         //buttonAnim.SetTrigger("pressed");
-        if (!paused)
+        if (!IsPaused)
             OpenPause();
-        else if (paused)
-            ClosePause();
+        else if (IsPaused)
+            ClosePauseMenu();
     }
 
-    public void ReturnToMain()      //returns player to start scene
+    public void ReturnToMain() //returns player to start scene
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
@@ -99,32 +89,19 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    private IEnumerator Delay(int seconds)  //method to delay code execution for a chosen number of second, e.g. for animation to finish playing
+    private IEnumerator Delay(int seconds) //method to delay code execution for a chosen number of second, e.g. for animation to finish playing
     {
         yield return new WaitForSeconds(seconds);
         SceneManager.LoadScene(1);
     }
 
-    private void disableFPS()
+    private void UpdateCursorLockState()
     {
-        //implement in MouseLook and/or PlayerShooting script instead? Sätta en bool om att CursorLockMode.Locked inte ska va aktivt när pausmenyn är öppen?
-        if (!paused)
-        {
-            //Enable mouselock + shooting script
-            mouseLook.enabled = true;
-            flintScript.enabled = true;
-            rifleScript.enabled = true;
-            Cursor.visible = false;
-        }
+        if (IsPaused)
+            Cursor.lockState = CursorLockMode.Confined;
         else
-        {
-            //Disable mouselock + shooting script
-            mouseLook.enabled = false;
-            flintScript.enabled = false;
-            rifleScript.enabled = false;
-            //Unlock Mouse and make it visible
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+            Cursor.lockState = CursorLockMode.Locked;
+
+        Cursor.visible = IsPaused;
     }
 }

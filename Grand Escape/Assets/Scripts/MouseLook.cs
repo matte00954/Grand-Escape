@@ -35,7 +35,7 @@ public class MouseLook : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerVariables.isAlive)
+        if (PlayerVariables.isAlive && !MainMenu.IsPaused)
         {
             CheckZoom();
 

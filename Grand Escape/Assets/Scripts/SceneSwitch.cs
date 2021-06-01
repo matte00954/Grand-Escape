@@ -1,11 +1,11 @@
 //Author: Mattias Larsson
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SceneSwitch : MonoBehaviour
 {
+    [Tooltip("Loading screen is in PlayerCanvas")]
     [SerializeField] private Image loadingScreen;
 
     //[SerializeField] private Text loadingPercent;
@@ -15,6 +15,10 @@ public class SceneSwitch : MonoBehaviour
     public void ChangeScene()
     {
         loadingScreen.gameObject.SetActive(true);
+        Debug.Log("Saving player stats for next level");
+        SaveAndLoadData saver = GetComponent<SaveAndLoadData>();
+        saver.SavePlayerOnSceneChange();
+
         Debug.Log("Changing to scene: " + nextScene);
         SceneManager.LoadSceneAsync(nextScene);
         //SceneManager.LoadScene(sceneToSwitchTo);

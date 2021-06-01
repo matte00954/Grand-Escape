@@ -20,7 +20,12 @@ public class PlayerData
 
     public PlayerData(PlayerVariables playerVariables, string currentLevel)
     {
-        level = currentLevel;
+        if(currentLevel.Equals("") || currentLevel.Equals(" "))
+        {
+            //may not use this
+        }
+        else
+            level = currentLevel;
 
         savedHealthPoints = playerVariables.GetCurrentHealthPoints();
         savedStaminaPoints = playerVariables.GetCurrentStamina();

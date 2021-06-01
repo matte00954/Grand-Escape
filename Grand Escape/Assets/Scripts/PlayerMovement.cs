@@ -309,12 +309,23 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void TeleportPlayer(Vector3 pos) //This method teleports the player during respawn.
+    public void TeleportPlayer(Transform location) //This method teleports the player during respawn. (from death)
     {
         currentSpeed = 0;
         controller.enabled = false;
-        Debug.Log("Teleport activated on position " + pos);
-        transform.position = pos;
+        Debug.Log("Teleport activated on position " + location);
+        transform.position = location.position;
+        transform.rotation = location.rotation;
+        controller.enabled = true;
+    }
+
+    public void TeleportPlayer(Vector3 location, Quaternion rotation) //This method teleports the player during respawn. (from loading)
+    {
+        currentSpeed = 0;
+        controller.enabled = false;
+        Debug.Log("Teleport activated on position " + location);
+        transform.position = location;
+        transform.rotation = rotation;
         controller.enabled = true;
     }
 

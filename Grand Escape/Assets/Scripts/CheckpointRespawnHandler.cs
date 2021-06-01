@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckpointRespawnHandler : MonoBehaviour
-    //Handles enemy and pickup respawns
+//Handles respawns
 {
+
+    [Header("Player spawn point")]
+    [SerializeField] private GameObject playerRespawnPointObject;
+
     [Header("All checkpoints in the scene here")]
     [SerializeField] private List<GameObject> checkPointList = new List<GameObject>();
 
@@ -32,8 +36,18 @@ public class CheckpointRespawnHandler : MonoBehaviour
         for (int i = 0; i < enemyRespawnList.Count; i++)
             if (enemyRespawnList[i] == null)
                 Debug.LogError(i + " in the game manager is null, ALL checkpoints need to be assigned to the game manager");
+
     }
 
+    public Transform GetRespawnPoint()
+    {
+        return playerRespawnPointObject.transform;
+    }
+
+    public void SetNewRespawnPoint(Vector3 newRespawnPoint)
+    {
+        playerRespawnPointObject.GetComponent<MoveRespawnPoint>().SetNewPoint(newRespawnPoint);
+    }
 
     public void RepsawnAll()
     {
@@ -64,7 +78,7 @@ public class CheckpointRespawnHandler : MonoBehaviour
     {
         if (checkPointProgress >= 0)
         {
-            for (int i = 0; i <= checkPointProgress - 1; i++) // - 1 since list/arrays start a 0a
+            for (int i = 0; i < checkPointProgress; i++)
             {
                 Debug.Log("enemies in enemyRespawnList " + i + " is getting removed");
                 enemyRespawnList[i].RemoveEnemies();
@@ -73,4 +87,6 @@ public class CheckpointRespawnHandler : MonoBehaviour
         else
             Debug.Log("No enemies despawned on save load");
     }
+
+
 }

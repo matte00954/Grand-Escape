@@ -16,9 +16,9 @@ public class SceneSwitch : MonoBehaviour
     {
         loadingScreen.gameObject.SetActive(true);
         Debug.Log("Saving player stats for next level");
-        SaveAndLoadData saver = GetComponent<SaveAndLoadData>();
-        saver.SavePlayerOnSceneChange();
-
+        SaveAndLoadData saveAndLoadData = GetComponent<SaveAndLoadData>();
+        saveAndLoadData.Save();
+        LoadHandler.sceneChanged = true;
         Debug.Log("Changing to scene: " + nextScene);
         SceneManager.LoadSceneAsync(nextScene);
         //SceneManager.LoadScene(sceneToSwitchTo);

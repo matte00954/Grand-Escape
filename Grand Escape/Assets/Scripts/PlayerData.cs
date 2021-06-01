@@ -3,7 +3,7 @@
 [System.Serializable]
 public class PlayerData
 {
-    public string level;
+    public string sceneName;
 
     public int savedHealthPoints;
     public int savedAmmoCount;
@@ -18,14 +18,12 @@ public class PlayerData
 
     public float[] respawnPosition; //Can not save vector3 here, instead will save 3 floats, x y z, position refers to the respawn point
 
-    public PlayerData(PlayerVariables playerVariables, string currentLevel)
+    public float[] respawnRotation; //To make sure player spawns with correct rotation
+
+    public PlayerData(PlayerVariables playerVariables, CheckpointRespawnHandler checkpointRespawnHandler, string currentLevel)
     {
-        if(currentLevel.Equals("") || currentLevel.Equals(" "))
-        {
-            //may not use this
-        }
-        else
-            level = currentLevel;
+
+        sceneName = currentLevel;
 
         savedHealthPoints = playerVariables.GetCurrentHealthPoints();
         savedStaminaPoints = playerVariables.GetCurrentStamina();
@@ -36,14 +34,14 @@ public class PlayerData
         musketUnlocked = WeaponHolder.unlockedMusket;
         swordUnlocked = WeaponHolder.unlockedSword;
 
-        respawnPosition = new float[3];
+        respawnPosition = new float[3]; 
+        respawnPosition[0] = checkpointRespawnHandler.GetRespawnPoint().position.x;
+        respawnPosition[1] = checkpointRespawnHandler.GetRespawnPoint().position.y;
+        respawnPosition[2] = checkpointRespawnHandler.GetRespawnPoint().position.z;
 
-        respawnPosition[0] = playerVariables.GetCurrentRespawnPoint().position.x;
-        respawnPosition[1] = playerVariables.GetCurrentRespawnPoint().position.y;
-        respawnPosition[2] = playerVariables.GetCurrentRespawnPoint().position.z;
-
-        //position[0] = playerVariables.gameObject.transform.position.x;
-        //position[1] = playerVariables.gameObject.transform.position.y;
-        //position[2] = playerVariables.gameObject.transform.position.z;
+        respawnRotation = new float[3];
+        respawnPosition[0] = checkpointRespawnHandler.GetRespawnPoint().rotation.x;
+        respawnPosition[1] = checkpointRespawnHandler.GetRespawnPoint().rotation.y;
+        respawnPosition[2] = checkpointRespawnHandler.GetRespawnPoint().rotation.z;
     }
 }

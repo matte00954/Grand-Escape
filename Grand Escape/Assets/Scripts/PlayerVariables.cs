@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class PlayerVariables : MonoBehaviour
 {
-    [SerializeField] private GameObject spawnPoint;
+    //[SerializeField] private GameObject spawnPoint;
     [SerializeField] private GameObject gameManager;
     [SerializeField] private UiManager uiManager;
 
     [SerializeField] private AudioManager audioManager;
-
-    private Transform currentRespawnPoint;
 
     [Header("Stamina")]
     [SerializeField] private float staminaRegenerationPerTick; //per update tick
@@ -24,11 +22,6 @@ public class PlayerVariables : MonoBehaviour
 
     [Header("Start Variables")] //variables that are not max after respawn
     [SerializeField] private int startAmmoReserve;
-
-    //[Header("Pickup Amount")] //TODO consistent naming?
-    //[SerializeField] private int healthBoostAmount;
-    //[SerializeField] private int ammoBoxAmount;
-    //[SerializeField] private int staminaPickUpRestoreAmount;
 
     [Header("Timers")] //max timers are constant
     [SerializeField] private float timerUntilRespawnMax;
@@ -81,7 +74,9 @@ public class PlayerVariables : MonoBehaviour
     public int GetCurrentHealthPoints() { return healthPoints; }
     public int GetCurrentCheckPoint() { return checkPoint; }
     public float GetCurrentStamina() { return stamina; }
-    public Transform GetCurrentRespawnPoint() { return currentRespawnPoint; }
+
+
+    public void SetCheckpointIndex(int index) => checkPoint = index; 
 
     private void Start()
     {
@@ -101,7 +96,7 @@ public class PlayerVariables : MonoBehaviour
         ammoReserve = startAmmoReserve;
         stamina = maxStamina;
 
-        currentRespawnPoint = spawnPoint.transform;
+        //checkPoint = 0;
 
         ResetAllStats();
 
@@ -116,7 +111,6 @@ public class PlayerVariables : MonoBehaviour
         ammoReserve = savedAmmoReserve;
         stamina = savedStamina;
         checkPoint = savedCheckPoint;
-        SetNewRespawnPoint(this.gameObject); //Weird solution, respawn point gets set at player pos because i can not find a way to get the deactivated checkpoints transform, should give the same result
     }
 
     public void ReduceAmmoReserve(int amountToReduce)
@@ -152,12 +146,6 @@ public class PlayerVariables : MonoBehaviour
         uiManager.AmmoStatus(ammoReserve);
     }
 
-    public void SetNewRespawnPoint(GameObject newRespawnPoint) 
-    {
-        Debug.Log("Old respawn point " + currentRespawnPoint.transform.position);
-        spawnPoint.GetComponent<MoveRespawnPoint>().SetNewPoint(newRespawnPoint.transform.position);
-        Debug.Log("New respawn point " + currentRespawnPoint.transform.position);
-    }
 
     public void StaminaToBeUsed(float amount) //Everything that costs stamina should use this method
     {
@@ -262,7 +250,7 @@ public class PlayerVariables : MonoBehaviour
                 PlayerMovement pm = gameObject.GetComponent<PlayerMovement>();
                 gameManager.GetComponent<CheckpointRespawnHandler>().RepsawnAll();
                 ResetAllStats();
-                pm.TeleportPlayer(currentRespawnPoint.position);
+                pm.TeleportPlayer(gameManager.GetComponent<CheckpointRespawnHandler>().GetRespawnPoint());
                 uiManager.DeathText(false);
                 EnemyMovement.EaseAllEnemies(2f);
                 isAlive = true;
@@ -270,23 +258,6 @@ public class PlayerVariables : MonoBehaviour
             }
         }
     }
-
-    //private void RecentDamageTaken() //to prevent massive amount of damage during a short period of time
-    //{
-    //    if (takenRecentDamage)
-    //    {
-
-    //        recentDamageTimer -= Time.deltaTime;
-
-    //        if (recentDamageTimer <= 0)
-    //        {
-    //            uiManager.TakenDamage(false);
-    //            Debug.Log("Player can take damage again");
-    //            takenRecentDamage = false;
-    //        }
-    //    }
-    //}
-
     private void UiUpdate()
     {
         uiManager.HealthPoints(healthPoints);
@@ -312,17 +283,6 @@ public class PlayerVariables : MonoBehaviour
                     timerUntilStaminaRegen = timerUntilStaminaRegenMax;
                 }
             }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Check point"))
-        {
-            SetNewRespawnPoint(other.gameObject);
-            other.gameObject.SetActive(false);
-            checkPoint++;
-            Debug.Log("Player has reached checkpoint " + "current check point is " + checkPoint);
         }
     }
 }

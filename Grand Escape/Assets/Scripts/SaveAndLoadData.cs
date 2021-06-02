@@ -1,6 +1,6 @@
 //Main author: Mattias Larsson
 //Secondary author: William Örnquist
-//this script should be placed on the game manager, SHOULD NOT BE IN MAIN MENU
+//this script should be placed on the game manager
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +8,7 @@ public class SaveAndLoadData : MonoBehaviour
 {
     [SerializeField] private GameObject player;
 
-    private void Start()
+    private void Awake()
     {
         if (LoadHandler.sceneChanged)
         {
@@ -21,7 +21,7 @@ public class SaveAndLoadData : MonoBehaviour
             Load(true);
             LoadHandler.isSavedGame = false;
         }
-        else
+        else if (SceneManager.GetActiveScene().name != "MainMenu")
             Save();
     }
 

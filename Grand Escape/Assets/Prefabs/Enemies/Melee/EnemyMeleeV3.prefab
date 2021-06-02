@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 2
-  enemySword: {fileID: 0}
+  enemySword: {fileID: 2489269438101482484}
 --- !u!195 &3437672060409011693
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -401,8 +401,8 @@ MonoBehaviour:
   detectionMask:
     serializedVersion: 2
     m_Bits: 2240
-  sightCollider: {fileID: 0}
-  headTransform: {fileID: 0}
+  sightCollider: {fileID: 6487352443463381586}
+  headTransform: {fileID: 3848682001447419966}
   IsStationary: 0
   walkPointRadius: 5
   timeBetweenPatrol: 3
@@ -445,6 +445,41 @@ MonoBehaviour:
   isAlive: 1
   healthPickupDrop: {fileID: 7988310615112836629, guid: d2e165bf7ccd8b548b33a36d8724d2b5, type: 3}
   ammoPickupDrop: {fileID: 7718052225549627958, guid: 316cebfd91271264ca1f7190fd2ab9e6, type: 3}
+--- !u!65 &1582263639893023141
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8414910655901783082}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5774864, z: 0.03983108}
+  m_Center: {x: 0.0000037938619, y: 0.23673517, z: 0.00008140997}
+--- !u!114 &2489269438101482484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8414910655901783082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226716b0631e7f04f932e28a34dbf99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordCollider: {fileID: 1582263639893023141}
+  swingClips:
+  - {fileID: 8300000, guid: e7a87590d34c47e409506d2245484bc7, type: 3}
+  - {fileID: 8300000, guid: 58c1ce623a6276248857438ee0c43943, type: 3}
+  - {fileID: 8300000, guid: 49d494b05b9281a47b3c7453fc38f1f8, type: 3}
+  hitClips:
+  - {fileID: 8300000, guid: 5548bf8813963e84db56e6ac9ad650e9, type: 3}
+  - {fileID: 8300000, guid: 38be8efccf4fa3946abf9b434876fb8c, type: 3}
+  - {fileID: 8300000, guid: d718574a3b6eda04085fa591cec7e0ab, type: 3}
+  damage: 25
 --- !u!1001 &6339009636956231581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -496,9 +531,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1310972503755428853, guid: 39c7be982fab6ca44ad4c935f6cb6ac8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 39c7be982fab6ca44ad4c935f6cb6ac8, type: 3}
       propertyPath: m_Name
-      value: MeleeEnemy
+      value: EnemyMeleeV3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39c7be982fab6ca44ad4c935f6cb6ac8, type: 3}
@@ -510,5 +549,10 @@ GameObject:
 --- !u!4 &5796720755541586038 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 39c7be982fab6ca44ad4c935f6cb6ac8, type: 3}
+  m_PrefabInstance: {fileID: 6339009636956231581}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8414910655901783082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2539866386950325175, guid: 39c7be982fab6ca44ad4c935f6cb6ac8, type: 3}
   m_PrefabInstance: {fileID: 6339009636956231581}
   m_PrefabAsset: {fileID: 0}

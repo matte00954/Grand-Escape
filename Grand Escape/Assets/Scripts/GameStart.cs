@@ -1,6 +1,7 @@
 //Main Author: Miranda Greting
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameStart : MonoBehaviour
@@ -9,12 +10,17 @@ public class GameStart : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private Animator newGameAnim;
+    [SerializeField] private Image loadingScreen;
+
+    [SerializeField] private string newGameFirstLevel = "Level 1 Main";
+    [SerializeField] private float delayTime = 1f;
     private Animator anim;
     private Animator menuAnim;
 
     // Start is called before the first frame update
     void Start()
     {
+        LoadScreenEnabled(false);
         anim = startText.GetComponent<Animator>();
         menuAnim = mainMenu.GetComponent<Animator>();
         //newGame = mainMenu.GetChild(0).gameObject;
@@ -30,15 +36,33 @@ public class GameStart : MonoBehaviour
             anim.SetTrigger("fadeOut");
             StartCoroutine(DelayInactivation(1));
         }
+
+
+
+
     }
+
+    public void LoadSavedGame()
+    {
+        LoadHandler.isSavedGame = true;
+        PlayerData data = SaveSystem.LoadPlayer();
+        LoadScreenEnabled(true);
+        LoadScene(data.sceneName);
+    }
+
+    private void LoadScene(int sceneIndex) => SceneManager.LoadSceneAsync(sceneIndex);
+    private void LoadScene(string sceneName) => SceneManager.LoadSceneAsync(sceneName);
 
     public void OpenSettings() => settingsMenu.SetActive(true);
     public void CloseSettings() => settingsMenu.SetActive(false);
 
-    public void StartGame()
+    public void NewGame()
     {
+        LoadHandler.isSavedGame = false;
+        StartCoroutine(StartDelay(delayTime));
         newGameAnim.SetTrigger("fadeOut");
-        StartCoroutine(StartDelay(1));
+        LoadScreenEnabled(true);
+        LoadScene(newGameFirstLevel); 
     }
 
     public void QuitGame()
@@ -48,13 +72,17 @@ public class GameStart : MonoBehaviour
         Application.Quit();
     }
 
-    IEnumerator StartDelay(int seconds)
+    private void LoadScreenEnabled(bool enabled)
     {
-        yield return new WaitForSeconds(seconds);
-        SceneManager.LoadScene(1);
+        loadingScreen.gameObject.SetActive(enabled);
     }
 
-    IEnumerator DelayInactivation(int seconds)
+    IEnumerator StartDelay(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+    }
+
+    IEnumerator DelayInactivation(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         startText.SetActive(false);

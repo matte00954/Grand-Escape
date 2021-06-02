@@ -2376,7 +2376,7 @@ MonoBehaviour:
       m_Fill: 1
       m_Scale: {x: 1, y: 1}
       m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
+      m_Rotation: 90
       m_Anchor: 9
     m_Material: {fileID: 0}
     m_SubmeshIndex: 0
@@ -3049,10 +3049,10 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 0.50009155, y: -0.5}
   - {x: 0.50009155, y: 0}
-  - {x: 0, y: -5.25}
-  - {x: 0, y: -0.5}
-  - {x: 0.50009155, y: -5.25}
-  - {x: 0.50009155, y: -0.5}
+  - {x: -2.1249542, y: -2.6249542}
+  - {x: 2.6250458, y: -2.6249542}
+  - {x: -2.1249542, y: -3.1250458}
+  - {x: 2.6250458, y: -3.1250458}
   - {x: 0, y: -0.5}
   - {x: 0, y: -5.25}
   - {x: -0.50009155, y: -0.5}
@@ -3220,10 +3220,10 @@ MonoBehaviour:
   - {x: 1, y: 0, z: 0, w: -1}
   - {x: 1, y: 0, z: 0, w: -1}
   - {x: 1, y: 0, z: 0, w: -1}
-  - {x: 1, y: 0, z: 0, w: -1}
-  - {x: 1, y: 0, z: 0, w: -1}
-  - {x: 1, y: 0, z: 0, w: -1}
-  - {x: 1, y: 0, z: 0, w: -1}
+  - {x: 0.9902681, y: 0, z: 0.13917284, w: -1}
+  - {x: 0.9902681, y: 0, z: 0.13917308, w: -1}
+  - {x: 0.9902681, y: 0, z: 0.13917308, w: -1}
+  - {x: 0.99026805, y: 0, z: 0.1391733, w: -1}
   - {x: -1, y: 0, z: 0, w: -1}
   - {x: -1, y: 0, z: 0, w: -1}
   - {x: -1, y: 0, z: 0, w: -1}
@@ -3321,11 +3321,19 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 837
+  m_VersionIndex: 844
   m_IsSelectable: 1
-  m_SelectedFaces: 
-  m_SelectedEdges: []
-  m_SelectedVertices: 
+  m_SelectedFaces: 13000000
+  m_SelectedEdges:
+  - a: 76
+    b: 77
+  - a: 78
+    b: 76
+  - a: 77
+    b: 79
+  - a: 79
+    b: 78
+  m_SelectedVertices: 4c0000004d0000004e0000004f000000
 --- !u!114 &4860745795767470553
 MonoBehaviour:
   m_ObjectHideFlags: 0

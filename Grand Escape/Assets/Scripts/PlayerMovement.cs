@@ -82,9 +82,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        controller = GetComponent<CharacterController>();
         camAnimation = GetComponentInChildren<CamAnimation>();
         playerVariables = GetComponent<PlayerVariables>();
-        controller = GetComponent<CharacterController>();
         audioManager = FindObjectOfType<AudioManager>();
         uiManager = FindObjectOfType<UiManager>();
 
@@ -321,7 +321,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void TeleportPlayer(Vector3 location, Quaternion rotation) //This method teleports the player during respawn. (from loading)
     {
-        currentSpeed = 0;
+        if(controller == null)
+        {
+            Debug.Log("Controller was null on teleport");
+            controller = GetComponent<CharacterController>();
+        }
         controller.enabled = false;
         Debug.Log("Teleport activated on position " + location);
         transform.position = location;

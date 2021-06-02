@@ -8,22 +8,29 @@ public class SaveAndLoadData : MonoBehaviour
 {
     [SerializeField] private GameObject player;
 
-    private void Awake()
-    {
-        if (LoadHandler.sceneChanged)
-        {
-            Load(false);
-            LoadHandler.sceneChanged = false;
-        }
+    //private void Awake()
+    //{
+    //    LoadOrSave();
+    //}
 
-        if (LoadHandler.isSavedGame)
-        {
-            Load(true);
-            LoadHandler.isSavedGame = false;
-        }
-        else if (SceneManager.GetActiveScene().name != "MainMenu")
-            Save();
-    }
+    //private void LoadOrSave()
+    //{
+    //    if (LoadHandler.sceneChanged)
+    //    {
+    //        Load(false);
+    //        LoadHandler.sceneChanged = false;
+    //        return;
+    //    }
+
+    //    if (LoadHandler.isSavedGame)
+    //    {
+    //        Load(true);
+    //        LoadHandler.isSavedGame = false;
+    //        return;
+    //    }
+    //    else if (SceneManager.GetActiveScene().name != "MainMenu")
+    //        Save();
+    //}
 
     public void Save() //from checkpoint
     {
@@ -31,7 +38,7 @@ public class SaveAndLoadData : MonoBehaviour
         SaveSystem.SavePlayer(FindObjectOfType<PlayerVariables>(),GetComponent<CheckpointRespawnHandler>(), SceneManager.GetActiveScene().name);
     }
 
-    private void Load(bool mainMenuLoad) //true == main menu load, false == scene load
+    public void Load(bool mainMenuLoad) //true == main menu load, false == scene load
     {
         Debug.Log("Loading player data");
         PlayerData data = SaveSystem.LoadPlayer();
@@ -66,16 +73,6 @@ public class SaveAndLoadData : MonoBehaviour
             player.GetComponent<PlayerMovement>().TeleportPlayer(position, rotation);
 
             GetComponent<CheckpointRespawnHandler>().DeactivateEnemies(data.savedCheckPoint);
-
-        }
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.P)) //TESTING
-        {
-            Debug.Log("Static bool isSavedGame = " + LoadHandler.isSavedGame);
-            Debug.Log("Static bool sceneChanged = " + LoadHandler.sceneChanged);
         }
     }
 }

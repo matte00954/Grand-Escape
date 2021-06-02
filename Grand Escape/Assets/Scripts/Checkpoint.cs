@@ -8,18 +8,25 @@ public class Checkpoint : MonoBehaviour
 
     [SerializeField] private int checkpointIndex;
 
+    private bool isActive = true;
+
     [SerializeField] CheckpointRespawnHandler checkpointRespawnHandler;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && isActive)
         {
             Debug.Log("Player has reached checkpoint " + "current check point is " + checkpointIndex);
 
             other.gameObject.GetComponentInParent<PlayerVariables>().SetCheckpointIndex(checkpointIndex);
             ChangeRespawn();
             FindObjectOfType<SaveAndLoadData>().Save();
-            this.gameObject.SetActive(false);
+            isActive = false;
+
+            foreach (MonoBehaviour monoBehaviour in GetComponents<MonoBehaviour>())
+            {
+                monoBehaviour.enabled = false;
+            }
         }
     }
 

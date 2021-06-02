@@ -21,4 +21,9 @@ public class PickupRespawn : MonoBehaviour
             }
         }
     }
+
+    private void Start()
+    {
+        
+    }
 }

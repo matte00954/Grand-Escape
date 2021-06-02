@@ -40,8 +40,8 @@ public class PlayerData
         respawnPosition[2] = checkpointRespawnHandler.GetRespawnPoint().position.z;
 
         respawnRotation = new float[3];
-        respawnPosition[0] = checkpointRespawnHandler.GetRespawnPoint().rotation.x;
-        respawnPosition[1] = checkpointRespawnHandler.GetRespawnPoint().rotation.y;
-        respawnPosition[2] = checkpointRespawnHandler.GetRespawnPoint().rotation.z;
+        respawnRotation[0] = checkpointRespawnHandler.GetRespawnPoint().rotation.x;
+        respawnRotation[1] = checkpointRespawnHandler.GetRespawnPoint().rotation.y;
+        respawnRotation[2] = checkpointRespawnHandler.GetRespawnPoint().rotation.z;
     }
 }

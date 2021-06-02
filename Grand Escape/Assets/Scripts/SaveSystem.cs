@@ -16,11 +16,10 @@ public static class SaveSystem
 
         formatter.Serialize(stream, data);
 
-        stream.Close();
         if (stream.Length == 0)
             Debug.LogError("SavePlayer Stream is empty.");
 
-        
+        stream.Close();
     }
 
     public static PlayerData LoadPlayer()

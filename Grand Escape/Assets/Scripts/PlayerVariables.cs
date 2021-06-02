@@ -100,6 +100,8 @@ public class PlayerVariables : MonoBehaviour
 
         ResetAllStats();
 
+        LoadPlayerStats();
+
         timerUntilRespawn = timerUntilRespawnMax;
         timerUntilStaminaRegen = timerUntilStaminaRegenMax;
         timerUntilStaminaComparisonCheck = timerUntilStaminaComparisonCheckMax;
@@ -113,7 +115,7 @@ public class PlayerVariables : MonoBehaviour
         checkPoint = savedCheckPoint;
     }
 
-    public void ReduceAmmoReserve(int amountToReduce)
+    public void ReduceAmmoReserve(int amountToReduce) //After reload
     {
         if(ammoReserve - amountToReduce < 0)
             ammoReserve = 0;
@@ -160,7 +162,7 @@ public class PlayerVariables : MonoBehaviour
 
     public void AddStatAfterPickup(string statToChange, int amount)
     {
-        switch (statToChange)
+        switch (statToChange) //remember to match string parameter to exactly these strings
         {
             case "stamina":
                 stamina += amount;
@@ -271,11 +273,11 @@ public class PlayerVariables : MonoBehaviour
         {
             timerUntilStaminaComparisonCheck -= Time.deltaTime;
 
-            if (timerUntilStaminaComparisonCheck <= 0) //may not need two timers here, might add some more checks here, therefore two timers
+            if (timerUntilStaminaComparisonCheck <= 0) //This might seem a bit weird, i had another plan for this originally, but this works fairly well and i do not have time for a better solution
             {
                 timerUntilStaminaRegen -= Time.deltaTime;
 
-                if (timerUntilStaminaRegen <= 0)
+                if (timerUntilStaminaRegen <= 0) //timer until actual regeneration
                 {
                     //Debug.Log("Stamina is now regenerating");
                     stamina += staminaRegenerationPerTick;
@@ -285,4 +287,30 @@ public class PlayerVariables : MonoBehaviour
             }
         }
     }
+
+    private void LoadPlayerStats()
+    {
+        if (LoadHandler.isSavedGame)
+        {
+            SaveAndLoadData saveAndLoadData = FindObjectOfType<SaveAndLoadData>();
+            saveAndLoadData.Load(true);
+        }
+        else if (LoadHandler.sceneChanged)
+        {
+            SaveAndLoadData saveAndLoadData = FindObjectOfType<SaveAndLoadData>();
+            saveAndLoadData.Load(false);
+        }
+        Debug.Log("SceneChanged is " + LoadHandler.sceneChanged);
+        Debug.Log("isSavedGame is " + LoadHandler.isSavedGame);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Check point"))
+        {
+            other.gameObject.SetActive(false); //Ugly solution but this is the easiest solution to disable game objects, since checkpoints can not disable themselves.
+        }
+    }
+
+    
 }

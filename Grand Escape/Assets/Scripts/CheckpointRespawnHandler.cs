@@ -76,17 +76,13 @@ public class CheckpointRespawnHandler : MonoBehaviour
 
     public void DeactivateEnemies(int checkPointProgress) //This method is run when a save game gets loaded and has to remove enemies that have been defeated
     {
-        if (checkPointProgress >= 0)
+        if (checkPointProgress != 0)
         {
-            for (int i = 0; i < checkPointProgress; i++)
+            for (int i = 0; i > checkPointProgress; i++)
             {
                 Debug.Log("enemies in enemyRespawnList " + i + " is getting removed");
                 enemyRespawnList[i].RemoveEnemies();
             }
         }
-        else
-            Debug.Log("No enemies despawned on save load");
     }
-
-
 }

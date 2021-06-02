@@ -1495,7 +1495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8171808867781266317, guid: ad4f38a6c3f2add43886cf57f4e6b85e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad4f38a6c3f2add43886cf57f4e6b85e, type: 3}
@@ -1959,7 +1959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7582761312788962724, guid: 326a95d28cb913f4e8c43bdead391c1a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 326a95d28cb913f4e8c43bdead391c1a, type: 3}
@@ -2262,6 +2262,10 @@ PrefabInstance:
     - target: {fileID: 2058104262615168367, guid: e23661d8835eade40af7f70dfcd98d60, type: 3}
       propertyPath: m_Name
       value: EnemyMeleeV4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058104262615168367, guid: e23661d8835eade40af7f70dfcd98d60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e23661d8835eade40af7f70dfcd98d60, type: 3}

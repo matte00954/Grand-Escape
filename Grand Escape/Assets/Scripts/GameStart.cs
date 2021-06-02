@@ -1,7 +1,6 @@
 //Main Author: Miranda Greting
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameStart : MonoBehaviour
@@ -10,16 +9,22 @@ public class GameStart : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private Animator newGameAnim;
-    [SerializeField] private Image loadingScreen;
+    [SerializeField] private GameObject loadingScreen;
 
     [SerializeField] private string newGameFirstLevel = "Level 1 Main";
     [SerializeField] private float delayTime = 1f;
     private Animator anim;
     private Animator menuAnim;
 
+    private string functionToActivate;
+    private float delayTimer;
+    private bool delayIsActive;
+    private bool isActive;
+
     // Start is called before the first frame update
     void Start()
     {
+        isActive = true;
         LoadScreenEnabled(false);
         anim = startText.GetComponent<Animator>();
         menuAnim = mainMenu.GetComponent<Animator>();
@@ -37,9 +42,48 @@ public class GameStart : MonoBehaviour
             StartCoroutine(DelayInactivation(1));
         }
 
+        if (delayTimer > 0f)
+            delayTimer -= Time.unscaledDeltaTime;
+        if (delayTimer <= 0f && delayIsActive)
+        {
+            delayIsActive = false;
+            RunButtonFunction(functionToActivate);
+        }
+    }
 
+    public void PressedDelayButton(string buttonName)
+    {
+        if (!delayIsActive)
+        {
+            delayIsActive = true;
+            delayTimer = delayTime;
+            functionToActivate = buttonName;
 
+            switch (buttonName)
+            {
+                case "NewGame":
+                    newGameAnim.SetTrigger("fadeOut");
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 
+    public void RunButtonFunction(string name)
+    {
+        switch (name)
+        {
+            case "NewGame":
+                NewGame();
+                break;
+            case "LoadGame":
+                LoadSavedGame();
+                break;
+            default:
+                Debug.LogError("Invalid button name.");
+                break;
+        }
     }
 
     public void LoadSavedGame()
@@ -50,20 +94,18 @@ public class GameStart : MonoBehaviour
         LoadScene(data.sceneName);
     }
 
-    private void LoadScene(int sceneIndex) => SceneManager.LoadSceneAsync(sceneIndex);
+    public void NewGame()
+    {
+        LoadHandler.isSavedGame = false;
+        LoadScreenEnabled(true);
+        LoadScene(newGameFirstLevel);
+    }
+
+    //private void LoadScene(int sceneIndex) => SceneManager.LoadSceneAsync(sceneIndex);
     private void LoadScene(string sceneName) => SceneManager.LoadSceneAsync(sceneName);
 
     public void OpenSettings() => settingsMenu.SetActive(true);
     public void CloseSettings() => settingsMenu.SetActive(false);
-
-    public void NewGame()
-    {
-        LoadHandler.isSavedGame = false;
-        StartCoroutine(StartDelay(delayTime));
-        newGameAnim.SetTrigger("fadeOut");
-        LoadScreenEnabled(true);
-        LoadScene(newGameFirstLevel); 
-    }
 
     public void QuitGame()
     {
@@ -74,12 +116,7 @@ public class GameStart : MonoBehaviour
 
     private void LoadScreenEnabled(bool enabled)
     {
-        loadingScreen.gameObject.SetActive(enabled);
-    }
-
-    IEnumerator StartDelay(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
+        loadingScreen.SetActive(enabled);
     }
 
     IEnumerator DelayInactivation(float seconds)
@@ -89,11 +126,5 @@ public class GameStart : MonoBehaviour
         mainMenu.SetActive(true);
         menuAnim.SetTrigger("fadeIn");
     }
-    /*
-    public void StartNewGame()
-    {
-        SceneManager.LoadScene(1);
-    }
-    */
 
 }

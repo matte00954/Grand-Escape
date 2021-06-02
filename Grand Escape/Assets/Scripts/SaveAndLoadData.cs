@@ -8,29 +8,29 @@ public class SaveAndLoadData : MonoBehaviour
 {
     [SerializeField] private GameObject player;
 
-    private void Awake()
-    {
-        LoadOrSave();
-    }
+    //private void Awake()
+    //{
+    //    LoadOrSave();
+    //}
 
-    private void LoadOrSave()
-    {
-        if (LoadHandler.sceneChanged)
-        {
-            Load(false);
-            LoadHandler.sceneChanged = false;
-            return;
-        }
+    //private void LoadOrSave()
+    //{
+    //    if (LoadHandler.sceneChanged)
+    //    {
+    //        Load(false);
+    //        LoadHandler.sceneChanged = false;
+    //        return;
+    //    }
 
-        if (LoadHandler.isSavedGame)
-        {
-            Load(true);
-            LoadHandler.isSavedGame = false;
-            return;
-        }
-        else if (SceneManager.GetActiveScene().name != "MainMenu")
-            Save();
-    }
+    //    if (LoadHandler.isSavedGame)
+    //    {
+    //        Load(true);
+    //        LoadHandler.isSavedGame = false;
+    //        return;
+    //    }
+    //    else if (SceneManager.GetActiveScene().name != "MainMenu")
+    //        Save();
+    //}
 
     public void Save() //from checkpoint
     {
@@ -73,16 +73,6 @@ public class SaveAndLoadData : MonoBehaviour
             player.GetComponent<PlayerMovement>().TeleportPlayer(position, rotation);
 
             GetComponent<CheckpointRespawnHandler>().DeactivateEnemies(data.savedCheckPoint);
-
-        }
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.P)) //TESTING
-        {
-            Debug.Log("Static bool isSavedGame = " + LoadHandler.isSavedGame);
-            Debug.Log("Static bool sceneChanged = " + LoadHandler.sceneChanged);
         }
     }
 }

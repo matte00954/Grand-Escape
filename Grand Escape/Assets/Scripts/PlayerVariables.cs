@@ -100,6 +100,8 @@ public class PlayerVariables : MonoBehaviour
 
         ResetAllStats();
 
+        LoadPlayerStats();
+
         timerUntilRespawn = timerUntilRespawnMax;
         timerUntilStaminaRegen = timerUntilStaminaRegenMax;
         timerUntilStaminaComparisonCheck = timerUntilStaminaComparisonCheckMax;
@@ -210,19 +212,8 @@ public class PlayerVariables : MonoBehaviour
         PlayerDeath();
         UpdateDeathTimer();
 
-        Test();
-
         if (playerSuicideAvailable)
             PlayerSuicide();
-    }
-
-    private void Test()
-    {
-        if (Input.GetKey(KeyCode.I))
-        {
-            SaveAndLoadData saveAndLoadData = FindObjectOfType<SaveAndLoadData>();
-            saveAndLoadData.Load(true);
-        }
     }
 
     private void PlayerSuicide() //For testing
@@ -297,6 +288,21 @@ public class PlayerVariables : MonoBehaviour
         }
     }
 
+    private void LoadPlayerStats()
+    {
+        if (LoadHandler.isSavedGame)
+        {
+            SaveAndLoadData saveAndLoadData = FindObjectOfType<SaveAndLoadData>();
+            Debug.Log("is Saved game executed");
+            saveAndLoadData.Load(true);
+        }
+        else if (LoadHandler.sceneChanged)
+        {
+            SaveAndLoadData saveAndLoadData = FindObjectOfType<SaveAndLoadData>();
+            Debug.Log("scene change executed");
+            saveAndLoadData.Load(false);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {

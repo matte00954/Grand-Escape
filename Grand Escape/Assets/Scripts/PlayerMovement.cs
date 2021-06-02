@@ -321,12 +321,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void TeleportPlayer(Vector3 location, Quaternion rotation) //This method teleports the player during respawn. (from loading)
     {
-        //currentSpeed = 0;
-        //controller.enabled = false;
+        if(controller == null)
+        {
+            Debug.Log("Controller was null on teleport");
+            controller = GetComponent<CharacterController>();
+        }
+        controller.enabled = false;
         Debug.Log("Teleport activated on position " + location);
         transform.position = location;
         transform.rotation = rotation;
-        //controller.enabled = true;
+        controller.enabled = true;
     }
 
     private void CheckGround()

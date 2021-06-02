@@ -293,15 +293,15 @@ public class PlayerVariables : MonoBehaviour
         if (LoadHandler.isSavedGame)
         {
             SaveAndLoadData saveAndLoadData = FindObjectOfType<SaveAndLoadData>();
-            Debug.Log("is Saved game executed");
             saveAndLoadData.Load(true);
         }
         else if (LoadHandler.sceneChanged)
         {
             SaveAndLoadData saveAndLoadData = FindObjectOfType<SaveAndLoadData>();
-            Debug.Log("scene change executed");
             saveAndLoadData.Load(false);
         }
+        Debug.Log("SceneChanged is " + LoadHandler.sceneChanged);
+        Debug.Log("isSavedGame is " + LoadHandler.isSavedGame);
     }
 
     private void OnTriggerEnter(Collider other)

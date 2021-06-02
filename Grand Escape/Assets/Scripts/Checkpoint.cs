@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    [SerializeField] private readonly Transform childRespawnTransform; //child object that has a respawn transform that PlayerRespawn object gets moved to
+    [SerializeField] private Transform childRespawnTransform; //child object that has a respawn transform that PlayerRespawn object gets moved to
 
-    [SerializeField] private readonly int checkpointIndex;
+    [SerializeField] private int checkpointIndex;
 
-    private CheckpointRespawnHandler checkpointRespawnHandler;
-
-    private void Start()
-    {
-        checkpointRespawnHandler = FindObjectOfType<CheckpointRespawnHandler>();
-    }
+    [SerializeField] CheckpointRespawnHandler checkpointRespawnHandler;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,7 +16,7 @@ public class Checkpoint : MonoBehaviour
         {
             Debug.Log("Player has reached checkpoint " + "current check point is " + checkpointIndex);
 
-            other.gameObject.GetComponent<PlayerVariables>().SetCheckpointIndex(checkpointIndex);
+            other.gameObject.GetComponentInParent<PlayerVariables>().SetCheckpointIndex(checkpointIndex);
             ChangeRespawn();
             FindObjectOfType<SaveAndLoadData>().Save();
             this.gameObject.SetActive(false);

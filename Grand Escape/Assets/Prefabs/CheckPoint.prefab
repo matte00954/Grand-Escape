@@ -32,7 +32,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 3161358429136259129}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -103,6 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7039d22552e4f4db42ed860bd55b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRespawnPointObject: {fileID: 0}
   checkPointList: []
 --- !u!114 &-7095790666653817696
 MonoBehaviour:
@@ -116,3 +118,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ef6dbd9de2d6946907a6f912d28e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childRespawnTransform: {fileID: 3161358429136259129}
+  checkpointIndex: 0
+  checkpointRespawnHandler: {fileID: 0}
+--- !u!1 &7682455772279925930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3161358429136259129}
+  m_Layer: 0
+  m_Name: RespawnLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3161358429136259129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7682455772279925930}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5928515166768018072}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -9,6 +9,7 @@ public static class SaveSystem
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.savedata";
+        Debug.Log("Saved file at: " + path);
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerData data = new PlayerData(playerVariables, checkpointRespawnHandler, currentLevel);
@@ -18,6 +19,8 @@ public static class SaveSystem
         stream.Close();
         if (stream.Length == 0)
             Debug.LogError("SavePlayer Stream is empty.");
+
+        
     }
 
     public static PlayerData LoadPlayer()

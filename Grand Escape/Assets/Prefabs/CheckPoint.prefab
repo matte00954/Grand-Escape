@@ -13,12 +13,11 @@ GameObject:
   - component: {fileID: 5928515166768018074}
   - component: {fileID: 3433338016010623814}
   - component: {fileID: 5800993172850185287}
-  - component: {fileID: 2741653780014436140}
   - component: {fileID: -7095790666653817696}
   m_Layer: 0
   m_Name: CheckPoint
   m_TagString: Check point
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -92,20 +91,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToRespawn: []
---- !u!114 &2741653780014436140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5928515166768018078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d7039d22552e4f4db42ed860bd55b38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerRespawnPointObject: {fileID: 0}
-  checkPointList: []
 --- !u!114 &-7095790666653817696
 MonoBehaviour:
   m_ObjectHideFlags: 0

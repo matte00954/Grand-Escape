@@ -10,16 +10,23 @@ public class SaveAndLoadData : MonoBehaviour
 
     private void Awake()
     {
+        LoadOrSave();
+    }
+
+    private void LoadOrSave()
+    {
         if (LoadHandler.sceneChanged)
         {
             Load(false);
             LoadHandler.sceneChanged = false;
+            return;
         }
 
         if (LoadHandler.isSavedGame)
         {
             Load(true);
             LoadHandler.isSavedGame = false;
+            return;
         }
         else if (SceneManager.GetActiveScene().name != "MainMenu")
             Save();
@@ -31,7 +38,7 @@ public class SaveAndLoadData : MonoBehaviour
         SaveSystem.SavePlayer(FindObjectOfType<PlayerVariables>(),GetComponent<CheckpointRespawnHandler>(), SceneManager.GetActiveScene().name);
     }
 
-    private void Load(bool mainMenuLoad) //true == main menu load, false == scene load
+    public void Load(bool mainMenuLoad) //true == main menu load, false == scene load
     {
         Debug.Log("Loading player data");
         PlayerData data = SaveSystem.LoadPlayer();

@@ -7,7 +7,7 @@ public class SwordCollision : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.CompareTag("Enemy"))
         {
             GetComponent<BoxCollider>().enabled = false;
             other.gameObject.GetComponent<EnemyVariables>().ApplyDamage(damageOnHit);

@@ -5,7 +5,6 @@ public class EquippedSword : MonoBehaviour
 {
     [SerializeField] private AudioClip[] clips;
     [SerializeField] private BoxCollider swordCollider;
-    [SerializeField] private UnityEvent OnAttack;
 
     private UiManager uiManager;
 
@@ -28,10 +27,10 @@ public class EquippedSword : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0) && !anim.GetCurrentAnimatorStateInfo(0).IsName("ES_Slash") && PlayerVariables.isAlive)
-        {
-            OnAttack.Invoke();
-        }
+        if (Input.GetMouseButton(0) && !anim.GetCurrentAnimatorStateInfo(0).IsName("Swing") && PlayerVariables.isAlive)
+            anim.SetTrigger("Swing");
+        anim.SetBool("Moving", PlayerMovement.IsMoving);
+        anim.SetFloat("TimeScale", Time.timeScale);
     }
 
     private void OnDisable() => swordCollider.enabled = false;

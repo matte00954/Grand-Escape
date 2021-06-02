@@ -640,14 +640,14 @@ MonoBehaviour:
   staminaRegenerationPerTick: 0.1
   staminaLeechAmount: 15
   maxHealthPoints: 100
-  maxAmmoReserve: 10
+  maxAmmoReserve: 20
   maxStamina: 100
   startAmmoReserve: 5
   timerUntilRespawnMax: 3
   timerUntilStaminaComparisonCheckMax: 0.01
   timerUntilStaminaRegenMax: 0.01
   recentDamageTimerMax: 0.6
-  playerSuicideAvailable: 1
+  playerSuicideAvailable: 0
   godMode: 0
   unlockAllWeapons: 0
 --- !u!1 &5678491155060102435

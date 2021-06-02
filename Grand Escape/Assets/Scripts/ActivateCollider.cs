@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//author Leo Mendonda Agild leme2980
 public class ActivateCollider : MonoBehaviour
 {
-    [SerializeField] private GameObject enemy;
+    [SerializeField] private EnemyVariables enemy;
+    [SerializeField] private BoxCollider boxCollider;
 
 
     // Start is called before the first frame update
@@ -18,10 +20,11 @@ public class ActivateCollider : MonoBehaviour
     {
         //Debug.Log(enemy.activeInHierarchy);
 
-        if (!enemy.activeInHierarchy)
+        if (!enemy.enabled)
         {
+            Debug.Log("DEAD");
             GetComponent<BoxCollider>().enabled = true;
-
+            boxCollider.enabled = true;
         }
     }
 }

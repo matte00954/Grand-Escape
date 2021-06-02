@@ -32,11 +32,13 @@ public class AudioManager : MonoBehaviour
     public void Play(string name)
     {
         Sound sound = GetSound(name);
-        if (sound == null)
-            return;
-
-        sound.Source.pitch = sound.Pitch; //Pitch is set here in the case it must be randomly set on play.
-        sound.Source.Play();
+        if (sound != null)
+        {
+            sound.Source.pitch = sound.Pitch; //Pitch is set here in the case it must be randomly set on play.
+            sound.Source.Play();
+        }
+        else
+            Debug.Log("Did not find soundname");
     }
 
     /// <summary>Instatiates a temporary 3D sound object at a set point in space.</summary>

@@ -52,7 +52,7 @@ public class PlayerShooting : MonoBehaviour
         else
             uiManager.WeaponStatus(0);
 
-        if (weaponType.GetWepName() == "Musket")
+        if (weaponType.GetWepName() == "Musket" || weaponType.GetWepName() == "Pistol")
             animator.SetTrigger("Draw");
     }
 

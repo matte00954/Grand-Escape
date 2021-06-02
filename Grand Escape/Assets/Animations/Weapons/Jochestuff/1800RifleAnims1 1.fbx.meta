@@ -24,7 +24,12 @@ ModelImporter:
   - first:
       74: 573825618382429795
     second: Arms|Draw (1)
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SparkCarbine
+    second: {fileID: 2100000, guid: 8978300621376e441a197a5b0188db4c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -192,7 +197,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.21076684
+        functionName: PlayReloadSound
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 6c8154ff93a675b4686fc5209f6ed5be, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

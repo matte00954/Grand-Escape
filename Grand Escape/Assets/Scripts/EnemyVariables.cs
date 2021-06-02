@@ -26,6 +26,11 @@ public class EnemyVariables : MonoBehaviour
         ResetAllStats();
         audioSource = GetComponent<AudioSource>();
         startPosition = transform.position;
+        anim = GetComponent<Animator>();
+        if (GetComponent<EnemyShooting>()!= null)
+        {
+            anim.SetLayerWeight(1, 1);
+        }
 
         // Animations
         anim = GetComponent<Animator>();
@@ -37,7 +42,10 @@ public class EnemyVariables : MonoBehaviour
         if(healthPoints <= 0 && isAlive)
         {
             Debug.Log("Enemy dies");
-
+            if (GetComponent<EnemyShooting>() != null)
+            {
+                anim.SetLayerWeight(1, 0);
+            }
             // Animations
             anim.SetTrigger("Death");
 

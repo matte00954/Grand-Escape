@@ -130,7 +130,7 @@ public class PlayerVariables : MonoBehaviour
             Debug.Log("Player took :" + damageToBeApplied + " damage");
             healthPoints -= damageToBeApplied;
             uiManager.TakenDamage();
-            audioManager.Play(playerDamageTakenSound);
+            GetComponent<LowVariablesAudio>().PlayDamageSound();
             uiManager.HealthPoints(healthPoints);
         }
         else

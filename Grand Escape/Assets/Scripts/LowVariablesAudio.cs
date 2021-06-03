@@ -87,10 +87,10 @@ public class LowVariablesAudio : MonoBehaviour
             
         }
 
-        if (!PlayerMovement.IsDodging)
-        {
-            FindObjectOfType<AudioManager>().Play(hurtSounds[Random.Range(0, hurtSounds.Length + 1)]);
+    }
 
-        }
+    public void PlayDamageSound()
+    {
+        FindObjectOfType<AudioManager>().Play(hurtSounds[Random.Range(0, hurtSounds.Length + 1)]);
     }
 }

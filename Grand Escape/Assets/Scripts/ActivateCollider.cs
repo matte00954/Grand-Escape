@@ -22,7 +22,7 @@ public class ActivateCollider : MonoBehaviour
 
         if (!enemy.enabled)
         {
-            Debug.Log("DEAD");
+            //Debug.Log("DEAD");
             GetComponent<BoxCollider>().enabled = true;
             boxCollider.enabled = true;
         }

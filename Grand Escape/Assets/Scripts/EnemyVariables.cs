@@ -63,6 +63,8 @@ public class EnemyVariables : MonoBehaviour
 
     private void Die()
     {
+        FindObjectOfType<PlayOneLiner>().SetKillCount(1);
+
         PlayerVariables.AddStamina(enemyType.GetStaminaLeechAmount(), true);
 
         Vector3 pickupSpawnPosition;

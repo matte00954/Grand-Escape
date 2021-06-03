@@ -84,6 +84,8 @@ GameObject:
   - component: {fileID: 5678491154712510801}
   - component: {fileID: 5678491154712510807}
   - component: {fileID: 5678491154712510805}
+  - component: {fileID: 2641979268364006479}
+  - component: {fileID: 2468141567309827275}
   m_Layer: 6
   m_Name: First Person Player
   m_TagString: Player
@@ -198,6 +200,65 @@ MonoBehaviour:
   playerSuicideAvailable: 0
   godMode: 0
   unlockAllWeapons: 0
+--- !u!114 &2641979268364006479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5678491154712510800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbbee168435238a469b7eab839e3057f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundNames:
+  - Oneliner1
+  - Oneliner2
+  - Oneliner3
+  - Oneliner4
+  - Oneliner5
+  - Oneliner6
+  - Oneliner7
+  - Oneliner8
+  minKills: 2
+  maxKills: 5
+  delay: 1
+--- !u!114 &2468141567309827275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5678491154712510800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bbffe4f025b1246a6811ce2dd23a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stamminaSounds:
+  - Exhausted
+  - Exhausted2
+  ammoSounds:
+  - NAmmo1
+  - NAmmo2
+  - NAmmo3
+  - NAmmo4
+  deathSounds:
+  - PlayerDeathSound
+  - PlayerDeathSound2
+  - PlayerDeathSound3
+  - PlayerDeathSound4
+  hurtSounds:
+  - PlayerDamageTakenSound
+  - PlayerDamageTakenSound2
+  - PlayerDamageTakenSound3
+  - PlayerDamageTakenSound4
+  - PlayerDamageTakenSound5
+  - PlayerDamageTakenSound6
+  stamminaCall: 20
+  ammoCall: 0
+  healthCall: 20
 --- !u!1 &5678491155060102435
 GameObject:
   m_ObjectHideFlags: 0

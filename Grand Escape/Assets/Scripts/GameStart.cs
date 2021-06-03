@@ -31,6 +31,7 @@ public class GameStart : MonoBehaviour
         //newGame = mainMenu.GetChild(0).gameObject;
         mainMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame

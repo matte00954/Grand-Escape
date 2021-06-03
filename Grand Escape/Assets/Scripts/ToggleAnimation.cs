@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class ToggleAnimation : MonoBehaviour
 {
@@ -10,9 +11,11 @@ public class ToggleAnimation : MonoBehaviour
     [SerializeField] private Image inactiveSword;
     [SerializeField] private Slider masterVolume;
     [SerializeField] private Slider musicVolume;
+    [SerializeField] private AudioListener audioListener;
     private Toggle toggle;
     private VolumeSliderAnimation masterScript;
     private VolumeSliderAnimation musicScript;
+    private double newVolume;
     private int lastMasterValue = 100;
     private int lastMusicValue = 100;
 
@@ -45,6 +48,8 @@ public class ToggleAnimation : MonoBehaviour
 
     private void MasterValueChanged()
     {
+        newVolume = Math.Round(masterVolume.value / 10f, 1);
+        AudioListener.volume = (float)newVolume;
         if (!toggle.isOn)
         {
             //toggle.isOn = true;
@@ -77,6 +82,7 @@ public class ToggleAnimation : MonoBehaviour
             inactiveSword.color = new Color(inactiveSword.color.r, inactiveSword.color.g, inactiveSword.color.b, 0.5f);
             masterVolume.value = 0;
             musicVolume.value = 0;
+            AudioListener.volume = 0;
             //swordAnim.SetTrigger("fadeOut");    
         }
 
@@ -86,6 +92,7 @@ public class ToggleAnimation : MonoBehaviour
             inactiveSword.color = new Color(inactiveSword.color.r, inactiveSword.color.g, inactiveSword.color.b, 0f);
             masterVolume.value = lastMasterValue;
             musicVolume.value = lastMusicValue;
+            AudioListener.volume = (float)newVolume;
             //swordAnim.SetTrigger("fadeIn");
         }
     }

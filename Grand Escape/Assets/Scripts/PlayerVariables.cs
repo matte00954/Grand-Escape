@@ -233,7 +233,7 @@ public class PlayerVariables : MonoBehaviour
 
             uiManager.DeathText(true);
 
-            audioManager.Play(playerDeathSound);
+            //audioManager.Play(playerDeathSound);
 
             FindObjectOfType<CamAnimation>().PlayDeathAnimation();
 

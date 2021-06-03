@@ -14,6 +14,8 @@ public class EnemyMovement : MonoBehaviour
     private NavMeshAgent agent;
     private EnemyShooting enemyShooting;
 
+    private AudioSource source;
+
     [Header("Patrol state")]
     [Tooltip("The enemy will never move."),
         SerializeField] private bool IsStationary;
@@ -47,6 +49,9 @@ public class EnemyMovement : MonoBehaviour
     [Tooltip("The time it takes for the enemy to give up chasing after losing sight of the player."), 
         SerializeField] private float alertBufferTime;
 
+    [Tooltip("Aggrosounds"),
+        SerializeField] private AudioClip [] alertSounds;
+
     [Header("Attack state")]
     [Tooltip("The speed of enemy's rotation while standing still and attacking."), 
         SerializeField] private float rotationSpeed;
@@ -55,6 +60,8 @@ public class EnemyMovement : MonoBehaviour
     private bool sawPlayer;
     private bool isAlerted;
     private bool isHurt;
+
+    private bool firstAttack;
 
     private float patrolTimer, alertTimer;
     private static float easeTimer;
@@ -65,11 +72,15 @@ public class EnemyMovement : MonoBehaviour
 
     private void Awake()
     {
+        firstAttack = true;
+
         TryGetComponent(out enemyShooting);
         agent = GetComponent<NavMeshAgent>();
         patrolTimer = timeBetweenPatrol;
 
         anim = GetComponent<Animator>();
+
+        source = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -112,9 +123,19 @@ public class EnemyMovement : MonoBehaviour
             sawPlayer = false;
             alertTimer = 0f;
             Patroling();
+
+            firstAttack = true;
         }
         else if (heardPlayer || sawPlayer) //If enemy either sees or hears the player, it will reset and start the timer for alerted state
         {
+
+            if (firstAttack)
+            {
+                source.PlayOneShot(alertSounds[Random.Range(0, alertSounds.Length)]);
+                firstAttack = false;
+            }
+
+
             alertTimer = alertBufferTime;
             heardPlayer = false;
             sawPlayer = false;

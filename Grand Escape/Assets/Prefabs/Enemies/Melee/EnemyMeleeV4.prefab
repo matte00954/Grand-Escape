@@ -264,6 +264,45 @@ MonoBehaviour:
   chasingSpeed: 20
   maxAttackRange: 5
   alertBufferTime: 3
+  alertSounds:
+  - {fileID: 8300000, guid: 498f46b74fd0eb241b10e86a2b961232, type: 3}
+  - {fileID: 8300000, guid: a98b7e734bfedc1448959b8aae3770a0, type: 3}
+  - {fileID: 8300000, guid: f782ec486f2630646a1fc034a547e672, type: 3}
+  - {fileID: 8300000, guid: 1984d29665e1b7947a71e26f55c779df, type: 3}
+  - {fileID: 8300000, guid: a6738027562aca546904ecf4dfed6920, type: 3}
+  - {fileID: 8300000, guid: d4d8b9ddf5db67a4097a3b05d085953c, type: 3}
+  - {fileID: 8300000, guid: 5dabba20873d3094e8cbb7f14c7217ed, type: 3}
+  - {fileID: 8300000, guid: f4bdcbb70c9b79a469742f5b35dd71e5, type: 3}
+  - {fileID: 8300000, guid: 8a14cf59720ba4d409f09b04567912a8, type: 3}
+  - {fileID: 8300000, guid: d6afb23b15ac740438c27c1b08f7dccb, type: 3}
+  - {fileID: 8300000, guid: be8cf2a489086fe46942cf9212f52853, type: 3}
+  - {fileID: 8300000, guid: b7505ffeb209f4246b5ad8c5c11616d7, type: 3}
+  - {fileID: 8300000, guid: a62a152e6b91b5b429ce34961a0c35fb, type: 3}
+  - {fileID: 8300000, guid: 6a750488a7e855e4ba872a2c48703312, type: 3}
+  - {fileID: 8300000, guid: c04285778c29ddd489e0897e9a4edbe4, type: 3}
+  - {fileID: 8300000, guid: 96716ed6e127620489786677d813d3de, type: 3}
+  - {fileID: 8300000, guid: 0efc74b7427f0414998fd443ee3b2c4f, type: 3}
+  - {fileID: 8300000, guid: 160b42a6b09f28e46aac6a7b4bc00cde, type: 3}
+  - {fileID: 8300000, guid: fc161cb51bf95084588140f1ee81ae92, type: 3}
+  - {fileID: 8300000, guid: cc072cb5efafec442a98069480a3fb0a, type: 3}
+  - {fileID: 8300000, guid: 2093fc6be8ac9124bbe75f5100988da4, type: 3}
+  - {fileID: 8300000, guid: 89e6c92c61b61fc47acd30847e365fad, type: 3}
+  - {fileID: 8300000, guid: 1df5fb812628d144f9193f268d6563fa, type: 3}
+  - {fileID: 8300000, guid: 5b97f6b35ea6b1e4f972d9079247da84, type: 3}
+  - {fileID: 8300000, guid: e13bb41494178ee4881663615b63be8b, type: 3}
+  - {fileID: 8300000, guid: 2fe1e36da5718014e900b17589774c69, type: 3}
+  - {fileID: 8300000, guid: 1791915e69493164d82e55d229305516, type: 3}
+  - {fileID: 8300000, guid: f69249935964a534d89cff0eb8ae8595, type: 3}
+  - {fileID: 8300000, guid: 3636ab1e524a6dc468dc3c0e8cd60196, type: 3}
+  - {fileID: 8300000, guid: db1f0a3194e40bb44a854510379b8be8, type: 3}
+  - {fileID: 8300000, guid: c9cb1b8c145a2d24c904ff5bfe636ad5, type: 3}
+  - {fileID: 8300000, guid: f6bb1b76912dec547b8baf5e455d0d77, type: 3}
+  - {fileID: 8300000, guid: e4e176b36a8a0a34997931ae3545bb08, type: 3}
+  - {fileID: 8300000, guid: 4c691ebbdba638846914d774613600d4, type: 3}
+  - {fileID: 8300000, guid: 1c9e0fe3a62acc5419f6614e56f257e6, type: 3}
+  - {fileID: 8300000, guid: 83504c58b900b74409085101e412b401, type: 3}
+  - {fileID: 8300000, guid: 5d91ba764ffb1dc44a906c5a81063cd5, type: 3}
+  - {fileID: 8300000, guid: f8d42e39a42660d4991e9a49506189fe, type: 3}
   rotationSpeed: 20
 --- !u!195 &6582097195682298111
 NavMeshAgent:
@@ -298,7 +337,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5774864, z: 0.03983108}
+  m_Size: {x: 0.05, y: 0.5774864, z: 0.03983108}
   m_Center: {x: 0.0000037938619, y: 0.23673517, z: 0.00008140997}
 --- !u!114 &1948311699737162365
 MonoBehaviour:

@@ -334,11 +334,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3706981705023277961}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.5774864, z: 0.03983108}
-  m_Center: {x: 0.0000037938619, y: 0.23673517, z: 0.00008140997}
+  m_Size: {x: 0.07, y: 0.86030006, z: 0.05}
+  m_Center: {x: 0.000004220823, y: 0.37814206, z: 0.00008138948}
 --- !u!114 &1948311699737162365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 226716b0631e7f04f932e28a34dbf99c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swordCollider: {fileID: 2599595672912698969}
+  swordCollider: {fileID: 4358921787211669953}
   swingClips:
   - {fileID: 8300000, guid: e7a87590d34c47e409506d2245484bc7, type: 3}
   - {fileID: 8300000, guid: 58c1ce623a6276248857438ee0c43943, type: 3}
